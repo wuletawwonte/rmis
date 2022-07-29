@@ -20,10 +20,10 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: localhost
-  port: 5433
-  username: postgres
-  password: postgres
+  host: <%= ENV['RMIS_DATABASE_HOST'] %>
+  port: <%= ENV['RMIS_DATABASE_PORT'] %>
+  username: <%= ENV['RMIS_DATABASE_USERNAME'] %>
+  password: <%= ENV['RMIS_DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
