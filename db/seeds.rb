@@ -8,7 +8,13 @@
 
 User.destroy_all
 
-User.create(email: "wuletawwonte@gmail.com", password: "123456")
+User.create(
+  first_name: 'Wuletaw', 
+  middle_name: 'Wonte', 
+  last_name: 'Mitsa', 
+  email: "wuletawwonte@gmail.com", 
+  password: "123456"
+)
 
 5.times do |index|
   @first_name = Faker::Name.first_name
@@ -16,7 +22,7 @@ User.create(email: "wuletawwonte@gmail.com", password: "123456")
   @last_name = Faker::Name.last_name
 
   User.create(
-    first_name: @fist_name,
+    first_name: @first_name,
     middle_name: @middle_name,
     last_name: @last_name,
     email: "#{@first_name}.#{@last_name}@gmail.com",
