@@ -11,8 +11,15 @@ User.destroy_all
 User.create(email: "wuletawwonte@gmail.com", password: "123456")
 
 5.times do |index|
+  @first_name = Faker::Name.first_name
+  @middle_name = Faker::Name.middle_name
+  @last_name = Faker::Name.last_name
+
   User.create(
-    email: "#{Faker::Name.first_name}.#{Faker::Name.last_name}@gmail.com",
+    first_name: @fist_name,
+    middle_name: @middle_name,
+    last_name: @last_name,
+    email: "#{@first_name}.#{@last_name}@gmail.com",
     password: "123456"
   )
 end
