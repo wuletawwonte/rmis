@@ -1,33 +1,9 @@
-  <%
-=begin%>
- <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div> 
-<%
-=end%>
-
-
 <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
   <div class="max-w-md w-full space-y-8">
     <div>
-      <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
+      <a href="/users/sign_in">
+        <%= image_tag 'amu_logo.png', class: "mx-auto h-28 w-auto", alt: "Arba Minch University" %>
+      </a>
       <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
       <p class="mt-2 text-center text-sm text-gray-600">
         Or
@@ -37,11 +13,10 @@
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "mt-8 space-y-6") do |f| %>
 
-      <input type="hidden" name="remember" value="true">
-      <div class="rounded-md shadow-sm -space-y-px">
+      <div class="rounded-md shadow-sm mb-3 -space-y-px">
         <div>
           <%= f.label :email, class: "sr-only" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email address", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
+          <%= f.email_field :email, autofocus: true, required: "true", autocomplete: "email", placeholder: "Email address", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
         </div>
 
         <div>
@@ -51,7 +26,7 @@
       </div>
 
       <% if devise_mapping.rememberable? %>
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between mb-3">
           <div class="flex items-center">
             <%= f.check_box :remember_me, class: "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" %>
             <%= f.label :remember_me, class: "ml-2 block text-sm text-gray-900" %>
@@ -77,7 +52,10 @@
 
     <% end %>
 
-    <%= link_to "Sign up", new_user_registration_path, class: "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+    <p class="text-sm font-semibold mt-1 pt-1 mb-0">
+      Don't have an account?
+      <%= link_to "Sign up", new_user_registration_path, class: "text-indigo-600 hover:text-indigo-500 focus:text-indigo-700 transition duration-200 ease-in-out" %>
+    </p>
 
   </div>
 </div>
