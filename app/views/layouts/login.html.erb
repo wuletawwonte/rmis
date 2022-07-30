@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full bg-gray-50">
   <head>
     <title>Rmis</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -11,10 +11,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <h2>What the heck</h2>
-      <%= yield %>
-    </main>
+  <body class="h-full">
+    <%= yield %>
   </body>
 </html>
