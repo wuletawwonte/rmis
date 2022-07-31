@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Rmis</title>
+    <title>RMIS-Research Management Information System</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,6 +12,10 @@
   </head>
 
   <body>
+    <% if user_signed_in? %> 
+        <h3><%= current_user.first_name %></h3>
+        <%= button_to "Log out", destroy_user_session_path, method: :delete, class: 'btn' %>
+    <% end %>
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
