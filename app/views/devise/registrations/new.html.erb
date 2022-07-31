@@ -1,29 +1,77 @@
-<h2>Sign up</h2>
+<div class="mt-10 sm:mt-0 flex items-center justify-center">
+  <div class="md:grid mt-10">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="mt-5 md:mt-0 md:col-span-2  border-t-4 border-blue-900">
+      
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="shadow overflow-hidden sm:rounded-md">
+          <div class="px-4 py-5 bg-white sm:p-6">
+            <div class="grid grid-cols-6 gap-6">
+
+              <div class="col-span-6 sm:col-span-3">
+                <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
+                <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              </div>
+
+              <div class="col-span-6 sm:col-span-3">
+                <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
+                <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              </div>
+
+              <div class="col-span-6 sm:col-span-4">
+                <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+              </div>
+
+              <div class="col-span-6 sm:col-span-3">
+                <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+                <select id="country" name="country" autocomplete="country-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                  <option>United States</option>
+                  <option>Canada</option>
+                  <option>Mexico</option>
+                </select>
+              </div>
+
+              <div class="col-span-6">
+                <%= f.label :password, class: "block text-sm font-medium text-gray-700" %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %>
+                <%= f.password_field :password, autocomplete: "new-password", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+              </div>
+
+              <div class="col-span-6">
+                <%= f.label :password_confirmation, class: "block text-sm font-medium text-gray-700" %>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+              </div>
+
+
+              <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+                <input type="text" name="city" id="city" autocomplete="address-level2" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              </div>
+
+              <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                <label for="region" class="block text-sm font-medium text-gray-700">State / Province</label>
+                <input type="text" name="region" id="region" autocomplete="address-level1" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              </div>
+
+              <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                <label for="postal-code" class="block text-sm font-medium text-gray-700">ZIP / Postal code</label>
+                <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              </div>
+            </div>
+          </div>
+          <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+            <%= link_to "Sign in", new_user_session_path, class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+            <%= f.submit "Sign up", class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+          </div>
+
+        </div>
+      <% end  %>
+
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
