@@ -3,4 +3,5 @@
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
 //= link_tree ../builds
-//= link ./initalpine.js
+//= link ./init-alpine.js
+//= link ./alpine.min.js

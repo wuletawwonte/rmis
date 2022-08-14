@@ -9,7 +9,11 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= javascript_include_tag "initalpine" %>
+
+    <%= javascript_include_tag "alpine.min", defer: true %>
+    <%= javascript_include_tag "init-alpine" %>
+
+
   </head>
 
   <body>
