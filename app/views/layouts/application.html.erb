@@ -673,10 +673,7 @@
                       </a>
                     </li>
                     <li class="flex">
-                      <%= button_to destroy_user_session_path, method: :delete, class: "inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200" do %>
-                        <%= fa_icon "sign-out lg", class: 'w-7' %>
-                        <span>Log out</span>
-                      <% end %>
+                      <%= button_to fa_icon('sign-out lg', class: 'w-7', text: 'Log out'), destroy_user_session_path, method: :delete, class: "inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200", form_class: "w-full" %>
                     </li>
                   </ul>
                 </template>
