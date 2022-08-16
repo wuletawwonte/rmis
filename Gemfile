@@ -17,6 +17,7 @@ gem "bootsnap", require: false
 gem "devise"
 gem "faker"
 gem "font-awesome-rails"
+gem "carrierwave"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
