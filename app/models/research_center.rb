@@ -1,0 +1,2 @@
+class ResearchCenter < ApplicationRecord
+end
