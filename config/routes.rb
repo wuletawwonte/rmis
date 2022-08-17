@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  get 'proposals/index'
-  get 'proposals/new'
-  get 'proposals/create'
-  get 'proposals/destroy'
+
+  resources :proposals, only: [:index, :show, :new, :create]
   devise_for :users
 
   root "users#index"
