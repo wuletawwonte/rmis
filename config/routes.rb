@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :research_centers, only: [:index, :show, :create, :new, :edit, :destroy]
   resources :proposals, only: [:index, :show, :new, :create]
   devise_for :users
 
