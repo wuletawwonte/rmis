@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ProposalsController < ApplicationController
   def index
     @proposals = Proposal.all

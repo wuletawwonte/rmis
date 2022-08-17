@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ResearchCentersController < ApplicationController
   def index
     @research_centers = ResearchCenter.all

@@ -1,14 +1,11 @@
-# frozen_string_literal: true
-
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   layout :layout_by_resource
 
   def layout_by_resource
-    if devise_controller? && resource_name == :user && action_name == 'new'
-      'login'
-    elsif devise_controller? && resource_name == :user && action_name == 'create'
+    if (devise_controller? && resource_name == :user && action_name == 'new') ||
+       (devise_controller? && resource_name == :user && action_name == 'create')
       'login'
     else
       'application'
