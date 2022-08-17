@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 class ResearchCentersController < ApplicationController
   def index
     @research_centers = ResearchCenter.all
   end
 
-  def show
-  end
-  
+  def show; end
+
   def new
     @research_center = ResearchCenter.new
   end
@@ -14,19 +15,17 @@ class ResearchCentersController < ApplicationController
     @research_center = ResearchCenter.new(research_center_params)
 
     if @research_center.save
-      redirect_to research_centers_path, notice: "Successfully added."   
-    else   
-      render "new"   
-    end   
+      redirect_to research_centers_path, notice: 'Successfully added.'
+    else
+      render 'new'
+    end
   end
 
-  def edit
-  end
+  def edit; end
 
-  def destroy
-  end
+  def destroy; end
 
-  private 
+  private
 
   def research_center_params
     params.require(:research_center).permit(:name)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateResearchCenters < ActiveRecord::Migration[7.0]
   def change
     create_table :research_centers do |t|

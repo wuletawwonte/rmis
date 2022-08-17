@@ -1,16 +1,17 @@
-class ApplicationController < ActionController::Base
+# frozen_string_literal: true
 
+class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   layout :layout_by_resource
 
   def layout_by_resource
     if devise_controller? && resource_name == :user && action_name == 'new'
-      "login"
+      'login'
     elsif devise_controller? && resource_name == :user && action_name == 'create'
-      "login"
+      'login'
     else
-      "application"
+      'application'
     end
   end
 
@@ -19,5 +20,4 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(_resource)
     new_user_session_path
   end
-  
 end
