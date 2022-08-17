@@ -8,8 +8,23 @@ class ProposalsController < ApplicationController
   end
 
   def create
+    @proposal = Proposal.new(proposal_params)
+    @proposal.user_id = current_user.id
+
+    @proposal.status = "Active"
+    if @proposal.save
+      redirect_to proposals_path, notice: "Successfully added."   
+    else   
+      render "new"   
+    end   
   end
 
   def destroy
+  end
+
+  private
+
+  def proposal_params
+    params.require(:proposal).permit(:title, :attachement, :abstract)
   end
 end
