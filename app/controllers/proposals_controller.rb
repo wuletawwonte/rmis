@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
   def index
-    @proposals = Proposal.all
+    @proposals = Proposal.where(user_id: current_user.id).includes(:user)
   end
 
   def new
