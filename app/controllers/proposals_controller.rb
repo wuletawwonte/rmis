@@ -22,7 +22,7 @@ class ProposalsController < ApplicationController
   def destroy; end
 
   def show
-    @proposal = Proposal.where(id: params['id']).includes(:user).includes(:theme)
+    @proposal = Proposal.includes(:user).find(params['id'])
   end
 
   private
