@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'members/create'
   resources :themes, only: %i[index show create new edit destroy]
   resources :research_centers, only: %i[index show create new edit destroy]
   resources :proposals, only: %i[index show new create destroy]

@@ -24,6 +24,7 @@ class ProposalsController < ApplicationController
   def show
     @proposal = Proposal.includes(:user).find(params['id'])
     @members = Member.where(proposal_id: params['id']).includes(:user)
+    @member = Member.new
   end
 
   private
