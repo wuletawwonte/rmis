@@ -51,20 +51,16 @@
 
             </td>
             <td class="px-4 py-3 text-sm">
-              <%= proposal.title %>
+              <%= link_to proposal.title, proposal_path(proposal.id) %>
             </td>
             <td class="px-4 py-3 text-sm">
               <%= link_to fa_icon("download", text: "Download"), proposal.attachement_url %>
             </td>
             <td class="px-4 py-3 text-xs">
-              <span
-                class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
-              >
-                <%= proposal.status %>
-              </span>
+              <%= content_tag(:span, proposal.status, class: "px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600") %>
             </td>
             <td class="px-4 py-3 text-sm">
-              <%= proposal.created_at %>
+              <%= proposal.created_at.to_date %>
             </td>
             <td class="px-4 py-3">
               <div class="flex items-center space-x-4 text-sm">
