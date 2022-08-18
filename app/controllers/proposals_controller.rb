@@ -21,6 +21,10 @@ class ProposalsController < ApplicationController
 
   def destroy; end
 
+  def show
+    @proposal = Proposal.where(id: params['id']).includes(:user).includes(:theme)
+  end
+
   private
 
   def proposal_params
