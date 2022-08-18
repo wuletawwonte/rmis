@@ -35,7 +35,7 @@
       <tbody
         class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
       >
-        <% @proposals.each do |proposal| %>
+        <% @members.each do |member| %>
           <tr class="text-gray-700 dark:text-gray-400">
             <td class="px-4 py-3">
               <div class="flex items-center text-sm">
@@ -55,30 +55,30 @@
                   ></div>
                 </div>
                 <div>
-                  <p class="font-semibold"><%= "#{proposal.user.first_name} #{proposal.user.middle_name}" %></p>
+                  <p class="font-semibold"><%= "#{member.user.first_name} #{member.user.middle_name}" %></p>
                   <p class="text-xs text-gray-600 dark:text-gray-400">
-                    PI
+                    <%= member.role %>
                   </p>
                 </div>
               </div>
 
             </td>
-            <td class="px-4 py-3 text-sm">
-              <%= link_to proposal.title, proposal_path(proposal.id) %>
-            </td>
-            <td class="px-4 py-3 text-sm">
-              <%= link_to fa_icon("download", text: "Download"), proposal.attachement_url %>
-            </td>
             <td class="px-4 py-3 text-xs">
-              <%= content_tag(:span, proposal.status, class: "px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600") %>
+              <%= content_tag(:span, member.role, class: "px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600") %>
             </td>
+
+            <td class="px-4 py-3 text-xs">
+              <%= content_tag(:span, member.status, class: "px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600") %>
+            </td>
+
             <td class="px-4 py-3 text-sm">
-              <%= proposal.created_at.to_date %>
+              <%= member.created_at.to_date %>
             </td>
+
             <td class="px-4 py-3">
               <div class="flex items-center space-x-4 text-sm">
-                <%= link_to fa_icon('edit 2x'), proposal_path(proposal.id), html: { class: "flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" } %>
-                <%= button_to fa_icon('trash 2x'), proposal_path(proposal.id), method: :destroy, html: { class: "flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" } %>
+                <%= link_to fa_icon('edit 2x'), proposal_path(member.id), html: { class: "flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" } %>
+                <%= button_to fa_icon('trash 2x'), proposal_path(member.id), method: :destroy, html: { class: "flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" } %>
               </div>
             </td>
           </tr>
