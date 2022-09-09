@@ -5,6 +5,7 @@ class ProposalsController < ApplicationController
 
   def new
     @proposal = Proposal.new
+    @themes = Theme.all
   end
 
   def create
@@ -30,6 +31,6 @@ class ProposalsController < ApplicationController
   private
 
   def proposal_params
-    params.require(:proposal).permit(:title, :attachement, :abstract)
+    params.require(:proposal).permit(:title, :attachement, :abstract, :theme_id)
   end
 end
