@@ -27,21 +27,25 @@
     </div>
   </div>
 
+  <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Add member Turbo Frame</h4>
+  <%= render "researchers" %>
+
   <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Add member</h4>
-<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-  <%= form_with model: @member, url: { action: "create" }, method: :post, local: true do |f| %>
-    
-    <label class="block text-sm">
-      <%= content_tag(:span, "Member", class: "text-gray-700 dark:text-gray-400") %>
-      <%= f.text_field :title, class: "block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input", placeholder: "Proposal title" %>
-    </label>
+  
+  <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+    <%= form_with model: @member, url: { action: "create" }, method: :post, local: true do |f| %>
+      
+      <label class="block text-sm">
+        <%= content_tag(:span, "Member", class: "text-gray-700 dark:text-gray-400") %>
+        <%= f.text_field :title, class: "block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input", placeholder: "Proposal title" %>
+      </label>
 
-    <label class="block mt-4 text-sm">
-      <%= f.submit "Add proposal", class: "px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple" %>
-    </label>
+      <label class="block mt-4 text-sm">
+        <%= f.submit "Add proposal", class: "px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple" %>
+      </label>
 
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
 
 
