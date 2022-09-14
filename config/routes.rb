@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   root 'users#index'
 
   delete '/users/sign_out', to: 'users#sign_out'
+
+  post 'proposals/add_member', to: 'proposals#add_member'
 end

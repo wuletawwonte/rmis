@@ -25,7 +25,13 @@ class ProposalsController < ApplicationController
   def show
     @proposal = Proposal.includes(:user).find(params['id'])
     @members = Member.where(proposal_id: params['id']).includes(:user)
+    @researchers = User.all
     @member = Member.new
+  end
+
+  def add_member
+    @researchers = User.all
+    render(partial: 'researchers', locals: { researchers: @researchers})
   end
 
   private
