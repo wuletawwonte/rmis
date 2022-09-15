@@ -29,6 +29,8 @@ class ProposalsController < ApplicationController
     @member = Member.new
   end
 
+  def edit; end
+
   def add_member
     @researchers = User.all
     render(partial: 'researchers', locals: { researchers: @researchers})
