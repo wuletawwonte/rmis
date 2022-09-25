@@ -29,16 +29,19 @@ class ProposalsController < ApplicationController
     @member = Member.new
   end
 
-  def edit; end
-
-  def add_member
-    @researchers = User.all
-    render(partial: 'researchers', locals: { researchers: @researchers})
+  def edit
+    key = params['key']
+    @researchers = User.where('first_name LIKE :search', search: "%#{key}%").limit(3)
+    render(partial: 'researchers', locals: { researchers: @researchers, key: key})
   end
 
   private
 
   def proposal_params
     params.require(:proposal).permit(:title, :attachement, :abstract, :theme_id)
+  end
+
+  def member_params
+    params.require(:proposal).permit(:key)
   end
 end
