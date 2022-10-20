@@ -34,3 +34,4 @@ group :test do
 end
 
 gem 'simple_form'
+gem 'simple_form-tailwind'
