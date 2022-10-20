@@ -3,7 +3,7 @@
 
     <div class="mt-5 md:mt-0 md:col-span-2  border-t-4 border-blue-900">
       
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="shadow overflow-hidden sm:rounded-md">
@@ -15,9 +15,11 @@
                 <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2.5">
               </div>
 
+              <%= f.input :first_name %>
+
               <div class="col-span-6 sm:col-span-3">
-                <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
-                <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2.5">
+                <label for="middle-name" class="block text-sm font-medium text-gray-700">Middle name</label>
+                <input type="text" name="middle-name" id="middle-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2.5">
               </div>
 
 
@@ -28,7 +30,7 @@
 
               <div class="col-span-6 sm:col-span-4">
                 <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2.5" %>
+                <%= f.email_field :email, autocomplete: "email", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2.5" %>
               </div>
 
               <div class="col-span-6 sm:col-span-3">
