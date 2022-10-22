@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   root 'users#index'
 
   delete '/users/sign_out', to: 'users#sign_out'
+  get '/users', to: redirect('/users/sign_up')
 
 end
