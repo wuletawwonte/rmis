@@ -13,6 +13,10 @@
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "mt-8 space-y-6") do |f| %>
 
+      <% resource.errors.full_messages.each do |msg| %>
+          <%= msg %>
+      <% end %>
+
       <div class="rounded-md shadow-sm mb-3 -space-y-px">
         <div>
           <%= f.label :email, class: "sr-only" %>
