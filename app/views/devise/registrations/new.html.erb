@@ -5,35 +5,25 @@
       
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
-
+        
         <div class="shadow overflow-hidden sm:rounded-md">
           <div class="px-4 py-5 bg-white sm:p-6">
             <div class="grid grid-cols-6 gap-6">
-
+              <%= f.error_notification %>
+              
               <%= f.input :first_name, wrapper_html: { class: "col-span-6 sm:col-span-3" } %>
               <%= f.input :middle_name, wrapper_html: { class: "col-span-6 sm:col-span-3" } %>
               <%= f.input :last_name, wrapper_html: { class: "col-span-6" } %>            
               <%= f.input :email, hint: "Please use AMU institutional email", wrapper_html: { class: "col-span-6" } %>
 
-              <div class="col-span-6">
-                <%= f.label :password, class: "block text-sm font-medium text-gray-700" %>
-                <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
-                <% end %>
-                <%= f.password_field :password, autocomplete: "new-password", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2.5" %>
-              </div>
-
-              <div class="col-span-6">
-                <%= f.label :password_confirmation, class: "block text-sm font-medium text-gray-700" %>
-                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2.5" %>
-              </div>
-
+              <%= f.input :password, required: :true, hint: "6 characters minimum", wrapper_html: { class: "col-span-6" } %>
+              <%= f.input :password_confirmation, required: :true, wrapper_html: { class: "col-span-6" } %>
 
             </div>
           </div>
           <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
             <%= link_to "Sign in", new_user_session_path, class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md p-2.5 text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-            <%= f.submit "Sign up", class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md p-2.5 text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+            <%= f.submit "Sign up", class: "inline-flex justify-center py-2 px-4 cursore-pointer border border-transparent shadow-sm text-sm font-medium rounded-md p-2.5 text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
           </div>
 
         </div>
