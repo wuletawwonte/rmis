@@ -11,7 +11,7 @@ class ThemesController < ApplicationController
   def create
     @theme = Theme.new(theme_params)
     @theme.user_id = current_user.id
-    
+
     if @theme.save
       redirect_to themes_path, notice: 'Successfully added.'
     else
@@ -19,8 +19,7 @@ class ThemesController < ApplicationController
     end
   end
 
-  def destroy
-  end
+  def destroy; end
 
   private
 

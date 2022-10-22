@@ -32,7 +32,7 @@ class ProposalsController < ApplicationController
   def edit
     key = params['key']
     @researchers = User.where('first_name LIKE :search', search: "%#{key}%").limit(3)
-    render(partial: 'researchers', locals: { researchers: @researchers, key: key})
+    render(partial: 'researchers', locals: { researchers: @researchers, key: })
   end
 
   private
