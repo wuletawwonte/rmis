@@ -8,5 +8,5 @@ class User < ApplicationRecord
   has_many :research_centers
   has_many :themes
 
-  validates :first_name, presence: true
+  validates :first_name, :middle_name, :email, presence: true
 end
