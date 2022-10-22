@@ -22,7 +22,7 @@ SimpleForm.setup do |config|
   config.include_default_input_wrapper_class = false
 
   # CSS class to add for error notification helper.
-  config.error_notification_class = 'text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-400'
+  config.error_notification_class = 'p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800'
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.
@@ -48,7 +48,7 @@ SimpleForm.setup do |config|
     b.optional :readonly
     b.use :label, class: 'block', error_class: 'text-red-500'
     b.use :input, class: 'shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out', error_class: 'border-red-500', valid_class: 'border-green-400'
-    b.use :full_error, wrap_with: { tag: 'p', class: 'mt-2 text-red-500 text-xs italic' }
+    b.use :full_error, wrap_with: { tag: 'p', class: 'mt-2 dark:text-red-500 text-red-500 text-xs italic' }
     b.use :hint, wrap_with: { tag: 'p', class: 'mt-2 italic text-gray-600 text-xs' }
   end
 
