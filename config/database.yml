@@ -87,4 +87,3 @@ production:
   <<: *default
   database: rmis_production
   username: rmis
-  password: <%= ENV["RMIS_DATABASE_PASSWORD"] %>
