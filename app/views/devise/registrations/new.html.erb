@@ -1,0 +1,35 @@
+<div class="mt-10 mb-10 sm:mt-0 flex items-center justify-center">
+  <div class="md:grid mt-10">
+
+    <div class="mt-5 md:mt-0 md:col-span-2  border-t-4 border-blue-700">
+      
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+        
+        <div class="shadow overflow-hidden sm:rounded-md">
+          <div class="px-4 py-5 bg-white sm:p-6">
+
+            <%= f.error_notification %>
+
+            <div class="grid grid-cols-6 gap-6">
+              
+              <%= f.input :first_name, wrapper_html: { class: "col-span-6 sm:col-span-3" } %>
+              <%= f.input :middle_name, wrapper_html: { class: "col-span-6 sm:col-span-3" } %>
+              <%= f.input :last_name, wrapper_html: { class: "col-span-6" } %>            
+              <%= f.input :email, hint: "Please use AMU institutional email", placeholder: "wuletaw.wonte@amu.edu.et", wrapper_html: { class: "col-span-6" } %>
+
+              <%= f.input :password, required: :true, hint: "6 characters minimum", wrapper_html: { class: "col-span-6" } %>
+              <%= f.input :password_confirmation, required: :true, wrapper_html: { class: "col-span-6" } %>
+
+            </div>
+          </div>
+          <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+            <%= link_to "Sign in", new_user_session_path, class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md p-2.5 text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+            <%= f.submit "Sign up", class: "inline-flex justify-center py-2 px-4 cursor-pointer border border-transparent shadow-sm text-sm font-medium rounded-md p-2.5 text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+          </div>
+
+        </div>
+      <% end  %>
+
+    </div>
+  </div>
+</div>
