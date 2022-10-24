@@ -1,0 +1,18 @@
+databases:
+  - name: rmis-database
+    databaseName: rmis
+    user: ictadmin
+
+services:
+  - type: web
+    name: rmis-webservice
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: rmis
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
