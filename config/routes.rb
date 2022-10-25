@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   devise_for :users
   resources :themes, only: %i[index show create new edit destroy]
