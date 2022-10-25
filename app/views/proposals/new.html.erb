@@ -9,16 +9,15 @@
 >
   <%= simple_form_for @proposal, url: { action: "create" }, method: :post, local: true, html: { multipart: true } do |f| %>
 
+    <%= f.error_notification %>
 
     <%= f.input :attachement %>
     <%= f.input :title %>
     <%= f.input :abstract %>
     <%= f.association :theme %>
 
-
-
     <label class="block mt-4 text-sm">
-      <%= f.submit "Add proposal" %>
+      <%= f.button :submit, "Add proposal" %>
     </label>
 
   <% end %>
