@@ -3,5 +3,5 @@ class Theme < ApplicationRecord
 
   belongs_to :research_center
   belongs_to :user
-  has_many :proposal
+  has_many :proposals
 end

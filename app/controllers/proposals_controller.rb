@@ -5,7 +5,6 @@ class ProposalsController < ApplicationController
 
   def new
     @proposal = Proposal.new
-    @themes = Theme.all
   end
 
   def create
