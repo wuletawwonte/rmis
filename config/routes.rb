@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :research_types
   devise_for :users
   resources :themes, only: %i[index show create new edit destroy]
   resources :research_centers, only: %i[index show create new edit destroy]

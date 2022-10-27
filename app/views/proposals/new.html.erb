@@ -9,6 +9,8 @@
 >
   <%= simple_form_for @proposal, url: { action: "create" }, method: :post, local: true, html: { multipart: true } do |f| %>
 
+    <%= render "shared/error_messages", resource: @proposal %>
+
     <%= f.error_notification %>
 
     <%= f.input :attachement %>

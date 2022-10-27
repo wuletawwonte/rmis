@@ -15,7 +15,7 @@ class ProposalsController < ApplicationController
     if @proposal.save
       redirect_to proposals_path, notice: 'Successfully added.'
     else
-      render 'new'
+      render :new, status: :unprocessable_entity
     end
   end
 
