@@ -9,5 +9,4 @@ class User < ApplicationRecord
   has_many :themes
 
   validates :first_name, :middle_name, :email, presence: true
-  validates :email, format: { with: /\A[\w.+-]+@amu\.edu\.com\z/, message: "Only AMU institutional email allowed" }
 end
