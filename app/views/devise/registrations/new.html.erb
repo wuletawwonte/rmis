@@ -15,6 +15,7 @@
               <%= f.input :first_name, wrapper_html: { class: "col-span-6 sm:col-span-3" } %>
               <%= f.input :middle_name, wrapper_html: { class: "col-span-6 sm:col-span-3" } %>
               <%= f.input :last_name, wrapper_html: { class: "col-span-6" } %>            
+              <%= f.input :sex, label: "Sex:", collection: [["Male", "male"], ["Female", "female"]], as: :radio_buttons, checked: :male, wrapper_html: { class: "col-span-6 flex gap-6" } %>
               <%= f.input :email, hint: "Please use AMU institutional email", placeholder: "wuletaw.wonte@amu.edu.et", wrapper_html: { class: "col-span-6" } %>
 
               <%= f.input :password, required: :true, hint: "6 characters minimum", wrapper_html: { class: "col-span-6" } %>
