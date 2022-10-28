@@ -16,15 +16,7 @@
             <%= f.input :middle_name %>
             <%= f.input :last_name %>            
             <%= f.input :sex, label: "Sex:", collection: [["Male", "male"], ["Female", "female"]], as: :radio_buttons, checked: :male %>
-
-            <div class="col-span-3 sm:col-span-2">
-              <%= f.label :email %>
-              <div class="mt-1 flex rounded-md shadow-sm">
-                <%= f.input :email, wrapper: false, label: false, full_error: false, placeholder: "wuletaw.wonte", class: "block w-full flex-1 rounded-none rounded-l-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
-                <span class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500">@amu.edu.et</span>
-              </div>
-              <%= f.full_error :email, class: "mt-2 text-red-600 text-xs italic" %>
-            </div>
+            <%= f.input :email %>
 
             <%= f.input :password, required: :true, hint: "6 characters minimum" %>
             <%= f.input :password_confirmation, required: :true %>
