@@ -16,7 +16,7 @@
             <%= f.input :middle_name %>
             <%= f.input :last_name %>            
             <%= f.input :sex, label: "Sex:", collection: [["Male", "male"], ["Female", "female"]], as: :radio_buttons, checked: :male %>
-            <%= f.input :email %>
+            <%= f.input :email, placeholder: "wuletaw.wonte@amu.edu.et", hint: "Please use AMU occupational email" %>
 
             <%= f.input :password, required: :true, hint: "6 characters minimum" %>
             <%= f.input :password_confirmation, required: :true %>
