@@ -5,7 +5,7 @@
       <% if current_page?(root_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", "aria-hidden" => true ) %>
       <% end %>
-      <%= link_to root_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 text-gray-800 dark:text-gray-100" do %>
+      <%= link_to root_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if current_page?(root_path)}" do %>
         <%= fa_icon "home lg" %>
         <span class="ml-4">Dashboard</span>
       <% end %>
@@ -16,7 +16,7 @@
       <% if request.fullpath.start_with?(proposals_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
-      <%= link_to proposals_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" do %>
+      <%= link_to proposals_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if request.fullpath.start_with?(proposals_path)}" do %>
         <%= fa_icon "file" %>
         <span class="ml-4">Proposals</span>
       <% end %>
@@ -25,8 +25,8 @@
       <% if current_page?(research_types_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
-      <%= link_to research_types_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" do %>
-        <%= fa_icon "bank" %>
+      <%= link_to research_types_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if  current_page?(research_types_path)}" do %>
+        <%= fa_icon "filter" %>
         <span class="ml-4">Research Types</span>
       <% end %>
     </li>
@@ -34,7 +34,7 @@
       <% if current_page?(research_centers_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
-      <%= link_to research_centers_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" do %>
+      <%= link_to research_centers_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if current_page?(research_centers_path)}" do %>
         <%= fa_icon "bank" %>
         <span class="ml-4">Research Centers</span>
       <% end %>
@@ -43,7 +43,7 @@
       <% if current_page?(themes_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
-      <%= link_to themes_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" do %>
+      <%= link_to themes_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if current_page?(themes_path) }" do %>
         <%= fa_icon "building" %>
         <span class="ml-4">Thematic Areas</span>
       <% end %>
