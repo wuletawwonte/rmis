@@ -12,8 +12,10 @@
     <%= favicon_link_tag asset_path('favicon.ico') %>
   </head>
 
-  <body class="h-full bg-grey">
+  <body class="h-full bg-gray">
     <%= render 'shared/public_header' %>
-    <%= yield %>
+    <div class="bg-gray-100">
+      <%= yield %>
+    </div>
   </body>
 </html>
