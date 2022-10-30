@@ -1,4 +1,4 @@
-<%= form_with(model: call, class: "contents") do |form| %>
+<%= simple_form_for call, class: "contents" do |form| %>
   <% if call.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(call.errors.count, "error") %> prohibited this call from being saved:</h2>
@@ -11,32 +11,13 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :body %>
-    <%= form.text_area :body, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :status %>
-    <%= form.check_box :status, class: "block mt-2 h-5 w-5" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :deadline %>
-    <%= form.date_field :deadline, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <%= form.input :title %>
+  <%= form.input :body %>
+  <%= form.input :published %>
+  <%= form.input :deadline %>
 
   <div class="inline">
+    <%= link_to 'Back to calls', calls_path, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
