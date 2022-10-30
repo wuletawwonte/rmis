@@ -35,3 +35,4 @@ end
 
 gem 'simple_form'
 gem 'simple_form-tailwind'
+gem 'kaminari'
