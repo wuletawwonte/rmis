@@ -30,7 +30,7 @@ class CallsController < ApplicationController
   # POST /calls or /calls.json
   def create
     @call = Call.new(call_params)
-    @call.user_id = current_user;
+    @call.user_id = current_user.id;
 
     respond_to do |format|
       if @call.save
@@ -74,6 +74,6 @@ class CallsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def call_params
-      params.require(:call).permit(:title, :body, :status, :deadline)
+      params.require(:call).permit(:title, :body, :published, :deadline)
     end
 end

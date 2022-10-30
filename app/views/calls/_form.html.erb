@@ -1,6 +1,6 @@
 <%= simple_form_for call, class: "contents" do |form| %>
   <% if call.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg">
       <h2><%= pluralize(call.errors.count, "error") %> prohibited this call from being saved:</h2>
 
       <ul>
@@ -17,7 +17,7 @@
   <%= form.input :deadline %>
 
   <div class="inline">
-    <%= link_to 'Back to calls', calls_path, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.button :submit, "Create Call" %>
+    <%= link_to 'Back to calls', calls_path, class: "rounded-lg py-2 px-5 bg-gray-100 hover:bg-gray-200 inline-block font-medium" %>
   </div>
 <% end %>
