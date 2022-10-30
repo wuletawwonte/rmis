@@ -1,5 +1,13 @@
 class CallsController < ApplicationController
   before_action :set_call, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, only: %i[list]
+  layout 'login', only: %i[list]
+
+
+  # Get /calls to show on the homepage
+  def list
+    @calls = Call.all
+  end
 
   # GET /calls or /calls.json
   def index

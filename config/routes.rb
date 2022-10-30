@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     unauthenticated :user do
-      root "devise/sessions#new"
+      root "calls#list"
     end
 
     authenticated :user do
