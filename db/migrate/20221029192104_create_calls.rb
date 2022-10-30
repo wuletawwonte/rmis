@@ -3,7 +3,7 @@ class CreateCalls < ActiveRecord::Migration[7.0]
     create_table :calls do |t|
       t.string :title
       t.text :body
-      t.boolean :status
+      t.boolean :published
       t.date :deadline
       t.belongs_to :user, null: false, foreign_key: true
 
