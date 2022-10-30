@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   delete '/users/sign_out', to: 'users#sign_out'
   get '/users', to: redirect('/users/sign_up')
 
+  resources :calls do
+    get '/page/:page', action: :index, on: :collection
+  end
+
   devise_scope :user do
     unauthenticated :user do
       root "calls#list"

@@ -11,7 +11,7 @@ class CallsController < ApplicationController
 
   # GET /calls or /calls.json
   def index
-    @calls = Call.all
+    @calls = Call.order(:created_at).page params[:page]
   end
 
   # GET /calls/1 or /calls/1.json
