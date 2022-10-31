@@ -3,7 +3,7 @@ class ResearchTypesController < ApplicationController
 
   # GET /research_types or /research_types.json
   def index
-    @research_types = ResearchType.all
+    @research_types = ResearchType.all.order(:created_at).page params[:page]
   end
 
   # GET /research_types/1 or /research_types/1.json

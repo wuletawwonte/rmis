@@ -1,8 +1,10 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing call</h1>
+<h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">Editing research calls</h2>
 
-  <%= render "form", call: @call %>
+<div class="w-full overflow-hidden rounded-lg shadow-xs">
+  <div class="w-full overflow-x-auto">
 
-  <%= link_to "Show this call", @call, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to calls", calls_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= render "form", call: @call %>
+
+    <%= link_to "Show this call", @call, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>
 </div>
