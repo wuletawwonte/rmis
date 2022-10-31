@@ -1,26 +1,26 @@
 <h2
-  class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
+  class="my-6 text-2xl font-semibold text-gray-700"
 >
   Register Theme
 </h2>
 
 <div
-  class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
+  class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md"
 >
   <%= form_with model: @theme, url: { action: "create" }, method: :post, local: true do |f| %>
     <label class="block text-sm">
-      <%= content_tag(:span, "Title", class: "text-gray-700 dark:text-gray-400") %>
-      <%= f.text_field :title, class: "block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input", placeholder: "Thematic area" %>
+      <%= content_tag(:span, "Title", class: "text-gray-700") %>
+      <%= f.text_field :title, class: "block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input", placeholder: "Thematic area" %>
     </label>
 
     <label class="block mt-4 text-sm">
-      <%= content_tag(:span, "Research center", class: "text-gray-700 dark:text-gray-400") %>
-      <%= f.collection_select :research_center_id, @research_centers, :id, :name, {}, { class: "block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" } %>
+      <%= content_tag(:span, "Research center", class: "text-gray-700") %>
+      <%= f.collection_select :research_center_id, @research_centers, :id, :name, {}, { class: "block w-full mt-1 text-sm form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple" } %>
     </label>
 
     <label class="block mt-4 text-sm">
-      <%= content_tag(:span, "Description", class: "text-gray-700 dark:text-gray-400") %>
-      <%= f.text_area :description, class: "block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray", rows: "3", placeholder: "Description of the Thematic Area" %>
+      <%= content_tag(:span, "Description", class: "text-gray-700") %>
+      <%= f.text_area :description, class: "block w-full mt-1 text-sm form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple", rows: "3", placeholder: "Description of the Thematic Area" %>
     </label>
 
     <label class="block mt-4 text-sm">

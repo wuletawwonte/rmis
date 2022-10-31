@@ -1,4 +1,4 @@
-<h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">Research Calls</h2>
+<h2 class="my-6 text-2xl font-semibold text-gray-700">Research Calls</h2>
 
 <div class="pb-2 w-full flex justify-end">
   <%= link_to 'New call', new_call_path, class: "rounded-lg py-2 px-5 bg-purple-600 text-white block font-medium" %>
@@ -10,7 +10,7 @@
     <table class="w-full whitespace-no-wrap">
       <thead>
         <tr
-          class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
+          class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50"
         >
           <th class="px-4 py-3">#</th>
           <th class="px-4 py-3">Title</th>
@@ -20,10 +20,10 @@
         </tr>
       </thead>
       <tbody
-        class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
+        class="bg-white divide-y"
       >
         <% @calls.each_with_index do |research_call, index| %>
-          <tr class="text-gray-700 dark:text-gray-400">
+          <tr class="text-gray-700">
             <td class="px-4 py-3 text-sm">  
               <%= index + 1 %>
             </td>

@@ -1,5 +1,5 @@
 <h2
-  class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
+  class="my-6 text-2xl font-semibold text-gray-700"
 >
   Thematic Areas
 </h2>
@@ -14,7 +14,7 @@
     <table class="w-full whitespace-no-wrap">
       <thead>
         <tr
-          class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
+          class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50"
         >
           <th class="px-4 py-3">#</th>
           <th class="px-4 py-3">Thematic Area</th>
@@ -23,10 +23,10 @@
         </tr>
       </thead>
       <tbody
-        class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
+        class="bg-white divide-y"
       >
         <% @themes.each_with_index do |theme, index| %>
-          <tr class="text-gray-700 dark:text-gray-400">
+          <tr class="text-gray-700">
             <td class="px-4 py-3 text-sm">  
               <%= index + 1 %>
             </td>
@@ -39,7 +39,7 @@
             <td class="px-4 py-3">
               <div class="flex items-center space-x-4 text-sm">
                 <button
-                  class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                  class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray"
                   aria-label="Edit"
                 >
                   <svg
@@ -54,7 +54,7 @@
                   </svg>
                 </button>
                 <button
-                  class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                  class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray"
                   aria-label="Delete"
                 >
                   <svg
