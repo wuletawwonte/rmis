@@ -74,6 +74,6 @@ class CallsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def call_params
-      params.require(:call).permit(:title, :body, :published, :deadline)
+      params.require(:call).permit(:title, :content, :published, :deadline)
     end
 end

@@ -11,8 +11,8 @@
     </div>
   <% end %>
 
-  <%= form.input :title %>
-  <%= form.input :content, as: :rich_text_area %>
+  <%= form.input :title, placeholder: "Title of research call", label: false %>
+  <%= form.input :content, as: :rich_text_area, class: "customized-min-height", placeholder: "Please write the content of the research call here ...", label: false %>
   <%= form.input :published %>
   <%= form.input :deadline %>
 

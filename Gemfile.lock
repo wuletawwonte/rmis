@@ -274,6 +274,7 @@ DEPENDENCIES
   devise
   faker
   font-awesome-rails
+  image_processing
   importmap-rails
   jbuilder
   kaminari
