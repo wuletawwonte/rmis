@@ -1,0 +1,32 @@
+<div id="<%= dom_id research_type %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= research_type.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Allowed per year:</strong>
+    <%= research_type.allowed_per_year %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Theme based:</strong>
+    <%= research_type.theme_based %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Fund:</strong>
+    <%= research_type.fund %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Gender:</strong>
+    <%= research_type.gender %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this research type", research_type, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this research type', edit_research_type_path(research_type), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

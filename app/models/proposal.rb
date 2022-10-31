@@ -1,8 +1,10 @@
 class Proposal < ApplicationRecord
   mount_uploader :attachement, AttachementUploader
   belongs_to :user
+  belongs_to :theme
+  belongs_to :research_type
 
-  validates :title, presence: true
+  validates :attachement, :title, presence: true
 
   has_many :members
   has_many :users, through: :members

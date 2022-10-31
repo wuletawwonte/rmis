@@ -1,11 +1,10 @@
 class ProposalsController < ApplicationController
   def index
-    @proposals = Proposal.where(user_id: current_user.id).includes(:user)
+    @proposals = Proposal.where(user_id: current_user.id).includes(:user).order(:created_at).page params[:page]
   end
 
   def new
     @proposal = Proposal.new
-    @themes = Theme.all
   end
 
   def create
@@ -16,7 +15,7 @@ class ProposalsController < ApplicationController
     if @proposal.save
       redirect_to proposals_path, notice: 'Successfully added.'
     else
-      render 'new'
+      render :new, status: :unprocessable_entity
     end
   end
 

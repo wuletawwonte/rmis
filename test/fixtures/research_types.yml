@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  allowed_per_year: 1
+  theme_based: false
+  fund: MyString
+  gender: MyString
+
+two:
+  name: MyString
+  allowed_per_year: 1
+  theme_based: false
+  fund: MyString
+  gender: MyString
