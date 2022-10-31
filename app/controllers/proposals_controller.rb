@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
   def index
-    @proposals = Proposal.where(user_id: current_user.id).includes(:user)
+    @proposals = Proposal.where(user_id: current_user.id).includes(:user).order(:created_at).page params[:page]
   end
 
   def new

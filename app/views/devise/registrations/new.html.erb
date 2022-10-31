@@ -1,13 +1,10 @@
-<div class="mt-5 mb-10 flex items-center justify-center">
-  <div class="mt-10 lg:w-1/2 md:w-auto">
+<div class="mb-5 flex items-center justify-center">
+  <div class="my-5 lg:w-1/2 md:w-auto">
 
-    <div class="mt-2 border-t-4 border-blue-700">
+    <div class="mt-2 border-t-4 border-purple-700">
       
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
         
-        <div class="px-4 py-3 bg-gray-10 text-center sm:px-6 shadow overflow-hidden">
-          <h1>Signup</h1>
-        </div>
         <div class="shadow overflow-hidden">
           <div class="px-4 bg-white lg:p-6">
 
@@ -24,7 +21,7 @@
           </div>
           <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
             <%= link_to "Sign in", new_user_session_path, class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium p-2.5 text-black focus:outline-none" %>
-            <%= f.submit "Sign up", class: "inline-flex justify-center py-2 px-4 cursor-pointer border border-transparent shadow-sm text-sm font-medium rounded-md p-2.5 text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+            <%= f.submit "Sign up", class: "inline-flex justify-center py-2 px-4 cursor-pointer border border-transparent shadow-sm text-sm font-medium rounded-md p-2.5 text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500" %>
           </div>
 
         </div>

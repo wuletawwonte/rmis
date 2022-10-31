@@ -1,6 +1,6 @@
 class ThemesController < ApplicationController
   def index
-    @themes = Theme.all.includes(:research_center)
+    @themes = Theme.all.includes(:research_center).order(:created_at).page params[:page]
   end
 
   def new

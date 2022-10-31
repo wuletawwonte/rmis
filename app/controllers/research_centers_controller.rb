@@ -1,6 +1,6 @@
 class ResearchCentersController < ApplicationController
   def index
-    @research_centers = ResearchCenter.all
+    @research_centers = ResearchCenter.order(:created_at).page params[:page]
   end
 
   def show; end

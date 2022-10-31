@@ -1,0 +1,54 @@
+<h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">Research Calls</h2>
+
+<div class="pb-2 w-full flex justify-end">
+  <%= link_to 'New call', new_call_path, class: "rounded-lg py-2 px-5 bg-purple-600 text-white block font-medium" %>
+</div>
+
+
+<div class="w-full overflow-hidden rounded-lg shadow-xs">
+  <div class="w-full overflow-x-auto">
+    <table class="w-full whitespace-no-wrap">
+      <thead>
+        <tr
+          class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
+        >
+          <th class="px-4 py-3">#</th>
+          <th class="px-4 py-3">Title</th>
+          <th class="px-4 py-3">Date</th>
+          <th class="px-4 py-3">Deadline</th>
+          <th class="px-4 py-3">Actions</th>
+        </tr>
+      </thead>
+      <tbody
+        class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
+      >
+        <% @calls.each_with_index do |research_call, index| %>
+          <tr class="text-gray-700 dark:text-gray-400">
+            <td class="px-4 py-3 text-sm">  
+              <%= index + 1 %>
+            </td>
+            <td class="px-4 py-3 text-sm">
+              <%= research_call.title %>
+            </td>
+            <td class="px-4 py-3 text-sm">
+              <%= research_call.created_at %>
+            </td>
+            <td class="px-4 py-3 text-sm">
+              <%= research_call.deadline %>
+            </td>
+            <td class="px-4 py-3">
+              <div class="flex items-center space-x-4 text-sm">
+                <%= link_to "Show", research_call %>
+                <%= link_to "Edit", edit_call_path(research_call)%>
+              </div>
+            </td>
+          </tr>
+
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= paginate @calls %>
+
+</div>
