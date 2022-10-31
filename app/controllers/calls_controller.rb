@@ -5,7 +5,7 @@ class CallsController < ApplicationController
 
   # Get /calls to show on the homepage
   def list
-    @calls = Call.all
+    @calls = Call.order(:created_at).page params[:page]
   end
 
   # GET /calls or /calls.json
