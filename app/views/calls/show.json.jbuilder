@@ -1,1 +1,1 @@
-json.partial! "calls/call", call: @call
+json.partial! 'calls/call', call: @call

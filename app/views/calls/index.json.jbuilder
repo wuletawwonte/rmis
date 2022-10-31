@@ -1,1 +1,1 @@
-json.array! @calls, partial: "calls/call", as: :call
+json.array! @calls, partial: 'calls/call', as: :call

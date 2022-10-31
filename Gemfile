@@ -33,7 +33,7 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'image_processing'
+gem 'kaminari'
 gem 'simple_form'
 gem 'simple_form-tailwind'
-gem 'kaminari'
-gem 'image_processing'

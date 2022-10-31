@@ -1,45 +1,49 @@
-require "test_helper"
+require 'test_helper'
 
 class CallsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @call = calls(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get calls_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_call_url
     assert_response :success
   end
 
-  test "should create call" do
-    assert_difference("Call.count") do
-      post calls_url, params: { call: { body: @call.body, deadline: @call.deadline, status: @call.status, title: @call.title, user_id: @call.user_id } }
+  test 'should create call' do
+    assert_difference('Call.count') do
+      post calls_url,
+           params: { call: { body: @call.body, deadline: @call.deadline, status: @call.status, title: @call.title,
+                             user_id: @call.user_id } }
     end
 
     assert_redirected_to call_url(Call.last)
   end
 
-  test "should show call" do
+  test 'should show call' do
     get call_url(@call)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_call_url(@call)
     assert_response :success
   end
 
-  test "should update call" do
-    patch call_url(@call), params: { call: { body: @call.body, deadline: @call.deadline, status: @call.status, title: @call.title, user_id: @call.user_id } }
+  test 'should update call' do
+    patch call_url(@call),
+          params: { call: { body: @call.body, deadline: @call.deadline, status: @call.status, title: @call.title,
+                            user_id: @call.user_id } }
     assert_redirected_to call_url(@call)
   end
 
-  test "should destroy call" do
-    assert_difference("Call.count", -1) do
+  test 'should destroy call' do
+    assert_difference('Call.count', -1) do
       delete call_url(@call)
     end
 
