@@ -9,8 +9,8 @@
 - Ruby
 - Rubocop
 
-## Live Demo (if available)
-
+## Live Demo
+[live link](https://amu-rmis.herokuapp.com/)
 
 ## Getting Started
 
