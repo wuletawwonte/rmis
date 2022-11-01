@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'subscribers/index'
   resources :calls
   resources :research_types
   devise_for :users
