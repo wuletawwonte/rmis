@@ -1,11 +1,16 @@
 class CallsController < ApplicationController
   before_action :set_call, only: %i[show edit update destroy]
-  skip_before_action :authenticate_user!, only: %i[list]
-  layout 'login', only: %i[list]
+  skip_before_action :authenticate_user!, only: %i[list public_show]
+  layout 'login', only: %i[list public_show]
 
   # Get /calls to show on the homepage
   def list
     @calls = Call.order(:created_at).page params[:page]
+  end
+
+  # Get /public/show/:id to show a single call for unauthenticated users
+  def public_show 
+    @call = Call.find(params[:id]);
   end
 
   # GET /calls or /calls.json

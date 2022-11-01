@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :calls do
     get '/page/:page', action: :index, on: :collection
+    get '/public/show/:id', action: :public_show, on: :collection
   end
 
   devise_scope :user do
