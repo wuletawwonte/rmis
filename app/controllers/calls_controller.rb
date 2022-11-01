@@ -10,7 +10,7 @@ class CallsController < ApplicationController
 
   # Get /public/show/:id to show a single call for unauthenticated users
   def public_show 
-    @call = Call.find(params[:id]);
+    @call = Call.includes(:user).find(params[:id]);
   end
 
   # GET /calls or /calls.json
