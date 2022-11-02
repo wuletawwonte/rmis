@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   get 'subscribers/index'
+  post 'subscribers/create', to: 'subscribers#create'
   resources :calls
   resources :research_types
   devise_for :users
