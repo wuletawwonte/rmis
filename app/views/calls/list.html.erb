@@ -4,7 +4,7 @@
         <p class="mt-2 text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">A better way to do research</p>
 
 
-        <%= form_with url: "subscriber/create", method: :post do |form| %>
+        <%= form_with url: "subscribers/create", method: :post do |form| %>
             <div class="flex items-stretch mt-5">
                 <%= form.email_field :email, class: "bg-white rounded-lg rounded-r-none text-base leading-none text-gray-800 p-2 w-4/5 border border-transparent focus:outline-none focus:border-gray-500", placeholder: "Your Email", required: true %>
                 <%= form.submit "subscribe", class: "w-32 cursor-pointer rounded-l-none hover:bg-indigo-600 bg-indigo-700 rounded text-xs font-medium leading-none text-white p-2 uppercase focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700" %>
