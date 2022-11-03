@@ -8,6 +8,8 @@
 - Ruby on Rails
 - Ruby
 - Rubocop
+- [Windmill](https://windmillui.com/) template used in the ui.
+- [Alpinejs](https://alpinejs.dev/)
 
 ## Live Demo
 [live link](https://amu-rmis.herokuapp.com/)
