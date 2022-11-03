@@ -3,3 +3,10 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "trix"
 import "@rails/actiontext"
+import Alpine from "alpinejs"
+
+window.Alpine = Alpine
+
+document.addEventListener("DOMContentLoaded", function () {
+    window.Alpine.start();
+})
