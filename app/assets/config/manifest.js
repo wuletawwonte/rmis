@@ -5,3 +5,4 @@
 //= link_tree ../builds
 //= link ./init-alpine.js
 //= link ./alpine.min.js
+//= link ./focus-trap.js

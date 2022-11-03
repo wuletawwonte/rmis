@@ -5,7 +5,7 @@ class CallsController < ApplicationController
 
   # Get /calls to show on the homepage
   def list
-    @calls = Call.order(:created_at).page params[:page]
+    @calls = Call.order(deadline: :desc).page params[:page]
   end
 
   # Get /public/show/:id to show a single call for unauthenticated users
