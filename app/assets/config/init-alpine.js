@@ -38,14 +38,32 @@ function data() {
       this.trapCleanup()
     },
     isAlertOpen: false,
-    openAlert() {
+    alertMessage: "The email address is no longer",
+    openAlert(subscriberId) {
       this.isAlertOpen = true
+
+      fetch(`/subscribers/${subscriberId}`, 
+        {
+          method: 'PUT',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        },)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(err => {
+          console.log(err)
+        })
+
       setTimeout(() => {
         this.isAlertOpen = false
       }, 4000)
     },
     closeAlert() {
       this.isAlertOpen = false
-    }
+    },
   }
 }

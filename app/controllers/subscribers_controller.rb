@@ -25,11 +25,29 @@ class SubscribersController < ApplicationController
     end
   end
 
+  # PATCH/PUT /subscribers/1 or /subscribers/1.json
+  def update
+    respond_to do |format|
+      if @subscriber.update(edit_subscriber_params)
+        format.html { redirect_to subscribers_index_path, notice: 'Research type was successfully updated.' }
+        format.json { render :show, status: :ok, location: @research_type }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @subscriber.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+
   private 
 
     # Only allow a list of trusted parameters through.
     def subscriber_params
       params.permit(:email)
+    end
+
+    def edit_subscriber_params
+      params.require(:subscriber).permit(:id, :email, :active)
     end
 
 end
