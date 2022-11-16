@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   get 'subscribers/index'
   post 'subscribers/create', to: 'subscribers#create'
-  post 'subscribers/:id', to: 'subscribers#update', as: "toggle_subscriber"
+  get 'subscribers/:id', to: 'subscribers#update', as: "toggle_subscriber"
   resources :calls
   resources :research_types
   devise_for :users

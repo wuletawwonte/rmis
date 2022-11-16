@@ -1,3 +1,4 @@
+<%= console %>
 <h2 class="my-6 text-2xl font-semibold text-gray-700">Subscribers</h2>
 
   <div 
@@ -13,7 +14,6 @@
     role="alert">
       <svg class="flex-shrink-0 w-5 h-5 text-purple-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
       <div class="ml-3 text-sm font-medium text-purple-700">
-        A simple info alert with an <a href="#" class="font-semibold underline hover:text-purple-800">example link</a>. Give it a click if you like.
       </div>
       <button type="button" @click="closeAlert" class="ml-auto -mx-1.5 -my-1.5 bg-purple-100 text-purple-500 rounded-lg focus:ring-2 focus:ring-purple-400 p-1.5 hover:bg-purple-200 dark:hover:bg-purple-300 inline-flex h-8 w-8" data-dismiss-target="#alert-border-1" aria-label="Close">
         <span class="sr-only">Dismiss</span>
@@ -52,7 +52,7 @@
               <div class="flex items-center space-x-4 text-sm">
 
                 <label for="<%= subscriber.id %>" class="inline-flex relative items-center cursor-pointer">
-                  <input @click="openAlert" type="checkbox" value="" id="<%= subscriber.id %>" class="sr-only peer" <%= 'checked' if subscriber.active?  %> >
+                  <input type="checkbox" value="" id="<%= subscriber.id %>" class="sr-only peer subscriber-checkbox" <%= 'checked' if subscriber.active?  %> >
                   <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-purple-600"></div>
                 </label>
 

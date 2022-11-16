@@ -1,6 +1,6 @@
 class SubscribersController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: %i[create]
+  skip_before_action :authenticate_user!, only: %i[create update]
 
 
   # GET /subscribers or /subscribers.json
@@ -27,12 +27,13 @@ class SubscribersController < ApplicationController
 
   # PATCH/PUT /subscribers/1 or /subscribers/1.json
   def update
+    @subscriber = Subscriber.find(edit_subscriber_params[:id])
+
+    @subscriber.active = !@subscriber.active
     respond_to do |format|
-      if @subscriber.update(edit_subscriber_params)
-        format.html { redirect_to subscribers_index_path, notice: 'Research type was successfully updated.' }
-        format.json { render :show, status: :ok, location: @research_type }
+      if @subscriber.save!
+        format.json { render json: @subscriber, status: :ok, location: @research_type }
       else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @subscriber.errors, status: :unprocessable_entity }
       end
     end
@@ -47,7 +48,7 @@ class SubscribersController < ApplicationController
     end
 
     def edit_subscriber_params
-      params.require(:subscriber).permit(:id, :email, :active)
+      params.permit(:id)
     end
 
 end

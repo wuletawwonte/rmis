@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
-    <%= javascript_include_tag "alpine.min", defer: true %>
+    <%= javascript_include_tag "alpine.min" %>
     <%= javascript_include_tag "init-alpine" %>
     <%= javascript_include_tag "focus-trap" %>
 
@@ -40,7 +40,7 @@
         x-transition:leave="transition ease-in-out duration-150"
         x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0"
-        class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"
+        class="fixed inset-0 z-10 flex items-end bg-opacity-50 sm:items-center sm:justify-center"
       ></div>
       <aside
         class="fixed inset-y-0 z-20 flex-shrink-0 w-64 mt-16 overflow-y-auto bg-white md:hidden"

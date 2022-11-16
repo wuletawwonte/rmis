@@ -38,7 +38,7 @@ function data() {
       this.trapCleanup()
     },
     isAlertOpen: false,
-    alertMessage: "The email address is no longer",
+    alertMessage: "",
     openAlert(subscriberId) {
       this.isAlertOpen = true
 
