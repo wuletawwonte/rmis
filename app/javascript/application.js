@@ -4,18 +4,14 @@ import 'controllers';
 import 'trix';
 import '@rails/actiontext';
 
-document.addEventListener('DOMContentLoaded', function () {
-  window.Alpine.start();
+window.Alpine.start();
 
-  const subscribersCheckboxs = document.querySelectorAll(
-    '.subscriber-checkbox'
-  );
+const subscribersCheckboxs = document.querySelectorAll('.subscriber-checkbox');
 
-  subscribersCheckboxs.forEach((item) => {
-    item.addEventListener('change', (e) => {
-      fetch(`http://localhost:3000/subscribers/${e.target.id}.json`)
-        .then((response) => response.json())
-        .then((data) => console.log(data));
-    });
+subscribersCheckboxs.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    fetch(`http://localhost:3000/subscribers/${e.target.id}.json`)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   });
 });
