@@ -43,6 +43,24 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # SMTP configuration of action mailer
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.office365.com',
+    port:                 587,
+    domain:               'amu.edu.et',
+    user_name:            Rails.application.credentials.dig(:email, :username),
+    password:             Rails.application.credentials.dig(:email, :password),
+    authentication:       'plain',
+    enable_starttls_auto: true,
+    open_timeout:         5,
+    read_timeout:         5 
+  }
+
+
+
+
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
