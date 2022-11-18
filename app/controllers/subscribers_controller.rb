@@ -16,7 +16,7 @@ class SubscribersController < ApplicationController
 
     respond_to do |format|
       if @subscriber.save
-        format.html { redirect_to root_url, notice: 'Subscription added successfully.' }
+        format.html { redirect_to root_url, notice: 'A verification link is sent to your email please click the link to start receiving emails about a new research call.' }
         format.json { render :list, status: :created, location: @subscriber }
       else
         format.html { render root_url, status: :unprocessable_entity }
