@@ -37,7 +37,7 @@ class CallsController < ApplicationController
     respond_to do |format|
       if @call.save
         # Send email to subscribers when a call is created
-        SubscriberMailer.with(call: @call).call_posted_email.deliver_later
+        SubscriberMailer.with(call: @call).call_posted_email.deliver_now
 
         format.html { redirect_to call_url(@call), notice: 'Call was successfully created.' }
         format.json { render :show, status: :created, location: @call }

@@ -38,17 +38,17 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # Care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
   # SMTP configuration of action mailer
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.office365.com',
+    address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'amu.edu.et',
+    domain:               'gmail.com',
     user_name:            Rails.application.credentials.dig(:email, :username),
     password:             Rails.application.credentials.dig(:email, :password),
     authentication:       'plain',
@@ -56,10 +56,6 @@ Rails.application.configure do
     open_timeout:         5,
     read_timeout:         5 
   }
-
-
-
-
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
