@@ -111,6 +111,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_123615) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "subscription_hash"
+    t.index ["email"], name: "index_subscribers_on_email", unique: true
   end
 
   create_table "themes", force: :cascade do |t|
