@@ -107,7 +107,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_123615) do
 
   create_table "subscribers", force: :cascade do |t|
     t.string "email"
-    t.boolean "active", default: true
+    t.boolean "active", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "subscription_hash"
