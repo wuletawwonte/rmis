@@ -14,7 +14,7 @@ class SubscriberMailer < ApplicationMailer
   end
 
   def email_verified
-    @subscriiber = params[:subscriber]
+    @subscriber = params[:subscriber]
     mail(to: @subscriber.email, subject: 'Welcome to RMIS research call notification service')
   end
 end

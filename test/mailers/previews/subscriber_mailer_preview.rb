@@ -5,4 +5,8 @@ class SubscriberMailerPreview < ActionMailer::Preview
     SubscriberMailer.with(call: Call.first).call_posted_email
   end
 
+  def email_added
+    SubscriberMailer.with(subscriber: Subscriber.last).email_added
+  end
+
 end

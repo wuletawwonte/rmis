@@ -1,6 +1,6 @@
 class SubscribersController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: %i[create update]
+  skip_before_action :authenticate_user!, only: %i[create update email_verified]
 
 
   # GET /subscribers or /subscribers.json
@@ -49,12 +49,14 @@ class SubscribersController < ApplicationController
     if @subscriber.save!
       SubscriberMailer.with(subscriber: @subscriber).email_verified.deliver_now
 
-      format.html { redirect_to root_url, notice: 'Your email is successfully verified.' }
+      format.html { redirect_to email_verified_url, notice: 'Your email is successfully verified.' }
     else
       format.html { redirect_to root_url, notice: 'Your email not verified.' }
     end
-
   end
+
+  # GET /subscribers/email_verified
+  def email_verified; end
 
   private 
 
