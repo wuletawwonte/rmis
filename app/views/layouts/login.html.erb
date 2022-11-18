@@ -9,6 +9,11 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <%= javascript_include_tag "alpine.min" %>
+    <%= javascript_include_tag "init-alpine" %>
+    <%= javascript_include_tag "focus-trap" %>
+
     <%= favicon_link_tag asset_path('favicon.ico') %>
   </head>
 

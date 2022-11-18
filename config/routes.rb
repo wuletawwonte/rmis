@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   get 'subscribers/index'
   post 'subscribers/create', to: 'subscribers#create'
-  get 'subscribers/:id', to: 'subscribers#update', as: "toggle_subscriber"
+  get 'subscribers/edit/:id', to: 'subscribers#update', as: "toggle_subscriber"
   match "subscribers/verifyemail/:subscription_hash" => "subscribers#verify_email", as: "verify_email", via: :all
   get 'subscribers/email_verified', to: 'subscribers#email_verified', as: 'email_verified'
   
