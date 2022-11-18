@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'subscribers/index'
   post 'subscribers/create', to: 'subscribers#create'
   get 'subscribers/:id', to: 'subscribers#update', as: "toggle_subscriber"
+  match "subscribers/verifyemail/:subscription_hash" => "subscribers#verify_email", as: "verify_email", via: :all
+  
   resources :calls
   resources :research_types
   devise_for :users

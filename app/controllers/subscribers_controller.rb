@@ -16,6 +16,8 @@ class SubscribersController < ApplicationController
 
     respond_to do |format|
       if @subscriber.save
+        SubscriberMailer.with(subscriber: @subscriber).email_added.deliver_now
+
         format.html { redirect_to root_url, notice: 'A verification link is sent to your email please click the link to start receiving emails about a new research call.' }
         format.json { render :list, status: :created, location: @subscriber }
       else
@@ -37,8 +39,22 @@ class SubscribersController < ApplicationController
         format.json { render json: @subscriber.errors, status: :unprocessable_entity }
       end
     end
+  end 
+
+  # Activate email address to receive research call posts
+  def verify_email
+    @subscriber = Subscriber.find_by_subscription_hash(params[:subscription_hash])
+    
+    @subscriber.active = true
+    if @subscriber.save!
+      SubscriberMailer.with(subscriber: @subscriber).email_verified.deliver_now
+
+      format.html { redirect_to root_url, notice: 'Your email is successfully verified.' }
+    else
+      format.html { redirect_to root_url, notice: 'Your email not verified.' }
+    end
+
   end
-  
 
   private 
 
