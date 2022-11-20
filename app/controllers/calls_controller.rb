@@ -15,7 +15,7 @@ class CallsController < ApplicationController
 
   # GET /calls or /calls.json
   def index
-    @calls = Call.order(:created_at).page params[:page]
+    @calls = Call.order(created_at: :desc).page params[:page]
   end
 
   # GET /calls/1 or /calls/1.json
@@ -38,7 +38,7 @@ class CallsController < ApplicationController
       if @call.save
         # Send email to subscribers when a call is created
         Subscriber.where(active: :true).each do |subscriber|
-          SubscriberMailer.with(call: @call, subscriber: subscriber).call_posted_email.deliver_later
+          SubscriberMailer.with(call: @call, subscriber: subscriber, url: show_public_calls_url(@call)).call_posted_email.deliver_later
         end
 
         format.html { redirect_to call_url(@call), notice: 'Call was successfully created.' }

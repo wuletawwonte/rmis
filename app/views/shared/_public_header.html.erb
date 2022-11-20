@@ -1,8 +1,8 @@
-<div class="relative bg-white">
+<div class="relative bg-gray-800">
   <div class="mx-auto w-full px-6 sm:px-20  border-b-2 border-gray-100 shadow-lg">
     <div class="flex items-center justify-between py-5 md:justify-start md:space-x-10">
       <div class="flex justify-start lg:w-0 lg:flex-1">
-        <%= link_to "RMIS", root_path, class: "text-xl text-indigo-600 hover:text-indigo-900 font-medium" %>
+        <%= link_to "RMIS", root_path, class: "self-center text-xl font-semibold whitespace-nowrap text-white" %>
       </div>
       <div class="-my-2 -mr-2 md:hidden">
         <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500" aria-expanded="false">
@@ -15,16 +15,16 @@
       </div>
       <nav class="hidden space-x-10 md:flex">
 
-        <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">About</a>
-        <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">Docs</a>
-        <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">Help</a>
+        <a href="#" class="text-base font-medium text-gray-400 hover:text-white">About</a>
+        <a href="#" class="text-base font-medium text-gray-400 hover:text-white">Docs</a>
+        <a href="#" class="text-base font-medium text-gray-400 hover:text-white">Help</a>
 
       </nav>
       <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
         <% if user_signed_in? %>
           <%= button_to "Signout", destroy_user_session_path, method: :delete, class: "whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900" %>
         <% else %>
-          <%= link_to "Sign in", new_user_session_path, class: "whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900" %>
+          <%= link_to "Sign in", new_user_session_path, class: "whitespace-nowrap text-base font-medium text-gray-400 hover:text-white" %>
           <%= link_to "Sign up", new_user_registration_path, class: "ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-purple-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-purple-700" %>
         <% end %>
       </div>

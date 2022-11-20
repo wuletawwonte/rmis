@@ -4,7 +4,7 @@ class SubscriberMailer < ApplicationMailer
   def call_posted_email
     @user = params[:subscriber]
     @call = params[:call]
-    @url = 'https://rmis.amu.edu.et';
+    @url = params[:url]
     mail(to: @user.email, subject: 'A call is posted'); 
   end
 
