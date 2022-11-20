@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'sidekiq/web'
 
 Rails.application.routes.draw do
   get 'subscribers/index'
@@ -32,5 +33,7 @@ Rails.application.routes.draw do
       root "users#index", as: :authenticated_root
     end
   end
+
+  mount Sidekiq::Web => '/sidekiq'
 
 end
