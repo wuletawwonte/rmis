@@ -21,7 +21,7 @@ class SubscribersController < ApplicationController
         format.html { redirect_to root_url, notice: 'A verification link is sent to your email please click the link to start receiving emails about a new research call.' }
         format.json { render :list, status: :created, location: @subscriber }
       else
-        format.html { render root_url, status: :unprocessable_entity }
+        format.html { redirect_to root_url, status: :unprocessable_entity }
         format.json { render json: @subscriber.errors, status: :unprocessable_entity }
       end
     end
