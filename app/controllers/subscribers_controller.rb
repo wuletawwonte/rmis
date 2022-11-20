@@ -16,7 +16,7 @@ class SubscribersController < ApplicationController
 
     respond_to do |format|
       if @subscriber.save
-        SubscriberMailer.with(subscriber: @subscriber).email_added.deliver_now
+        SubscriberMailer.with(subscriber: @subscriber).email_added.deliver_later
 
         format.html { redirect_to root_url, notice: 'A verification link is sent to your email please click the link to start receiving emails about a new research call.' }
         format.json { render :list, status: :created, location: @subscriber }
@@ -48,7 +48,7 @@ class SubscribersController < ApplicationController
     @subscriber.active = true
     respond_to do |format|
       if @subscriber.save!
-        SubscriberMailer.with(subscriber: @subscriber).email_verified.deliver_now
+        SubscriberMailer.with(subscriber: @subscriber).email_verified.deliver_later
 
         format.html { redirect_to email_verified_path, notice: 'Your email is successfully verified.' }
       else
