@@ -40,7 +40,9 @@ For ubuntu users run this command to install redis server
 ```bash
 sudo apt install redis-server
 ```
-Once installed, make sure the service is running by running: `sudo systemctl status redis`
+**Sidekiq requires Redis 6.2.0 or greater** so install the appropriate version of Redis. 
+
+Once installed, make sure the service is running by executing the command: `sudo systemctl status redis`
 
 Finaly after starting rails server `sidekiq` must run in the background by running this command
 ```bash
