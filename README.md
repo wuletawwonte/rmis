@@ -32,6 +32,16 @@ To get a local copy follow these simple example steps.
     - Go to `http://127.0.0.1:1080`
     - Send mail through smtp://127.0.0.1:1025 
 
+## Sidekiq setup
+[Active jobs](https://guides.rubyonrails.org/active_job_basics.html) of Rails is used to handle declaring and running jobs asynchronously. The adapter used for background jobs in the project is `Sidekiq`. Since `Sidekiq` uses [redis](https://redis.io/) to store queue of background jobs, redis server must be installed for sidekiq to work.
+
+For ubuntu users run this command to install redis server
+
+```bash
+sudo apt install redis-server
+```
+Once installed, make sure the service is running by running: `sudo systemctl status redis`
+
 
 ## Authors
 
