@@ -42,6 +42,11 @@ sudo apt install redis-server
 ```
 Once installed, make sure the service is running by running: `sudo systemctl status redis`
 
+Finaly after starting rails server `sidekiq` must run in the background by running this command
+```bash
+bundle exec sidekiq -q default -q mailers
+```
+
 
 ## Authors
 
