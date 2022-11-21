@@ -30,7 +30,7 @@
       }
 
       table {
-        border-collapse: separate;
+        border-collapse: collapse;
         mso-table-lspace: 0pt;
         mso-table-rspace: 0pt;
         width: 100%; }
@@ -341,8 +341,8 @@
           <div class="content">
 
             <!-- START CENTERED WHITE CONTAINER -->
-            <table role="presentation" class="main">
-            <td class="align-center">
+            <table role="presentation" class="main"  style="border-top: 4px solid #9333EA;">
+            <td class="align-center" style="background-color: #eee;">
               <img src="https://www.amu.edu.et/images/media/amulogo5-min.png" width=50% />
             </td>
               <!-- START MAIN CONTENT AREA -->
@@ -363,7 +363,7 @@
                 </tr>
                 <tr>
                   <td class="content-block powered-by">
-                    Powered by <a href="http://htmlemail.io">AMU ICT</a>.
+                    &#169; <%= Date.today.year %> All Rights Reserved.
                   </td>
                 </tr>
               </table>
