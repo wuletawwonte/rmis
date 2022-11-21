@@ -2,7 +2,7 @@
 class SubscriberMailerPreview < ActionMailer::Preview
 
   def call_posted_email
-    SubscriberMailer.with(call: Call.first, subscriber: Subscriber.first).call_posted_email
+    SubscriberMailer.with(call: Call.first, subscriber: Subscriber.first, url: "http://rmis.amu.edu.et/research/call/1").call_posted_email
   end
 
   def email_added
