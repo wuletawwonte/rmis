@@ -2,7 +2,6 @@ class SubscribersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[create update verify_email email_verified]
   layout 'login', only: %i[email_verified]
 
-
   # GET /subscribers or /subscribers.json
   def index
     @subscribers = Subscriber.all.order(created_at: :desc).page params[:page]
@@ -18,7 +17,11 @@ class SubscribersController < ApplicationController
       if @subscriber.save
         SubscriberMailer.with(subscriber: @subscriber).email_added.deliver_later
 
-        format.html { redirect_to root_url, notice: 'A verification link is sent to your email please click the link to start receiving emails about a new research call.' }
+        format.html do
+          redirect_to root_url,
+                      notice: 'A verification link is sent to your email please click the link to start
+                      receiving emails about a new research call.'
+        end
         format.json { render :list, status: :created, location: @subscriber }
       else
         format.html { redirect_to root_url, status: :unprocessable_entity }
@@ -39,12 +42,12 @@ class SubscribersController < ApplicationController
         format.json { render json: @subscriber.errors, status: :unprocessable_entity }
       end
     end
-  end 
+  end
 
   # Activate email address to receive research call posts
   def verify_email
     @subscriber = Subscriber.find_by_subscription_hash(params[:subscription_hash])
-    
+
     @subscriber.active = true
     respond_to do |format|
       if @subscriber.save!
@@ -60,15 +63,14 @@ class SubscribersController < ApplicationController
   # GET /subscribers/email_verified
   def email_verified; end
 
-  private 
+  private
 
-    # Only allow a list of trusted parameters through.
-    def subscriber_params
-      params.permit(:email)
-    end
+  # Only allow a list of trusted parameters through.
+  def subscriber_params
+    params.permit(:email)
+  end
 
-    def edit_subscriber_params
-      params.permit(:id)
-    end
-
+  def edit_subscriber_params
+    params.permit(:id)
+  end
 end

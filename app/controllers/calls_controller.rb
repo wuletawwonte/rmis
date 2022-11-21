@@ -37,8 +37,9 @@ class CallsController < ApplicationController
     respond_to do |format|
       if @call.save
         # Send email to subscribers when a call is created
-        Subscriber.where(active: :true).each do |subscriber|
-          SubscriberMailer.with(call: @call, subscriber: subscriber, url: show_public_calls_url(@call)).call_posted_email.deliver_later
+        Subscriber.where(active: true).each do |subscriber|
+          SubscriberMailer.with(call: @call, subscriber:,
+                                url: show_public_calls_url(@call)).call_posted_email.deliver_later
         end
 
         format.html { redirect_to call_url(@call), notice: 'Call was successfully created.' }

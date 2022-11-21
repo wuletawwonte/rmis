@@ -1,12 +1,11 @@
 class SubscriberMailer < ApplicationMailer
-  
   # Send email when a research call is posted
   def call_posted_email
     @user = params[:subscriber]
     @call = params[:call]
     @url = params[:url]
     @subscribed = true
-    mail(to: @user.email, subject: 'RMIS: Call for research posted'); 
+    mail(to: @user.email, subject: 'RMIS: Call for research posted')
   end
 
   def email_added
