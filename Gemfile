@@ -35,5 +35,7 @@ end
 
 gem 'image_processing'
 gem 'kaminari'
+gem 'rack-cors'
+gem 'sidekiq'
 gem 'simple_form'
 gem 'simple_form-tailwind'

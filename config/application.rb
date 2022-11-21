@@ -20,5 +20,8 @@ module Rmis
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Set rails active job to use sidekiq as an adapter
+    config.active_job.queue_adapter = :sidekiq
   end
 end

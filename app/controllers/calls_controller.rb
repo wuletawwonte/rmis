@@ -5,7 +5,7 @@ class CallsController < ApplicationController
 
   # Get /calls to show on the homepage
   def list
-    @calls = Call.order(:created_at).page params[:page]
+    @calls = Call.order(deadline: :desc).page params[:page]
   end
 
   # Get /public/show/:id to show a single call for unauthenticated users
@@ -15,7 +15,7 @@ class CallsController < ApplicationController
 
   # GET /calls or /calls.json
   def index
-    @calls = Call.order(:created_at).page params[:page]
+    @calls = Call.order(created_at: :desc).page params[:page]
   end
 
   # GET /calls/1 or /calls/1.json
@@ -36,6 +36,12 @@ class CallsController < ApplicationController
 
     respond_to do |format|
       if @call.save
+        # Send email to subscribers when a call is created
+        Subscriber.where(active: true).each do |subscriber|
+          SubscriberMailer.with(call: @call, subscriber:,
+                                url: show_public_calls_url(@call)).call_posted_email.deliver_later
+        end
+
         format.html { redirect_to call_url(@call), notice: 'Call was successfully created.' }
         format.json { render :show, status: :created, location: @call }
       else
