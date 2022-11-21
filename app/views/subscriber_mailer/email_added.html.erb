@@ -1,14 +1,30 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Your email is successfully added to RMIS</h1>
-    <p>
-      Please click the link bellow to activate it,<br> 
-      Email activation link: <%= link_to "Verify Email", verify_email_url(@subscriber.subscription_hash) , target: :_blank %>.<br>
-    </p>
-    <p>A better way to do research!</p>
-  </body>
-</html>
+<%# Main email content starts here %>
+<tr>
+  <td class="wrapper">
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td>
+          <h2>Hi</h2>
+          <p>Thanks for subscribing for <a href="https://www.amu.edu.et">Arba Minch University</a> call for research alerts! please verify your email 
+          address <a href="mailto: <%= @subscriber.email %>"><%= @subscriber.email %></a></p>
+          <p>A better way to do research!</p>
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+            <tbody>
+              <tr>
+                <td align="left">
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                      <tr>
+                        <td> <a href="<%= verify_email_url(@subscriber.subscription_hash) %>" target="_blank">Yes Subscribe Me</a> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>

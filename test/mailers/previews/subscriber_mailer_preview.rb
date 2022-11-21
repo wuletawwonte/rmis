@@ -9,4 +9,8 @@ class SubscriberMailerPreview < ActionMailer::Preview
     SubscriberMailer.with(subscriber: Subscriber.last).email_added
   end
 
+  def email_verified
+    SubscriberMailer.with(subscriber: Subscriber.last).email_verified
+  end
+
 end
