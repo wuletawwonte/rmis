@@ -6,6 +6,6 @@ class Subscriber < ApplicationRecord
   private
 
   def add_subscription_hash
-    self.subscription_hash = SecureRandom.hex
+    self.subscription_hash = SecureRandom.hex(5)
   end
 end
