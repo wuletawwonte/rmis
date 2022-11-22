@@ -25,10 +25,13 @@
             <article class="overflow-hidden shadow-lg bg-white">
                 <header class="leading-tight p-2 md:p-4">
                     <h1 class="text-lg leading-6">
-                            <%= call.title %>
+                        <%= link_to call.title, show_public_calls_path(call.id) %>
                     </h1>
-                    <p class="text-gray-600 text-sm">
-                        Submission Deadline: <%= call.deadline.strftime('%b %d, %Y')%>
+                    <p class="text-gray-600 text-xs">
+                        Deadline: <b><%= call.deadline.strftime('%b %d, %Y')%></b>
+                    </p>
+                    <p class="text-gray-600 text-xs">
+                        Code: <b><%= call.code %></b>
                     </p>
                 </header>
 
