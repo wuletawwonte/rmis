@@ -8,25 +8,21 @@
   <div class="w-full overflow-x-auto">
     <table class="w-full whitespace-no-wrap">
       <thead>
-        <tr
-          class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50"
-        >
+        <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50">
           <th class="px-4 py-3">#</th>
           <th class="px-4 py-3">Research type</th>
           <th class="px-4 py-3">Date</th>
           <th class="px-4 py-3">Actions</th>
         </tr>
       </thead>
-      <tbody
-        class="bg-white divide-y"
-      >
+      <tbody class="bg-white divide-y">
         <% @research_types.each_with_index do |research_type, index| %>
           <tr class="text-gray-700">
             <td class="px-4 py-3 text-sm">  
               <%= index + 1 %>
             </td>
             <td class="px-4 py-3 text-sm">
-              <%= research_type.name %>
+              <%= link_to research_type.name, research_type_path(research_type) %>
             </td>
             <td class="px-4 py-3 text-sm">
               <%= research_type.created_at %>

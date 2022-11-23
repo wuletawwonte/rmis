@@ -64,6 +64,6 @@ class ResearchTypesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def research_type_params
-    params.require(:research_type).permit(:name, :allowed_per_year, :theme_based, :fund, :gender)
+    params.require(:research_type).permit(:name, :call_based, :max_budget, :gender, :fund_soure, :min_researcher, :max_duration, :possible_extension)
   end
 end
