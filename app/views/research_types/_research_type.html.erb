@@ -1,5 +1,5 @@
 
-<div class="mt-6 overflow-hidden bg-white shadow sm:rounded-lg w-full" id="<%= dom_id research_type %>">
+<div class="mt-6 overflow-hidden bg-white shadow w-full" id="<%= dom_id research_type %>">
   <div class="px-4 py-5 sm:px-6">
     <h3 class="text-lg font-medium leading-6 text-gray-900">Research Type Information</h3>
     <p class="mt-1 max-w-2xl text-sm text-gray-500"><%= research_type.name %> details.</p>
@@ -17,7 +17,7 @@
         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= research_type.call_based %></dd>
       </div>
 
-      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-500">Maximum budget</dt>
         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= "#{research_type.max_budget} ETB" %></dd>
       </div>
@@ -27,17 +27,17 @@
         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= research_type.gender %></dd>
       </div>
 
-      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-500">Fund source</dt>
         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= research_type.fund_source %></dd>
       </div>
 
-      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-500">Minimum allowed number of researchers</dt>
         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= research_type.min_researcher %></dd>
       </div>
 
-      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-500">Maximum duration</dt>
         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= "#{research_type.max_duration} years"%></dd>
       </div>

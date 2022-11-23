@@ -5,5 +5,6 @@ class ResearchType < ApplicationRecord
   enum :fund_source, { internal: 0, external: 1 }
 
   validates :name, presence: true
-  validates :max_duration, comparison: { greater_than: 0, less_than_or_equal_to: 5 }
+  validates :min_researcher, comparison: { greater_than: 0, less_than_or_equal_to: 20 }
+  validates :max_duration, comparison: { greater_than: 0, less_than_or_equal_to: 10 }
 end
