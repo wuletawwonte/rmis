@@ -12,15 +12,16 @@
   <% end %>
 
   <%= form.input :name %>
-  <%= form.input :allowed_per_year %>
+  <%= form.input :call_based %>
 
-  <div class="my-5">
-    <%= form.label :theme_based %>
-    <%= form.check_box :theme_based, class: "block mt-2 h-5 w-5" %>
-  </div>
+  <%= form.input :max_budget, hint: "The maxmimun budget should be in Ethiopian birr" %>
 
-  <%= form.input :fund, collection: ["Internal", "External"] %>
-  <%= form.input :gender, collection: ["Female", "Male"], as: :check_boxes %>
+  <%= form.input :fund_source, as: :radio_buttons, collection: ResearchType.fund_sources, checked: ResearchType.fund_sources.first %>
+  <%= form.input :gender, as: :radio_buttons, collection: ResearchType.genders, checked: ResearchType.genders['male_and_female'] %>
+
+  <%= form.input :min_researcher %>
+  <%= form.input :max_duration %>
+  <%= form.input :possible_extension %>
 
   <%= form.button :submit, "Create Research Type" %>
   <%= link_to 'Back to research types', research_types_path, class: "inline-flex justify-center py-2 px-4 cursor-pointer border border-transparent shadow-sm text-sm font-medium p-2.5 text-black bg-gray-100" %>
