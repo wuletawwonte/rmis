@@ -17,7 +17,7 @@
   <%= form.input :max_budget, hint: "The maxmimun budget should be in Ethiopian birr" %>
 
   <%= form.input :fund_source, as: :radio_buttons, collection: ResearchType.fund_sources.keys, checked: ResearchType.fund_sources.first %>
-  <%= form.input :gender, label: "Gender allowed", as: :radio_buttons, collection: ResearchType.genders.keys, checked: ResearchType.genders['male_and_female'] %>
+  <%= form.input :gender, label: "Gender allowed", as: :radio_buttons, collection: ResearchType.genders.keys, checked: ResearchType.genders.last %>
 
   <%= form.input :min_researcher, label: "Minimum researcher" %>
   <%= form.input :max_duration, label: "Maximum duration", hint: "The maximum project duration in years" %>
