@@ -17,11 +17,11 @@
   <%= form.input :max_budget, hint: "The maxmimun budget should be in Ethiopian birr" %>
 
   <%= form.input :fund_source, as: :radio_buttons, collection: ResearchType.fund_sources, checked: ResearchType.fund_sources.first %>
-  <%= form.input :gender, as: :radio_buttons, collection: ResearchType.genders, checked: ResearchType.genders['male_and_female'] %>
+  <%= form.input :gender, label: "Gender allowed", as: :radio_buttons, collection: ResearchType.genders, checked: ResearchType.genders['male_and_female'] %>
 
-  <%= form.input :min_researcher %>
-  <%= form.input :max_duration %>
-  <%= form.input :possible_extension %>
+  <%= form.input :min_researcher, label: "Minimum researcher" %>
+  <%= form.input :max_duration, label: "Maximum duration", hint: "The maximum project duration in years" %>
+  <%= form.input :possible_extension, hint: "Possible extension depending on the project nature in years" %>
 
   <%= form.button :submit, "Create Research Type" %>
   <%= link_to 'Back to research types', research_types_path, class: "inline-flex justify-center py-2 px-4 cursor-pointer border border-transparent shadow-sm text-sm font-medium p-2.5 text-black bg-gray-100" %>
