@@ -29,16 +29,13 @@
             </td>
             <td class="px-4 py-3">
               <div class="flex items-center space-x-4 text-sm">
-                <button
-                  class="flex items-center justify-between text-sm font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray"
-                  aria-label="Edit">
+                <%= link_to edit_research_type_path(research_type) do %>
                   <%= fa_icon "edit 2x" %>
-                </button>
-                <button
-                  class="flex items-center justify-between text-sm font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray"
-                  aria-label="Delete">
+                <% end %>
+                <%= button_to research_type_path(research_type), method: :delete do %>
                   <%= fa_icon "trash 2x" %>
-                </button>
+                <% end %>
+
               </div>
             </td>
           </tr>
