@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_23_064303) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_23_071448) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -100,6 +100,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_064303) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "call_based"
+    t.integer "max_budget"
+    t.integer "gender", default: 2
+    t.integer "fund_source", default: 0
+    t.integer "min_researcher"
+    t.integer "max_duration"
+    t.integer "possible_extension"
     t.index ["name"], name: "index_research_types_on_name", unique: true
   end
 
