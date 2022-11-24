@@ -84,7 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_122757) do
     t.datetime "updated_at", null: false
     t.text "abstract"
     t.bigint "research_type_id", null: false
-    t.bigint "call_id", null: false
+    t.bigint "call_id"
     t.index ["call_id"], name: "index_proposals_on_call_id"
     t.index ["research_type_id"], name: "index_proposals_on_research_type_id"
     t.index ["user_id"], name: "index_proposals_on_user_id"

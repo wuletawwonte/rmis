@@ -2,6 +2,7 @@ class Call < ApplicationRecord
   before_create :add_code
   belongs_to :user
   has_rich_text :content
+  has_many :proposals
 
   validates :title, :deadline, presence: true
 
