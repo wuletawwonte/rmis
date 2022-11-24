@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-  static targets = ['call'];
+  static targets = ['callWrapper', 'callInput'];
   static values = {
     types: Array,
     selectedType: Object,
@@ -21,9 +21,10 @@ export default class extends Controller {
 
   selectedTypeValueChanged() {
     if (this.selectedTypeValue.call_based) {
-      this.callTarget.classList.remove('hidden');
+      this.callWrapperTarget.classList.remove('hidden');
     } else {
-      this.callTarget.classList.add('hidden');
+      this.callWrapperTarget.classList.add('hidden');
+      this.callInputTarget.selectedIndex = -1;
     }
   }
 }
