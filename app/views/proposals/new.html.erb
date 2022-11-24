@@ -1,12 +1,6 @@
-<h2
-  class="my-6 text-2xl font-semibold text-gray-700"
->
-  Create Proposal
-</h2>
+<h2 class="my-6 text-2xl font-semibold text-gray-700">Create Proposal</h2>
 
-<div
-  class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md"
->
+<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md">
   <%= simple_form_for @proposal, url: { action: "create" }, method: :post, local: true, html: { multipart: true } do |f| %>
 
     <%= render "shared/error_messages", resource: @proposal %>
