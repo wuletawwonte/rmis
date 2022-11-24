@@ -5,6 +5,7 @@ class ProposalsController < ApplicationController
 
   def new
     @proposal = Proposal.new
+    @research_types = ResearchType.all
   end
 
   def create
