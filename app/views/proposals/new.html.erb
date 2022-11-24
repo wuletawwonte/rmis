@@ -8,13 +8,13 @@
     <%= f.error_notification %>
 
     <%= f.association :research_type, input_html: { data: { action: "new-proposal#makeChanges" } } %>
-    <%= f.association :call, wrapper_html: { data: { "new-proposal-target": "callWrapper" }, class: "hidden"}, input_html: { data: { "new-proposal-target": "callInput" } } %>
-    <%= f.input :attachement %>
-    <%= f.input :title %>
-    <%= f.input :abstract %>
+    <%= f.association :call, wrapper_html: { data: { "new-proposal-target": "callWrapper" }, class: "hidden"}, input_html: { data: { "new-proposal-target": "callInput" }, class: "proposal-input" } %>
+    <%= f.input :attachement, input_html: { class: "proposal-input" } %>
+    <%= f.input :title, input_html: { class: "proposal-input" } %>
+    <%= f.input :abstract, input_html: { class: "proposal-input" } %>
 
     <label class="block mt-4 text-sm">
-      <%= f.button :submit, "Add proposal" %>
+      <%= f.button :submit, "Add proposal", class: "proposal-input" %>
     </label>
 
   <% end %>
