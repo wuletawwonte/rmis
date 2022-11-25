@@ -10,4 +10,8 @@ class User < ApplicationRecord
   has_many :calls
 
   validates :first_name, :middle_name, :email, presence: true
+
+  def initials
+    "#{self.first_name.chr.upcase}#{self.middle_name.chr.upcase}"
+  end
 end
