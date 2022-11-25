@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :themes
   has_many :calls
 
+  enum :sex, { Male: 0, Female: 1 }
+
   validates :first_name, :middle_name, :email, presence: true
 
   def initials
