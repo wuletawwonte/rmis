@@ -7,7 +7,8 @@ class Call < ApplicationRecord
   validates :title, :deadline, presence: true
 
   private
-    def add_code
-      self.code = SecureRandom.hex(4)+"-"+DateTime.now.year.to_s
-    end
+
+  def add_code
+    self.code = "#{SecureRandom.hex(4)}-#{DateTime.now.year}"
+  end
 end

@@ -11,11 +11,11 @@ class UsersController < ApplicationController
     @users = User.all.order(:created_at).page params[:page]
   end
 
-  def show
-  end
+  def show; end
 
-  private 
-    def set_user
-      @user = User.find(params[:id])
-    end
+  private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 end

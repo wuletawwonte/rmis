@@ -13,10 +13,10 @@
   </ul>
   <ul>
     <li class="relative px-6 py-3">
-      <% if request.fullpath.start_with?(users_list_path) %>
+      <% if request.fullpath.start_with?(users_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
-      <%= link_to users_list_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if request.fullpath.start_with?(users_list_path)}" do %>
+      <%= link_to users_list_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if request.fullpath.start_with?(users_path)}" do %>
         <%= fa_icon "users" %>
         <span class="ml-4">Users</span>
       <% end %>

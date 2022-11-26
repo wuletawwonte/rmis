@@ -14,10 +14,10 @@ class User < ApplicationRecord
   validates :first_name, :middle_name, :email, presence: true
 
   def initials
-    "#{self.first_name.chr.upcase}#{self.middle_name.chr.upcase}"
+    "#{first_name.chr.upcase}#{middle_name.chr.upcase}"
   end
 
   def full_name
-    "#{self.first_name} #{self.middle_name}"
+    "#{first_name} #{middle_name}"
   end
 end
