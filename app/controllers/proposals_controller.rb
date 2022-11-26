@@ -12,7 +12,6 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.new(proposal_params)
     @proposal.user_id = current_user.id
 
-    @proposal.status = 'Active'
     if @proposal.save
       redirect_to proposals_path, notice: 'Successfully added.'
     else
@@ -38,7 +37,7 @@ class ProposalsController < ApplicationController
   private
 
   def proposal_params
-    params.require(:proposal).permit(:title, :attachement, :abstract, :theme_id)
+    params.require(:proposal).permit(:title, :attachement, :abstract, :call_id, :theme_id, :research_type_id, :budget)
   end
 
   def member_params
