@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_26_074641) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_26_075252) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -84,8 +84,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_074641) do
     t.text "abstract"
     t.bigint "research_type_id", null: false
     t.bigint "call_id"
+    t.integer "status", default: 0
+    t.integer "budget"
+    t.bigint "theme_id", null: false
     t.index ["call_id"], name: "index_proposals_on_call_id"
     t.index ["research_type_id"], name: "index_proposals_on_research_type_id"
+    t.index ["theme_id"], name: "index_proposals_on_theme_id"
     t.index ["user_id"], name: "index_proposals_on_user_id"
   end
 
@@ -153,6 +157,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_074641) do
   add_foreign_key "members", "users"
   add_foreign_key "proposals", "calls"
   add_foreign_key "proposals", "research_types"
+  add_foreign_key "proposals", "themes"
   add_foreign_key "proposals", "users"
   add_foreign_key "themes", "research_centers"
   add_foreign_key "themes", "users"
