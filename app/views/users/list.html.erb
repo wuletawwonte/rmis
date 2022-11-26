@@ -12,9 +12,10 @@
           class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50"
         >
           <th class="px-4 py-3">User</th>
-          <th class="px-4 py-3">Gender</th>
+          <th class="px-4 py-3">Sex</th>
           <th class="px-4 py-3">Role</th>
           <th class="px-4 py-3">Date</th>
+          <th class="px-4 py-3">Actions</th>
         </tr>
       </thead>
       <tbody
@@ -42,12 +43,15 @@
             <%= User.sexes.key(user.read_attribute_before_type_cast(:sex)) %>
           </td>
           <td class="px-4 py-3 text-xs">
-            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
+            <span class="px-2 py-1 font-semibold leading-tight text-<% if user.role == "admin" then %>green<% else %>gray<% end %>-700 bg-<% if user.role == "admin" then %>green<% else %>gray<% end %>-100 rounded-full">
               <%= user.role %>
             </span>
           </td>
           <td class="px-4 py-3 text-sm">
             <%= user.created_at.strftime('%b %-d, %Y') %>
+          </td>
+          <td>
+            <%= link_to "show", user_path(user) %>
           </td>
         </tr>
       <% end %>

@@ -16,4 +16,8 @@ class User < ApplicationRecord
   def initials
     "#{self.first_name.chr.upcase}#{self.middle_name.chr.upcase}"
   end
+
+  def full_name
+    "#{self.first_name} #{self.middle_name}"
+  end
 end
