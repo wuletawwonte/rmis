@@ -3,6 +3,7 @@ class Proposal < ApplicationRecord
   belongs_to :user
   belongs_to :call, optional: true
   belongs_to :research_type
+  belongs_to :theme
 
   validates :attachement, :title, presence: true
 
