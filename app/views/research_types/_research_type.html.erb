@@ -1,32 +1,59 @@
-<div id="<%= dom_id research_type %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= research_type.name %>
-  </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Allowed per year:</strong>
-    <%= research_type.allowed_per_year %>
-  </p>
+<div class="mt-6 overflow-hidden bg-white shadow w-full" id="<%= dom_id research_type %>">
+  <div class="px-4 py-5 sm:px-6">
+    <h3 class="text-lg font-medium leading-6 text-gray-900">Research Type Information</h3>
+    <p class="mt-1 max-w-2xl text-sm text-gray-500"><%= research_type.name %> details.</p>
+  </div>
+  <div class="border-t border-gray-200">
+    <dl>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Theme based:</strong>
-    <%= research_type.theme_based %>
-  </p>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Name</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= research_type.name %></dd>
+      </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Fund:</strong>
-    <%= research_type.fund %>
-  </p>
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Call based</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= research_type.call_based %></dd>
+      </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Gender:</strong>
-    <%= research_type.gender %>
-  </p>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Maximum budget</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= "#{research_type.max_budget} ETB" %></dd>
+      </div>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this research type", research_type, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this research type', edit_research_type_path(research_type), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Allowed gender</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= research_type.gender %></dd>
+      </div>
+
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Fund source</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= research_type.fund_source %></dd>
+      </div>
+
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Minimum allowed number of researchers</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= research_type.min_researcher %></dd>
+      </div>
+
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Maximum duration</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= "#{research_type.max_duration} years"%></dd>
+      </div>
+
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Possible extention duration</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= "#{research_type.possible_extension} years"%></dd>
+      </div>
+
+    </dl>
+
+    <% if action_name != "show" %>
+      <%= link_to "Show this research type", research_type, class: "rounded-lg py-3 px-5 bg-gray-200 inline-block font-medium" %>
+      <%= link_to 'Edit this research type', edit_research_type_path(research_type), class: "rounded-lg py-3 ml-2 px-5 bg-gray-200 inline-block font-medium" %>
+      <hr class="mt-6">
+    <% end %>
+
+  </div>
 </div>

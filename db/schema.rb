@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_18_123615) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_25_101830) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +59,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_123615) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "code"
+    t.index ["code"], name: "index_calls_on_code", unique: true
     t.index ["user_id"], name: "index_calls_on_user_id"
   end
 
@@ -81,10 +83,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_123615) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "abstract"
-    t.bigint "theme_id", null: false
     t.bigint "research_type_id", null: false
+    t.bigint "call_id"
+    t.index ["call_id"], name: "index_proposals_on_call_id"
     t.index ["research_type_id"], name: "index_proposals_on_research_type_id"
-    t.index ["theme_id"], name: "index_proposals_on_theme_id"
     t.index ["user_id"], name: "index_proposals_on_user_id"
   end
 
@@ -96,12 +98,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_123615) do
 
   create_table "research_types", force: :cascade do |t|
     t.string "name"
-    t.integer "allowed_per_year"
-    t.boolean "theme_based"
-    t.string "fund"
-    t.string "gender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "call_based"
+    t.integer "max_budget"
+    t.integer "gender", default: 2
+    t.integer "fund_source", default: 0
+    t.integer "min_researcher"
+    t.integer "max_duration"
+    t.integer "possible_extension"
     t.index ["name"], name: "index_research_types_on_name", unique: true
   end
 
@@ -136,7 +141,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_123615) do
     t.string "first_name"
     t.string "middle_name"
     t.string "last_name"
-    t.string "sex"
+    t.integer "sex", default: 0
+    t.string "role", default: "researcher"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -146,8 +152,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_123615) do
   add_foreign_key "calls", "users"
   add_foreign_key "members", "proposals"
   add_foreign_key "members", "users"
+  add_foreign_key "proposals", "calls"
   add_foreign_key "proposals", "research_types"
-  add_foreign_key "proposals", "themes"
   add_foreign_key "proposals", "users"
   add_foreign_key "themes", "research_centers"
   add_foreign_key "themes", "users"

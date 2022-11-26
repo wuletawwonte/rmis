@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :proposals, only: %i[index show new create edit destroy]
   
   get 'members/create'
+  get '/users/list', to: 'users#list', as: "users_list"
+  get '/users/:id', to: 'users#show', as: "user"
   delete '/users/sign_out', to: 'users#sign_out'
   get '/users', to: redirect('/users/sign_up')
 

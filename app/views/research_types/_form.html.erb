@@ -12,17 +12,18 @@
   <% end %>
 
   <%= form.input :name %>
-  <%= form.input :allowed_per_year %>
+  <%= form.input :call_based %>
 
-  <div class="my-5">
-    <%= form.label :theme_based %>
-    <%= form.check_box :theme_based, class: "block mt-2 h-5 w-5" %>
-  </div>
+  <%= form.input :max_budget, hint: "The maxmimun budget should be in Ethiopian birr" %>
 
-  <%= form.input :fund, collection: ["Internal", "External"] %>
-  <%= form.input :gender, collection: ["Female", "Male"], as: :check_boxes %>
+  <%= form.input :fund_source, as: :radio_buttons, collection: ResearchType.fund_sources.keys, checked: ResearchType.fund_sources.first %>
+  <%= form.input :gender, label: "Gender allowed", as: :radio_buttons, collection: ResearchType.genders.keys, checked: ResearchType.genders[2] %>
+
+  <%= form.input :min_researcher, label: "Minimum researcher" %>
+  <%= form.input :max_duration, label: "Maximum duration", hint: "The maximum project duration in years" %>
+  <%= form.input :possible_extension, hint: "Possible extension depending on the project nature in years" %>
 
   <%= form.button :submit, "Create Research Type" %>
-  <%= link_to 'Back to research types', research_types_path, class: "inline-flex justify-center py-2 px-4 cursor-pointer border border-transparent shadow-sm text-sm font-medium p-2.5 text-black bg-gray-100" %>
+  <%= link_to 'Back to research types', research_types_path, class: "inline-flex justify-center py-2 px-4 cursor-pointer border border-transparent shadow-sm text-sm font-medium p-2.5 text-black bg-gray-200" %>
 
 <% end %>

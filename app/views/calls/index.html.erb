@@ -12,7 +12,7 @@
         <tr
           class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50"
         >
-          <th class="px-4 py-3">#</th>
+          <th class="px-4 py-3">#Code</th>
           <th class="px-4 py-3">Title</th>
           <th class="px-4 py-3">Date</th>
           <th class="px-4 py-3">Deadline</th>
@@ -22,10 +22,10 @@
       <tbody
         class="bg-white divide-y"
       >
-        <% @calls.each_with_index do |research_call, index| %>
+        <% @calls.each_with_index do |research_call| %>
           <tr class="text-gray-700">
             <td class="px-4 py-3 text-sm">  
-              <%= index + 1 %>
+              <%= link_to research_call.code, call_path(research_call.id), class: "whitespace-nowrap text-blue-800" %>
             </td>
             <td class="px-4 py-3 text-sm">
               <%= research_call.title %>

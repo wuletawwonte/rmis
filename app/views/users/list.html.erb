@@ -1,0 +1,64 @@
+
+<h2 class="my-6 text-2xl font-semibold text-gray-700">
+  System Users
+</h2>
+
+
+<div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+  <div class="w-full overflow-x-auto">
+    <table class="w-full whitespace-no-wrap">
+      <thead>
+        <tr
+          class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50"
+        >
+          <th class="px-4 py-3">User</th>
+          <th class="px-4 py-3">Sex</th>
+          <th class="px-4 py-3">Role</th>
+          <th class="px-4 py-3">Date</th>
+          <th class="px-4 py-3">Actions</th>
+        </tr>
+      </thead>
+      <tbody
+        class="bg-white divide-y"
+      >
+      <% @users.each do |user| %>
+        <tr class="text-gray-700">
+          <td class="px-4 py-3">
+            <div class="flex items-center text-sm gap-2">
+              <!-- Avatar with inset shadow -->
+
+              <div class="inline-flex overflow-hidden relative justify-center items-center w-10 h-10 bg-gray-200 rounded-full">
+                  <span class="font-medium text-gray-700"><%= user.initials %></span>
+              </div>
+              
+              <div>
+                <p class="font-semibold"><%= "#{user.first_name} #{user.middle_name}" %></p>
+                <p class="text-xs text-gray-600">
+                  <%= user.email %>
+                </p>
+              </div>
+            </div>
+          </td>
+          <td class="px-4 py-3 text-sm">
+            <%= User.sexes.key(user.read_attribute_before_type_cast(:sex)) %>
+          </td>
+          <td class="px-4 py-3 text-xs">
+            <span class="px-2 py-1 font-semibold leading-tight text-<% if user.role == "admin" then %>green<% else %>gray<% end %>-700 bg-<% if user.role == "admin" then %>green<% else %>gray<% end %>-100 rounded-full">
+              <%= user.role %>
+            </span>
+          </td>
+          <td class="px-4 py-3 text-sm">
+            <%= user.created_at.strftime('%b %-d, %Y') %>
+          </td>
+          <td>
+            <%= link_to "show", user_path(user) %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    
+    <%= paginate @users %>
+
+  </div>
+</div>
