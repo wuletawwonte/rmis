@@ -2,6 +2,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :documents
   get 'subscribers/index'
   post 'subscribers/create', to: 'subscribers#create'
   get 'subscribers/edit/:id', to: 'subscribers#update', as: "toggle_subscriber"
