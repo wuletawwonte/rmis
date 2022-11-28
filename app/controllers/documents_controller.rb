@@ -1,8 +1,15 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, only: %i[list]
+  layout 'login', only: %i[list]
 
   # GET /documents or /documents.json
   def index
+    @documents = Document.order(created_at: :desc).page params[:page]
+  end
+
+  # GET /documents for unauthenticated users
+  def list
     @documents = Document.order(created_at: :desc).page params[:page]
   end
 
