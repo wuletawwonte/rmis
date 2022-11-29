@@ -5,7 +5,7 @@ class MembersController < ApplicationController
     @member.status = Member.statuses[:envited];
     
     if @member.save
-      redirect_to proposals_path, notice: 'Member successfully added.'
+      render partial: "proposals/members", locals: { members: Member.all }
     else 
       redirect_to proposals_path, notice: 'unable to add Member.'
     end
