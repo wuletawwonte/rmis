@@ -30,7 +30,7 @@
   <h4 class="mb-4 text-lg font-semibold text-gray-600">Envite Researchers to the Proposal</h4>
 
   <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md">
-    <%= form_with(url: search_researchers_path, method: :get, data: { turbo_frame: "researchers" }) do |f| %>
+    <%= form_with(url: search_researchers_path, method: :get, data: { turbo_frame: "researchers" }, html: { autocomplete: "off"}) do |f| %>
       
       <div class="relative text-gray-500 focus-within:text-purple-600 mb-6">
         <%= f.search_field :key, class: "block w-full pr-20 mt-1 text-sm text-black focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input  rounded-3xl", placeholder: "Search researcher ..." %>
