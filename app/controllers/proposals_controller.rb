@@ -34,6 +34,14 @@ class ProposalsController < ApplicationController
     render(partial: 'researchers', locals: { researchers: @researchers, key: })
   end
 
+  def search_researchers
+    if params['key'].present?
+      @researchers = User.where('first_name LIKE :search', search: "%#{key}%").limit(3)
+    else
+      @researchers = User.all
+    end
+  end
+
   private
 
   def proposal_params

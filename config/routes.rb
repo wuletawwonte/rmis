@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   delete '/users/sign_out', to: 'users#sign_out'
   get '/users', to: redirect('/users/sign_up')
   get 'public/documents/list', to: 'documents#list', as: "documents_list"
+  get 'search/researcher', to: 'proposals#search_researchers', as: "search_researchers"
 
   resources :calls do
     get '/page/:page', action: :index, on: :collection
