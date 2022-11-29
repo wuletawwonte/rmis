@@ -15,6 +15,6 @@ class Proposal < ApplicationRecord
 
   private 
     def add_pi
-      self.members.create(user: self.user, proposal: self, role: Member.role.principal_investigator, status: 0)
+      self.members.create(user: self.user, proposal: self, role: Member.role.principal_investigator, status: Member.status.joined )
     end
 end
