@@ -4,8 +4,8 @@
       <tr
         class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50"
       >
-        <th class="px-4 py-3">Researcher</th>
-        <th class="px-4 py-3  grid justify-items-end">Actions</th>
+        <th class="px-4 py-2">Researcher</th>
+        <th class="px-4 py-2  grid justify-items-end">Actions</th>
       </tr>
     </thead>
     <tbody
@@ -13,12 +13,10 @@
     >
       <% researchers.each do |researcher| %>
         <tr class="text-gray-700">
-          <td class="px-4 py-3">
+          <td class="px-4 py-2">
             <div class="flex items-center text-sm">
               <!-- Avatar with inset shadow -->
-              <div
-                class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-              >
+              <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
                 <img
                   class="object-cover w-full h-full rounded-full"
                   src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
@@ -40,9 +38,9 @@
 
           </td>
 
-          <td class="px-4 py-3 grid justify-items-end">
-            <div class="space-x-4 text-sm">
-              <%= link_to "Envite", proposal_members_path(researcher.id), method: :post, class: "bg-blue-500 hover:bg-blue-400 text-white font-bold pt-2 pb-1 px-4 border-b-4 border-blue-700 hover:border-blue-500" %>
+          <td class="px-4 py-2 grid justify-items-end">
+            <div class="space-x-4 text-sm flex align-center">
+              <%= button_to "Envite", proposal_members_path(@proposal, user_id: researcher.id), data: { turbo_frame: "_top"}, class: "bg-blue-500 hover:bg-blue-400 text-white font-bold pt-2 pb-1 px-4 border-b-4 border-blue-700 hover:border-blue-500" %>
             </div>
           </td>
         </tr>
