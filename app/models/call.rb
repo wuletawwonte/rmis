@@ -8,7 +8,7 @@ class Call < ApplicationRecord
 
   private
 
-  def add_code
-    self.code = "#{SecureRandom.hex(4)}-#{DateTime.now.year}"
-  end
+    def add_code
+      self.code = "#{SecureRandom.hex(4)}-#{DateTime.now.year}"
+    end
 end
