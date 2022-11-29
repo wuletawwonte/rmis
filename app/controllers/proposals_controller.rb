@@ -24,21 +24,21 @@ class ProposalsController < ApplicationController
   def show
     @proposal = Proposal.includes(:user).find(params['id'])
     @members = Member.where(proposal_id: params['id']).includes(:user)
-    @researchers = User.all
+    @researchers = User.all.limit(3)
     @member = Member.new
-  end
-
-  def edit
-    key = params['key']
-    @researchers = User.where('first_name LIKE :search', search: "%#{key}%").limit(3)
-    render(partial: 'researchers', locals: { researchers: @researchers, key: })
   end
 
   def search_researchers
     if params['key'].present?
-      @researchers = User.where('first_name LIKE :search', search: "%#{key}%").limit(3)
+      @researchers = User.where('first_name LIKE :search OR middle_name LIKE :search OR last_name LIKE :search', search: "%#{params["key"]}%")
     else
       @researchers = User.all
+    end
+
+    if turbo_frame_request?
+      render partial: "researchers", locals: { researchers: @researchers }
+    else
+      render :show
     end
   end
 

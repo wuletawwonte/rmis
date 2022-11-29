@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :themes, only: %i[index show create new edit destroy]
   resources :research_centers, only: %i[index show create new edit destroy]
-  resources :proposals, only: %i[index show new create edit destroy]
+  resources :proposals, only: %i[index show new create destroy]
   
   get 'members/create'
   get '/users/list', to: 'users#list', as: "users_list"
