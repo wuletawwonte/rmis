@@ -31,7 +31,7 @@
                 ></div>
               </div>
               <div>
-                <p class="font-semibold"><%= "#{researcher.first_name} #{researcher.middle_name}" %></p>
+                <p class="font-semibold"><%= researcher.full_name %></p>
                 <p class="text-xs text-gray-600">
                   <%= researcher.email %>
                 </p>
@@ -42,7 +42,7 @@
 
           <td class="px-4 py-3 grid justify-items-end">
             <div class="space-x-4 text-sm">
-              <%= link_to "Envite", proposal_path(researcher.id), class: "bg-blue-500 hover:bg-blue-400 text-white font-bold pt-2 pb-1 px-4 border-b-4 border-blue-700 hover:border-blue-500" %>
+              <%= link_to "Envite", proposal_members_path(researcher.id), method: :post, class: "bg-blue-500 hover:bg-blue-400 text-white font-bold pt-2 pb-1 px-4 border-b-4 border-blue-700 hover:border-blue-500" %>
             </div>
           </td>
         </tr>

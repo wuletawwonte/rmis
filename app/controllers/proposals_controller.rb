@@ -25,7 +25,6 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.includes(:user).find(params['id'])
     @members = Member.where(proposal_id: params['id']).includes(:user)
     @researchers = User.all.page(params[:page]).per(params[:per]).max_paginates_per(4)
-    @member = Member.new
   end
 
   def search_researchers
