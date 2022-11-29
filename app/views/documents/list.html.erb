@@ -3,7 +3,7 @@
     <div class="px-4 sm:px-6 md:px-8 mt-8">
         <div class="max-w-3xl mx-auto pb-28">
             <div class="mb-8 border-b border-gray-200 md:pb-2">
-              <h1 class="inline-block mb-2 text-slate-900 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">Important documents</h1>
+              <h1 class="inline-block mb-2 text-slate-900 text-3xl font-extrabold tracking-tight text-gray-900">Important documents</h1>
             </div>
             <main>
               <ul class="divide-y divide-gray-200 dark:divide-gray-700">
@@ -12,14 +12,14 @@
                   <li class="pb-3 sm:pb-4">
                       <div class="flex items-center space-x-4">
                         <div class="flex-shrink-0">
-                          <%= fa_icon "file 2x" %>
+                          <%= document_icon %>
                         </div>
                         <div class="flex-1 min-w-0">
                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
                               <%= document.title %>
                             </p>
                             <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                              email@flowbite.com
+                              <%= document.attachement.identifier %>
                             </p>
                         </div>
                         <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
