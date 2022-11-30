@@ -1,12 +1,12 @@
 class MembersController < ApplicationController
   def create
+    @proposal = Proposal.find_by_id(member_params['proposal_id'])
     @member = Member.new(member_params);
     @member.role = Member.roles[:co_investigator];
     @member.status = Member.statuses[:envited];
     
     if @member.save
-      @researchers = Member.where(proposal_id: member_params[:proposal_id]).page(params[:page]).per(params[:per]).max_paginates_per(4)
-      render partial: "proposals/members", locals: { members: @researchers }
+      redirect_to proposal_path(@proposal), notice: "Member envited successfully"   
     else 
       redirect_to proposals_path, notice: 'unable to add Member.'
     end
