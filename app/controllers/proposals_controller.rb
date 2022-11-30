@@ -23,19 +23,24 @@ class ProposalsController < ApplicationController
 
   def show
     @proposal = Proposal.includes(:user).find(params['id'])
-    @members = Member.where(proposal_id: params['id']).includes(:user)
-    @researchers = User.all.page(params[:page]).per(params[:per]).max_paginates_per(4)
+    @members = Member.where(proposal_id: params['id']).includes(:user).page(params[:page]).per(params[:per]).max_paginates_per(4)
+    @member_ids = Member.researcher_ids params['id']
+    @researchers = User.where.not(id: @member_ids).page(params[:page]).per(params[:per]).max_paginates_per(4)
   end
 
   def search_researchers
+    @proposal = Proposal.find_by_id(params['proposal_id']);
+    @member_ids = Member.researcher_ids @proposal.id
+    @researchers = User.where.not(id: @member_ids)
+
     if params['key'].present?
-      @researchers = User.where('first_name LIKE :search OR middle_name LIKE :search OR last_name LIKE :search', search: "%#{params["key"]}%").page(params[:page]).max_paginates_per(4)
+      @researchers = @researchers.where('first_name LIKE :search OR middle_name LIKE :search OR last_name LIKE :search', search: "%#{params["key"]}%").page(params[:page]).max_paginates_per(4)
     else
-      @researchers = User.all.page(params[:page]).per(params[:per]).max_paginates_per(4)
+      @researchers = @researchers.page(params[:page]).per(params[:per]).max_paginates_per(4)
     end
 
     if turbo_frame_request?
-      render partial: "researchers", locals: { researchers: @researchers }
+      render partial: "researchers", locals: { researchers: @researchers, proposal: @proposal } 
     else
       render :show
     end
@@ -44,10 +49,10 @@ class ProposalsController < ApplicationController
   private
 
     def proposal_params
-      params.require(:proposal).permit(:title, :attachement, :abstract, :call_id, :theme_id, :research_type_id, :budget)
+      params.require(:proposal).permit(:id, :title, :attachement, :abstract, :call_id, :theme_id, :research_type_id, :budget)
     end
 
     def member_params
-      params.require(:proposal).permit(:key)
+      params.permit(:key, :proposal_id)
     end
 end

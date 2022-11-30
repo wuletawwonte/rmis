@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :research_centers, only: %i[index show create new edit destroy]
 
   resources :proposals, only: %i[index show new create destroy] do
-    resources :members, only: %i[ index create ]
+    resources :members, only: %i[ create ]
   end
   
   get '/users/list', to: 'users#list', as: "users_list"
