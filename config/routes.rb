@@ -2,6 +2,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :departments
   resources :education_levels
   resources :academic_ranks
   resources :documents
