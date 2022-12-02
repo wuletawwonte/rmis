@@ -2,6 +2,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :academic_ranks
   resources :documents
   get 'subscribers/index'
   post 'subscribers/create', to: 'subscribers#create'
