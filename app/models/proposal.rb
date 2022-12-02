@@ -13,8 +13,10 @@ class Proposal < ApplicationRecord
   has_many :members
   has_many :users, through: :members
 
-  private 
-    def add_pi
-      self.members.create(user: self.user, proposal: self, role: Member.roles[:principal_investigator], status: Member.statuses[:joined] )
-    end
+  private
+
+  def add_pi
+    members.create(user:, proposal: self, role: Member.roles[:principal_investigator],
+                   status: Member.statuses[:joined])
+  end
 end
