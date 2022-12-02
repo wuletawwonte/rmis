@@ -1,8 +1,8 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing education level</h1>
+<h2 class="my-6 text-2xl font-semibold text-gray-700">Editing education levels</h2>
+
+<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md">
 
   <%= render "form", education_level: @education_level %>
 
-  <%= link_to "Show this education level", @education_level, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to education levels", education_levels_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to "Show this education level", @education_level, class: "mt-2 py-2 px-5 bg-gray-200 inline-block font-medium" %>
 </div>
