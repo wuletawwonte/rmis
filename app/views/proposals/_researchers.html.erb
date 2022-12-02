@@ -41,6 +41,7 @@
 
           <td class="px-4 py-2 grid justify-items-end">
             <div class="space-x-4 text-sm flex align-center">
+              <button type="button" x-on:click="openModal">Test</button>
               <%= button_to "Envite", proposal_members_path(@proposal, user_id: researcher.id), method: :post, data: { turbo_frame: "_top"}, class: "bg-blue-500 hover:bg-blue-400 text-white font-bold pt-2 pb-1 px-4 border-b-4 border-blue-700 hover:border-blue-500" %>
             </div>
           </td>
