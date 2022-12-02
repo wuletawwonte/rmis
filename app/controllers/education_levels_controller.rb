@@ -3,7 +3,7 @@ class EducationLevelsController < ApplicationController
 
   # GET /education_levels or /education_levels.json
   def index
-    @education_levels = EducationLevel.all
+    @education_levels = EducationLevel.all.page params[:page]
   end
 
   # GET /education_levels/1 or /education_levels/1.json

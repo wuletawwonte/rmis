@@ -1,4 +1,4 @@
-<%= form_with(model: education_level, class: "contents") do |form| %>
+<%= simple_form_for education_level, class: "contents" do |form| %>
   <% if education_level.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(education_level.errors.count, "error") %> prohibited this education_level from being saved:</h2>
@@ -11,17 +11,10 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <%= form.input :name %>
 
-  <div class="my-5">
-    <%= form.label :order_key %>
-    <%= form.number_field :order_key, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <%= form.button :submit %>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
+  <%= link_to 'Back to education levels', education_levels_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+
 <% end %>
