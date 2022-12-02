@@ -3,7 +3,7 @@ class AcademicRanksController < ApplicationController
 
   # GET /academic_ranks or /academic_ranks.json
   def index
-    @academic_ranks = AcademicRank.all
+    @academic_ranks = AcademicRank.all.page params[:page]
   end
 
   # GET /academic_ranks/1 or /academic_ranks/1.json
