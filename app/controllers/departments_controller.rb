@@ -3,7 +3,7 @@ class DepartmentsController < ApplicationController
 
   # GET /departments or /departments.json
   def index
-    @departments = Department.all
+    @departments = Department.all.page params[:page]
   end
 
   # GET /departments/1 or /departments/1.json
