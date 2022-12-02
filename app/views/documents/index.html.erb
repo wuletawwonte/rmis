@@ -1,0 +1,51 @@
+<h2 class="my-6 text-2xl font-semibold text-gray-700">Public Documents</h2>
+
+<div class="pb-2 w-full flex justify-end">
+  <%= link_to 'New Document', new_document_path, class: "rounded-lg py-2 px-5 bg-purple-600 text-white block font-medium" %>
+</div>
+
+
+<div class="w-full overflow-hidden rounded-lg shadow-xs">
+  <div class="w-full overflow-x-auto">
+    <table class="w-full whitespace-no-wrap">
+      <thead>
+        <tr
+          class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50"
+        >
+          <th class="px-4 py-3">#</th>
+          <th class="px-4 py-3">Title</th>
+          <th class="px-4 py-3">Attachement</th>
+          <th class="px-4 py-3">Actions</th>
+        </tr>
+      </thead>
+      <tbody
+        class="bg-white divide-y"
+      >
+        <% @documents.each_with_index do |document, index| %>
+          <tr class="text-gray-700">
+            <td class="px-4 py-3 text-sm">  
+              <%= link_to index+1, document_path(document.id), class: "whitespace-nowrap text-blue-800" %>
+            </td>
+            <td class="px-4 py-3 text-sm">
+              <%= document.title %>
+            </td>
+            <td class="px-4 py-3 text-sm">
+              <%= link_to "Download", document.attachement.url %>
+            </td>
+            <td class="px-4 py-3">
+              <div class="flex items-center space-x-4 text-sm">
+                <%= link_to "Show", document %>
+                <%= link_to "Edit", edit_document_path(document)%>
+              </div>
+            </td>
+          </tr>
+
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= paginate @documents %>
+
+</div>
+

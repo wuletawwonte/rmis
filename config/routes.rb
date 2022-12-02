@@ -2,6 +2,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :documents
   get 'subscribers/index'
   post 'subscribers/create', to: 'subscribers#create'
   get 'subscribers/edit/:id', to: 'subscribers#update', as: "toggle_subscriber"
@@ -13,13 +14,17 @@ Rails.application.routes.draw do
   devise_for :users
   resources :themes, only: %i[index show create new edit destroy]
   resources :research_centers, only: %i[index show create new edit destroy]
-  resources :proposals, only: %i[index show new create edit destroy]
+
+  resources :proposals, only: %i[index show new create destroy] do
+    resources :members, only: %i[ create ]
+  end
   
-  get 'members/create'
   get '/users/list', to: 'users#list', as: "users_list"
   get '/users/:id', to: 'users#show', as: "user"
   delete '/users/sign_out', to: 'users#sign_out'
   get '/users', to: redirect('/users/sign_up')
+  get 'public/documents/list', to: 'documents#list', as: "documents_list"
+  get 'search/researcher', to: 'proposals#search_researchers', as: "search_researchers"
 
   resources :calls do
     get '/page/:page', action: :index, on: :collection

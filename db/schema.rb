@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_25_101830) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_141307) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,13 +64,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_25_101830) do
     t.index ["user_id"], name: "index_calls_on_user_id"
   end
 
+  create_table "documents", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.bigint "user_id", null: false
+    t.string "attachement"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_documents_on_user_id"
+  end
+
   create_table "members", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "proposal_id", null: false
-    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status"
+    t.integer "role", default: 0
+    t.integer "status", default: 0
     t.index ["proposal_id"], name: "index_members_on_proposal_id"
     t.index ["user_id"], name: "index_members_on_user_id"
   end
@@ -79,14 +89,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_25_101830) do
     t.bigint "user_id", null: false
     t.string "title"
     t.string "attachement"
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "abstract"
     t.bigint "research_type_id", null: false
     t.bigint "call_id"
+    t.integer "status", default: 0
+    t.integer "budget"
+    t.bigint "theme_id", null: false
     t.index ["call_id"], name: "index_proposals_on_call_id"
     t.index ["research_type_id"], name: "index_proposals_on_research_type_id"
+    t.index ["theme_id"], name: "index_proposals_on_theme_id"
     t.index ["user_id"], name: "index_proposals_on_user_id"
   end
 
@@ -150,10 +163,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_25_101830) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "calls", "users"
+  add_foreign_key "documents", "users"
   add_foreign_key "members", "proposals"
   add_foreign_key "members", "users"
   add_foreign_key "proposals", "calls"
   add_foreign_key "proposals", "research_types"
+  add_foreign_key "proposals", "themes"
   add_foreign_key "proposals", "users"
   add_foreign_key "themes", "research_centers"
   add_foreign_key "themes", "users"

@@ -11,9 +11,8 @@
         <tr
           class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50"
         >
-          <th class="px-4 py-3">Researcher</th>
+          <th class="px-4 py-3">PI</th>
           <th class="px-4 py-3">Title</th>
-          <th class="px-4 py-3">Proposal</th>
           <th class="px-4 py-3">Status</th>
           <th class="px-4 py-3">Date</th>
           <th class="px-4 py-3">Actions</th>
@@ -42,9 +41,9 @@
                   ></div>
                 </div>
                 <div>
-                  <p class="font-semibold"><%= "#{proposal.user.first_name} #{proposal.user.middle_name}" %></p>
+                  <p class="font-semibold"><%= proposal.user.full_name %></p>
                   <p class="text-xs text-gray-600">
-                    PI
+                    <%= proposal.user.email %>
                   </p>
                 </div>
               </div>
@@ -52,9 +51,6 @@
             </td>
             <td class="px-4 py-3 text-sm">
               <%= link_to proposal.title, proposal_path(proposal.id) %>
-            </td>
-            <td class="px-4 py-3 text-sm">
-              <%= link_to fa_icon("download", text: "Download"), proposal.attachement_url %>
             </td>
             <td class="px-4 py-3 text-xs">
               <%= content_tag(:span, proposal.status, class: "px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full") %>
@@ -64,8 +60,9 @@
             </td>
             <td class="px-4 py-3">
               <div class="flex items-center space-x-4 text-sm">
-                <%= link_to fa_icon('edit 2x'), proposal_path(proposal.id), html: { class: "flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray" } %>
-                <%= button_to fa_icon('trash 2x'), proposal_path(proposal.id), method: :destroy, html: { class: "flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray" } %>
+                <%= link_to fa_icon("download 2x"), proposal.attachement_url, class: "py-2 text-sm text-blue-600 rounded-lg focus:outline-none focus:shadow-outline-gray" %>
+                <%= link_to fa_icon('edit 2x'), proposal_path(proposal.id), class: "py-2 text-sm text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray" %>
+                <%= button_to fa_icon('trash 2x'), proposal_path(proposal.id), method: :destroy, class: "py-2 text-sm text-red-600 rounded-lg focus:outline-none focus:shadow-outline-gray" %>
               </div>
             </td>
           </tr>

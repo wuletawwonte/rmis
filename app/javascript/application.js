@@ -4,8 +4,6 @@ import 'controllers';
 import 'trix';
 import '@rails/actiontext';
 
-window.Alpine.start();
-
 const subscribersCheckboxs = document.querySelectorAll('.subscriber-checkbox');
 
 subscribersCheckboxs.forEach((item) => {

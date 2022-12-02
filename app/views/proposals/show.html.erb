@@ -27,79 +27,28 @@
     </div>
   </div>
 
-  <h4 class="mb-4 text-lg font-semibold text-gray-600">Add member Turbo Frame</h4>
-  <%= render "researchers", researchers: @researchers %>
+  <h4 class="mb-4 text-lg font-semibold text-gray-600">Envite Researchers to the Proposal</h4>
+
+  <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md">
+    <%= form_with(url: search_researchers_path, method: :get, data: { turbo_frame: "researchers" }, html: { autocomplete: "off"}) do |f| %>
+      <%= f.hidden_field :proposal_id, value: @proposal.id %>
+      <div class="relative text-gray-500 focus-within:text-purple-600 mb-6">
+        <%= f.search_field :key, class: "block w-full pr-20 mt-1 text-sm text-black focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input  rounded-3xl", placeholder: "Search researcher ..." %>
+        <%= f.submit "Search", :class => "cursor-pointer absolute inset-y-0 right-0 px-4 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple rounded-r-3xl" %>
+      </div>
+
+    <% end %>
+
+    <%= render "researchers", researchers: @researchers %>
+
+  </div>
 
   <h4 class="mb-4 text-lg font-semibold text-gray-600">Members</h4>
 
   <div class="w-full overflow-x-auto">
-    <table class="w-full whitespace-no-wrap">
-      <thead>
-        <tr
-          class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50"
-        >
-          <th class="px-4 py-3">Researcher</th>
-          <th class="px-4 py-3">Role</th>
-          <th class="px-4 py-3">Status</th>
-          <th class="px-4 py-3">Date</th>
-          <th class="px-4 py-3">Actions</th>
-        </tr>
-      </thead>
-      <tbody
-        class="bg-white divide-y"
-      >
-        <% @members.each do |member| %>
-          <tr class="text-gray-700">
-            <td class="px-4 py-3">
-              <div class="flex items-center text-sm">
-                <!-- Avatar with inset shadow -->
-                <div
-                  class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                >
-                  <img
-                    class="object-cover w-full h-full rounded-full"
-                    src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-                    alt=""
-                    loading="lazy"
-                  />
-                  <div
-                    class="absolute inset-0 rounded-full shadow-inner"
-                    aria-hidden="true"
-                  ></div>
-                </div>
-                <div>
-                  <p class="font-semibold"><%= "#{member.user.first_name} #{member.user.middle_name}" %></p>
-                  <p class="text-xs text-gray-600">
-                    <%= member.role %>
-                  </p>
-                </div>
-              </div>
-
-            </td>
-            <td class="px-4 py-3 text-xs">
-              <%= content_tag(:span, member.role, class: "px-2 py-1 font-semibold leading-tight text-gray-700 bg-gray-100 rounded-full") %>
-            </td>
-
-            <td class="px-4 py-3 text-xs">
-              <%= content_tag(:span, member.status, class: "px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full") %>
-            </td>
-
-            <td class="px-4 py-3 text-sm">
-              <%= member.created_at.to_date %>
-            </td>
-
-            <td class="px-4 py-3">
-              <div class="flex items-center space-x-4 text-sm">
-                <%= link_to fa_icon('edit 2x'), proposal_path(member.id), html: { class: "flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray" } %>
-                <%= button_to fa_icon('trash 2x'), proposal_path(member.id), method: :destroy, html: { class: "flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray" } %>
-              </div>
-            </td>
-          </tr>
-
-        <% end %>
-
-      </tbody>
-    </table>
+    <%= render "members", members: @members %>
   </div>
 
 </div>
+
+<%= render "modal" %>
