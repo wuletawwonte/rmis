@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :members, only: %i[ create ]
   end
   
+  get '/my_profile', to: 'users#my_profile', as: "user_profile"
   get '/users/list', to: 'users#list', as: "users_list"
   get '/users/:id', to: 'users#show', as: "user"
   delete '/users/sign_out', to: 'users#sign_out'

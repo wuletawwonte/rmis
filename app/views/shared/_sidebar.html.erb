@@ -133,6 +133,15 @@
         <span class="ml-4">Settings</span>
       <% end %>
     </li>
+    <li class="relative px-6 py-2">
+      <% if current_page?(user_profile_path) %>
+        <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
+      <% end %>
+      <%= link_to user_profile_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if  request.fullpath.start_with?(user_profile_path)}" do %>
+        <%= fa_icon "user" %>
+        <span class="ml-4">My Profile</span>
+      <% end %>
+    </li>
   </ul>
   <div class="px-6 my-6">
     <%= link_to new_proposal_path, class: "flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple" do %>

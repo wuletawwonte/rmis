@@ -13,6 +13,10 @@ class UsersController < ApplicationController
 
   def show; end
 
+  def my_profile
+    @user = User.find_by_id(current_user.id)
+  end
+
   private
 
   def set_user
