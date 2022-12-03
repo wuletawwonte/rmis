@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  phone_number: MyString
+  id_number: MyString
+  academic_rank: one
+  about: MyText
+  prefix: MyString
+  faculty: one
+
+two:
+  phone_number: MyString
+  id_number: MyString
+  academic_rank: two
+  about: MyText
+  prefix: MyString
+  faculty: two

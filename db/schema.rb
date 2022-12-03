@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_03_130952) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_03_135744) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -115,6 +115,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_130952) do
     t.index ["user_id"], name: "index_members_on_user_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.string "phone_number"
+    t.string "id_number"
+    t.bigint "academic_rank_id"
+    t.text "about"
+    t.string "prefix"
+    t.bigint "faculty_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["academic_rank_id"], name: "index_profiles_on_academic_rank_id"
+    t.index ["faculty_id"], name: "index_profiles_on_faculty_id"
+  end
+
   create_table "proposals", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title"
@@ -196,6 +209,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_130952) do
   add_foreign_key "documents", "users"
   add_foreign_key "members", "proposals"
   add_foreign_key "members", "users"
+  add_foreign_key "profiles", "academic_ranks"
+  add_foreign_key "profiles", "faculties"
   add_foreign_key "proposals", "calls"
   add_foreign_key "proposals", "research_types"
   add_foreign_key "proposals", "themes"
