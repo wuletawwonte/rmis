@@ -1,7 +1,7 @@
-<div class="py-4 text-gray-500">
-  <%= link_to "RMIS", root_path , class: "ml-6 text-lg font-bold text-gray-800"%>
+<div class="pt-4 pb-4 text-gray-500">
+  <%= link_to "AMU-RMIS", root_path , class: "ml-6 text-xl font-bold text-purple-800"%>
   <ul class="mt-6">
-    <li class="relative px-6 py-3">
+    <li class="relative px-6 py-2">
       <% if current_page?(root_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", "aria-hidden" => true ) %>
       <% end %>
@@ -12,7 +12,7 @@
     </li>
   </ul>
   <ul>
-    <li class="relative px-6 py-3">
+    <li class="relative px-6 py-2">
       <% if request.fullpath.start_with?(users_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
@@ -21,7 +21,7 @@
         <span class="ml-4">Users</span>
       <% end %>
     </li>
-    <li class="relative px-6 py-3">
+    <li class="relative px-6 py-2">
       <% if request.fullpath.start_with?(proposals_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
@@ -30,7 +30,7 @@
         <span class="ml-4">Proposals</span>
       <% end %>
     </li>
-    <li class="relative px-6 py-3">
+    <li class="relative px-6 py-2">
       <% if request.fullpath.start_with?(research_types_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
@@ -39,7 +39,7 @@
         <span class="ml-4">Research Types</span>
       <% end %>
     </li>
-    <li class="relative px-6 py-3">
+    <li class="relative px-6 py-2">
       <% if request.fullpath.start_with?(research_centers_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
@@ -48,7 +48,7 @@
         <span class="ml-4">Research Centers</span>
       <% end %>
     </li>
-    <li class="relative px-6 py-3">
+    <li class="relative px-6 py-2">
       <% if request.fullpath.start_with?(themes_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
@@ -57,7 +57,7 @@
         <span class="ml-4">Thematic Areas</span>
       <% end %>
     </li>
-    <li class="relative px-6 py-3">
+    <li class="relative px-6 py-2">
       <% if request.fullpath.start_with?(calls_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
@@ -66,7 +66,7 @@
         <span class="ml-4">Call Management</span>
       <% end %>
     </li>
-    <li class="relative px-6 py-3">
+    <li class="relative px-6 py-2">
       <% if request.fullpath.start_with?(subscribers_index_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
@@ -75,7 +75,7 @@
         <span class="ml-4">Subscribers</span>
       <% end %>
     </li>
-    <li class="relative px-6 py-3">
+    <li class="relative px-6 py-2">
       <% if request.fullpath.start_with?(documents_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
@@ -86,7 +86,7 @@
     </li>
   </ul>
   <ul class="pt-2 mt-2 space-y-2 border-t border-gray-200 dark:border-gray-700">
-    <li class="relative px-6 py-3">
+    <li class="relative px-6 py-2">
       <% if request.fullpath.start_with?(academic_ranks_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
@@ -95,7 +95,7 @@
         <span class="ml-4">Academic Ranks</span>
       <% end %>
     </li>
-    <li class="relative px-6 py-3">
+    <li class="relative px-6 py-2">
       <% if request.fullpath.start_with?(education_levels_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
@@ -104,7 +104,7 @@
         <span class="ml-4">Education Level</span>
       <% end %>
     </li>
-    <li class="relative px-6 py-3">
+    <li class="relative px-6 py-2">
       <% if request.fullpath.start_with?(departments_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
@@ -115,7 +115,7 @@
     </li>
   </ul>
   <ul class="pt-2 mt-2 space-y-2 border-t border-gray-200 dark:border-gray-700">
-    <li class="relative px-6 py-3">
+    <li class="relative px-6 py-2">
       <% if request.fullpath.start_with?(documents_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
