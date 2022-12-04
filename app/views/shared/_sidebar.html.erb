@@ -12,15 +12,17 @@
     </li>
   </ul>
   <ul>
-    <li class="relative px-6 py-2">
-      <% if current_page?(users_list_path) %>
-        <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
-      <% end %>
-      <%= link_to users_list_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if current_page?(users_list_path)}" do %>
-        <%= fa_icon "users" %>
-        <span class="ml-4">Users</span>
-      <% end %>
-    </li>
+    <% if can? :read, User %>
+      <li class="relative px-6 py-2">
+        <% if current_page?(users_list_path) %>
+          <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
+        <% end %>
+        <%= link_to users_list_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if current_page?(users_list_path)}" do %>
+          <%= fa_icon "users" %>
+          <span class="ml-4">Users</span>
+        <% end %>
+      </li>
+    <% end %>
     <li class="relative px-6 py-2">
       <% if request.fullpath.start_with?(proposals_path) %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
@@ -84,44 +86,54 @@
         <span class="ml-4">Public Documents</span>
       <% end %>
     </li>
-  </ul>
-  <ul class="pt-2 mt-2 space-y-2 border-t border-gray-200 dark:border-gray-700">
-    <li class="relative px-6 py-2">
-      <% if request.fullpath.start_with?(academic_ranks_path) %>
-        <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
-      <% end %>
-      <%= link_to academic_ranks_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if  request.fullpath.start_with?(academic_ranks_path)}" do %>
-        <%= fa_icon "book" %>
-        <span class="ml-4">Academic Ranks</span>
-      <% end %>
-    </li>
-    <li class="relative px-6 py-2">
-      <% if request.fullpath.start_with?(education_levels_path) %>
-        <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
-      <% end %>
-      <%= link_to education_levels_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if  request.fullpath.start_with?(education_levels_path)}" do %>
-        <%= fa_icon "graduation-cap" %>
-        <span class="ml-4">Education Level</span>
-      <% end %>
-    </li>
-    <li class="relative px-6 py-2">
-      <% if request.fullpath.start_with?(departments_path) %>
-        <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
-      <% end %>
-      <%= link_to departments_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if  request.fullpath.start_with?(departments_path)}" do %>
-        <%= fa_icon "building" %>
-        <span class="ml-4">Departments</span>
-      <% end %>
-    </li>
-    <li class="relative px-6 py-2">
-      <% if request.fullpath.start_with?(faculties_path) %>
-        <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
-      <% end %>
-      <%= link_to faculties_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if  request.fullpath.start_with?(faculties_path)}" do %>
-        <%= fa_icon "building" %>
-        <span class="ml-4">Faculties</span>
-      <% end %>
-    </li>
+    <% if can? :read, AcademicRank %>
+      <li class="relative px-6 py-2 mt-2 border-t border-gray-200">
+        <% if request.fullpath.start_with?(academic_ranks_path) %>
+          <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
+        <% end %>
+        <%= link_to academic_ranks_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if  request.fullpath.start_with?(academic_ranks_path)}" do %>
+          <%= fa_icon "book" %>
+          <span class="ml-4">Academic Ranks</span>
+        <% end %>
+      </li>
+    <% end %>
+
+    <% if can? :read, AcademicRank %>
+      <li class="relative px-6 py-2">
+        <% if request.fullpath.start_with?(education_levels_path) %>
+          <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
+        <% end %>
+        <%= link_to education_levels_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if  request.fullpath.start_with?(education_levels_path)}" do %>
+          <%= fa_icon "graduation-cap" %>
+          <span class="ml-4">Education Level</span>
+        <% end %>
+      </li>
+    <% end %>
+
+    <% if can? :read, Department %>
+      <li class="relative px-6 py-2">
+        <% if request.fullpath.start_with?(departments_path) %>
+          <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
+        <% end %>
+        <%= link_to departments_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if  request.fullpath.start_with?(departments_path)}" do %>
+          <%= fa_icon "building" %>
+          <span class="ml-4">Departments</span>
+        <% end %>
+      </li>
+    <% end %>
+
+    <% if can? :read, Department %>
+      <li class="relative px-6 py-2">
+        <% if request.fullpath.start_with?(faculties_path) %>
+          <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
+        <% end %>
+        <%= link_to faculties_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if  request.fullpath.start_with?(faculties_path)}" do %>
+          <%= fa_icon "building" %>
+          <span class="ml-4">Faculties</span>
+        <% end %>
+      </li>
+    <% end %>
+
   </ul>
   <ul class="pt-2 mt-2 space-y-2 border-t border-gray-200 dark:border-gray-700">
     <li class="relative px-6 py-2">

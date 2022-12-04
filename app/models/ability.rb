@@ -10,7 +10,6 @@ class Ability
     can :read, Theme
     can :read, ResearchType
     can :read, ResearchCenter
-    can :read, Department
     can :read, Call
     can :read, User
 
