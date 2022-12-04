@@ -1,4 +1,6 @@
 class ThemesController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @themes = Theme.all.includes(:research_center).order(:created_at).page params[:page]
   end

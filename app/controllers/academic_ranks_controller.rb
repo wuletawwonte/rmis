@@ -1,4 +1,5 @@
 class AcademicRanksController < ApplicationController
+  load_and_authorize_resource
   before_action :set_academic_rank, only: %i[ show edit update destroy ]
 
   # GET /academic_ranks or /academic_ranks.json

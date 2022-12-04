@@ -1,4 +1,6 @@
 class ResearchCentersController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @research_centers = ResearchCenter.order(:created_at).page params[:page]
   end
