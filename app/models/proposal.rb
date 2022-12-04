@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: proposals
+#
+#  id               :bigint           not null, primary key
+#  user_id          :bigint           not null
+#  title            :string
+#  attachement      :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  abstract         :text
+#  research_type_id :bigint           not null
+#  call_id          :bigint
+#  status           :integer          default("initialized")
+#  budget           :integer
+#  theme_id         :bigint           not null
+#
 class Proposal < ApplicationRecord
   after_create :add_pi
   mount_uploader :attachement, AttachementUploader
@@ -11,7 +28,7 @@ class Proposal < ApplicationRecord
   validates :attachement, :title, :budget, presence: true
 
   has_many :members
-  has_many :users, through: :members, dependent: :destroy
+  has_many :users, through: :members
 
   private
 
