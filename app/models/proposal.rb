@@ -11,7 +11,7 @@ class Proposal < ApplicationRecord
   validates :attachement, :title, :budget, presence: true
 
   has_many :members
-  has_many :users, through: :members
+  has_many :users, through: :members, dependent: :destroy
 
   private
 

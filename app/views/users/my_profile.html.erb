@@ -34,7 +34,7 @@
             <!-- About Section -->
             <div class="bg-white p-3 shadow-sm rounded-sm">
                 <div class="flex items-center justify-between space-x-2 font-semibold text-gray-900 leading-8">
-                    <span class="tracking-wide">About</span>
+                    <span class="tracking-wide">Account</span>
                     <%= link_to fa_icon('edit 2x'), edit_user_registration_path, class: "flex items-center p-2 text-xs font-medium text-gray-700 bg-white rounded-lg toggle-full-view hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-300 focus:outline-none" %>
                 </div>
                 <div class="text-gray-700">
@@ -63,7 +63,7 @@
                             <div class="px-4 py-2 font-semibold">Permanant Address</div>
                             <div class="px-4 py-2">Arlington Heights, IL, Illinois</div>
                         </div>
-                        <div class="grid grid-cols-2 col-span-2 bg-gray-200">
+                        <div class="grid grid-cols-2 col-span-2 bg-slate-200">
                             <div class="px-4 py-2 font-semibold">Email.</div>
                             <div class="px-4 py-2">
                                 <a class="text-blue-800 text-clip" href="mailto:<%= @user.email %>"><%= @user.email %></a>

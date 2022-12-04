@@ -4,7 +4,7 @@ class SubscribersController < ApplicationController
 
   # GET /subscribers or /subscribers.json
   def index
-    @subscribers = Subscriber.all.order(created_at: :desc).page params[:page]
+    @subscribers = Subscriber.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   # Post /subscribers/create to create a subscriber
