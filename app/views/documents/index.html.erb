@@ -1,7 +1,9 @@
 
 <div class="pb-2 w-full flex justify-between items-center">
   <h2 class="my-6 text-2xl font-semibold text-gray-700">Public Documents</h2>
-  <%= link_to 'New Document', new_document_path, class: "rounded-lg py-2 px-5 bg-purple-600 text-white block font-medium" %>
+  <% if can? :create, Document %>
+    <%= link_to 'New Document', new_document_path, class: "rounded-lg py-2 px-5 bg-purple-600 text-white block font-medium" %>
+  <% end %>
 </div>
 
 

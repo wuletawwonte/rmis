@@ -12,7 +12,7 @@
     </li>
   </ul>
   <ul>
-    <% if can? :read, User %>
+    <% if can? :users_list, User %>
       <li class="relative px-6 py-2">
         <% if current_page?(users_list_path) %>
           <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
@@ -65,7 +65,7 @@
       <% end %>
       <%= link_to calls_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if request.fullpath.start_with?(calls_path) }" do %>
         <%= fa_icon "bullhorn" %>
-        <span class="ml-4">Call Management</span>
+        <span class="ml-4">Call for Research</span>
       <% end %>
     </li>
 
@@ -141,10 +141,10 @@
   </ul>
   <ul class="pt-2 mt-2 space-y-2 border-t border-gray-200 dark:border-gray-700">
     <li class="relative px-6 py-2">
-      <% if request.fullpath.start_with?(documents_path) %>
+      <% if request.fullpath.start_with?("#") %>
         <%= content_tag(:span, "", class: "absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg", aria: 'hidden' ) %>
       <% end %>
-      <%= link_to documents_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if  request.fullpath.start_with?(documents_path)}" do %>
+      <%= link_to documents_path, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 #{'text-gray-800' if  request.fullpath.start_with?("#")}" do %>
         <%= fa_icon "gear" %>
         <span class="ml-4">Settings</span>
       <% end %>
@@ -159,10 +159,12 @@
       <% end %>
     </li>
   </ul>
-  <div class="px-6 my-6">
-    <%= link_to new_proposal_path, class: "flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple" do %>
-      Create proposal
-      <span class="ml-2" aria-hidden="true">+</span>
-    <% end %>
-  </div>
+  <% if can? :create, Proposal %>
+    <div class="px-6 my-6">
+      <%= link_to new_proposal_path, class: "flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple" do %>
+        Create proposal
+        <span class="ml-2" aria-hidden="true">+</span>
+      <% end %>
+    </div>
+  <% end %>
 </div>

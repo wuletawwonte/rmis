@@ -7,6 +7,7 @@ class Ability
     can :list, Call
     can :public_show, Call
     can :list, Document
+    can :manage, Subscriber
 
     if user.present?
       if user.admin?
@@ -27,8 +28,11 @@ class Ability
         can :read, ResearchType
         can :read, ResearchCenter
         can :read, Call
+        can :read, Document
         can :manage, User, user: user
+        cannot :users_list, User
         can :manage, Proposal, user: user
+        cannot :manage, Subscriber
       end
     end
 
