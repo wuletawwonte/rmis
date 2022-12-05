@@ -7,11 +7,11 @@
 
     <%= f.error_notification %>
 
+    <%= f.input :title, input_html: { class: "proposal-input" } %>
     <%= f.association :research_type, input_html: { data: { action: "new-proposal#makeChanges" } }, default: 0 %>
     <%= f.association :call, wrapper_html: { data: { "new-proposal-target": "callWrapper" }, class: "hidden"}, input_html: { data: { "new-proposal-target": "callInput" }, class: "proposal-input" } %>
     <%= f.association :theme, input_html: { class: "proposal-input" } %>
     <%= f.input :attachement, label: "Proposal", input_html: { class: "proposal-input" } %>
-    <%= f.input :title, input_html: { class: "proposal-input" } %>
     <%= f.input :abstract, input_html: { class: "proposal-input" } %>
     <%= f.input :budget, input_html: { data: { "new-proposal-target": "budgetInput" }, class: "proposal-input", min: "0" } %>
 

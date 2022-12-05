@@ -1,0 +1,19 @@
+<%= simple_form_for department, class: "contents" do |form| %>
+  <% if department.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(department.errors.count, "error") %> prohibited this department from being saved:</h2>
+
+      <ul>
+        <% department.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.input :name %>
+
+  <%= form.button :submit %>
+  <%= link_to 'Back to departments', departments_path, class: "ml-2 rounded-lg py-2 px-5 bg-gray-200 inline-block font-medium" %>
+
+<% end %>

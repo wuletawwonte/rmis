@@ -1,0 +1,37 @@
+<div id="<%= dom_id profile %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Phone number:</strong>
+    <%= profile.phone_number %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Id number:</strong>
+    <%= profile.id_number %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Academic rank:</strong>
+    <%= profile.academic_rank_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">About:</strong>
+    <%= profile.about %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Prefix:</strong>
+    <%= profile.prefix %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Faculty:</strong>
+    <%= profile.faculty_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this profile", profile, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this profile', edit_profile_path(profile), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

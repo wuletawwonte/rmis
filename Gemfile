@@ -24,6 +24,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'annotate'
   gem 'web-console'
 end
 
@@ -33,6 +34,7 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'cancancan'
 gem 'image_processing'
 gem 'kaminari'
 gem 'rack-cors'

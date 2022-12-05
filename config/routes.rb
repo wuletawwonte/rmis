@@ -2,6 +2,11 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :profiles
+  resources :faculties
+  resources :departments
+  resources :education_levels
+  resources :academic_ranks
   resources :documents
   get 'subscribers/index'
   post 'subscribers/create', to: 'subscribers#create'
@@ -19,11 +24,12 @@ Rails.application.routes.draw do
     resources :members, only: %i[ create ]
   end
   
+  get '/my_profile', to: 'users#my_profile', as: "user_profile"
   get '/users/list', to: 'users#list', as: "users_list"
   get '/users/:id', to: 'users#show', as: "user"
   delete '/users/sign_out', to: 'users#sign_out'
   get '/users', to: redirect('/users/sign_up')
-  get 'public/documents/list', to: 'documents#list', as: "documents_list"
+  get '/public/documents/list', to: 'documents#list', as: "documents_list"
   get 'search/researcher', to: 'proposals#search_researchers', as: "search_researchers"
 
   resources :calls do

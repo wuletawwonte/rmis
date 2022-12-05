@@ -1,4 +1,15 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# == Schema Information
+#
+# Table name: themes
+#
+#  id                 :bigint           not null, primary key
+#  research_center_id :bigint           not null
+#  user_id            :bigint           not null
+#  title              :string
+#  description        :text
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
 
 one:
   research_center: one

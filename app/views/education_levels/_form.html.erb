@@ -1,0 +1,20 @@
+<%= simple_form_for education_level, class: "contents" do |form| %>
+  <% if education_level.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(education_level.errors.count, "error") %> prohibited this education_level from being saved:</h2>
+
+      <ul>
+        <% education_level.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.input :name %>
+
+  <%= form.button :submit %>
+
+  <%= link_to 'Back to education levels', education_levels_path, class: "ml-1 py-2 px-5 bg-gray-200 inline-block font-medium" %>
+
+<% end %>

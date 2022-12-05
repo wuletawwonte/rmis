@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: profiles
+#
+#  id               :bigint           not null, primary key
+#  phone_number     :string
+#  id_number        :string
+#  academic_rank_id :bigint
+#  about            :text
+#  prefix           :string
+#  faculty_id       :bigint
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
+one:
+  phone_number: MyString
+  id_number: MyString
+  academic_rank: one
+  about: MyText
+  prefix: MyString
+  faculty: one
+
+two:
+  phone_number: MyString
+  id_number: MyString
+  academic_rank: two
+  about: MyText
+  prefix: MyString
+  faculty: two

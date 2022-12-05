@@ -1,10 +1,11 @@
 class SubscribersController < ApplicationController
+  load_and_authorize_resource
   skip_before_action :authenticate_user!, only: %i[create update verify_email email_verified]
   layout 'login', only: %i[email_verified]
 
   # GET /subscribers or /subscribers.json
   def index
-    @subscribers = Subscriber.all.order(created_at: :desc).page params[:page]
+    @subscribers = Subscriber.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   # Post /subscribers/create to create a subscriber

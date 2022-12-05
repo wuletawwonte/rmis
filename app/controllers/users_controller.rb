@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_user, only: %i[show]
 
   def index; end
@@ -12,6 +13,10 @@ class UsersController < ApplicationController
   end
 
   def show; end
+
+  def my_profile
+    @user = User.find_by_id(current_user.id)
+  end
 
   private
 

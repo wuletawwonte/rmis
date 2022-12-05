@@ -1,4 +1,5 @@
 class CallsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_call, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[list public_show]
   layout 'login', only: %i[list public_show]

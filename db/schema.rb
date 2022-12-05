@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_141307) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_03_142411) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "academic_ranks", force: :cascade do |t|
+    t.string "name"
+    t.integer "order_key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_academic_ranks_on_name", unique: true
+  end
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -64,6 +72,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_141307) do
     t.index ["user_id"], name: "index_calls_on_user_id"
   end
 
+  create_table "departments", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_departments_on_name", unique: true
+  end
+
   create_table "documents", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -72,6 +87,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_141307) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_documents_on_user_id"
+  end
+
+  create_table "education_levels", force: :cascade do |t|
+    t.string "name"
+    t.integer "order_key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_education_levels_on_name", unique: true
+  end
+
+  create_table "faculties", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_faculties_on_name", unique: true
   end
 
   create_table "members", force: :cascade do |t|
@@ -83,6 +113,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_141307) do
     t.integer "status", default: 0
     t.index ["proposal_id"], name: "index_members_on_proposal_id"
     t.index ["user_id"], name: "index_members_on_user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "phone_number"
+    t.string "id_number"
+    t.bigint "academic_rank_id"
+    t.text "about"
+    t.string "prefix"
+    t.bigint "faculty_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["academic_rank_id"], name: "index_profiles_on_academic_rank_id"
+    t.index ["faculty_id"], name: "index_profiles_on_faculty_id"
   end
 
   create_table "proposals", force: :cascade do |t|
@@ -156,7 +199,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_141307) do
     t.string "last_name"
     t.integer "sex", default: 0
     t.string "role", default: "researcher"
+    t.bigint "profile_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["profile_id"], name: "index_users_on_profile_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -166,10 +211,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_141307) do
   add_foreign_key "documents", "users"
   add_foreign_key "members", "proposals"
   add_foreign_key "members", "users"
+  add_foreign_key "profiles", "academic_ranks"
+  add_foreign_key "profiles", "faculties"
   add_foreign_key "proposals", "calls"
   add_foreign_key "proposals", "research_types"
   add_foreign_key "proposals", "themes"
   add_foreign_key "proposals", "users"
   add_foreign_key "themes", "research_centers"
   add_foreign_key "themes", "users"
+  add_foreign_key "users", "profiles"
 end
