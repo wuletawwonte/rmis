@@ -24,10 +24,10 @@
       <% @users.each do |user| %>
         <tr class="text-gray-700">
           <td class="px-4 py-3">
-            <a href="#" class="flex items-center text-sm gap-2">
+            <a href="<%= user_path(user) %>" class="flex items-center text-sm gap-2">
               <!-- Avatar with inset shadow -->
 
-              <div class="inline-flex overflow-hidden relative justify-center items-center bg-slate-200 rounded-full bg-clip-content box-content w-9 h-9 border-2 p-1 border-purple-500">
+              <div class="inline-flex overflow-hidden relative justify-center items-center bg-slate-200 rounded-full bg-clip-content box-content w-9 h-9 border-2 p-1 border-<%= user.color %>-600">
                   <span class="font-medium text-gray-700"><%= user.initials %></span>
               </div>
               

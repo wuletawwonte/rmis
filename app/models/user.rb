@@ -20,6 +20,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  before_create :add_color
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :members, dependent: :destroy
@@ -49,4 +50,10 @@ class User < ApplicationRecord
   def researcher?
     role == 'researcher'
   end
+
+  private
+
+    def add_color
+      color = ["orange", "Lime", "Green", "Teal", "Cyan", "Sky", "Violet", "Fuchsia", "Pink"].sample
+    end
 end
