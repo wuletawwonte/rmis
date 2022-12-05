@@ -1,1 +1,1 @@
-json.partial! "education_levels/education_level", education_level: @education_level
+json.partial! 'education_levels/education_level', education_level: @education_level

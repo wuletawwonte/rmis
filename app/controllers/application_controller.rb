@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do
-    redirect_to root_url, notice: "Access denied!"
+    redirect_to root_url, notice: 'Access denied!'
   end
 
   protected
@@ -31,7 +31,8 @@ class ApplicationController < ActionController::Base
       u.permit(:first_name, :middle_name, :last_name, :sex, :email, :password, :password_confirmation)
     end
     devise_parameter_sanitizer.permit(:account_update) do |u|
-      u.permit(:first_name, :middle_name, :last_name, :sex, :email, :password, :password_confirmation, :current_password)
+      u.permit(:first_name, :middle_name, :last_name, :sex, :email, :password, :password_confirmation,
+               :current_password)
     end
   end
 end

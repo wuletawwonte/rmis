@@ -1,6 +1,6 @@
 class AcademicRanksController < ApplicationController
   load_and_authorize_resource
-  before_action :set_academic_rank, only: %i[ show edit update destroy ]
+  before_action :set_academic_rank, only: %i[show edit update destroy]
 
   # GET /academic_ranks or /academic_ranks.json
   def index
@@ -8,8 +8,7 @@ class AcademicRanksController < ApplicationController
   end
 
   # GET /academic_ranks/1 or /academic_ranks/1.json
-  def show
-  end
+  def show; end
 
   # GET /academic_ranks/new
   def new
@@ -17,8 +16,7 @@ class AcademicRanksController < ApplicationController
   end
 
   # GET /academic_ranks/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /academic_ranks or /academic_ranks.json
   def create
@@ -26,7 +24,7 @@ class AcademicRanksController < ApplicationController
 
     respond_to do |format|
       if @academic_rank.save
-        format.html { redirect_to academic_rank_url(@academic_rank), notice: "Academic rank was successfully created." }
+        format.html { redirect_to academic_rank_url(@academic_rank), notice: 'Academic rank was successfully created.' }
         format.json { render :show, status: :created, location: @academic_rank }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +37,7 @@ class AcademicRanksController < ApplicationController
   def update
     respond_to do |format|
       if @academic_rank.update(academic_rank_params)
-        format.html { redirect_to academic_rank_url(@academic_rank), notice: "Academic rank was successfully updated." }
+        format.html { redirect_to academic_rank_url(@academic_rank), notice: 'Academic rank was successfully updated.' }
         format.json { render :show, status: :ok, location: @academic_rank }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,19 +51,20 @@ class AcademicRanksController < ApplicationController
     @academic_rank.destroy
 
     respond_to do |format|
-      format.html { redirect_to academic_ranks_url, notice: "Academic rank was successfully destroyed." }
+      format.html { redirect_to academic_ranks_url, notice: 'Academic rank was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_academic_rank
-      @academic_rank = AcademicRank.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def academic_rank_params
-      params.require(:academic_rank).permit(:name, :order_key)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_academic_rank
+    @academic_rank = AcademicRank.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def academic_rank_params
+    params.require(:academic_rank).permit(:name, :order_key)
+  end
 end

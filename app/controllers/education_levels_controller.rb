@@ -1,6 +1,6 @@
 class EducationLevelsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_education_level, only: %i[ show edit update destroy ]
+  before_action :set_education_level, only: %i[show edit update destroy]
 
   # GET /education_levels or /education_levels.json
   def index
@@ -8,8 +8,7 @@ class EducationLevelsController < ApplicationController
   end
 
   # GET /education_levels/1 or /education_levels/1.json
-  def show
-  end
+  def show; end
 
   # GET /education_levels/new
   def new
@@ -17,8 +16,7 @@ class EducationLevelsController < ApplicationController
   end
 
   # GET /education_levels/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /education_levels or /education_levels.json
   def create
@@ -26,7 +24,9 @@ class EducationLevelsController < ApplicationController
 
     respond_to do |format|
       if @education_level.save
-        format.html { redirect_to education_level_url(@education_level), notice: "Education level was successfully created." }
+        format.html do
+          redirect_to education_level_url(@education_level), notice: 'Education level was successfully created.'
+        end
         format.json { render :show, status: :created, location: @education_level }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,9 @@ class EducationLevelsController < ApplicationController
   def update
     respond_to do |format|
       if @education_level.update(education_level_params)
-        format.html { redirect_to education_level_url(@education_level), notice: "Education level was successfully updated." }
+        format.html do
+          redirect_to education_level_url(@education_level), notice: 'Education level was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @education_level }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,19 +55,20 @@ class EducationLevelsController < ApplicationController
     @education_level.destroy
 
     respond_to do |format|
-      format.html { redirect_to education_levels_url, notice: "Education level was successfully destroyed." }
+      format.html { redirect_to education_levels_url, notice: 'Education level was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_education_level
-      @education_level = EducationLevel.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def education_level_params
-      params.require(:education_level).permit(:name, :order_key)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_education_level
+    @education_level = EducationLevel.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def education_level_params
+    params.require(:education_level).permit(:name, :order_key)
+  end
 end

@@ -1,6 +1,6 @@
 class DepartmentsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_department, only: %i[ show edit update destroy ]
+  before_action :set_department, only: %i[show edit update destroy]
 
   # GET /departments or /departments.json
   def index
@@ -8,8 +8,7 @@ class DepartmentsController < ApplicationController
   end
 
   # GET /departments/1 or /departments/1.json
-  def show
-  end
+  def show; end
 
   # GET /departments/new
   def new
@@ -17,8 +16,7 @@ class DepartmentsController < ApplicationController
   end
 
   # GET /departments/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /departments or /departments.json
   def create
@@ -26,7 +24,7 @@ class DepartmentsController < ApplicationController
 
     respond_to do |format|
       if @department.save
-        format.html { redirect_to department_url(@department), notice: "Department was successfully created." }
+        format.html { redirect_to department_url(@department), notice: 'Department was successfully created.' }
         format.json { render :show, status: :created, location: @department }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +37,7 @@ class DepartmentsController < ApplicationController
   def update
     respond_to do |format|
       if @department.update(department_params)
-        format.html { redirect_to department_url(@department), notice: "Department was successfully updated." }
+        format.html { redirect_to department_url(@department), notice: 'Department was successfully updated.' }
         format.json { render :show, status: :ok, location: @department }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,19 +51,20 @@ class DepartmentsController < ApplicationController
     @department.destroy
 
     respond_to do |format|
-      format.html { redirect_to departments_url, notice: "Department was successfully destroyed." }
+      format.html { redirect_to departments_url, notice: 'Department was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_department
-      @department = Department.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def department_params
-      params.require(:department).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_department
+    @department = Department.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def department_params
+    params.require(:department).permit(:name)
+  end
 end
