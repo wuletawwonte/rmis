@@ -4,7 +4,9 @@
         <div class="w-full md:w-3/12 md:mx-4">
             <!-- Profile Card -->
             <div class="bg-white p-3 border-t-4 border-purple-400">
-                <%= avatar_for @user, size: 24 %>
+                <div class="flex justify-center">
+                    <%= avatar_for @user %>
+                </div>
                 <h1 class="text-gray-900 font-bold text-lg mt-1 text-center"><%= @user.full_name %></h1>
                 <p class="text-gray-600 font-sm text-semibold text-center overflow-x-hidden hover:overflow-x-visible"><%= @user.email %></p>
                 <ul
