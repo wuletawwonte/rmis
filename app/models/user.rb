@@ -20,6 +20,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  before_create :add_color
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :members, dependent: :destroy
@@ -28,6 +29,7 @@ class User < ApplicationRecord
   has_many :research_centers
   has_many :themes
   has_many :calls
+  has_one_attached :avatar
   belongs_to :profile, optional: true
 
   enum :sex, { Male: 0, Female: 1 }
@@ -48,5 +50,11 @@ class User < ApplicationRecord
 
   def researcher?
     role == 'researcher'
+  end
+
+  private
+
+  def add_color
+    self.color = %w[orange lime green teal cyan sky violet fuchsia pink].sample
   end
 end

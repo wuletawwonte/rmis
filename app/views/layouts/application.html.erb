@@ -186,13 +186,8 @@
                   @keydown.escape="closeProfileMenu"
                   aria-label="Account"
                   aria-haspopup="true"
-                >
-                  <img
-                    class="object-cover w-8 h-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=aa3a807e1bbdfd4364d1f449eaa96d82"
-                    alt=""
-                    aria-hidden="true"
-                  />
+                  >
+                  <%= avatar_for current_user, size: 8 %>
                 </button>
                 <template x-if="isProfileMenuOpen">
                   <ul
@@ -222,6 +217,18 @@
         <main class="h-full pb-16 overflow-y-auto">
 
           <div class="container px-4 mx-auto grid">
+            <%# This div is to preload the border classes of tailwind that are used in the profile pictures of users %>
+            <div class="border-none 
+              border-cyan-600
+              border-orange-600
+              border-lime-600
+              border-green-600
+              border-teal-600
+              border-sky-600
+              border-violet-600
+              border-fuchsia-600
+              border-pink-600
+              "></div>
 
             <% if notice.present? %>
               <div class="flex items-center bg-purple-500 text-white text-sm font-bold px-4 py-3 my-6" role="alert">
