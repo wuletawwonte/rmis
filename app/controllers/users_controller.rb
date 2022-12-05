@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def list
-    @users = User.where.not(role: "admin").order('created_at desc').page params[:page]
+    @users = User.where.not(role: 'admin').order('created_at desc').page params[:page]
   end
 
   def show; end

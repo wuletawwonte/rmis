@@ -35,7 +35,7 @@ group :test do
 end
 
 gem 'cancancan'
-gem "image_processing", ">= 1.2"
+gem 'image_processing', '>= 1.2'
 gem 'kaminari'
 gem 'rack-cors'
 gem 'sidekiq'
