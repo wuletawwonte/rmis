@@ -54,6 +54,6 @@ class User < ApplicationRecord
   private
 
     def add_color
-      color = ["orange", "Lime", "Green", "Teal", "Cyan", "Sky", "Violet", "Fuchsia", "Pink"].sample
+      self.color = ["orange", "lime", "green", "teal", "cyan", "sky", "violet", "fuchsia", "pink"].sample
     end
 end
