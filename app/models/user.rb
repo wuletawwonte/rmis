@@ -29,6 +29,7 @@ class User < ApplicationRecord
   has_many :research_centers
   has_many :themes
   has_many :calls
+  has_one_attached :avatar
   belongs_to :profile, optional: true
 
   enum :sex, { Male: 0, Female: 1 }
