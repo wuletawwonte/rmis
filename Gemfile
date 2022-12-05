@@ -35,10 +35,11 @@ group :test do
 end
 
 gem 'cancancan'
+gem 'chartkick'
+gem 'groupdate'
 gem 'image_processing', '>= 1.2'
 gem 'kaminari'
 gem 'rack-cors'
 gem 'sidekiq'
 gem 'simple_form'
 gem 'simple_form-tailwind'
-gem 'chartkick'

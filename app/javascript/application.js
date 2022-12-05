@@ -5,6 +5,9 @@ import 'trix';
 import '@rails/actiontext';
 import 'chartkick';
 import 'Chart.bundle';
+import Highcharts from 'highcharts';
+
+window.Highcharts = Highcharts;
 
 const subscribersCheckboxs = document.querySelectorAll('.subscriber-checkbox');
 
