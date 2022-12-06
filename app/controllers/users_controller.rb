@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   load_and_authorize_resource
   before_action :set_user, only: %i[show]
 
-  def index; end
+  def index
+    @last_users = User.last(5).reverse
+  end
 
   def researchers
     @researchers = User.all
