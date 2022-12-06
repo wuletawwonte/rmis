@@ -40,7 +40,7 @@ class ProposalsController < ApplicationController
       .per(params[:per])
       .max_paginates_per(4)
     @member_ids = Member.researcher_ids params['id']
-    @researchers = User.where.not(id: @member_ids).page(params[:page]).per(params[:per]).max_paginates_per(4)
+    @researchers = User.where(role: "researcher").where.not(id: @member_ids).page(params[:page]).per(params[:per]).max_paginates_per(4)
   end
 
   def search_researchers
