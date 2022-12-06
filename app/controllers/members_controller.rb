@@ -12,9 +12,19 @@ class MembersController < ApplicationController
     end
   end
 
+  def accept_envitation
+    @member = Member.find(params[:id])
+
+    if @member.update(status: Member.statuses[:joined])
+      redirect_to proposals_path, notice: 'Successfully joined the research team.'    
+    else
+      redirect_to proposals_path, notice: 'Unable to join the research team.'
+    end
+  end
+
   private
 
   def member_params
-    params.permit(:proposal_id, :user_id)
+    params.permit(:proposal_id, :user_id, :id, :status)
   end
 end
