@@ -90,18 +90,18 @@
         <% @last_users.each do |user| %>
           <tr class="text-gray-700">
             <td class="px-4 py-3">
-              <a href="<%= user_path(user) %>" class="flex items-center text-sm gap-2">
+              <div class="flex items-center text-sm gap-2">
                 <!-- Avatar with inset shadow -->
 
                 <%= avatar_for user, size: 9 %>
                 
                 <div>
-                  <p class="font-semibold"><%= "#{user.first_name} #{user.middle_name}" %></p>
+                  <p class="font-semibold"><%= user.full_name %></p>
                   <p class="text-xs text-gray-600">
                     <%= user.email %>
                   </p>
                 </div>
-              </a>
+              </div>
             </td>
             <td class="px-4 py-3 text-sm">
               <%= User.sexes.key(user.read_attribute_before_type_cast(:sex)) %>

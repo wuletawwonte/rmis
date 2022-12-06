@@ -19,7 +19,6 @@ class Ability
         can :manage, Department
         can :manage, Call
         can :manage, AcademicRank
-        can :read, Proposal
 
       else
         can :read, Theme

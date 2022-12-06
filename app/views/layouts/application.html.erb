@@ -187,7 +187,7 @@
                   aria-label="Account"
                   aria-haspopup="true"
                   >
-                  <%= avatar_for current_user, size: 8 %>
+                  <%= avatar_for current_user, size: 8, span_class: "text-xs" %>
                 </button>
                 <template x-if="isProfileMenuOpen">
                   <ul
