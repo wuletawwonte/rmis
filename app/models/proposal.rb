@@ -27,7 +27,7 @@ class Proposal < ApplicationRecord
 
   validates :attachement, :title, :budget, presence: true
 
-  has_many :members
+  has_many :members, dependent: :destroy
   has_many :users, through: :members
 
   scope :joined, ->(user) { joins(:members).where("members.user_id = ?", user.id).where("members.status = ?", Member.statuses[:joined]) }

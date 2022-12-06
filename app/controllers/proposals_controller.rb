@@ -22,7 +22,15 @@ class ProposalsController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    @proposal = Proposal.find(params[:id]);
+    @proposal.destroy
+
+    respond_to do |format|
+      format.html { redirect_to proposals_url, notice: 'Proposal was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
 
   def show
     @proposal = Proposal.includes(:user).find(params['id'])

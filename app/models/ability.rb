@@ -27,8 +27,10 @@ class Ability
         can :read, Call
         can :read, Document
         can :manage, User, user: user
+        can :manage, Member
         cannot :users_list, User
-        can :manage, Proposal, user: user
+        can :edit, Proposal, user: user
+        can :read, Proposal
         cannot :manage, Subscriber
       end
     end
