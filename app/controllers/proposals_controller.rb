@@ -2,7 +2,7 @@ class ProposalsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @proposals = Proposal.all.page params[:page]
+    @proposals = Proposal.joined(current_user).page params[:page]
     @envitations = Member.envitations(current_user)
   end
 
