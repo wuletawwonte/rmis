@@ -1,4 +1,4 @@
-<h2 class="my-6 text-2xl font-semibold text-gray-700">Proposal</h2>
+<h2 class="my-6 text-2xl font-semibold text-gray-700">My proposal</h2>
 
 <div class="w-full overflow-hidden rounded-lg shadow-xs">
   <div class="w-full overflow-x-auto">
@@ -46,6 +46,66 @@
                 <%= link_to fa_icon("download 2x"), proposal.attachement_url, class: "py-2 text-sm text-blue-600 rounded-lg focus:outline-none focus:shadow-outline-gray" %>
                 <%= link_to fa_icon('edit 2x'), proposal_path(proposal.id), class: "py-2 text-sm text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray" %>
                 <%= button_to fa_icon('trash 2x'), proposal_path(proposal.id), method: :destroy, class: "py-2 text-sm text-red-600 rounded-lg focus:outline-none focus:shadow-outline-gray" %>
+              </div>
+            </td>
+          </tr>
+
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+
+  <%= paginate @proposals %>
+</div>
+
+<h2 class="my-6 text-2xl font-semibold text-gray-700">Envitations</h2>
+
+<div class="w-full overflow-hidden rounded-lg shadow-xs">
+  <div class="w-full overflow-x-auto">
+    <table class="w-full whitespace-no-wrap">
+      <thead>
+        <tr
+          class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50"
+        >
+          <th class="px-4 py-3">PI</th>
+          <th class="px-4 py-3">Title</th>
+          <th class="px-4 py-3">My Status</th>
+          <th class="px-4 py-3">Date</th>
+          <th class="px-4 py-3">Actions</th>
+        </tr>
+      </thead>
+      <tbody
+        class="bg-white divide-y"
+      >
+        <% @envitations.each do |envitation| %>
+          <tr class="text-gray-700">
+            <td class="px-4 py-3">
+              <div class="flex items-center text-sm">
+                <!-- Avatar with inset shadow -->
+                <%= avatar_for envitation.proposal.user, size: 8, div_class: "mr-3" %>
+                <div>
+                  <p class="font-semibold"><%= envitation.proposal.user.full_name %></p>
+                  <p class="text-xs text-gray-600">
+                    <%= envitation.proposal.user.email %>
+                  </p>
+                </div>
+              </div>
+
+            </td>
+            <td class="px-4 py-3 text-sm">
+              <%= link_to envitation.proposal.title, proposal_path(envitation.proposal.id) %>
+            </td>
+            <td class="px-4 py-3 text-xs">
+              <%= content_tag(:span, envitation.status, class: "px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full") %>
+            </td>
+            <td class="px-4 py-3 text-sm">
+              <%= envitation.proposal.created_at.to_date %>
+            </td>
+            <td class="px-4 py-3">
+              <div class="flex items-center space-x-4 text-sm">
+                <%= link_to fa_icon("download 2x"), envitation.proposal.attachement_url, class: "py-2 text-sm text-blue-600 rounded-lg focus:outline-none focus:shadow-outline-gray" %>
+                <%= link_to fa_icon('edit 2x'), proposal_path(envitation.proposal.id), class: "py-2 text-sm text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray" %>
               </div>
             </td>
           </tr>
