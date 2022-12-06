@@ -21,14 +21,14 @@
     <!-- Card -->
     <div class="flex items-center p-4 bg-white rounded-lg shadow-sm">
       <div class="p-4 mr-4 text-green-500 bg-green-100 ">
-        <%= fa_icon "money" %>
+        <%= fa_icon "file" %>
       </div>
       <div>
         <p class="mb-2 text-sm font-medium text-gray-600">
-          Account balance
+          Proposals
         </p>
         <p class="text-lg font-semibold text-gray-700">
-          $ 46,760.89
+          <%= Proposal.all.count %>
         </p>
       </div>
     </div>
