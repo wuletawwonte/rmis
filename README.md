@@ -75,8 +75,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - [Windmill](https://windmillui.com/) template used in the ui.
-- Hat tip to anyone whose code was used
-- Inspiration
+- Hat tip to anyone whose code was used as inspiration
 
 ## 📝 License
 
