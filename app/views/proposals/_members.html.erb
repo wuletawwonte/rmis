@@ -2,7 +2,7 @@
   <table class="w-full whitespace-no-wrap">
     <thead>
       <tr
-        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50"
+        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b"
       >
         <th class="px-4 py-3">Researcher</th>
         <th class="px-4 py-3">Role</th>
@@ -35,7 +35,7 @@
           </td>
 
           <td class="px-4 py-3 text-xs">
-            <%= content_tag(:span, member.status, class: "px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full") %>
+            <%= member_status_for member %>
           </td>
 
           <td class="px-4 py-3 text-sm">

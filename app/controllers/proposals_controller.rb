@@ -2,8 +2,8 @@ class ProposalsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @proposals = Proposal.where(user_id: current_user.id).includes(:user).order(:created_at).page params[:page]
-    @envitations = Member.where(user_id: current_user.id).includes(:proposal)
+    @proposals = Proposal.all.page params[:page]
+    @envitations = Member.envitations(current_user)
   end
 
   def new
