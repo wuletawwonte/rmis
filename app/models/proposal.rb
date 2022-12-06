@@ -16,7 +16,7 @@
 #  theme_id         :bigint           not null
 #
 class Proposal < ApplicationRecord
-  after_create :add_pi
+  after_create :add_pi, :add_code
   mount_uploader :attachement, AttachementUploader
   belongs_to :user
   belongs_to :call, optional: true
@@ -36,7 +36,11 @@ class Proposal < ApplicationRecord
   private
 
   def add_pi
-    members.create(user:, proposal: self, role: Member.roles[:principal_investigator],
+    members.create(user: self.user, proposal: self, role: Member.roles[:principal_investigator],
                    status: Member.statuses[:joined])
+  end
+
+  def add_code
+    self.code = "RMIS-#{self.id}/#{Date.current.year}"
   end
 end

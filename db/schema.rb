@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_05_130123) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_06_192546) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -140,7 +140,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_130123) do
     t.integer "status", default: 0
     t.integer "budget"
     t.bigint "theme_id", null: false
+    t.string "code"
     t.index ["call_id"], name: "index_proposals_on_call_id"
+    t.index ["code"], name: "index_proposals_on_code", unique: true
     t.index ["research_type_id"], name: "index_proposals_on_research_type_id"
     t.index ["theme_id"], name: "index_proposals_on_theme_id"
     t.index ["user_id"], name: "index_proposals_on_user_id"

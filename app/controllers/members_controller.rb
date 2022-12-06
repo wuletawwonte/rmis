@@ -1,7 +1,8 @@
 class MembersController < ApplicationController
   load_and_authorize_resource
+
   def create
-    @proposal = Proposal.find_by_id(member_params['proposal_id'])
+    @proposal = Proposal.find_by_id(params[:proposal_id])
     @member = Member.new(member_params)
     @member.role = Member.roles[:co_investigator]
     @member.status = Member.statuses[:envited]
