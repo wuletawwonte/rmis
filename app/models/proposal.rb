@@ -23,7 +23,7 @@ class Proposal < ApplicationRecord
   belongs_to :research_type
   belongs_to :theme
 
-  enum :status, { initialized: 0, submited: 1, accepted: 2 }
+  enum :status, { initialized: 0, submitted: 1, accepted: 2 }
 
   validates :attachement, :title, :budget, presence: true
 
