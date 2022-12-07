@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :proposals, only: %i[index show new create destroy] do
     get '/members', to: 'members#create', as: "members"
     get '/members/:id', to: 'members#accept_envitation', as: "accept_envitation"
+    delete '/members/:id', to: 'members#decline_envitation', as: "decline_envitation"
   end
   
   get '/my_profile', to: 'users#my_profile', as: "user_profile"

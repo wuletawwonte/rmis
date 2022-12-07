@@ -97,8 +97,8 @@
                 </td>
                 <td class="px-4 py-3">
                   <div class="flex items-center space-x-2 text-sm">
-                    <%= link_to "Accept", proposal_accept_envitation_path(envitation.proposal, envitation, status: Member.statuses[:joined]), class: "bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 hover:border-blue-500 rounded-full" %>
-                    <%= link_to "Decline", "", class: "bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 hover:border-orange-500 rounded-full" %>
+                    <%= link_to "Accept", proposal_accept_envitation_path(envitation.proposal, envitation), class: "bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 hover:border-blue-500 rounded-full" %>
+                    <%= link_to "Decline", proposal_decline_envitation_path(envitation.proposal, envitation), class: "bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 hover:border-orange-500 rounded-full" %>
                   </div>
                 </td>
               </tr>

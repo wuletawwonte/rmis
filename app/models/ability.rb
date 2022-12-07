@@ -31,6 +31,7 @@ class Ability
         cannot :users_list, User
         can :edit, Proposal, user: user
         can :read, Proposal
+        can :create, Proposal
         cannot :manage, Subscriber
       end
     end

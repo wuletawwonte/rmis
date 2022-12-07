@@ -50,7 +50,7 @@ class ProposalsController < ApplicationController
 
     @researchers = if params['key'].present?
                      @researchers.where(
-                       'first_name LIKE :search OR middle_name LIKE :search OR last_name LIKE :search', search: "%#{params['key']}%"
+                       'first_name LIKE :search OR middle_name LIKE :search OR last_name LIKE :search', search: params['key']
                      ).page(params[:page]).max_paginates_per(4)
                    else
                      @researchers.page(params[:page]).per(params[:per]).max_paginates_per(4)

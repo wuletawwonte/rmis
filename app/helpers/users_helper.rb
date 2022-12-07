@@ -9,4 +9,15 @@ module UsersHelper
                     bg-clip-content box-content w-#{size} h-#{size} border-2 p-1 border-#{user.color}-600 #{div_class}")
     end
   end
+
+  def user_role_for(user)
+    if user.role == "admin"
+      content_tag(:span, user.role, class: "px-3 mt-2 py-1 font-semibold leading-tight text-black-700 bg-blue-100 rounded-full")
+    elsif user.role == "researcher"
+      content_tag(:span, user.role, class: "px-3 mt-2 py-1 font-semibold leading-tight text-white bg-purple-600 rounded-full")
+    else
+      content_tag(:span, "unkown", class: "px-3 mt-2 py-1 font-semibold leading-tight text-black-700 bg-gray-100 rounded-full")
+    end
+  end
+
 end

@@ -52,6 +52,8 @@ class User < ApplicationRecord
     role == 'researcher'
   end
 
+  scope :researchers_only, -> { where(role: "researcher") } 
+
   private
 
   def add_color

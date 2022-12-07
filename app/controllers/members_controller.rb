@@ -24,6 +24,16 @@ class MembersController < ApplicationController
     end
   end
 
+  def decline_envitation
+    @member = Member.find(params[:id])
+
+    if @member.destroy
+      redirect_to proposals_path, notice: 'Successfully declined from joining the research team.'    
+    else
+      redirect_to proposals_path, notice: 'Unable to decline the research team envitation.'
+    end
+  end
+
   private
 
   def member_params
