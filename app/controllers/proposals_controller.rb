@@ -33,14 +33,13 @@ class ProposalsController < ApplicationController
   end
 
   def show
-    @proposal = Proposal.includes(:user).find(params['id'])
+    @proposal = Proposal.find(params['id'])
     @members = Member.where(proposal_id: params['id'])
       .includes(:user)
       .page(params[:page])
       .per(params[:per])
       .max_paginates_per(4)
-    @member_ids = Member.researcher_ids params['id']
-    @researchers = User.where(role: "researcher").where.not(id: @member_ids).page(params[:page]).per(params[:per]).max_paginates_per(4)
+    @researchers = User.not_member_of(@proposal).page(params[:page]).per(params[:per]).max_paginates_per(4)
   end
 
   def search_researchers

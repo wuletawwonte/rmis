@@ -53,6 +53,7 @@ class User < ApplicationRecord
   end
 
   scope :researchers_only, -> { where(role: "researcher") } 
+  scope :not_member_of, ->(proposal) { researchers_only.proposals.where(members: {proposal_id: proposal.id}).where.missing(:proposals) } 
 
   private
 
