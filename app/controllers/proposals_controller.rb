@@ -39,12 +39,12 @@ class ProposalsController < ApplicationController
       .page(params[:page])
       .per(params[:per])
       .max_paginates_per(4)
-    @researchers = User.not_member_of(@proposal).page(params[:page]).per(params[:per]).max_paginates_per(4)
+    @researchers = User.not_members_of(@proposal).page(params[:page]).per(params[:per]).max_paginates_per(4)
   end
 
   def search_researchers
     @proposal = Proposal.find_by_id(params['proposal_id'])
-    @member_ids = Member.researcher_ids @proposal.id
+    @member_ids = Member.member_ids_of @proposal
     @researchers = User.where.not(id: @member_ids)
 
     @researchers = if params['key'].present?
