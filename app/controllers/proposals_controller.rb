@@ -44,21 +44,17 @@ class ProposalsController < ApplicationController
 
   def search_researchers
     @proposal = Proposal.find_by_id(params['proposal_id'])
-    @member_ids = Member.member_ids_of @proposal
-    @researchers = User.where.not(id: @member_ids)
-
-    @researchers = if params['key'].present?
-                     @researchers.where(
-                       'first_name LIKE :search OR middle_name LIKE :search OR last_name LIKE :search', search: params['key']
-                     ).page(params[:page]).max_paginates_per(4)
-                   else
-                     @researchers.page(params[:page]).per(params[:per]).max_paginates_per(4)
-                   end
 
     if turbo_frame_request?
-      render partial: 'researchers', locals: { researchers: @researchers, proposal: @proposal }
+      if params['search_key'].present?      
+        @researchers = User.not_members_of(@proposal).search_by_name(params['search_key']).page(params[:page]).max_paginates_per(4)
+        render partial: 'researchers', locals: { researchers: @researchers, proposal: @proposal }
+      else
+        @researchers = User.not_members_of(@proposal).page(params[:page]).max_paginates_per(4)
+        render partial: 'researchers', locals: { researchers: @researchers, proposal: @proposal }
+      end
     else
-      render :show
+      render partial: 'researchers', locals: { researchers: @researchers, proposal: @proposal }
     end
   end
 
@@ -69,7 +65,8 @@ class ProposalsController < ApplicationController
                                      :budget)
   end
 
-  def member_params
-    params.permit(:key, :proposal_id)
+  def search_params
+    params.permit(:search_key, :proposal_id)
   end
+
 end

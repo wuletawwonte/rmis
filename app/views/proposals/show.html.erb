@@ -33,7 +33,7 @@
     <%= form_with(url: search_researchers_path, method: :get, data: { turbo_frame: "researchers" }, html: { autocomplete: "off"}) do |f| %>
       <%= f.hidden_field :proposal_id, value: @proposal.id %>
       <div class="relative text-gray-500 focus-within:text-purple-600 mb-6">
-        <%= f.search_field :key, class: "block w-full pr-20 mt-1 text-sm text-black focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input  rounded-3xl", placeholder: "Search researcher ...", min: "2" %>
+        <%= f.search_field :search_key, class: "block w-full pr-20 mt-1 text-sm text-black focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input  rounded-3xl", placeholder: "Search researcher ...", min: "2" %>
         <%= f.submit "Search", :class => "cursor-pointer absolute inset-y-0 right-0 px-4 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple rounded-r-3xl" %>
       </div>
 

@@ -29,7 +29,7 @@ class Ability
         can :manage, User, user: user
         can :manage, Member
         cannot :users_list, User
-        can :edit, Proposal, user: user
+        can :manage, Proposal, user: user
         can :read, Proposal
         can :create, Proposal
         cannot :manage, Subscriber
