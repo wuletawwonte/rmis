@@ -8,6 +8,8 @@ class MembersController < ApplicationController
     @member.status = Member.statuses[:envited]
 
     if @member.save
+      MemberMailer.with(proposal: @proposal, member: @member).envited.deliver_later
+
       redirect_to proposal_path(@proposal), notice: 'Member envited successfully'
     else
       redirect_to proposals_path, notice: 'unable to add Member.'
