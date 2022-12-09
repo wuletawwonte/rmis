@@ -26,7 +26,7 @@ class Ability
         can :read, ResearchCenter
         can :read, Call
         can :read, Document
-        can :manage, User, user: user
+        can :manage, User
         can :manage, Member
         cannot :users_list, User
         can :manage, Proposal, user: user

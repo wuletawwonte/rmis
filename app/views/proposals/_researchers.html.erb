@@ -15,7 +15,7 @@
       <% researchers.each do |researcher| %>
         <tr class="text-gray-700">
           <td class="px-4 py-2">
-            <div class="flex items-center text-sm">
+            <%= link_to user_path(researcher), data: { turbo_frame: "user_modal" }, class: "flex items-center text-sm"  do %>
               <!-- Avatar with inset shadow -->
               <%= avatar_for researcher, size: 8, div_class: "mr-3" %>
               <div>
@@ -24,7 +24,7 @@
                   <%= researcher.email %>
                 </p>
               </div>
-            </div>
+            <% end %>
 
           </td>
 

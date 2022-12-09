@@ -227,7 +227,9 @@
               </div>
             <% end %>
 
-            <%= yield %>
+            <%= turbo_frame_tag "user_modal" %>
+
+            <%= yield %>            
           </div>
         </main>
       </div>
