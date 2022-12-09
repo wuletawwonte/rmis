@@ -41,5 +41,13 @@ function data() {
           console.log(err);
         });
     },
+    isModalOpen: false,
+    openModal() {
+      this.isModalOpen = true;
+    },
+    closeModal() {
+      this.isModalOpen = false;
+      document.getElementById('user_modal').remove();
+    },
   };
 }
