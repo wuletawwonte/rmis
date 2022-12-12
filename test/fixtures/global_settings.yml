@@ -1,0 +1,54 @@
+# == Schema Information
+#
+# Table name: global_settings
+#
+#  id                      :bigint           not null, primary key
+#  allowed_co_per_year     :integer
+#  allowed_pi_per_year     :integer
+#  date_format             :string
+#  default_password        :string
+#  minimum_password_length :integer
+#  university_city         :string
+#  university_country      :string
+#  university_email        :string
+#  university_facebook     :string
+#  university_name         :string
+#  university_phone        :string
+#  university_telegram     :string
+#  university_twitter      :string
+#  university_website      :string
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#
+
+one:
+  university_name: MyString
+  university_city: MyString
+  university_country: MyString
+  university_email: MyString
+  university_phone: MyString
+  university_website: MyString
+  university_twitter: MyString
+  university_facebook: MyString
+  university_telegram: MyString
+  allowed_pi_per_year: 1
+  allowed_co_per_year: 1
+  date_format: MyString
+  minimum_password_length: 1
+  default_password: MyString
+
+two:
+  university_name: MyString
+  university_city: MyString
+  university_country: MyString
+  university_email: MyString
+  university_phone: MyString
+  university_website: MyString
+  university_twitter: MyString
+  university_facebook: MyString
+  university_telegram: MyString
+  allowed_pi_per_year: 1
+  allowed_co_per_year: 1
+  date_format: MyString
+  minimum_password_length: 1
+  default_password: MyString

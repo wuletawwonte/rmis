@@ -42,14 +42,12 @@ function data() {
         });
     },
     isModalOpen: false,
-    trapCleanup: null,
     openModal() {
       this.isModalOpen = true;
-      this.trapCleanup = focusTrap(document.querySelector('#modal'));
     },
     closeModal() {
       this.isModalOpen = false;
-      this.trapCleanup();
+      document.getElementById('user_modal').remove();
     },
   };
 }

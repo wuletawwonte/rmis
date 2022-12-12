@@ -2,6 +2,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :global_settings, only: %i[ index update ]
   resources :profiles
   resources :faculties
   resources :departments
@@ -21,7 +22,9 @@ Rails.application.routes.draw do
   resources :research_centers, only: %i[index show create new edit destroy]
 
   resources :proposals, only: %i[index show new create destroy] do
-    resources :members, only: %i[ create ]
+    get '/members', to: 'members#create', as: "members"
+    get '/members/:id', to: 'members#accept_envitation', as: "accept_envitation"
+    delete '/members/:id', to: 'members#decline_envitation', as: "decline_envitation"
   end
   
   get '/my_profile', to: 'users#my_profile', as: "user_profile"
@@ -30,7 +33,7 @@ Rails.application.routes.draw do
   delete '/users/sign_out', to: 'users#sign_out'
   get '/users', to: redirect('/users/sign_up')
   get '/public/documents/list', to: 'documents#list', as: "documents_list"
-  get 'search/researcher', to: 'proposals#search_researchers', as: "search_researchers"
+  get '/search/researcher', to: 'proposals#search_researchers', as: "search_researchers"
 
   resources :calls do
     get '/page/:page', action: :index, on: :collection

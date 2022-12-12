@@ -14,6 +14,8 @@
 
 [live link](https://amu-rmis.herokuapp.com/)
 
+![FireShot Capture 011 - RMIS-Research Management Information System - localhost](https://user-images.githubusercontent.com/12524453/205876961-58987ab6-f9f7-4891-b8e9-5a471c42cc7a.png)
+
 ## Getting Started
 
 To get a local copy follow these simple example steps.
@@ -73,8 +75,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - [Windmill](https://windmillui.com/) template used in the ui.
-- Hat tip to anyone whose code was used
-- Inspiration
+- Hat tip to anyone whose code was used as inspiration
 
 ## 📝 License
 

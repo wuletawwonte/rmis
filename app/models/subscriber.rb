@@ -3,11 +3,15 @@
 # Table name: subscribers
 #
 #  id                :bigint           not null, primary key
-#  email             :string
 #  active            :boolean          default(FALSE)
+#  email             :string
+#  subscription_hash :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  subscription_hash :string
+#
+# Indexes
+#
+#  index_subscribers_on_email  (email) UNIQUE
 #
 class Subscriber < ApplicationRecord
   before_create :add_subscription_hash

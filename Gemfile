@@ -36,6 +36,7 @@ end
 
 gem 'cancancan'
 gem 'chartkick'
+gem 'country_select', '~> 6.0'
 gem 'groupdate'
 gem 'image_processing', '>= 1.2'
 gem 'kaminari'

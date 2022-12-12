@@ -41,9 +41,7 @@
             <%= User.sexes.key(user.read_attribute_before_type_cast(:sex)) %>
           </td>
           <td class="px-4 py-3 text-xs">
-            <span class="px-2 py-1 font-semibold leading-tight text-<% if user.role == "admin" then %>green<% else %>gray<% end %>-700 bg-<% if user.role == "admin" then %>green<% else %>gray<% end %>-100 rounded-full">
-              <%= user.role %>
-            </span>
+            <%= user_role_for user %>
           </td>
           <td class="px-4 py-3 text-sm">
             <%= user.created_at.strftime('%b %-d, %Y') %>

@@ -14,7 +14,10 @@ class UsersController < ApplicationController
     @users = User.where.not(role: 'admin').order('created_at desc').page params[:page]
   end
 
-  def show; end
+  def show
+    puts "HHHHHHHHHHHHHHHHHHHHHHHHH: #{@user.full_name}"
+    render partial: 'user_modal', locals: { user: @user } if turbo_frame_request?
+  end
 
   def my_profile
     @user = User.find_by_id(current_user.id)

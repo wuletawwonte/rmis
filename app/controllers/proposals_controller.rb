@@ -2,7 +2,8 @@ class ProposalsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @proposals = Proposal.where(user_id: current_user.id).includes(:user).order(:created_at).page params[:page]
+    @proposals = Proposal.joined(current_user).page params[:page]
+    @envitations = Member.envitations(current_user)
   end
 
   def new
@@ -21,37 +22,37 @@ class ProposalsController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    @proposal = Proposal.find(params[:id])
+    @proposal.destroy
+
+    respond_to do |format|
+      format.html { redirect_to proposals_url, notice: 'Proposal was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
 
   def show
-    @proposal = Proposal.includes(:user).find(params['id'])
+    @proposal = Proposal.find(params['id'])
     @members = Member.where(proposal_id: params['id'])
       .includes(:user)
       .page(params[:page])
       .per(params[:per])
       .max_paginates_per(4)
-    @member_ids = Member.researcher_ids params['id']
-    @researchers = User.where.not(id: @member_ids).page(params[:page]).per(params[:per]).max_paginates_per(4)
+    @researchers = User.not_members_of(@proposal).page(params[:page]).per(params[:per]).max_paginates_per(4)
   end
 
   def search_researchers
     @proposal = Proposal.find_by_id(params['proposal_id'])
-    @member_ids = Member.researcher_ids @proposal.id
-    @researchers = User.where.not(id: @member_ids)
-
-    @researchers = if params['key'].present?
-                     @researchers.where(
-                       'first_name LIKE :search OR middle_name LIKE :search OR last_name LIKE :search', search: "%#{params['key']}%"
-                     ).page(params[:page]).max_paginates_per(4)
-                   else
-                     @researchers.page(params[:page]).per(params[:per]).max_paginates_per(4)
-                   end
 
     if turbo_frame_request?
-      render partial: 'researchers', locals: { researchers: @researchers, proposal: @proposal }
-    else
-      render :show
+      @researchers = if params['search_key'].present?
+                       User.not_members_of(@proposal).search_by_name(params['search_key']).page(params[:page]).max_paginates_per(4)
+                     else
+                       User.not_members_of(@proposal).page(params[:page]).max_paginates_per(4)
+                     end
     end
+    render partial: 'researchers', locals: { researchers: @researchers, proposal: @proposal }
   end
 
   private
@@ -61,7 +62,7 @@ class ProposalsController < ApplicationController
                                      :budget)
   end
 
-  def member_params
-    params.permit(:key, :proposal_id)
+  def search_params
+    params.permit(:search_key, :proposal_id)
   end
 end

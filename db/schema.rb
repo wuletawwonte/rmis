@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_05_130123) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_12_134747) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -104,6 +104,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_130123) do
     t.index ["name"], name: "index_faculties_on_name", unique: true
   end
 
+  create_table "global_settings", force: :cascade do |t|
+    t.string "university_name"
+    t.string "university_city"
+    t.string "university_country"
+    t.string "university_email"
+    t.string "university_phone"
+    t.string "university_website"
+    t.string "university_twitter"
+    t.string "university_facebook"
+    t.string "university_telegram"
+    t.integer "allowed_pi_per_year"
+    t.integer "allowed_co_per_year"
+    t.string "date_format"
+    t.integer "minimum_password_length"
+    t.string "default_password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "members", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "proposal_id", null: false
@@ -140,7 +159,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_130123) do
     t.integer "status", default: 0
     t.integer "budget"
     t.bigint "theme_id", null: false
+    t.string "code"
     t.index ["call_id"], name: "index_proposals_on_call_id"
+    t.index ["code"], name: "index_proposals_on_code", unique: true
     t.index ["research_type_id"], name: "index_proposals_on_research_type_id"
     t.index ["theme_id"], name: "index_proposals_on_theme_id"
     t.index ["user_id"], name: "index_proposals_on_user_id"

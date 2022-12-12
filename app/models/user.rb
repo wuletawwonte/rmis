@@ -3,19 +3,30 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  color                  :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
-#  reset_password_token   :string
-#  reset_password_sent_at :datetime
+#  first_name             :string
+#  last_name              :string
+#  middle_name            :string
 #  remember_created_at    :datetime
+#  reset_password_sent_at :datetime
+#  reset_password_token   :string
+#  role                   :string           default("researcher")
+#  sex                    :integer          default("Male")
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  first_name             :string
-#  middle_name            :string
-#  last_name              :string
-#  sex                    :integer          default("Male")
-#  role                   :string           default("researcher")
 #  profile_id             :bigint
+#
+# Indexes
+#
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_profile_id            (profile_id)
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (profile_id => profiles.id)
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -51,6 +62,11 @@ class User < ApplicationRecord
   def researcher?
     role == 'researcher'
   end
+
+  scope :researchers_only, -> { where(role: 'researcher') }
+  scope :members_of, ->(proposal) { researchers_only.joins(:members).where(members: { proposal_id: proposal.id }) }
+  scope :not_members_of, ->(proposal) { researchers_only.where.not(id: Member.member_ids_of(proposal)) }
+  scope :search_by_name, ->(search_key) { where('first_name LIKE :search OR middle_name LIKE :search OR last_name LIKE :search', search: "%#{search_key}%") }
 
   private
 
