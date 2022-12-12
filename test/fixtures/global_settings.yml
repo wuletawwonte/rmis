@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  university_name: MyString
+  university_city: MyString
+  university_country: MyString
+  university_email: MyString
+  university_phone: MyString
+  university_website: MyString
+  university_twitter: MyString
+  university_facebook: MyString
+  university_telegram: MyString
+  allowed_pi_per_year: 1
+  allowed_co_per_year: 1
+  date_format: MyString
+  minimum_password_length: 1
+  default_password: MyString
+
+two:
+  university_name: MyString
+  university_city: MyString
+  university_country: MyString
+  university_email: MyString
+  university_phone: MyString
+  university_website: MyString
+  university_twitter: MyString
+  university_facebook: MyString
+  university_telegram: MyString
+  allowed_pi_per_year: 1
+  allowed_co_per_year: 1
+  date_format: MyString
+  minimum_password_length: 1
+  default_password: MyString

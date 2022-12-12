@@ -1,0 +1,2 @@
+class GlobalSetting < ApplicationRecord
+end
