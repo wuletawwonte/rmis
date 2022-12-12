@@ -19,6 +19,7 @@ class Ability
         can :manage, Department
         can :manage, Call
         can :manage, AcademicRank
+        can :manage, GlobalSetting
 
       else
         can :read, Theme

@@ -16,9 +16,7 @@ class UsersController < ApplicationController
 
   def show
     puts "HHHHHHHHHHHHHHHHHHHHHHHHH: #{@user.full_name}"
-    if turbo_frame_request?
-      render partial: 'user_modal', locals: { user: @user }
-    end
+    render partial: 'user_modal', locals: { user: @user } if turbo_frame_request?
   end
 
   def my_profile

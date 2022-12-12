@@ -63,9 +63,9 @@ class User < ApplicationRecord
     role == 'researcher'
   end
 
-  scope :researchers_only, -> { where(role: "researcher") } 
-  scope :members_of, ->(proposal) { researchers_only.joins(:members).where(members: {proposal_id: proposal.id}) } 
-  scope :not_members_of, ->(proposal) { researchers_only.where.not(id: Member.member_ids_of(proposal)) } 
+  scope :researchers_only, -> { where(role: 'researcher') }
+  scope :members_of, ->(proposal) { researchers_only.joins(:members).where(members: { proposal_id: proposal.id }) }
+  scope :not_members_of, ->(proposal) { researchers_only.where.not(id: Member.member_ids_of(proposal)) }
   scope :search_by_name, ->(search_key) { where('first_name LIKE :search OR middle_name LIKE :search OR last_name LIKE :search', search: "%#{search_key}%") }
 
   private

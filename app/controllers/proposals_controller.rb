@@ -23,7 +23,7 @@ class ProposalsController < ApplicationController
   end
 
   def destroy
-    @proposal = Proposal.find(params[:id]);
+    @proposal = Proposal.find(params[:id])
     @proposal.destroy
 
     respond_to do |format|
@@ -46,16 +46,13 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.find_by_id(params['proposal_id'])
 
     if turbo_frame_request?
-      if params['search_key'].present?      
-        @researchers = User.not_members_of(@proposal).search_by_name(params['search_key']).page(params[:page]).max_paginates_per(4)
-        render partial: 'researchers', locals: { researchers: @researchers, proposal: @proposal }
-      else
-        @researchers = User.not_members_of(@proposal).page(params[:page]).max_paginates_per(4)
-        render partial: 'researchers', locals: { researchers: @researchers, proposal: @proposal }
-      end
-    else
-      render partial: 'researchers', locals: { researchers: @researchers, proposal: @proposal }
+      @researchers = if params['search_key'].present?
+                       User.not_members_of(@proposal).search_by_name(params['search_key']).page(params[:page]).max_paginates_per(4)
+                     else
+                       User.not_members_of(@proposal).page(params[:page]).max_paginates_per(4)
+                     end
     end
+    render partial: 'researchers', locals: { researchers: @researchers, proposal: @proposal }
   end
 
   private
@@ -68,5 +65,4 @@ class ProposalsController < ApplicationController
   def search_params
     params.permit(:search_key, :proposal_id)
   end
-
 end

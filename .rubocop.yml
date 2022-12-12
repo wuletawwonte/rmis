@@ -8,6 +8,7 @@ AllCops:
     - 'Rakefile'
     - 'node_modules/**/*'
     - 'app/models/ability.rb'
+    - 'lib/**/*'
 
   DisplayCopNames: true
 

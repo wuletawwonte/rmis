@@ -29,5 +29,4 @@ class Member < ApplicationRecord
 
   scope :member_ids_of, ->(proposal) { where(proposal_id: proposal.id).pluck(:user_id) }
   scope :envitations, ->(user) { where(user_id: user.id).includes(:proposal).envited }
-
 end

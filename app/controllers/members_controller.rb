@@ -20,7 +20,7 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
 
     if @member.update(status: Member.statuses[:joined])
-      redirect_to proposals_path, notice: 'Successfully joined the research team.'    
+      redirect_to proposals_path, notice: 'Successfully joined the research team.'
     else
       redirect_to proposals_path, notice: 'Unable to join the research team.'
     end
@@ -30,7 +30,7 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
 
     if @member.destroy
-      redirect_to proposals_path, notice: 'Successfully declined from joining the research team.'    
+      redirect_to proposals_path, notice: 'Successfully declined from joining the research team.'
     else
       redirect_to proposals_path, notice: 'Unable to decline the research team envitation.'
     end
