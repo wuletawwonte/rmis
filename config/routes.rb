@@ -2,7 +2,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :global_settings
+  resources :global_settings, only: %i[ index update ]
   resources :profiles
   resources :faculties
   resources :departments
