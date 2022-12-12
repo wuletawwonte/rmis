@@ -1,0 +1,7 @@
+<div id="<%= dom_id global_setting %>">
+  <% if action_name != "show" %>
+    <%= link_to "Show this global setting", global_setting, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this global setting', edit_global_setting_path(global_setting), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

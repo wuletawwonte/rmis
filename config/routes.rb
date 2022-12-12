@@ -2,7 +2,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :general_settings
+  resources :global_settings
   resources :profiles
   resources :faculties
   resources :departments
