@@ -13,6 +13,12 @@
 
   <%= form.input :university_name %>
   <%= form.input :university_email %>
+  <%= form.input :university_phone %>
+  <%= form.input :university_city %>
+  <%= form.country_select :university_country %>
+  <%= form.input :allowed_pi_per_year %>
+  <%= form.input :allowed_co_per_year %>
+  <%= form.input :date_format %>
 
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
