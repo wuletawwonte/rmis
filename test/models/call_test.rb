@@ -3,13 +3,22 @@
 # Table name: calls
 #
 #  id         :bigint           not null, primary key
-#  title      :string
-#  published  :boolean
+#  code       :string
 #  deadline   :date
-#  user_id    :bigint           not null
+#  published  :boolean
+#  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  code       :string
+#  user_id    :bigint           not null
+#
+# Indexes
+#
+#  index_calls_on_code     (code) UNIQUE
+#  index_calls_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
 #
 require 'test_helper'
 

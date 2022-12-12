@@ -3,17 +3,33 @@
 # Table name: proposals
 #
 #  id               :bigint           not null, primary key
-#  user_id          :bigint           not null
-#  title            :string
+#  abstract         :text
 #  attachement      :string
+#  budget           :integer
+#  code             :string
+#  status           :integer          default("initialized")
+#  title            :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  abstract         :text
-#  research_type_id :bigint           not null
 #  call_id          :bigint
-#  status           :integer          default("initialized")
-#  budget           :integer
+#  research_type_id :bigint           not null
 #  theme_id         :bigint           not null
+#  user_id          :bigint           not null
+#
+# Indexes
+#
+#  index_proposals_on_call_id           (call_id)
+#  index_proposals_on_code              (code) UNIQUE
+#  index_proposals_on_research_type_id  (research_type_id)
+#  index_proposals_on_theme_id          (theme_id)
+#  index_proposals_on_user_id           (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (call_id => calls.id)
+#  fk_rails_...  (research_type_id => research_types.id)
+#  fk_rails_...  (theme_id => themes.id)
+#  fk_rails_...  (user_id => users.id)
 #
 class Proposal < ApplicationRecord
   after_create :add_pi, :add_code

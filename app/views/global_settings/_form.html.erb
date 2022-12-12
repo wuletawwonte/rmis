@@ -1,4 +1,4 @@
-<%= form_with(model: global_setting, class: "contents") do |form| %>
+<%= simple_form_for global_setting, class: "contents" do |form| %>
   <% if global_setting.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(global_setting.errors.count, "error") %> prohibited this global_setting from being saved:</h2>
@@ -10,6 +10,9 @@
       </ul>
     </div>
   <% end %>
+
+  <%= form.input :university_name %>
+  <%= form.input :university_email %>
 
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
