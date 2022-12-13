@@ -4,14 +4,8 @@
   Register research center
 </h2>
 
-<div
-  class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md"
->
-  <%= simple_form_for @research_center, url: { action: "create" }, method: :post, local: true do |f| %>
+<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md">
 
-    <%= f.input :name %>
+  <%= render "form", research_center: @research_center %>
 
-    <%= f.button :submit, "Save", class: "px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple cursor-pointer" %>
-
-  <% end %>
 </div>
