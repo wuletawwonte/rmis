@@ -7,15 +7,11 @@
 <div
   class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md"
 >
-  <%= form_with model: @research_center, url: { action: "create" }, method: :post, local: true do |f| %>
-    <label class="block text-sm">
-      <%= content_tag(:span, "Name", class: "text-gray-700") %>
-      <%= f.text_field :name, class: "block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input", placeholder: "Research Center" %>
-    </label>
+  <%= simple_form_for @research_center, url: { action: "create" }, method: :post, local: true do |f| %>
 
-    <label class="block mt-4 text-sm">
-      <%= f.submit "Save", class: "px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple cursor-pointer" %>
-    </label>
+    <%= f.input :name %>
+
+    <%= f.button :submit, "Save", class: "px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple cursor-pointer" %>
 
   <% end %>
 </div>

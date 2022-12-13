@@ -8,4 +8,6 @@
 #  updated_at :datetime         not null
 #
 class ResearchCenter < ApplicationRecord
+
+  validates :name, presence: true
 end
