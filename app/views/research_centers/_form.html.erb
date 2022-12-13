@@ -28,10 +28,12 @@
 
         <div>
           <div class="p-5 bg-white border-gray-200 bg-gradient-to-r code-preview border">
-            <%= f.simple_fields_for :users do |rc_user| %>
+            <%= f.simple_fields_for :user do |rc_user| %>
               <%= rc_user.input :first_name %>
               <%= rc_user.input :middle_name %>
               <%= rc_user.input :email, placeholder: "researchcenter@amu.edu.et", hint: "Please use AMU email of the research center", label: "Research Center Email: " %>
+              <%= rc_user.input :password, input_html: { value: "12345678" }, hint: "Global default password is set" %>
+              <%= rc_user.hidden_field :role, value: "research_coordinator", hint: "Global default password is set" %>
             <% end %>
           </div>
         </div>

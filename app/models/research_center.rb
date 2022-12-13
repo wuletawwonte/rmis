@@ -8,8 +8,8 @@
 #  updated_at :datetime         not null
 #
 class ResearchCenter < ApplicationRecord
-  belongs_to :user
+  has_one :user
   accepts_nested_attributes_for :user
-
+  
   validates :name, presence: true
 end
