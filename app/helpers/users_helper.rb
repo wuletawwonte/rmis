@@ -16,6 +16,8 @@ module UsersHelper
       content_tag(:span, user.role, class: 'px-3 mt-2 py-1 font-semibold leading-tight text-black-700 bg-blue-100 rounded-full')
     when 'researcher'
       content_tag(:span, user.role, class: 'px-3 mt-2 py-1 font-semibold leading-tight text-white bg-purple-600 rounded-full')
+    when 'research_coordinator'
+      content_tag(:span, user.role, class: 'px-3 mt-2 py-1 font-semibold leading-tight text-white bg-green-600 rounded-full')
     else
       content_tag(:span, 'unkown', class: 'px-3 mt-2 py-1 font-semibold leading-tight text-black-700 bg-gray-100 rounded-full')
     end

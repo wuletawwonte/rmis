@@ -42,7 +42,7 @@ class ResearchCentersController < ApplicationController
   private
 
   def research_center_params
-    params.require(:research_center).permit(:name, user_attributes: [:first_name, :middle_name, :email, :password])
+    params.require(:research_center).permit(:name, user_attributes: [:first_name, :middle_name, :email, :password, :role])
   end
 
   def set_research_center
