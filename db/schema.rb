@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_13_071856) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_13_104346) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -171,8 +171,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_071856) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", default: 14, null: false
-    t.index ["user_id"], name: "index_research_centers_on_user_id"
   end
 
   create_table "research_types", force: :cascade do |t|
@@ -224,8 +222,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_071856) do
     t.string "role", default: "researcher"
     t.bigint "profile_id"
     t.string "color"
+    t.bigint "research_center_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["profile_id"], name: "index_users_on_profile_id"
+    t.index ["research_center_id"], name: "index_users_on_research_center_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -241,8 +241,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_071856) do
   add_foreign_key "proposals", "research_types"
   add_foreign_key "proposals", "themes"
   add_foreign_key "proposals", "users"
-  add_foreign_key "research_centers", "users"
   add_foreign_key "themes", "research_centers"
   add_foreign_key "themes", "users"
   add_foreign_key "users", "profiles"
+  add_foreign_key "users", "research_centers"
 end

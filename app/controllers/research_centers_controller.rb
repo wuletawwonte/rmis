@@ -14,6 +14,7 @@ class ResearchCentersController < ApplicationController
 
   def create
     @research_center = ResearchCenter.new(research_center_params)
+    @research_center.build_user(research_center_params[:user])
 
     respond_to do |format|
       if @research_center.save
@@ -40,7 +41,7 @@ class ResearchCentersController < ApplicationController
   private
 
   def research_center_params
-    params.require(:research_center).permit(:name)
+    params.require(:research_center).permit(:name, user_attributes: [:id, :first_name, :middle_name, :email])
   end
 
   def set_research_center

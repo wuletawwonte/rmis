@@ -15,6 +15,28 @@
 
     <%= f.input :name %>
 
+      <div class="mt-8 mb-8 code-example">
+        <div class="w-full p-4 border border-gray-200 bg-gray-100">
+          <div class="grid grid-cols-3">
+      
+            <div class="col-span-2 sm:col-span-1">
+              Create Research Center Account
+            </div>
+        
+          </div>
+        </div>
+
+        <div>
+          <div class="p-5 bg-white border-gray-200 bg-gradient-to-r code-preview border">
+            <%= f.simple_fields_for :users do |rc_user| %>
+              <%= rc_user.input :first_name %>
+              <%= rc_user.input :middle_name %>
+              <%= rc_user.input :email, placeholder: "researchcenter@amu.edu.et", hint: "Please use AMU email of the research center", label: "Research Center Email: " %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
     <%= f.button :submit, "Save", class: "px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple cursor-pointer" %>
 
   <% end %>

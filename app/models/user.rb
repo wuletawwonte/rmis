@@ -17,16 +17,19 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  profile_id             :bigint
+#  research_center_id     :bigint
 #
 # Indexes
 #
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_profile_id            (profile_id)
+#  index_users_on_research_center_id    (research_center_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 # Foreign Keys
 #
 #  fk_rails_...  (profile_id => profiles.id)
+#  fk_rails_...  (research_center_id => research_centers.id)
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -37,11 +40,11 @@ class User < ApplicationRecord
   has_many :members, dependent: :destroy
   has_many :proposals, through: :members, dependent: :destroy
   has_many :proposals, dependent: :destroy
-  has_many :research_centers
   has_many :themes
   has_many :calls
   has_one_attached :avatar
   belongs_to :profile, optional: true
+  belongs_to :research_center, optional: true, autosave: :true
 
   enum :sex, { Male: 0, Female: 1 }
 

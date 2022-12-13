@@ -6,17 +6,10 @@
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :bigint           default(14), not null
-#
-# Indexes
-#
-#  index_research_centers_on_user_id  (user_id)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (user_id => users.id)
 #
 class ResearchCenter < ApplicationRecord
+  belongs_to :user
+  accepts_nested_attributes_for :user
 
   validates :name, presence: true
 end
