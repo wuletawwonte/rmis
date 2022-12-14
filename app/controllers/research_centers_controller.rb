@@ -1,6 +1,7 @@
 class ResearchCentersController < ApplicationController
   load_and_authorize_resource
   before_action :set_research_center, only: %i[show edit update destroy]
+  before_action :set_global_setting, only: %i[new edit]
 
   def index
     @research_centers = ResearchCenter.order(:created_at).page params[:page]
@@ -47,6 +48,10 @@ class ResearchCentersController < ApplicationController
 
   def set_research_center
     @research_center = ResearchCenter.find(params[:id])
+  end
+
+  def set_global_setting
+    @global_setting = GlobalSetting.first
   end
 
 end

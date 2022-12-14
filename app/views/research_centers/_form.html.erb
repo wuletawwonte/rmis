@@ -20,7 +20,7 @@
           <div class="grid grid-cols-3">
       
             <div class="col-span-2 sm:col-span-1">
-              Create Research Center Account
+              Create Research Center Account              
             </div>
         
           </div>
@@ -32,13 +32,15 @@
               <%= rc_user.input :first_name %>
               <%= rc_user.input :middle_name %>
               <%= rc_user.input :email, placeholder: "researchcenter@amu.edu.et", hint: "Please use AMU email of the research center", label: "Research Center Email: " %>
-              <%= rc_user.input :password, input_html: { value: "12345678" }, hint: "Global default password is set" %>
-              <%= rc_user.hidden_field :role, value: "research_coordinator", hint: "Global default password is set" %>
+              <%= rc_user.input :password, input_html: { value: @global_setting.default_password }, hint: "Global default password[#{@global_setting.default_password}] is set" %>
+              <%= rc_user.hidden_field :role, value: "research_coordinator" %>
             <% end %>
           </div>
         </div>
       </div>
 
-    <%= f.button :submit, "Save", class: "px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple cursor-pointer" %>
+    <%= f.button :submit, "Save" %>
+
+    <%= link_to 'Back to Research Center', research_centers_path, class: "mt-2 py-2 px-5 bg-gray-200 text-sm inline-block font-medium" %>
 
   <% end %>

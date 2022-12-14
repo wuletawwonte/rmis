@@ -44,7 +44,7 @@
 
         <div class="bg-white px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500 flex items-center"><%= form.label :university_country %> </dt>
-          <dd class="text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <%= form.country_select :university_country, label: false %></dd>
+          <dd class="text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <%= form.country_select :university_country, label: false, class: "border border-red-700" %></dd>
         </div>
 
         <div class="bg-white px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -60,6 +60,11 @@
         <div class="bg-white px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500 flex items-center"><%= form.label :date_format %> </dt>
           <dd class="text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <%= form.input :date_format, label: false %></dd>
+        </div>
+
+        <div class="bg-white px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500 flex items-center"><%= form.label :default_password %></dt>
+          <dd class="text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <%= form.input :default_password, as: :string, label: false %></dd>
         </div>
 
         <div class="bg-white px-4 mb-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
