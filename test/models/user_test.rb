@@ -17,16 +17,19 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  profile_id             :bigint
+#  research_center_id     :bigint
 #
 # Indexes
 #
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_profile_id            (profile_id)
+#  index_users_on_research_center_id    (research_center_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 # Foreign Keys
 #
 #  fk_rails_...  (profile_id => profiles.id)
+#  fk_rails_...  (research_center_id => research_centers.id)
 #
 require 'test_helper'
 

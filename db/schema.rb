@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_12_134747) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_13_104346) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -222,8 +222,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_134747) do
     t.string "role", default: "researcher"
     t.bigint "profile_id"
     t.string "color"
+    t.bigint "research_center_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["profile_id"], name: "index_users_on_profile_id"
+    t.index ["research_center_id"], name: "index_users_on_research_center_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -242,4 +244,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_134747) do
   add_foreign_key "themes", "research_centers"
   add_foreign_key "themes", "users"
   add_foreign_key "users", "profiles"
+  add_foreign_key "users", "research_centers"
 end

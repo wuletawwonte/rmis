@@ -29,7 +29,7 @@
               <%= index + 1 %>
             </td>
             <td class="px-4 py-3 text-sm">
-              <%= research_center.name %>
+              <%= link_to research_center.name, research_center_path(research_center) %>
             </td>
             <td class="px-4 py-3 text-sm">
               <%= research_center.created_at %>

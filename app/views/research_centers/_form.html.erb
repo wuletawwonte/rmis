@@ -1,0 +1,48 @@
+  <%= simple_form_for research_center, url: { action: "create" }, method: :post, local: true do |f| %>
+
+    <% if research_center.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+        <h2><%= pluralize(research_center.errors.count, "error") %> prohibited this Research Center from being saved:</h2>
+
+        <ul>
+          <% research_center.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+    <%= f.input :name %>
+
+      <div class="mt-8 mb-8 code-example">
+        <div class="w-full p-4 border border-gray-200 bg-gray-100">
+          <div class="grid grid-cols-3">
+      
+            <div class="col-span-2 sm:col-span-1">
+              Create Research Center Account              
+            </div>
+        
+          </div>
+        </div>
+
+        <div>
+          <div class="p-5 bg-white border-gray-200 bg-gradient-to-r code-preview border">
+            <%= f.simple_fields_for :user do |rc_user| %>
+              <%= rc_user.input :first_name %>
+              <%= rc_user.input :middle_name %>
+              <%= rc_user.input :last_name %>            
+              <%= rc_user.input :sex,as: :radio_buttons, collection: User.sexes.keys, checked: User.sexes[0] %>
+              <%= rc_user.input :email, placeholder: "researchcenter@amu.edu.et", hint: "Please use AMU email of the research center", label: "Research Center Email: " %>
+              <%= rc_user.input :password, input_html: { value: @global_setting.default_password }, hint: "Global default password[#{@global_setting.default_password}] is set" %>
+              <%= rc_user.hidden_field :role, value: "research_coordinator" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+    <%= f.button :submit, "Save" %>
+
+    <%= link_to 'Back to Research Center', research_centers_path, class: "mt-2 py-2 px-5 bg-gray-200 text-sm inline-block font-medium" %>
+
+  <% end %>

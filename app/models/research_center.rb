@@ -8,4 +8,8 @@
 #  updated_at :datetime         not null
 #
 class ResearchCenter < ApplicationRecord
+  has_one :user, dependent: :destroy
+  accepts_nested_attributes_for :user
+
+  validates :name, presence: true
 end
