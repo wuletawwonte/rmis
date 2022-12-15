@@ -1,7 +1,7 @@
 class ResearchCentersController < ApplicationController
   load_and_authorize_resource
   before_action :set_research_center, only: %i[show edit update destroy]
-  before_action :set_global_setting, only: %i[new edit]
+  before_action :set_global_setting
 
   def index
     @research_centers = ResearchCenter.order(:created_at).page params[:page]
@@ -25,7 +25,6 @@ class ResearchCentersController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
       end
     end
-    
   end
 
   def edit; end
@@ -39,11 +38,10 @@ class ResearchCentersController < ApplicationController
     end
   end
 
-
   private
 
   def research_center_params
-    params.require(:research_center).permit(:name, user_attributes: [:first_name, :middle_name, :email, :password, :role])
+    params.require(:research_center).permit(:name, user_attributes: %i[first_name middle_name last_name email password sex role])
   end
 
   def set_research_center
@@ -53,5 +51,4 @@ class ResearchCentersController < ApplicationController
   def set_global_setting
     @global_setting = GlobalSetting.first
   end
-
 end

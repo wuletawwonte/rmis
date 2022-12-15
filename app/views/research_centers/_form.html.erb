@@ -31,6 +31,8 @@
             <%= f.simple_fields_for :user do |rc_user| %>
               <%= rc_user.input :first_name %>
               <%= rc_user.input :middle_name %>
+              <%= rc_user.input :last_name %>            
+              <%= rc_user.input :sex,as: :radio_buttons, collection: User.sexes.keys, checked: User.sexes[0] %>
               <%= rc_user.input :email, placeholder: "researchcenter@amu.edu.et", hint: "Please use AMU email of the research center", label: "Research Center Email: " %>
               <%= rc_user.input :password, input_html: { value: @global_setting.default_password }, hint: "Global default password[#{@global_setting.default_password}] is set" %>
               <%= rc_user.hidden_field :role, value: "research_coordinator" %>
