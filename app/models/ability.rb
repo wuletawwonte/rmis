@@ -6,6 +6,7 @@ class Ability
     can :public_show, Call
     can :list, Document
     can :manage, Subscriber
+    can :manage, User
 
     if user.present?
       if user.admin?
