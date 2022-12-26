@@ -66,6 +66,10 @@ class User < ApplicationRecord
     role == 'researcher'
   end
 
+  def coordinator?
+    role == 'research_coordinator'
+  end
+
   scope :researchers_only, -> { where(role: 'researcher') }
   scope :members_of, ->(proposal) { researchers_only.joins(:members).where(members: { proposal_id: proposal.id }) }
   scope :not_members_of, ->(proposal) { researchers_only.where.not(id: Member.member_ids_of(proposal)) }

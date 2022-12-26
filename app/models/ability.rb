@@ -21,6 +21,11 @@ class Ability
         can :manage, AcademicRank
         can :manage, GlobalSetting
 
+      elsif user.coordinator?
+        can :manage, User
+        can :manage, Proposal, user: user
+        cannot :create, Proposal 
+
       else
         can :read, Theme
         can :read, ResearchType
