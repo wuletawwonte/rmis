@@ -48,6 +48,10 @@ class Proposal < ApplicationRecord
 
   scope :joined, ->(user) { joins(:members).where('members.user_id = ?', user.id).where('members.status = ?', Member.statuses[:joined]) }
 
+  def created_by(user)
+    true if self.user == user
+  end
+
   private
 
   def add_pi
