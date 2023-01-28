@@ -54,6 +54,23 @@ Finaly after starting rails server `sidekiq` must run in the background by runni
 bundle exec sidekiq -q default -q mailers
 ```
 
+## Docker Setup
+
+Before going through these steps please make sure you have [docker](https://docs.docker.com/engine/install/) and [docker-compose](https://docs.docker.com/compose/install/) installed in your machine. 
+
+NOTE: these docker setup is for setting up development environment only.
+
+To start working on this project all you have to do is clone the repo locally and navigate to the project root directory. Execute the following command to build and start the docker images based on the configuration provided. 
+
+```bash
+docker-compose up
+```
+Then open http://localhost:3000 or http://127.0.0.1:3000 on your browser. You need to run one more command from your terminal before the app succesfully runs. That is to run the migration of the database. 
+
+```bash
+docker-compose run web bin/rails db:migrate
+```
+
 ## Authors
 
 👤 **Wuletaw Wonte**
