@@ -14,9 +14,11 @@ User.create(
   first_name: 'Wuletaw',
   middle_name: 'Wonte',
   last_name: 'Mitsa',
-  email: 'wuletawwonte@gmail.com',
+  email: 'wuletawwonte@amu.edu.et',
   password: '123456'
 )
+
+puts "wuletawwonte@amu.edu.et user account is ready"
 
 5.times do |_index|
   @first_name = Faker::Name.first_name
