@@ -10,26 +10,50 @@
 
 User.destroy_all
 
-User.create(
-  first_name: 'Wuletaw',
-  middle_name: 'Wonte',
-  last_name: 'Mitsa',
-  email: 'wuletawwonte@amu.edu.et',
-  password: '123456'
-)
+# Get email of a user with amu.edu.et domain
+def user_email(fname, lname)
+  "#{fname}.#{lname}@amu.edu.et"
+end
 
-puts "wuletawwonte@amu.edu.et user account is ready"
+# A pool to choose gender from. 
+GENDERS = [:Male, :Female]
 
-5.times do |_index|
-  @first_name = Faker::Name.first_name
-  @middle_name = Faker::Name.middle_name
-  @last_name = Faker::Name.last_name
-
+def create_admin
   User.create(
-    first_name: @first_name,
-    middle_name: @middle_name,
-    last_name: @last_name,
-    email: "#{@first_name}.#{@last_name}@gmail.com",
-    password: '123456'
+    first_name: 'Wuletaw',
+    middle_name: 'Wonte',
+    last_name: 'Mitsa',
+    email: user_email('wuletaw', 'wonte'),
+    password: '123456',
+    role: 'admin'
   )
 end
+
+create_admin
+puts "wuletaw.wonte@amu.edu.et user account is ready"
+
+def create_researchers
+  5.times do |_index|
+    random_gender = GENDERS.sample
+    if random_gender == :Male
+      @first_name = Faker::Name.male_first_name
+    else
+      @first_name = Faker::Name.female_first_name
+    end
+
+    @middle_name = Faker::Name.middle_name
+    @last_name = Faker::Name.last_name
+
+    User.create(
+      first_name: @first_name,
+      middle_name: @middle_name,
+      last_name: @last_name,
+      email: user_email(@first_name, @middle_name),
+      password: '123456',
+      sex: random_gender
+    )
+  end
+end
+
+create_researchers
+puts "5 researcher accounts created and ready"
