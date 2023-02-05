@@ -7,9 +7,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+puts "========== SEEDING ... =========="
 
 User.destroy_all
 GlobalSetting.destroy_all
+ResearchCenter.destroy_all
 
 # Get email of a user with amu.edu.et domain
 def user_email(fname, lname)
@@ -33,26 +35,31 @@ end
 create_admin
 puts "wuletaw.wonte@amu.edu.et user account is ready"
 
+def create_user(role = 'researcher')
+  random_gender = GENDERS.sample
+  if random_gender == :Male
+    @first_name = Faker::Name.male_first_name
+  else
+    @first_name = Faker::Name.female_first_name
+  end
+
+  @middle_name = Faker::Name.middle_name
+  @last_name = Faker::Name.last_name
+
+  User.create(
+    first_name: @first_name,
+    middle_name: @middle_name,
+    last_name: @last_name,
+    email: user_email(@first_name, @middle_name),
+    password: '123456',
+    sex: random_gender,
+    role: role
+  )
+end
+
 def create_researchers
-  5.times do |_index|
-    random_gender = GENDERS.sample
-    if random_gender == :Male
-      @first_name = Faker::Name.male_first_name
-    else
-      @first_name = Faker::Name.female_first_name
-    end
-
-    @middle_name = Faker::Name.middle_name
-    @last_name = Faker::Name.last_name
-
-    User.create(
-      first_name: @first_name,
-      middle_name: @middle_name,
-      last_name: @last_name,
-      email: user_email(@first_name, @middle_name),
-      password: '123456',
-      sex: random_gender
-    )
+  5.times do
+    create_user
   end
 end
 
@@ -79,4 +86,36 @@ def generate_global_setting
 end
 
 generate_global_setting
-puts "default global settings value generated"
+puts "Default global settings value generated"
+
+def create_research_center
+  random_gender = GENDERS.sample
+  if random_gender == :Male
+    @first_name = Faker::Name.male_first_name
+  else
+    @first_name = Faker::Name.female_first_name
+  end
+
+  @middle_name = Faker::Name.middle_name
+  @last_name = Faker::Name.last_name
+
+
+  research_center = ResearchCenter.create(
+    name: "Centre for Livestock and Fishery Research Center",
+  )
+  research_center.build_user(
+    first_name: @first_name,
+    middle_name: @middle_name,
+    last_name: @last_name,
+    email: user_email(@first_name, @middle_name),
+    password: '123456',
+    sex: random_gender,
+    role: 'research_coordinator'
+  )
+  research_center.save
+end
+
+create_research_center
+puts "Created research center with its associated coordinator account"
+
+puts "========== SEEDING DONE =========="
