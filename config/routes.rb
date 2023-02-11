@@ -18,8 +18,9 @@ Rails.application.routes.draw do
   resources :calls
   resources :research_types
   devise_for :users
-  resources :themes, only: %i[index show create new edit destroy]
-  resources :research_centers, only: %i[index show create new edit destroy]
+  resources :research_centers, only: %i[index show create new edit destroy] do
+    resources :themes, only: %i[index show create new edit destroy]
+  end
 
   resources :proposals, only: %i[index show new create destroy] do
     get '/members', to: 'members#create', as: "members"
