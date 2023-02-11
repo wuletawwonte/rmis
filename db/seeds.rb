@@ -7,19 +7,42 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+puts "========== SEEDING ... =========="
 
 User.destroy_all
+GlobalSetting.destroy_all
+ResearchCenter.destroy_all
 
-User.create(
-  first_name: 'Wuletaw',
-  middle_name: 'Wonte',
-  last_name: 'Mitsa',
-  email: 'wuletawwonte@gmail.com',
-  password: '123456'
-)
+# Get email of a user with amu.edu.et domain
+def user_email(fname, lname)
+  "#{fname}.#{lname}@amu.edu.et"
+end
 
-5.times do |_index|
-  @first_name = Faker::Name.first_name
+# A pool to choose gender from. 
+GENDERS = [:Male, :Female]
+
+def create_admin
+  User.create(
+    first_name: 'Wuletaw',
+    middle_name: 'Wonte',
+    last_name: 'Mitsa',
+    email: user_email('wuletaw', 'wonte'),
+    password: '123456',
+    role: 'admin'
+  )
+end
+
+create_admin
+puts "wuletaw.wonte@amu.edu.et user account is ready"
+
+def create_user(role = 'researcher')
+  random_gender = GENDERS.sample
+  if random_gender == :Male
+    @first_name = Faker::Name.male_first_name
+  else
+    @first_name = Faker::Name.female_first_name
+  end
+
   @middle_name = Faker::Name.middle_name
   @last_name = Faker::Name.last_name
 
@@ -27,7 +50,72 @@ User.create(
     first_name: @first_name,
     middle_name: @middle_name,
     last_name: @last_name,
-    email: "#{@first_name}.#{@last_name}@gmail.com",
-    password: '123456'
+    email: user_email(@first_name, @middle_name),
+    password: '123456',
+    sex: random_gender,
+    role: role
   )
 end
+
+def create_researchers
+  5.times do
+    create_user
+  end
+end
+
+create_researchers
+puts "5 researcher accounts created and ready"
+
+def generate_global_setting
+  GlobalSetting.create(
+    allowed_co_per_year: 2,
+    allowed_pi_per_year: 2,
+    date_format: 'dd-mm-yyyy',
+    default_password: '123456',
+    minimum_password_length: 6,
+    university_city: 'Arba Minch',
+    university_country: 'ET',
+    university_email: 'corcom@amu.edu.et',
+    university_facebook: 'https://www.facebook.com/arbaminch_university',
+    university_name: 'Arba Minch University',
+    university_phone: '+251468810243',
+    university_telegram: 'telegram.app/amu',
+    university_twitter: 'https://twitter.com/amu',
+    university_website: 'https://www.amu.edu.et'
+  )
+end
+
+generate_global_setting
+puts "Default global settings value generated"
+
+def create_research_center
+  random_gender = GENDERS.sample
+  if random_gender == :Male
+    @first_name = Faker::Name.male_first_name
+  else
+    @first_name = Faker::Name.female_first_name
+  end
+
+  @middle_name = Faker::Name.middle_name
+  @last_name = Faker::Name.last_name
+
+
+  research_center = ResearchCenter.create(
+    name: "Centre for Livestock and Fishery Research Center",
+  )
+  research_center.build_user(
+    first_name: @first_name,
+    middle_name: @middle_name,
+    last_name: @last_name,
+    email: user_email(@first_name, @middle_name),
+    password: '123456',
+    sex: random_gender,
+    role: 'research_coordinator'
+  )
+  research_center.save
+end
+
+create_research_center
+puts "Created research center with its associated coordinator account"
+
+puts "========== SEEDING DONE =========="
