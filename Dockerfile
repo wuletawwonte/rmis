@@ -25,7 +25,6 @@ COPY . /app/
 
 ENV BUNDLE_PATH /gems
 RUN yarn install
-RUN gem install nokogiri
 RUN bundle install
 
 ENTRYPOINT [ "bin/rails" ]

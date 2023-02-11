@@ -289,7 +289,7 @@ GEM
     zeitwerk (2.6.6)
 
 PLATFORMS
-  x86_64-linux-musl
+  x86_64-linux
 
 DEPENDENCIES
   annotate
