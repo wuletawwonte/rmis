@@ -15,3 +15,6 @@ test:
 production:
   <<: *default
   url: <%= ENV["DATABASE_URL"] %>
+  database: rmis_production
+  username: rmis
+  password: <%= ENV["RMIS_DATABASE_PASSWORD"] %>
