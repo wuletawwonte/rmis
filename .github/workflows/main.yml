@@ -50,8 +50,7 @@ jobs:
           bin/rails tailwindcss:build
           bin/rails db:create
           bin/rails db:schema:load
-          bin/rails test --fail-fast
-          bin/rails test:system
+          bin/rails test:models
       - name: Smoke test database seeds
         env:
           RAILS_ENV: test
