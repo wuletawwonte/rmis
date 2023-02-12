@@ -1,1 +1,1 @@
-web: rake db:migrate && bin/rails tailwindcss:watch && bin/rails server -b 0.0.0.0 -p ${PORT:-3000}
+web: rake db:migrate && bin/rails assets:clean assets:precompile && bin/rails server -b 0.0.0.0 -p ${PORT:-3000}
