@@ -21,7 +21,7 @@
 To get a local copy follow these simple example steps.
 
 - Make sure you have Postgres and Ruby installed.
-- Open the terminal window and clone the repository using this command: git clone https://github.com/wuletawwonte/rmis.git
+- Open a terminal window and clone the repository using this command: `git clone https://github.com/wuletawwonte/rmis.git`
 - Open the repo by typing : cd rmis
 - Install the project's dependencies by running this command: bundle install
 - Run `rails db:create` to create the database.
