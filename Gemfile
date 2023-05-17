@@ -46,4 +46,4 @@ gem 'sidekiq'
 gem 'simple_form'
 gem 'simple_form-tailwind'
 
-gem "view_component"
+gem 'view_component'
