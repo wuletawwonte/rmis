@@ -34,6 +34,16 @@ To get a local copy follow these simple example steps.
   - Go to `http://127.0.0.1:1080`
   - Send mail through smtp://127.0.0.1:1025
 
+### Configuring Rails
+
+Create an .env file with the minimum ENV variables needed for booting Rails:
+
+```bash
+cp .env.example .env
+```
+
+You can edit the configruation options or go with the default setup. 
+
 ## Sidekiq setup
 
 [Active jobs](https://guides.rubyonrails.org/active_job_basics.html) of Rails is used to handle declaring and running jobs asynchronously. The adapter used for background jobs in the project is `Sidekiq`. Since `Sidekiq` uses [redis](https://redis.io/) to store queue of background jobs, redis server must be installed for sidekiq to work.
