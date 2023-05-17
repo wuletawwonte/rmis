@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 class HeaderSectionComponent < ViewComponent::Base
-  def initialize(title:)
+
+  # validates :title, presence: true
+
+  def initialize(title:, &block)
     @title = title
+    @block = block
   end
 
 end
