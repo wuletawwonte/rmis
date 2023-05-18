@@ -47,3 +47,4 @@ gem 'simple_form'
 gem 'simple_form-tailwind'
 
 gem 'view_component'
+gem 'dry-initializer', '~> 3.1', '>= 3.1.1'
