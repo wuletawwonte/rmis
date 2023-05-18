@@ -1,8 +1,9 @@
-class HeaderSectionComponent < ViewComponent::Base
-  # validates :title, presence: true
+class HeaderSectionComponent < ApplicationViewComponent
 
-  def initialize(title: nil, &block)
-    @title = title
-    @block = block
+  option :title, optional: true
+  option :block, optional: true
+
+  def initialize()
+    super()
   end
 end
