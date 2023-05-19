@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Check if the RuboCop gem is installed
+if ! gem list | grep -q rubocop; then
+  echo "RuboCop is not installed. Please install it before using this hook."
+  exit 1
+fi
+
+# Get the list of changed files
+changed_files=$(git status --porcelain | awk '{print $2}')
+
+# Run RuboCop on the changed files
+rubocop --auto-correct --force-exit $changed_files
+
+# Check the exit status of RuboCop
+if [ $? -ne 0 ]; then
+  echo "RuboCop found some errors. Please fix them before committing."
+  exit 1
+fi
+
+echo "RuboCop passed. Committing."
