@@ -1,11 +1,5 @@
 #!/bin/sh
 
-# Check if the RuboCop gem is installed
-if ! gem list | grep -q rubocop; then
-  echo "RuboCop is not installed. Please install it before using this hook."
-  exit 1
-fi
-
 # Get the list of changed files
 changed_files=$(git status --porcelain | awk '{print $2}')
 
