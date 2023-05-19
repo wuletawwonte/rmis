@@ -1,10 +1,7 @@
 #!/bin/sh
 
-# Get the list of changed files
-changed_files=$(git status --porcelain | awk '{print $2}')
-
 # Run RuboCop on the changed files
-rubocop --auto-correct --force-exit $changed_files
+rubocop -A
 
 # Check the exit status of RuboCop
 if [ $? -ne 0 ]; then

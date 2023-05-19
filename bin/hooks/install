@@ -8,7 +8,7 @@ Dir.chdir(File.expand_path('../../.git/hooks', __dir__)) do
   if File.exist?("./#{hook_name}")
     puts "- File for #{hook_name} already exists in git hooks directory"
   else
-    FileUtils.cp("../../bin/hooks/#{hook_name}", "#{hook_name}")
+    FileUtils.cp("../../bin/hooks/#{hook_name}", "#{hook_name}", preserve: true)
     puts "+ Created #{hook_name}"
   end
 end
