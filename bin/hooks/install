@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+
+hook_name = 'pre-commit'
+
+Dir.chdir(File.expand_path('../../.git/hooks', __dir__)) do
+    unless File.exist?("./#{hook_name}")
+        FileUtils.ln_s("../../bin/git-hooks/#{hook_name}", hook_name, verbose: true)
+        puts "+ Created #{hook_name}"
+    else
+        puts "- File for #{hook_name} already exists in git hooks directory"
+    end
+end
