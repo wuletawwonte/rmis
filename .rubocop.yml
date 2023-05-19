@@ -1,14 +1,15 @@
 AllCops:
+  TargetRubyVersion: 3.2.0
   NewCops: enable
   Exclude:
     - 'db/**/*'
-    - 'bin/**/*'
     - 'config/**/*'
     - 'Guardfile'
     - 'Rakefile'
     - 'node_modules/**/*'
     - 'app/models/ability.rb'
     - 'lib/**/*'
+    - 'bin/**/*'
 
   DisplayCopNames: true
 
@@ -27,7 +28,6 @@ Metrics/AbcSize:
 Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
-  IgnoredMethods: ['describe']
   Max: 30
 
 Style/Documentation:
