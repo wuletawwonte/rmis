@@ -91,4 +91,5 @@ Rails.application.configure do
 
   config.hosts << "rmis.dev"
 
+  config.force_ssl = true
 end
