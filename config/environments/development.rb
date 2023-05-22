@@ -91,5 +91,6 @@ Rails.application.configure do
 
   config.hosts << ENV.fetch("DEV_DOMAIN_NAME", "rmis.dev")
 
+  # By default the app is gonna respond for both http and https requests, but if force_ssl is set true it forces the server to respond only for https requests
   config.force_ssl = true
 end
