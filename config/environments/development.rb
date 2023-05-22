@@ -89,7 +89,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  config.hosts << "rmis.dev"
+  config.hosts << ENV.fetch("DEV_DOMAIN_NAME", "rmis.dev")
 
   config.force_ssl = true
 end
