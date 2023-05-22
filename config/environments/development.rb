@@ -92,8 +92,4 @@ Rails.application.configure do
   config.hosts << "rmis.dev"
 
   config.force_ssl = true
-
-  config.ssl_certificate = File.expand_path("../ssl/rmis.dev.pem")
-  config.ssl_key = File.expand_path("../ssl/rmis.dev-key.pem")
-
 end
