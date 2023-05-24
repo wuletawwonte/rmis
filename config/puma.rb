@@ -16,12 +16,27 @@ threads min_threads_count, max_threads_count
 worker_timeout 3600 if ENV.fetch('RAILS_ENV', 'development') == 'development'
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
-#
-port ENV.fetch('PORT', 3000)
+# port ENV.fetch('PORT', 3000)
 
 # Specifies the `environment` that Puma will run in.
 #
 environment ENV.fetch('RAILS_ENV', 'development')
+
+# Specifies the `environment` that Puma will run in.
+#
+rails_env = ENV.fetch('RAILS_ENV', 'development')
+environment rails_env
+
+# When SSL/TLS is enabled on the development environment of the application, puma needs to listen for secure connections.
+# The ssl_bind option is used to specify the IP address and port number to bind the server to, as well as the SSL/TLS certificate and key to use for encrypting the traffic. 
+if rails_env == 'development' && ENV.fetch('DEV_ENV_HTTPS', 0) == '1'
+  ssl_bind '0.0.0.0', ENV.fetch('PORT', 3000), {
+    key:  ENV['TEST_CERT_KEY'],
+    cert: ENV['TEST_CERT'],
+  }
+else
+  port ENV.fetch('PORT', 3000)
+end
 
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch('PIDFILE', 'tmp/pids/server.pid')
@@ -32,7 +47,7 @@ pidfile ENV.fetch('PIDFILE', 'tmp/pids/server.pid')
 # Workers do not work on JRuby or Windows (both of which do not support
 # processes).
 #
-workers ENV.fetch("RAILS_WORKERS") { 4 }
+workers ENV.fetch("RAILS_WORKERS", 4)
 
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code
