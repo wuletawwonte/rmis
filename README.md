@@ -3,7 +3,7 @@
 > A system being developed for Arba Minch University that automates the research business process from `Call for paper` to `Publication`.
 
 ## Built With
-
+- Ruby(3.2.0)
 - Ruby on Rails
 - [View Component](https://viewcomponent.org/)
 - [Tailwind](https://tailwindcss.com/)
