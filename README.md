@@ -5,10 +5,11 @@
 ## Built With
 
 - Ruby on Rails
-- Ruby
+- [View Component](https://viewcomponent.org/)
+- [Tailwind](https://tailwindcss.com/)
+- [Hotwire](https://hotwired.dev/)
 - Rubocop
 - [Windmill](https://windmillui.com/) template used in the ui.
-- [Alpinejs](https://alpinejs.dev/)
 
 ## Live Demo
 
