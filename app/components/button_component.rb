@@ -6,22 +6,24 @@ class ButtonComponent < ApplicationViewComponent
     }.with_indifferent_access
 
     TW_SIZE_CLASS = {
-        lg: "h-12 px-6 m-2 text-lg",
-        md: "h-10 px-5 m-2",
-        sm: "h-8 px-4 m-2 text-sm"
+        lg: "px-5 py-3 font-medium leading-5",
+        md: "px-4 py-2 text-sm font-medium leading-5",
+        sm: "px-3 py-1 text-sm font-medium leading-5"
     }.with_indifferent_access
 
     param :label
     param :href
-    option :icon,   optional: true
-    option :size,   default: proc { :md }
-    option :type,   default: proc { :primary }
+    option :icon,           optional: true
+    option :size,           default: proc { :md }
+    option :type,           default: proc { :primary }
+    option :full_rounded,   default: proc { :false }
 
     def parent_tag(&block)
         
         button_classes = class_names(
             TW_SIZE_CLASS[size],
             TW_BUTTON_TYPE_CLASS[type],
+            radius_class
         )
 
         parent_tag_options = { class: button_classes }
@@ -33,5 +35,9 @@ class ButtonComponent < ApplicationViewComponent
     private
         def html_tag
             href ? :a : :button 
+        end
+
+        def radius_class
+            full_rounded == true ? "rounded-full" : "rounded-lg"
         end
 end
