@@ -1,5 +1,7 @@
 class ButtonComponent < ApplicationViewComponent
 
+    BASE_CLASS = "flex items-center justify-between".freeze
+
     TW_BUTTON_TYPE_CLASS = {
         primary: "text-white bg-purple-600 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple",
         secondary: "text-white text-gray-700 active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray",
@@ -17,10 +19,12 @@ class ButtonComponent < ApplicationViewComponent
     option :size,           default: proc { :md }
     option :type,           default: proc { :primary }
     option :full_rounded,   default: proc { :false }
+    option :icon_right,     default: proc { :false }
 
     def parent_tag(&block)
         
         button_classes = class_names(
+            BASE_CLASS,
             TW_SIZE_CLASS[size],
             TW_BUTTON_TYPE_CLASS[type],
             radius_class
