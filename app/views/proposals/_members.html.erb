@@ -44,8 +44,8 @@
 
           <td class="px-4 py-3">
             <div class="flex items-center space-x-4 text-sm">
-              <%= link_to fa_icon('edit 2x'), proposal_path(member.id), html: { class: "flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray" } %>
-              <%= button_to fa_icon('trash 2x'), proposal_path(member.id), method: :destroy, html: { class: "flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray" } %>
+              <%= link_to icon('fas', 'edit 2x'), proposal_path(member.id), html: { class: "flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray" } %>
+              <%= button_to icon('fas', 'trash 2x'), proposal_path(member.id), method: :destroy, html: { class: "flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray" } %>
             </div>
           </td>
         </tr>
