@@ -48,4 +48,4 @@ gem 'simple_form-tailwind'
 gem 'dry-initializer', '~> 3.1', '>= 3.1.1'
 gem 'view_component'
 
-gem "font-awesome-sass", "~> 6.4.0"
+gem 'font-awesome-sass', '~> 6.4.0'
