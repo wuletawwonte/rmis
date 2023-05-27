@@ -3,18 +3,17 @@
 > A system being developed for Arba Minch University that automates the research business process from `Call for paper` to `Publication`.
 
 ## Built With
-
+- Ruby(3.2.0)
 - Ruby on Rails
-- Ruby
+- [View Component](https://viewcomponent.org/)
+- [Tailwind](https://tailwindcss.com/)
+- [Hotwire](https://hotwired.dev/)
 - Rubocop
 - [Windmill](https://windmillui.com/) template used in the ui.
-- [Alpinejs](https://alpinejs.dev/)
 
 ## Live Demo
 
 [live link](https://amu-rmis.herokuapp.com/)
-
-![FireShot Capture 011 - RMIS-Research Management Information System - localhost](https://user-images.githubusercontent.com/12524453/205876961-58987ab6-f9f7-4891-b8e9-5a471c42cc7a.png)
 
 ## Getting Started
 
@@ -63,6 +62,26 @@ Finaly after starting rails server `sidekiq` must run in the background by runni
 ```bash
 bundle exec sidekiq -q default -q mailers
 ```
+
+## Web server
+This project uses [Puma](https://puma.io/) as a web server for development. The `.env` file is where some of the configuration of the app is written. 
+
+Use [dev-tld-resolver](https://github.com/puma/dev-tld-resolver) to access the application with a custom domain name, because it redirects `.dev` tld to localhost. The default domain name in the development environment is `rmis.dev` but it can be changed to a custom domain name by setting `DEV_DOMAIN_NAME=rmis.dev` in the `.env` file.
+
+**HTTPS (recommended)**
+
+Use [mkcert](https://github.com/FiloSottile/mkcert) to generate and install certificates for local domains: `mkcert rmis.dev "*.rmis.dev" localhost 127.0.0.1`
+
+In `.env`, set:
+
+```
+TEST_CERT_KEY=config/ssl/rmis.dev-key.pem
+TEST_CERT=config/ssl/rmis.dev.pem
+DEV_ENV_HTTPS=1
+```
+
+Run `rails s` to start Puma locally. `config/puma.rb` has setting to bind it to 0.0.0.0 when running with `DEV_ENV_HTTPS=1`.
+The app does not fully work on a non-standard port. To route every port to 3000, run: `sudo iptables -t nat -A OUTPUT -o lo -p tcp --dport 443 -j REDIRECT --to-port 3000`. Run the same command with `-D` instead of `-A` to disable. This will also be reset when you restart your computer.
 
 ## Docker Setup
 

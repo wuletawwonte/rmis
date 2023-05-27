@@ -89,6 +89,8 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  config.hosts << "rmis-production.up.railway.app"
+  config.hosts << ENV.fetch("DEV_DOMAIN_NAME", "rmis.dev")
 
+  # By default the app is gonna respond for both http and https requests, but if force_ssl is set true it forces the server to respond only for https requests
+  config.force_ssl = true
 end
