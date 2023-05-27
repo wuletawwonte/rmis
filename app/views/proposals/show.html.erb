@@ -21,7 +21,7 @@
 
     <div class="w-full pt-8 flex justify-end">
       <%= link_to @proposal.attachement_url, class: "rounded-full flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue" do %>
-        <%= fa_icon 'download' %>
+        <%= icon 'fas', 'download' %>
         <%= content_tag(:span, "Download", class: "ml-2" ) %>
       <% end %>
     </div>

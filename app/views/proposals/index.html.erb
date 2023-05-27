@@ -35,8 +35,8 @@
               </td>
               <td class="px-4 py-3">
                 <div class="flex items-center space-x-4 text-sm">
-                  <%= link_to fa_icon('edit 2x'), proposal_path(proposal.id), class: "py-2 text-sm text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray" %>
-                  <%= button_to fa_icon('trash 2x'), proposal_path(proposal.id), method: :destroy, class: "py-2 text-sm text-red-600 rounded-lg focus:outline-none focus:shadow-outline-gray" %>
+                  <%= link_to icon('fas', 'edit 2x'), proposal_path(proposal.id), class: "py-2 text-sm text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray" %>
+                  <%= button_to icon('fas', 'trash 2x'), proposal_path(proposal.id), method: :destroy, class: "py-2 text-sm text-red-600 rounded-lg focus:outline-none focus:shadow-outline-gray" %>
                 </div>
               </td>
             </tr>

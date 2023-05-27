@@ -200,13 +200,13 @@
                     aria-label="submenu"
                   >
                     <li class="flex">
-                      <%= link_to fa_icon('user lg', class: 'w-7', text: 'Profile'), destroy_user_session_path, method: :delete, class: "inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800" %>
+                      <%= link_to icon('fas', 'user lg', class: 'w-7', text: 'Profile'), destroy_user_session_path, method: :delete, class: "inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800" %>
                     </li>
                     <li class="flex">
-                      <%= link_to fa_icon('gear lg', class: 'w-7', text: 'Settings'), destroy_user_session_path, method: :delete, class: "inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800" %>
+                      <%= link_to icon('fas', 'gear lg', class: 'w-7', text: 'Settings'), destroy_user_session_path, method: :delete, class: "inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800" %>
                     </li>
                     <li class="flex">
-                      <%= button_to fa_icon('sign-out lg', class: 'w-7', text: 'Log out'), destroy_user_session_path, method: :delete, class: "inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800", form_class: "px-0 w-full" %>
+                      <%= button_to icon('fas', 'sign-out lg', class: 'w-7', text: 'Log out'), destroy_user_session_path, method: :delete, class: "inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800", form_class: "px-0 w-full" %>
                     </li>
                   </ul>
                 </template>

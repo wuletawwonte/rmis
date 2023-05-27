@@ -7,7 +7,6 @@ gem 'bootsnap', require: false
 gem 'carrierwave'
 gem 'devise'
 gem 'faker'
-gem 'font-awesome-rails'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
@@ -48,3 +47,5 @@ gem 'simple_form-tailwind'
 
 gem 'dry-initializer', '~> 3.1', '>= 3.1.1'
 gem 'view_component'
+
+gem 'font-awesome-sass', '~> 6.4.0'
