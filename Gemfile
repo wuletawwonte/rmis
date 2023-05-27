@@ -7,7 +7,6 @@ gem 'bootsnap', require: false
 gem 'carrierwave'
 gem 'devise'
 gem 'faker'
-gem 'font-awesome-rails'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
