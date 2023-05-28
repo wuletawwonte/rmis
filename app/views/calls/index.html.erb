@@ -1,7 +1,7 @@
 
 <%= render HeaderSectionComponent.new(title: "Research Calls") do %>
   <% if can? :create, Call %>
-    <%= link_to 'New call', new_call_path, class: "rounded-lg py-2 px-5 bg-purple-600 text-white block font-medium" %>
+    <%= render ButtonComponent.new "New call", new_call_path, left_icon: icon('fas', 'plus fa-sm') %>
   <% end %>
 <% end %>
 

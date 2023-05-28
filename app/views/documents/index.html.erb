@@ -1,6 +1,6 @@
 <%= render HeaderSectionComponent.new(title: "Public documents") do %>
   <% if can? :create, Document %>
-    <%= link_to 'New Document', new_document_path, class: "rounded-lg py-2 px-5 bg-purple-600 text-white block font-medium" %>
+    <%= render ButtonComponent.new "New document", new_document_path, left_icon: icon('fas', 'plus fa-sm') %>    
   <% end %>
 <% end %>
 

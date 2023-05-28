@@ -1,7 +1,7 @@
 
 <%= render HeaderSectionComponent.new do %>
   <% if can? :create, EducationLevel %>
-    <%= link_to "New education level", new_education_level_path, class: "px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border rounded-lg border-transparent active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple" %>
+    <%= render ButtonComponent.new "New education level", new_education_level_path, left_icon: icon('fas', 'plus fa-sm') %>
   <% end %>
 <% end %>
 
