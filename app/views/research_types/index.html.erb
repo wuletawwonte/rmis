@@ -1,7 +1,7 @@
 
 <%= render HeaderSectionComponent.new do %>
   <% if can? :create, ResearchType %>
-    <%= render ButtonComponent.new "New research type", new_research_type_path, icon: icon('fas', 'users') %>
+    <%= render ButtonComponent.new "New research type", new_research_type_path, left_icon: icon('fas', 'plus fa-sm') %>
   <% end %>
 <% end %>
 

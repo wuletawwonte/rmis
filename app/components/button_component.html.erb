@@ -1,5 +1,5 @@
 <%= parent_tag do %>
-    <%= icon if icon != nil && icon_right != true %>
+    <%= left_icon if left_icon %>
     <span class="ml-2 mr-2"><%= label %></span>
-    <%= icon if icon != nil && icon_right == true %>
+    <%= right_icon if right_icon %>
 <% end %>

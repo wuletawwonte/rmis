@@ -19,7 +19,8 @@ class ButtonComponent < ApplicationViewComponent
     option :size,           default: proc { :md }
     option :type,           default: proc { :primary }
     option :full_rounded,   default: proc { :false }
-    option :icon_right,     default: proc { :false }
+    option :left_icon,      optional: true
+    option :right_icon,     optional: true
 
     def parent_tag(&block)
         
