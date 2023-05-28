@@ -21,6 +21,7 @@ class ButtonComponent < ApplicationViewComponent
   option :full_rounded, default: proc { false } # If true the border will be full round
   option :left_icon, optional: true # If present, the button will have an icon on the left
   option :right_icon, optional: true # If present, the button will have an icon on the right
+  option :submit, default: proc { false } # If true the button will be a submit button
 
   def parent_tag(&)
     button_classes = class_names(
@@ -32,6 +33,7 @@ class ButtonComponent < ApplicationViewComponent
 
     parent_tag_options = { class: button_classes }
     parent_tag_options[:href] = resolve_url(href) if href
+    parent_tag_options[:type] = "submit" if submit == true && href.nil?
 
     content_tag(html_tag, **parent_tag_options, &)
   end
