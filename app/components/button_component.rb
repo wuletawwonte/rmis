@@ -4,7 +4,7 @@ class ButtonComponent < ApplicationViewComponent
 
     TW_BUTTON_TYPE_CLASS = {
         primary: "text-white bg-purple-600 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple",
-        secondary: "text-white text-gray-700 active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray",
+        secondary: "text-white text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray",
     }.with_indifferent_access
 
     TW_SIZE_CLASS = {
