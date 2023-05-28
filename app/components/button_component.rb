@@ -13,14 +13,14 @@ class ButtonComponent < ApplicationViewComponent
     sm: 'px-3 py-1 text-sm font-medium leading-5'
   }.with_indifferent_access
 
-  param :label
-  param :href
-  option :icon, optional: true
-  option :size, default: proc { :md }
-  option :type, default: proc { :primary }
-  option :full_rounded, default: proc { false }
-  option :left_icon, optional: true
-  option :right_icon, optional: true
+  param :label  # Can be a string or an icon component
+  param :href, optional: true   # If present, the button will be an anchor tag
+  option :icon, optional: true  # If present, the button will be an icon button
+  option :size, default: proc { :md }   # :sm, :md, :lg
+  option :type, default: proc { :primary }  # :primary, :secondary
+  option :full_rounded, default: proc { false } # If true the border will be full round
+  option :left_icon, optional: true # If present, the button will have an icon on the left
+  option :right_icon, optional: true # If present, the button will have an icon on the right
 
   def parent_tag(&)
     button_classes = class_names(
