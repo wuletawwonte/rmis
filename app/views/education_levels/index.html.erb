@@ -1,7 +1,7 @@
 
-<%= render HeaderSectionComponent.new do %>
+<%= render HeaderSectionComponent.new do |header| %>
   <% if can? :create, EducationLevel %>
-    <%= render ButtonComponent.new "New education level", new_education_level_path, left_icon: icon('fas', 'plus fa-sm') %>
+    <%= header.with_action "Add education level", new_education_level_path, left_icon: icon('fas', 'plus fa-sm') %>
   <% end %>
 <% end %>
 

@@ -1,4 +1,6 @@
 class ButtonComponent < ApplicationViewComponent
+  include CanCan::Ability
+
   BASE_CLASS = 'flex items-center justify-between'.freeze
 
   TW_BUTTON_TYPE_CLASS = {

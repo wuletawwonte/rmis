@@ -1,6 +1,6 @@
-<%= render HeaderSectionComponent.new(title: "Public documents") do %>
+<%= render HeaderSectionComponent.new(title: "Public documents") do |header| %>
   <% if can? :create, Document %>
-    <%= render ButtonComponent.new "New document", new_document_path, left_icon: icon('fas', 'plus fa-sm') %>    
+    <%= header.with_action "Add document", new_document_path, left_icon: icon('fas', 'plus fa-sm') %>    
   <% end %>
 <% end %>
 
