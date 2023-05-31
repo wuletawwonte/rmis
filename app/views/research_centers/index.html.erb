@@ -1,7 +1,19 @@
 
-<%= render HeaderSectionComponent.new do %>
-  <% if can? :create, ResearchCenter %>
-    <%= render ButtonComponent.new "Add Research Center", new_research_center_path, left_icon: icon('fas', 'plus fa-sm') %>    
+<%= render HeaderSectionComponent.new do |header| %>
+  <% header.with_action do %>
+
+    <% if can? :create, ResearchCenter %>
+      <%= render ButtonComponent.new "Add Research Center", new_research_center_path, left_icon: icon('fas', 'plus fa-sm') %>    
+    <% end %>
+
+  <% end %>
+
+  <% header.with_action do %>
+
+    <% if can? :create, ResearchCenter %>
+      <%= render ButtonComponent.new "Add Center", new_research_center_path, left_icon: icon('fas', 'plus fa-sm') %>    
+    <% end %>
+
   <% end %>
 <% end %>
 

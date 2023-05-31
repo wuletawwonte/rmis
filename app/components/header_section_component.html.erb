@@ -1,4 +1,8 @@
 <div class="pb-2 w-full flex justify-between items-center">
   <h2 class="my-6 text-2xl font-semibold text-gray-700"><%= title || controller_name.humanize %></h2>
-  <%= content %>
+  <ul class="flex space-x-2 items-center">
+    <% actions.each do |item| %>
+      <li><%= item %></li>
+    <% end %>
+  </ul>
 </div>
