@@ -1,7 +1,7 @@
 
-<%= render HeaderSectionComponent.new(title: "Thematic areas") do %>
+<%= render HeaderSectionComponent.new(title: "Thematic areas") do |header| %>
   <% if can? :create, Theme %>
-    <%= render ButtonComponent.new "Add Thematic Area", new_theme_path, left_icon: icon('fas', 'plus fa-sm') %>
+    <%= header.with_action "Add Thematic Area", new_theme_path, left_icon: icon('fas', 'plus fa-sm') %>
   <% end %>
 <% end %>
 
