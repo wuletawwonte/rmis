@@ -2,4 +2,7 @@
 
 class SidebarComponent < ViewComponent::Base
 
+    params :title, default: "AMU-RMIS"
+    renders_many :menus, SidebarMenuComponent
+
 end
