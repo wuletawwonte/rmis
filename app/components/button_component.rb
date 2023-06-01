@@ -25,6 +25,7 @@ class ButtonComponent < ApplicationViewComponent
   option :right_icon, optional: true # If present, the button will have an icon on the right
   option :submit, default: proc { false } # If true the button will be a submit button
   option :tooltip, optional: true # If present, the button will have a tooltip
+  option :auth_check, optional: true # If present, the button will be visible only if the user has the required permissions
 
   def parent_tag(&)
     button_classes = class_names(
@@ -40,6 +41,12 @@ class ButtonComponent < ApplicationViewComponent
     parent_tag_options[:title] = tooltip if tooltip
 
     content_tag(html_tag, **parent_tag_options, &)
+  end
+
+  def render?
+    return true if auth_check.nil?
+
+    auth_check
   end
 
   private

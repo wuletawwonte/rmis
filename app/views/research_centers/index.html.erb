@@ -1,8 +1,6 @@
 
 <%= render HeaderSectionComponent.new do |header| %>  
-  <% if can? :create, ResearchCenter %>
-    <% header.with_action "Add research center", new_research_center_path, left_icon: icon('fas', 'plus fa-sm'), tooltip: "Create a new research center" %>
-  <% end %>
+  <% header.with_action "Add research center", new_research_center_path, left_icon: icon('fas', 'plus fa-sm'), tooltip: "Create a new research center", auth_check: can?(:create, ResearchCenter) %>
 <% end %>
 
 <div class="w-full overflow-hidden rounded-lg shadow-xs">

@@ -1,8 +1,6 @@
 
 <%= render HeaderSectionComponent.new(title: "Research Calls") do |header| %>
-  <% if can? :create, Call %>
-    <%= header.with_action "Add call", new_call_path, left_icon: icon('fas', 'plus fa-sm'), tooltip: "Create a call for research announcement" %>
-  <% end %>
+  <%= header.with_action "Add call", new_call_path, left_icon: icon('fas', 'plus fa-sm'), tooltip: "Create a call for research announcement", auth_check: can?(:create, Call) %>
 <% end %>
 
 
