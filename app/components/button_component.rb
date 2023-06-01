@@ -1,7 +1,7 @@
 class ButtonComponent < ApplicationViewComponent
   include CanCan::Ability
 
-  BASE_CLASS = 'flex items-center justify-between'.freeze
+  BASE_CLASS = 'flex items-center justify-between space-x-2'.freeze
 
   TW_BUTTON_TYPE_CLASS = {
     primary: 'text-white bg-purple-600 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple',
