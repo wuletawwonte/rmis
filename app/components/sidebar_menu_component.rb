@@ -5,13 +5,12 @@ class SidebarMenuComponent < ApplicationViewComponent
     param :title
     param :route_path
     param :icon_name
-    option :check_parent, default: proc { false }
+    option :active, default: proc { false }
+    option :auth_check, optional: true # If present, the button will be visible only if the user has the required permissions
 
+    def render?
+        return true if auth_check.nil?
 
-    def is_current_page?
-        return current_page?(route_path) if check_parent == false
-        
-        request.fullpath.start_with?(route_path)
+        auth_check
     end
-
 end
