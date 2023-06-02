@@ -4,5 +4,9 @@
         <% menus.each do |menu| %>
             <%= menu %>
         <% end %>
+
+        <div class="px-6 my-6">
+            <%= action_button if action_button %>
+        </div>
     </ul>
 </div>
