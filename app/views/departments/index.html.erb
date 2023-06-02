@@ -1,8 +1,6 @@
 
 <%= render HeaderSectionComponent.new do |header| %>
-  <% if can? :create, Department %>
-    <%= header.with_action "Add department", new_department_path, left_icon: icon('fas', 'plus fa-sm') %>
-  <% end %>
+  <%= header.with_action "Add department", new_department_path, left_icon: icon('fas', 'plus fa-sm'), auth_check: can?(:create, Department) %>
 <% end %>
 
 <div class="w-full overflow-hidden rounded-lg shadow-xs">

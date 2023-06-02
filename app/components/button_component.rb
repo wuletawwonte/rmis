@@ -1,11 +1,11 @@
 class ButtonComponent < ApplicationViewComponent
   include CanCan::Ability
 
-  BASE_CLASS = 'flex items-center justify-between'.freeze
+  BASE_CLASS = 'flex items-center justify-start space-x-2'.freeze
 
   TW_BUTTON_TYPE_CLASS = {
     primary: 'text-white bg-purple-600 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple',
-    secondary: 'text-white text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400
+    secondary: 'text-white text-gray-700 transition-colors duration-150 border border-gray-300 dark:text-gray-400
     active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray'
   }.with_indifferent_access
 
@@ -25,6 +25,7 @@ class ButtonComponent < ApplicationViewComponent
   option :right_icon, optional: true # If present, the button will have an icon on the right
   option :submit, default: proc { false } # If true the button will be a submit button
   option :tooltip, optional: true # If present, the button will have a tooltip
+  option :auth_check, optional: true # If present, the button will be visible only if the user has the required permissions
 
   def parent_tag(&)
     button_classes = class_names(
@@ -40,6 +41,12 @@ class ButtonComponent < ApplicationViewComponent
     parent_tag_options[:title] = tooltip if tooltip
 
     content_tag(html_tag, **parent_tag_options, &)
+  end
+
+  def render?
+    return true if auth_check.nil?
+
+    auth_check
   end
 
   private

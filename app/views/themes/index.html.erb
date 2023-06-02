@@ -1,8 +1,6 @@
 
 <%= render HeaderSectionComponent.new(title: "Thematic areas") do |header| %>
-  <% if can? :create, Theme %>
-    <%= header.with_action "Add Thematic Area", new_theme_path, left_icon: icon('fas', 'plus fa-sm') %>
-  <% end %>
+    <%= header.with_action "Add Thematic Area", new_theme_path, left_icon: icon('fas', 'plus fa-sm'), auth_check: can?(:create, Theme)  %>
 <% end %>
 
 
