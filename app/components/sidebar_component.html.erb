@@ -1,6 +1,8 @@
 <div class="pt-4 pb-4 text-gray-500">
     <%= link_to title, root_path , class: "ml-6 text-xl font-bold text-purple-800"%>
-    <% menus.each do |menu| %>
-        <%= menu %>
-    <% end %>
+    <ul class="mt-6">
+        <% menus.each do |menu| %>
+            <%= menu %>
+        <% end %>
+    </ul>
 </div>

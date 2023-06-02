@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class SidebarComponent < ViewComponent::Base
+class SidebarComponent < ApplicationViewComponent
 
-    params :title, default: "AMU-RMIS"
+    param :title
     renders_many :menus, SidebarMenuComponent
 
 end
