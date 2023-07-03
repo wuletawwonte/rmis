@@ -68,7 +68,7 @@ This project uses [Puma](https://puma.io/) as a web server for development. The 
 
 Use [dev-tld-resolver](https://github.com/puma/dev-tld-resolver) to access the application with a custom domain name, because it redirects `.dev` tld to localhost. To install dev-tld-resolver it must be built using `make` according to its [installation documentation](https://github.com/puma/dev-tld-resolver#installation). 
 
-To ensure that `make` is installed on your computer, please install the `build-essential` package according to the [instruction here](./docs/Install%20build-essentials.md). 
+To ensure that `make` is installed on your computer, please install the `build-essential` meta package according to the [instruction here](./docs/Install%20build-essentials.md). 
 
 The default domain name in the development environment is `rmis.dev` but it can be changed to a custom domain name by setting `DEV_DOMAIN_NAME=rmis.dev` in the `.env` file.
 
