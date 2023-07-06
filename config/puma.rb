@@ -26,10 +26,10 @@ environment rails_env
 # When SSL/TLS is enabled on the development environment of the application, puma needs to listen for secure connections.
 # The ssl_bind option is used to specify the IP address and port number to bind the server to, as well as the SSL/TLS certificate and key to use for encrypting the traffic. 
 if rails_env == 'development' && ENV.fetch('DEV_ENV_HTTPS', 0) == '1'
-  ssl_bind '0.0.0.0', ENV.fetch('PORT', 3000), {
-    key:  ENV['TEST_CERT_KEY'],
-    cert: ENV['TEST_CERT'],
-  }
+  ssl_bind '0.0.0.0', ENV.fetch('PORT', 3000),
+    key:  ENV.fetch('TEST_CERT_KEY', 'config/ssl/rmis.dev+3-key.pem'),
+    cert: ENV.fetch('TEST_CERT', 'config/ssl/rmis.dev+3.pem'),
+    verify_mode: 'none'
 else
   port ENV.fetch('PORT', 3000)
 end
