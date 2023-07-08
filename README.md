@@ -1,6 +1,6 @@
 # RMIS - Research Management Information System
 
-> A system being developed for Arba Minch University that automates the research business process from `Call for paper` to `Publication`.
+> A web based system being developed for Arba Minch University that automates the research business process from `Call for paper` stage to `Publication`.
 
 ## Built With
 - Ruby(3.2.0)
@@ -20,7 +20,10 @@
 To get a local copy follow these simple example steps.
 
 - Make sure you have Postgres and Ruby([rbenv](https://github.com/rbenv/rbenv) preferred) installed.
-- Open the terminal window and clone the repository using this command: git clone https://github.com/wuletawwonte/rmis.git
+- Open the terminal window and clone the repository using this command: 
+```bash
+git clone https://github.com/wuletawwonte/rmis.git
+```
 - Open the repo by typing : 
 ```bash
 cd rmis
