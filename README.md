@@ -1,4 +1,4 @@
-# AMU-RMIS - Arba Minch University Research Management Information System
+# RMIS - Research Management Information System
 
 > A system being developed for Arba Minch University that automates the research business process from `Call for paper` to `Publication`.
 
