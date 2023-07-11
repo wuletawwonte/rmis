@@ -19,7 +19,7 @@
 
 To get a local copy follow these simple example steps.
 
-- Make sure you have Postgres and Ruby([rbenv](https://github.com/rbenv/rbenv) preferred) installed.
+- Make sure you have [Postgres](./docs/Install%20and%20setup%20postgres.md) and Ruby([rbenv](https://github.com/rbenv/rbenv) preferred) installed.
 - Open the terminal window and clone the repository using this command: 
 ```bash
 git clone https://github.com/wuletawwonte/rmis.git

@@ -7,6 +7,8 @@ default: &default
 development:
   <<: *default
   database: rmis_development
+  username: <%= ENV['RMIS_DATABASE_USERNAME'] %>
+  password: <%= ENV['RMIS_DATABASE_PASSWORD'] %>
 
 test:
   <<: *default
