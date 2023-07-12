@@ -1,6 +1,6 @@
-# AMU-RMIS - Arba Minch University Resarch Management Information System
+# RMIS - Research Management Information System
 
-> A system being developed for Arba Minch University that automates the research business process from `Call for paper` to `Publication`.
+> A web based system being developed for Arba Minch University that automates the research business process from `Call for paper` stage to `Publication`.
 
 ## Built With
 - Ruby(3.2.0)
@@ -19,12 +19,21 @@
 
 To get a local copy follow these simple example steps.
 
-- Make sure you have Postgres and Ruby installed.
-- Open the terminal window and clone the repository using this command: git clone https://github.com/wuletawwonte/rmis.git
-- Open the repo by typing : cd rmis
-- Install the project's dependencies by running this command: bundle install
+- Make sure you have [Postgres](./docs/Install%20and%20setup%20postgres.md) and Ruby([rbenv](https://github.com/rbenv/rbenv) preferred) installed.
+- Open the terminal window and clone the repository using this command: 
+```bash
+git clone https://github.com/wuletawwonte/rmis.git
+```
+- Open the repo by typing : 
+```bash
+cd rmis
+```
+- Install the project's dependencies by running this command: 
+```bash
+bundle install
+```
 - Run `rails db:create` to create the database.
-- Run rails `rails db:schema:load` to create the relations in the database for the project based on the schema file inside the `db` folder.
+- Run `rails db:schema:load` to create the relations in the database for the project based on the schema file inside the `db` folder.
 - Run rails server or rails s to start the application on local server.
 - To test the project, run rspec in your terminal
 - To test mailer use `mailcatcher` gem, It's not in the Gemfile but I used it to catch mails. Here are the instructions of using it
@@ -66,7 +75,11 @@ bundle exec sidekiq -q default -q mailers
 ## Web server
 This project uses [Puma](https://puma.io/) as a web server for development. The `.env` file is where some of the configuration of the app is written. 
 
-Use [dev-tld-resolver](https://github.com/puma/dev-tld-resolver) to access the application with a custom domain name, because it redirects `.dev` tld to localhost. The default domain name in the development environment is `rmis.dev` but it can be changed to a custom domain name by setting `DEV_DOMAIN_NAME=rmis.dev` in the `.env` file.
+Use [dev-tld-resolver](https://github.com/puma/dev-tld-resolver) to access the application with a custom domain name, because it redirects `.dev` tld to localhost. To install dev-tld-resolver it must be built using `make` according to its [installation documentation](https://github.com/puma/dev-tld-resolver#installation). 
+
+To ensure that `make` is installed on your computer, please install the `build-essential` meta package according to the [instruction here](./docs/Install%20build-essentials.md). 
+
+The default domain name in the development environment is `rmis.dev` but it can be changed to a custom domain name by setting `DEV_DOMAIN_NAME=rmis.dev` in the `.env` file.
 
 **HTTPS (recommended)**
 
