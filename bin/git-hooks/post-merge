@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Get the commit message of the merge commit
+commit_message=$(git log -1 --oneline HEAD@{1}..)
+
+# Get the current date and time
+date=$(date)
+
+# Open the changelog file
+changelog_file=CHANGELOG.md
+
+# Add the commit message to the changelog file
+echo "* $date - $commit_message" >> $changelog_file
+
+# Exit with a success code
+exit 0
