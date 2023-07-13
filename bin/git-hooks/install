@@ -2,7 +2,7 @@
 
 require 'fileutils'
 
-HOOKS = %w(pre-commit post-checkout).freeze
+HOOKS = %w(post-merge).freeze
 
 Dir.chdir(File.expand_path('../../.git/hooks', __dir__)) do
   HOOKS.each do |hook_name|
