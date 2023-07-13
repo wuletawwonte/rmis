@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+
+HOOKS = %w[post-merge].freeze
+
+Dir.chdir(File.expand_path('../../.git/hooks', __dir__)) do
+  HOOKS.each do |hook_name|
+    if File.exist?("./#{hook_name}")
+      puts "- File for #{hook_name} already exists in git hooks directory"
+    else
+      FileUtils.ln_s("../../bin/git-hooks/#{hook_name}", hook_name, verbose: true)
+      puts "+ Created #{hook_name}"
+    end
+  end
+end
