@@ -113,6 +113,19 @@ Then open http://localhost:3000 or http://127.0.0.1:3000 on your browser. You ne
 docker-compose run web bin/rails db:migrate
 ```
 
+## git hooks
+
+There are a couple of ready-to-use git hooks that can be installed as follows:
+
+```bash
+bin/git-hooks/install
+```
+
+It installs the following:
+- `post-merge`: Creates a changelog entry after a branch is merged to the default branch
+
+Note: if you see any problems with permissions please do chmod +x [filename] on hooks(bin/git-hooks)
+
 ## Authors
 
 👤 **Wuletaw Wonte**
