@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+
+HOOKS = %w(pre-commit post-checkout).freeze
+
+Dir.chdir(File.expand_path('../../.git/hooks', __dir__)) do
+  HOOKS.each do |hook_name|
+    unless File.exist?("./#{hook_name}")
+      FileUtils.ln_s("../../bin/git-hooks/#{hook_name}", hook_name, verbose: true)
+      puts "+ Created #{hook_name}"
+    else
+      puts "- File for #{hook_name} already exists in git hooks directory"
+    end
+  end
+end
