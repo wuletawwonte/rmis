@@ -2,12 +2,10 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
 
 development:
   <<: *default
   database: rmis_development
-  username: <%= ENV['RMIS_DATABASE_USERNAME'] %>
 
 test:
   <<: *default
@@ -15,7 +13,6 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
   database: rmis_production
   username: rmis
   password: <%= ENV["RMIS_DATABASE_PASSWORD"] %>
