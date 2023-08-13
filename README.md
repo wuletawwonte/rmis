@@ -42,6 +42,11 @@ bundle install
   - Go to `http://127.0.0.1:1080`
   - Send mail through smtp://127.0.0.1:1025
 
+You can also run the following script to setup the project after cloning the repo
+```bash
+./bin/setup
+```
+
 ### Configuring Rails
 
 Create an .env file with the minimum ENV variables needed for booting Rails:
