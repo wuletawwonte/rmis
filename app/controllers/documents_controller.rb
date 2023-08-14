@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DocumentsController < ApplicationController
   load_and_authorize_resource
   before_action :set_document, only: %i[show edit update destroy]

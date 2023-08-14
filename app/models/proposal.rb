@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: proposals
@@ -46,7 +48,9 @@ class Proposal < ApplicationRecord
   has_many :members, dependent: :destroy
   has_many :users, through: :members
 
-  scope :joined, ->(user) { joins(:members).where('members.user_id = ?', user.id).where('members.status = ?', Member.statuses[:joined]) }
+  scope :joined, lambda { |user|
+                   joins(:members).where('members.user_id = ?', user.id).where('members.status = ?', Member.statuses[:joined])
+                 }
 
   private
 

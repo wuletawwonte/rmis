@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveColumnsFromResearchTypes < ActiveRecord::Migration[7.0]
   def change
     remove_column :research_types, :allowed_per_year, :integer

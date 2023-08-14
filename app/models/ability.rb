@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Ability
   include CanCan::Ability
 
@@ -7,39 +9,39 @@ class Ability
     can :list, Document
     can :manage, Subscriber
 
-    if user.present?
-      if user.admin?
-        can :manage, User
-        can :manage, Theme
-        can :manage, ResearchType
-        can :manage, ResearchCenter
-        can :manage, Faculty
-        can :manage, EducationLevel
-        can :manage, Document
-        can :manage, Department
-        can :manage, Call
-        can :manage, AcademicRank
-        can :manage, GlobalSetting
+    return unless user.present?
 
-      elsif user.coordinator?
-        can :manage, User
-        can :manage, Proposal, user: user
-        cannot :create, Proposal 
+    if user.admin?
+      can :manage, User
+      can :manage, Theme
+      can :manage, ResearchType
+      can :manage, ResearchCenter
+      can :manage, Faculty
+      can :manage, EducationLevel
+      can :manage, Document
+      can :manage, Department
+      can :manage, Call
+      can :manage, AcademicRank
+      can :manage, GlobalSetting
 
-      else
-        can :read, Theme
-        can :read, ResearchType
-        can :read, ResearchCenter
-        can :read, Call
-        can :read, Document
-        can :manage, User
-        can :manage, Member
-        cannot :users_list, User
-        can :manage, Proposal, user: user
-        can :read, Proposal
-        can :create, Proposal
-        cannot :manage, Subscriber
-      end
+    elsif user.coordinator?
+      can :manage, User
+      can(:manage, Proposal, user:)
+      cannot :create, Proposal
+
+    else
+      can :read, Theme
+      can :read, ResearchType
+      can :read, ResearchCenter
+      can :read, Call
+      can :read, Document
+      can :manage, User
+      can :manage, Member
+      cannot :users_list, User
+      can(:manage, Proposal, user:)
+      can :read, Proposal
+      can :create, Proposal
+      cannot :manage, Subscriber
     end
   end
 end

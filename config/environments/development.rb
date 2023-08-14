@@ -54,11 +54,11 @@ Rails.application.configure do
   #   authentication:       'plain',
   #   enable_starttls_auto: true,
   #   open_timeout:         5,
-  #   read_timeout:         5 
+  #   read_timeout:         5
   # }
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -89,7 +89,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  config.hosts << ENV.fetch("DEV_DOMAIN_NAME", "rmis.dev")
+  config.hosts << ENV.fetch('DEV_DOMAIN_NAME', 'rmis.dev')
 
   # By default the app is gonna respond for both http and https requests, but if force_ssl is set true it forces the server to respond only for https requests
   config.force_ssl = ENV.fetch('DEV_ENV_HTTPS', 0) == '1'

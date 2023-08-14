@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SubscribersController < ApplicationController
   load_and_authorize_resource
   skip_before_action :authenticate_user!, only: %i[create update verify_email email_verified]
