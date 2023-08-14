@@ -71,11 +71,17 @@ GEM
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
+    ast (2.4.2)
+    base64 (0.1.1)
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
+    brakeman (6.0.1)
     builder (3.2.4)
+    bundler-audit (0.9.1)
+      bundler (>= 1.2.0, < 3)
+      thor (~> 1.0)
     cancancan (3.4.0)
     capybara (3.38.0)
       addressable
@@ -145,6 +151,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    json (2.6.3)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -157,6 +164,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    language_server-protocol (3.17.0.3)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -185,6 +193,10 @@ GEM
     nokogiri (1.14.0-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    parallel (1.23.0)
+    parser (3.2.2.3)
+      ast (~> 2.4.1)
+      racc
     pg (1.4.5)
     public_suffix (5.0.1)
     puma (5.6.5)
@@ -221,6 +233,7 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
       zeitwerk (~> 2.5)
+    rainbow (3.1.1)
     rake (13.0.6)
     redis-client (0.12.1)
       connection_pool
@@ -231,6 +244,25 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
+    rubocop (1.56.0)
+      base64 (~> 0.1.1)
+      json (~> 2.3)
+      language_server-protocol (>= 3.17.0)
+      parallel (~> 1.10)
+      parser (>= 3.2.2.3)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml (>= 3.2.5, < 4.0)
+      rubocop-ast (>= 1.28.1, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 2.4.0, < 3.0)
+    rubocop-ast (1.29.0)
+      parser (>= 3.2.1.0)
+    rubocop-rails (2.20.2)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.33.0, < 2.0)
+    ruby-progressbar (1.13.0)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     rubyzip (2.3.2)
@@ -275,6 +307,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    unicode-display_width (2.4.2)
     unicode_utils (1.4.0)
     view_component (3.0.0)
       activesupport (>= 5.2.0, < 8.0)
@@ -305,6 +338,8 @@ PLATFORMS
 DEPENDENCIES
   annotate
   bootsnap
+  brakeman
+  bundler-audit
   cancancan
   capybara
   carrierwave
@@ -325,6 +360,8 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.3, >= 7.0.3.1)
+  rubocop
+  rubocop-rails
   selenium-webdriver
   sidekiq
   simple_form
