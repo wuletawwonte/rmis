@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ThemesController < ApplicationController
   load_and_authorize_resource
   before_action :set_theme, only: %i[show]

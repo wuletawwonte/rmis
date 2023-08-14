@@ -25,9 +25,7 @@ FileUtils.chdir APP_ROOT do
   # end
 
   puts "\n== Copying .env.example file =="
-  unless File.exist?(".env")
-    FileUtils.cp ".env.example", ".env"
-  end
+  FileUtils.cp '.env.example', '.env' unless File.exist?('.env')
 
   puts "\n== Preparing database =="
   system! 'bin/rails db:prepare'

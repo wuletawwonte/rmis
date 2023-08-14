@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProposalsController < ApplicationController
   load_and_authorize_resource
 
@@ -35,10 +37,10 @@ class ProposalsController < ApplicationController
   def show
     @proposal = Proposal.find(params['id'])
     @members = Member.where(proposal_id: params['id'])
-      .includes(:user)
-      .page(params[:page])
-      .per(params[:per])
-      .max_paginates_per(4)
+                     .includes(:user)
+                     .page(params[:page])
+                     .per(params[:per])
+                     .max_paginates_per(4)
     @researchers = User.not_members_of(@proposal).page(params[:page]).per(params[:per]).max_paginates_per(4)
   end
 

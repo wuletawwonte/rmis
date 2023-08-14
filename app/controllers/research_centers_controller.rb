@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ResearchCentersController < ApplicationController
   load_and_authorize_resource
   before_action :set_research_center, only: %i[show edit update destroy]
@@ -20,7 +22,9 @@ class ResearchCentersController < ApplicationController
 
     respond_to do |format|
       if @research_center.save
-        format.html { redirect_to research_center_path(@research_center), notice: 'Research center was successfully created.' }
+        format.html do
+          redirect_to research_center_path(@research_center), notice: 'Research center was successfully created.'
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -41,7 +45,9 @@ class ResearchCentersController < ApplicationController
   private
 
   def research_center_params
-    params.require(:research_center).permit(:name, user_attributes: %i[first_name middle_name last_name email password sex role])
+    params.require(:research_center).permit(:name,
+                                            user_attributes: %i[first_name middle_name last_name email password sex
+                                                                role])
   end
 
   def set_research_center

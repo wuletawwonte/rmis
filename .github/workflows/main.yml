@@ -1,59 +1,58 @@
-name: CI
-on: [pull_request]
+# This workflow uses actions that are not certified by GitHub.  They are
+# provided by a third-party and are governed by separate terms of service,
+# privacy policy, and support documentation.
+#
+# This workflow will install a prebuilt Ruby version, install dependencies, and
+# run tests and linters.
+name: "Ruby on Rails CI"
+on:
+  push:
+    branches: [ "dev" ]
+  pull_request:
+    branches: [ "dev" ]
 jobs:
-  install-cache:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: Checkout Commit
-        uses: actions/checkout@v3
-      - name: Install Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
   test:
     runs-on: ubuntu-latest
-    needs: install-cache
-    timeout-minutes: 10
     services:
       postgres:
-        image: postgres
-        ports: ['5432:5432']
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-      redis:
-        image: redis
+        image: postgres:11-alpine
         ports:
-          - '6379:6379'
+          - "5432:5432"
+        env:
+          POSTGRES_DB: rails_test
+          POSTGRES_USER: rails
+          POSTGRES_PASSWORD: password
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
     steps:
-      - name: Checkout Commit
+      - name: Checkout code
         uses: actions/checkout@v3
-      - name: Install Ruby
-        uses: ruby/setup-ruby@v1
+      # Add or replace dependency steps here
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
         with:
           bundler-cache: true
-      - name: Install system dependencies
-        run: |
-          sudo apt-get -y update
+      # Add or replace database setup steps here
+      - name: Set up database schema
+        run: bin/rails db:schema:load
+      # Add or replace test runners here
       - name: Run tests
-        env:
-          RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:password@localhost:5432/myapp_test
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-        run: |
-          bin/rails tailwindcss:build
-          bin/rails db:create
-          bin/rails db:schema:load
-          bin/rails test:models
-      - name: Smoke test database seeds
-        env:
-          RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:password@localhost:5432/myapp_test
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-        run: bundle exec rails db:reset
+        run: bin/rake
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
+        with:
+          bundler-cache: true
+      # Add or replace any other lints here
+      # - name: Security audit dependencies
+      #   run: bundle exec bundler-audit --update --ignore OSVDB-108664
+      - name: Security audit application code
+        run: bundle exec brakeman -q -w2
+      - name: Lint Ruby files
+        run: bundle exec rubocop --parallel

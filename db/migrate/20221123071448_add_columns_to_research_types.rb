@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddColumnsToResearchTypes < ActiveRecord::Migration[7.0]
   def change
     add_column :research_types, :call_based, :boolean

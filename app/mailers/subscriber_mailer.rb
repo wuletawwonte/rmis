@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SubscriberMailer < ApplicationMailer
   # Send email when a research call is posted
   def call_posted_email

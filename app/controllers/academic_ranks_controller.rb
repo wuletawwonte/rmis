@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AcademicRanksController < ApplicationController
   load_and_authorize_resource
   before_action :set_academic_rank, only: %i[show edit update destroy]

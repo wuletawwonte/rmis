@@ -24,12 +24,12 @@ rails_env = ENV.fetch('RAILS_ENV', 'development')
 environment rails_env
 
 # When SSL/TLS is enabled on the development environment of the application, puma needs to listen for secure connections.
-# The ssl_bind option is used to specify the IP address and port number to bind the server to, as well as the SSL/TLS certificate and key to use for encrypting the traffic. 
+# The ssl_bind option is used to specify the IP address and port number to bind the server to, as well as the SSL/TLS certificate and key to use for encrypting the traffic.
 if rails_env == 'development' && ENV.fetch('DEV_ENV_HTTPS', 0) == '1'
   ssl_bind '0.0.0.0', ENV.fetch('PORT', 3000),
-    key:  ENV.fetch('TEST_CERT_KEY', 'config/ssl/rmis.dev+3-key.pem'),
-    cert: ENV.fetch('TEST_CERT', 'config/ssl/rmis.dev+3.pem'),
-    verify_mode: 'none'
+           key: ENV.fetch('TEST_CERT_KEY', 'config/ssl/rmis.dev+3-key.pem'),
+           cert: ENV.fetch('TEST_CERT', 'config/ssl/rmis.dev+3.pem'),
+           verify_mode: 'none'
 else
   port ENV.fetch('PORT', 3000)
 end
@@ -43,7 +43,7 @@ pidfile ENV.fetch('PIDFILE', 'tmp/pids/server.pid')
 # Workers do not work on JRuby or Windows (both of which do not support
 # processes).
 #
-workers ENV.fetch("RAILS_WORKERS", 2)
+workers ENV.fetch('RAILS_WORKERS', 2)
 
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code

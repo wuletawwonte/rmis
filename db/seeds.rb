@@ -7,7 +7,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-puts "========== SEEDING ... =========="
+puts '========== SEEDING ... =========='
 
 User.destroy_all
 GlobalSetting.destroy_all
@@ -18,8 +18,8 @@ def user_email(fname, lname)
   "#{fname}.#{lname}@amu.edu.et"
 end
 
-# A pool to choose gender from. 
-GENDERS = [:Male, :Female]
+# A pool to choose gender from.
+GENDERS = %i[Male Female].freeze
 
 def create_admin
   User.create(
@@ -33,15 +33,15 @@ def create_admin
 end
 
 create_admin
-puts "wuletaw.wonte@amu.edu.et user account is ready"
+puts 'wuletaw.wonte@amu.edu.et user account is ready'
 
 def create_user(role = 'researcher')
   random_gender = GENDERS.sample
-  if random_gender == :Male
-    @first_name = Faker::Name.male_first_name
-  else
-    @first_name = Faker::Name.female_first_name
-  end
+  @first_name = if random_gender == :Male
+                  Faker::Name.male_first_name
+                else
+                  Faker::Name.female_first_name
+                end
 
   @middle_name = Faker::Name.middle_name
   @last_name = Faker::Name.last_name
@@ -53,7 +53,7 @@ def create_user(role = 'researcher')
     email: user_email(@first_name, @middle_name),
     password: '123456',
     sex: random_gender,
-    role: role
+    role:
   )
 end
 
@@ -64,7 +64,7 @@ def create_researchers
 end
 
 create_researchers
-puts "5 researcher accounts created and ready"
+puts '5 researcher accounts created and ready'
 
 def generate_global_setting
   GlobalSetting.create(
@@ -86,22 +86,21 @@ def generate_global_setting
 end
 
 generate_global_setting
-puts "Default global settings value generated"
+puts 'Default global settings value generated'
 
 def create_research_center
   random_gender = GENDERS.sample
-  if random_gender == :Male
-    @first_name = Faker::Name.male_first_name
-  else
-    @first_name = Faker::Name.female_first_name
-  end
+  @first_name = if random_gender == :Male
+                  Faker::Name.male_first_name
+                else
+                  Faker::Name.female_first_name
+                end
 
   @middle_name = Faker::Name.middle_name
   @last_name = Faker::Name.last_name
 
-
   research_center = ResearchCenter.create(
-    name: "Centre for Livestock and Fishery Research Center",
+    name: 'Centre for Livestock and Fishery Research Center'
   )
   research_center.build_user(
     first_name: @first_name,
@@ -116,6 +115,6 @@ def create_research_center
 end
 
 create_research_center
-puts "Created research center with its associated coordinator account"
+puts 'Created research center with its associated coordinator account'
 
-puts "========== SEEDING DONE =========="
+puts '========== SEEDING DONE =========='
