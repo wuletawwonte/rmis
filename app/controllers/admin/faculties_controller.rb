@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FacultiesController < ApplicationController
+class Admin::FacultiesController < ApplicationController
   load_and_authorize_resource
   before_action :set_faculty, only: %i[show edit update destroy]
 
