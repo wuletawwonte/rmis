@@ -11,37 +11,50 @@ class Ability
 
     return unless user.present?
 
-    if user.admin?
-      can :manage, User
-      can :manage, Theme
-      can :manage, ResearchType
-      can :manage, ResearchCenter
-      can :manage, Faculty
-      can :manage, EducationLevel
-      can :manage, Document
-      can :manage, Department
-      can :manage, Call
-      can :manage, AcademicRank
-      can :manage, GlobalSetting
+    admin_permissions(user)
+    coordinator_permissions(user)
+    researcher_permissions(user)
+  end
 
-    elsif user.coordinator?
-      can :manage, User
-      can(:manage, Proposal, user:)
-      cannot :create, Proposal
+  def admin_permissions(user)
+    return unless user.admin?
 
-    else
-      can :read, Theme
-      can :read, ResearchType
-      can :read, ResearchCenter
-      can :read, Call
-      can :read, Document
-      can :manage, User
-      can :manage, Member
-      cannot :users_list, User
-      can(:manage, Proposal, user:)
-      can :read, Proposal
-      can :create, Proposal
-      cannot :manage, Subscriber
-    end
+    can :manage, User
+    can :manage, Theme
+    can :manage, ResearchType
+    can :manage, ResearchCenter
+    can :manage, Faculty
+    can :manage, EducationLevel
+    can :manage, Document
+    can :manage, Department
+    can :manage, Call
+    can :manage, AcademicRank
+    can :manage, GlobalSetting
+    can :access, :admin_sidebar
+  end
+
+  def coordinator_permissions(user)
+    return unless user.coordinator?
+
+    can :manage, User
+    can(:manage, Proposal, user:)
+    cannot :create, Proposal
+  end
+
+  def researcher_permissions(user)
+    return unless user.researcher?
+
+    can :read, Theme
+    can :read, ResearchType
+    can :read, ResearchCenter
+    can :read, Call
+    can :read, Document
+    can :manage, User
+    can :manage, Member
+    cannot :users_list, User
+    can(:manage, Proposal, user:)
+    can :read, Proposal
+    can :create, Proposal
+    cannot :manage, Subscriber
   end
 end

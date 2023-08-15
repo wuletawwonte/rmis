@@ -25,7 +25,11 @@
     >
       <!-- Desktop sidebar -->
       <aside class="z-20 hidden w-64 bg-white md:block flex-shrink-0">
-      <%= render 'shared/sidebar' %>
+      <% if can? :access, :admin_sidebar %>
+        <%= render 'shared/admin_sidebar' %>
+      <% else %>
+        <%= render 'shared/sidebar' %>
+      <% end %>
       </aside>
       <!-- Mobile sidebar -->
 
