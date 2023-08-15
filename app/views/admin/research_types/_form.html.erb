@@ -1,4 +1,4 @@
-<%= simple_form_for research_type, class: "contents" do |form| %>
+<%= simple_form_for [:admin, research_type], class: "contents" do |form| %>
   <% if research_type.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(research_type.errors.count, "error") %> prohibited this research_type from being saved:</h2>
