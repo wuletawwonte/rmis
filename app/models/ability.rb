@@ -24,6 +24,8 @@ class Ability
       can :manage, AcademicRank
       can :manage, GlobalSetting
 
+      can :access, :admin_sidebar
+
     elsif user.coordinator?
       can :manage, User
       can(:manage, Proposal, user:)
