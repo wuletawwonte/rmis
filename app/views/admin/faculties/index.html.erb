@@ -1,7 +1,7 @@
 
 
 <%= render HeaderSectionComponent.new do |header| %>
-  <%= header.with_action "Add faculty", new_faculty_path, left_icon: icon('fas', 'plus fa-sm'), auth_check: can?(:create, Faculty) %>
+  <%= header.with_action "Add faculty", new_admin_faculty_path, left_icon: icon('fas', 'plus fa-sm'), auth_check: can?(:create, Faculty) %>
 <% end %>
 
 <div class="w-full overflow-hidden rounded-lg shadow-xs">

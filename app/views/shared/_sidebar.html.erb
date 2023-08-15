@@ -2,11 +2,11 @@
 
 <%= render SidebarComponent.new("AMU-RDB") do |menu| %>
 
-  <%= menu.with_menu "Dashboard", root_path, "fas fa-home", active: current_page?(root_path) %>
+  <%= menu.with_menu "Dashboard", current_user.admin? ? admin_root_path : root_path, "fas fa-home", active: current_page?(current_user.admin? ? admin_root_path : root_path) %>
   <%= menu.with_menu "Users", users_list_path, "users", auth_check: can?(:users_list, User), active: current_page?(users_list_path) %>
   <%= menu.with_menu "Proposals", proposals_path, "file", auth_check: can?(:read, Proposal), active: request.fullpath.start_with?(proposals_path) %>
-  <%= menu.with_menu "Research Types", research_types_path, "filter", auth_check: can?(:read, ResearchType), active: request.fullpath.start_with?(research_types_path) %>
-  <%= menu.with_menu "Research Centers", research_centers_path, "bank", auth_check: can?(:read, ResearchCenter), active: request.fullpath.start_with?(research_centers_path) %>
+  <%= menu.with_menu "Research Types", admin_research_types_path, "filter", auth_check: can?(:read, ResearchType), active: request.fullpath.start_with?(admin_research_types_path) %>
+  <%= menu.with_menu "Research Centers", admin_research_centers_path, "bank", auth_check: can?(:read, ResearchCenter), active: request.fullpath.start_with?(admin_research_centers_path) %>
   <%= menu.with_menu "Thematic Areas", themes_path, "building", auth_check: can?(:read, Theme), active: request.fullpath.start_with?(themes_path) %>
   <%= menu.with_menu "Call for Research", calls_path, "bullhorn", auth_check: can?(:read, Call), active: request.fullpath.start_with?(calls_path) %>
   <%= menu.with_menu "Subscribers", subscribers_index_path, "rss", auth_check: can?(:read, Subscriber), active: request.fullpath.start_with?(subscribers_index_path) %>

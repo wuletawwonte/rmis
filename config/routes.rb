@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'subscribers/email_verified', to: 'subscribers#email_verified', as: 'email_verified'
 
   namespace :admin do
+    root 'users#index', as: 'root'
     resources :users
     resources :academic_ranks
     resources :education_levels
