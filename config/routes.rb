@@ -5,16 +5,25 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   resources :global_settings, only: %i[index update]
   resources :profiles
-  resources :faculties
-  resources :departments
-  resources :education_levels
-  resources :academic_ranks
   resources :documents
   get 'subscribers/index'
   post 'subscribers/create', to: 'subscribers#create'
   get 'subscribers/edit/:id', to: 'subscribers#update', as: 'toggle_subscriber'
   match 'subscribers/verifyemail/:subscription_hash' => 'subscribers#verify_email', as: 'verify_email', via: :all
   get 'subscribers/email_verified', to: 'subscribers#email_verified', as: 'email_verified'
+
+
+  namespace :admin do
+    resources :users
+    resources :academic_ranks
+    resources :education_levels
+    resources :departments
+    resources :faculties
+    resources :profiles
+    resources :research_centers
+    resources :themes
+    resources :research_types
+  end
 
   resources :calls
   resources :research_types
