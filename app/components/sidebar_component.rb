@@ -2,6 +2,7 @@
 
 class SidebarComponent < ApplicationViewComponent
   param :title
+  param :title_url
   renders_many :menus, SidebarMenuComponent
   renders_one :action_button, ButtonComponent
 end

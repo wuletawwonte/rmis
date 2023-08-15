@@ -1,6 +1,6 @@
 
 
-<%= render SidebarComponent.new("AMU-RDB") do |menu| %>
+<%= render SidebarComponent.new("AMU-RDB", admin_root_url) do |menu| %>
 
   <%= menu.with_menu "Dashboard", admin_root_path, "fas fa-home", active: current_page?(admin_root_path) %>
   <%= menu.with_menu "Users", admin_users_path, "users", auth_check: can?(:users_list, User), active: current_page?(admin_users_path) %>

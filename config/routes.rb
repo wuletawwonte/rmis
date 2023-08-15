@@ -3,6 +3,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get 'dashboards/index'
   resources :profiles
   resources :documents
   get 'subscribers/index'
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
   get 'subscribers/email_verified', to: 'subscribers#email_verified', as: 'email_verified'
 
   namespace :admin do
-    root 'dashboard#index', as: 'root'
+    root 'dashboards#index', as: 'root'
     resources :users
     resources :academic_ranks
     resources :education_levels
@@ -56,7 +57,7 @@ Rails.application.routes.draw do
     end
 
     authenticated :user do
-      root 'users#index', as: :authenticated_root
+      root 'dashboards#index', as: :authenticated_root
     end
   end
 

@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 module Admin
-  class DashboardController < ApplicationController
+  class DashboardsController < ApplicationController
     skip_before_action :authenticate_user!, only: %i[index]
-    # load_and_authorize_resource
-    before_action :set_user, only: %i[show]
 
     def index
       @last_users = User.last(5).reverse

@@ -3,9 +3,9 @@
 require 'test_helper'
 
 module Admin
-  class DashboardControllerTest < ActionDispatch::IntegrationTest
+  class DashboardsControllerTest < ActionDispatch::IntegrationTest
     test 'should get index' do
-      get admin_dashboard_index_url
+      get admin_root_url
       assert_response :success
     end
   end
