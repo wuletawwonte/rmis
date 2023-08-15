@@ -6,7 +6,7 @@ module Admin
     before_action :set_user, only: %i[show]
 
     def index
-      @last_users = User.last(5).reverse
+      @users = User.where.not(role: 'admin').order('created_at desc').page params[:page]
     end
 
     def researchers

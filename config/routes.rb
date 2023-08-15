@@ -3,7 +3,6 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :global_settings, only: %i[index update]
   resources :profiles
   resources :documents
   get 'subscribers/index'
@@ -13,17 +12,18 @@ Rails.application.routes.draw do
   get 'subscribers/email_verified', to: 'subscribers#email_verified', as: 'email_verified'
 
   namespace :admin do
-    get 'dashboard/index'
-    root 'users#index', as: 'root'
+    root 'dashboard#index', as: 'root'
     resources :users
     resources :academic_ranks
     resources :education_levels
     resources :departments
     resources :faculties
     resources :profiles
+    resources :documents
     resources :research_centers
     resources :themes
     resources :research_types
+    resources :global_settings, only: %i[index update]
   end
 
   resources :calls
