@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   match 'subscribers/verifyemail/:subscription_hash' => 'subscribers#verify_email', as: 'verify_email', via: :all
   get 'subscribers/email_verified', to: 'subscribers#email_verified', as: 'email_verified'
 
-
   namespace :admin do
     resources :users
     resources :academic_ranks
