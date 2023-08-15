@@ -1,4 +1,166 @@
-<div>
-  <h1 class="font-bold text-4xl">Dashboards#index</h1>
-  <p>Find me in app/views/dashboards/index.html.erb</p>
+<%= render HeaderSectionComponent.new(title: "Dashboard") %>
+
+  <!-- Cards -->
+<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+    <!-- Card -->
+    <div class="flex items-center p-4 bg-white rounded-lg shadow-sm">
+      <div class="p-4 mr-4 text-orange-500 bg-orange-100">
+        <%= icon "fas", "users" %>
+      </div>
+      <div>
+        <p class="mb-2 text-sm font-medium text-gray-600">
+          Registered users
+        </p>
+        <p class="text-lg font-semibold text-gray-700">
+          <%= User.all.count %>
+        </p>
+      </div>
+    </div>
+    <!-- Card -->
+    <div class="flex items-center p-4 bg-white rounded-lg shadow-sm">
+      <div class="p-4 mr-4 text-green-500 bg-green-100 ">
+        <%= icon "fas", "file" %>
+      </div>
+      <div>
+        <p class="mb-2 text-sm font-medium text-gray-600">
+          Proposals
+        </p>
+        <p class="text-lg font-semibold text-gray-700">
+          <%= Proposal.all.count %>
+        </p>
+      </div>
+    </div>
+    <!-- Card -->
+    <div class="flex items-center p-4 bg-white rounded-lg shadow-sm">
+      <div class="p-4 mr-4 text-blue-500 bg-blue-100">
+        <%= icon "fas", "bullhorn" %>
+      </div>
+      <div>
+        <p class="mb-2 text-sm font-medium text-gray-600">
+          Posted research calls
+        </p>
+        <p class="text-lg font-semibold text-gray-700">
+          <%= Call.all.count %>
+        </p>
+      </div>
+    </div>
+    <!-- Card -->
+    <div class="flex items-center p-4 bg-white rounded-lg shadow-sm">
+      <div class="p-4 mr-4 text-teal-500 bg-teal-100">
+        <%= icon "fas", "bank" %>
+      </div>
+      <div>
+        <p class="mb-2 text-sm font-medium text-gray-600">
+          Research centers
+        </p>
+        <p class="text-lg font-semibold text-gray-700">
+          <%= ResearchCenter.all.count %>
+        </p>
+      </div>
+    </div>
 </div>
+
+
+<div class="grid gap-6 mt-8">
+
+    <div class="min-w-0 p-4 bg-white rounded-lg shadow-sm overflow-hidden">
+      <div class="flex justify-between mb-2">
+        <h4 class="mb-4 font-semibold text-gray-800">
+          Latest Users
+        </h4>
+        <%= link_to "View all", users_list_path, class: "text-blue-700" %>
+      </div>
+
+      <table class="w-full whitespace-no-wrap">
+        <thead>
+          <tr
+            class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50"
+          >
+            <th class="px-4 py-3">User</th>
+            <th class="px-4 py-3">Sex</th>
+            <th class="px-4 py-3">Role</th>
+            <th class="px-4 py-3">Date</th>
+          </tr>
+        </thead>
+        <tbody
+          class="bg-white divide-y"
+        >
+        <% @last_users.each do |user| %>
+          <tr class="text-gray-700">
+            <td class="px-4 py-3">
+              <div class="flex items-center text-sm gap-2">
+                <!-- Avatar with inset shadow -->
+
+                <%= avatar_for user, size: 9 %>
+                
+                <div>
+                  <p class="font-semibold"><%= user.full_name %></p>
+                  <p class="text-xs text-gray-600">
+                    <%= user.email %>
+                  </p>
+                </div>
+              </div>
+            </td>
+            <td class="px-4 py-3 text-sm">
+              <%= User.sexes.key(user.read_attribute_before_type_cast(:sex)) %>
+            </td>
+            <td class="px-4 py-3 text-xs">
+              <%= user_role_for user %>
+            </td>
+            <td class="px-4 py-3 text-sm">
+              <%= user.created_at.strftime('%b %-d, %Y') %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+    </div>
+</div>
+
+<h2 class="my-6 text-2xl font-semibold text-gray-700">Charts</h2>
+
+<div class="grid gap-6 mb-8 md:grid-cols-2">
+
+    <div class="min-w-0 p-4 bg-white rounded-lg shadow-lg"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+      <h4 class="mb-4 font-semibold text-gray-800">
+        User registration
+      </h4>
+      <%= line_chart User.group_by_day(:created_at).count %>
+      <div class="flex justify-center mt-4 space-x-3 text-sm text-gray-600">
+        <!-- Chart legend -->
+        <div class="flex items-center">
+          <span class="inline-block w-3 h-3 mr-1 bg-blue-500 rounded-full"></span>
+          <span>User registrations per day</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="min-w-0 p-4 bg-white rounded-lg shadow-lg"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+      <h4 class="mb-4 font-semibold text-gray-800">
+        Proposal status
+      </h4>
+      <%= pie_chart Proposal.group(:status).count %>
+      <div class="flex justify-center mt-4 space-x-3 text-sm text-gray-600">
+        <!-- Chart legend -->
+        <div class="flex items-center">
+          <span class="inline-block w-3 h-3 mr-1 bg-blue-600 rounded-full"></span>
+          <span>Initialized</span>
+        </div>
+        <div class="flex items-center">
+          <span class="inline-block w-3 h-3 mr-1 bg-purple-600 rounded-full"></span>
+          <span>Submitted</span>
+        </div>
+        <div class="flex items-center">
+          <span class="inline-block w-3 h-3 mr-1 bg-green-600 rounded-full"></span>
+          <span>Accepted</span>
+        </div>
+        <div class="flex items-center">
+          <span class="inline-block w-3 h-3 mr-1 bg-gray-600 rounded-full"></span>
+          <span>Rejected</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
