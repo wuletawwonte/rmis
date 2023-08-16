@@ -1,7 +1,5 @@
 
-<%= render HeaderSectionComponent.new(title: "Thematic areas") %> 
-
-
+<%= render HeaderSectionComponent.new("Research centers") %>  
 
 <div class="w-full overflow-hidden rounded-lg shadow-xs">
   <div class="w-full overflow-x-auto">
@@ -11,29 +9,29 @@
           class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50"
         >
           <th class="px-4 py-3">#</th>
-          <th class="px-4 py-3">Thematic Area</th>
           <th class="px-4 py-3">Research Center</th>
+          <th class="px-4 py-3">Date</th>
           <th class="px-4 py-3">Actions</th>
         </tr>
       </thead>
       <tbody
         class="bg-white divide-y"
       >
-        <% @themes.each_with_index do |theme, index| %>
+        <% @research_centers.each_with_index do |research_center, index| %>
           <tr class="text-gray-700">
             <td class="px-4 py-3 text-sm">  
               <%= index + 1 %>
             </td>
             <td class="px-4 py-3 text-sm">
-              <%= link_to theme.title, theme_path(theme) %>
+              <%= link_to research_center.name, research_center_path(research_center) %>
             </td>
             <td class="px-4 py-3 text-sm">
-              <%= theme.research_center.name %>
+              <%= research_center.created_at %>
             </td>
             <td class="px-4 py-3">
               <div class="flex items-center space-x-4 text-sm">
-                <%= link_to theme_path(theme), class: "flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray" do %>
-                  <i class="fa-solid fa-eye"></i>
+                <%= link_to research_center_path(research_center), class: "flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray" do %>
+                  <i class="fa-solid fa-eye"></i>                
                 <% end %>
               </div>
             </td>
@@ -44,5 +42,5 @@
     </table>
   </div>
 
-  <%= paginate @themes %>
+  <%= paginate @research_centers %>
 </div>
