@@ -12,6 +12,7 @@ puts '========== SEEDING ... =========='
 User.destroy_all
 GlobalSetting.destroy_all
 ResearchCenter.destroy_all
+Call.destroy_all
 
 # Get email of a user with amu.edu.et domain
 def user_email(fname, lname)
@@ -32,7 +33,7 @@ def create_admin
   )
 end
 
-create_admin
+@admin = create_admin
 puts 'wuletaw.wonte@amu.edu.et user account is ready'
 
 def create_user(role = 'researcher')
@@ -122,7 +123,8 @@ def create_research_calls
     rc = Call.new(
       title: Faker::Lorem.sentence,
       published: true,
-      deadline: Faker::Date.forward(days: 30)
+      deadline: Faker::Date.forward(days: 30),
+      user: @admin
     )
     rc.content = ActionText::Content.new(body: Faker::Lorem.paragraph)
     rc.save

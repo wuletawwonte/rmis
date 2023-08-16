@@ -42,7 +42,7 @@ class User < ApplicationRecord
   has_many :members, dependent: :destroy
   has_many :proposals, through: :members, dependent: :destroy
   has_many :proposals, dependent: :destroy
-  has_many :themes
+  has_many :themes, dependent: :destroy
   has_many :calls
   has_one_attached :avatar
   belongs_to :profile, optional: true
