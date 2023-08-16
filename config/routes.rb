@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :research_centers
     resources :themes
     resources :research_types
+    resources :proposals, only: %i[index destroy]
     resources :subscribers, only: %i[index create update]
     resources :global_settings, only: %i[index update]
   end

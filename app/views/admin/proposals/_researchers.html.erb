@@ -1,0 +1,44 @@
+<%= turbo_frame_tag "researchers" do %>
+
+  <table class="w-full whitespace-no-wrap">
+    <thead>
+      <tr
+        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b"
+      >
+        <th class="px-4 py-2">Researcher</th>
+        <th class="px-4 py-2  grid justify-items-end">Actions</th>
+      </tr>
+    </thead>
+    <tbody
+      class="bg-white divide-y"
+    >
+      <% researchers.each do |researcher| %>
+        <tr class="text-gray-700">
+          <td class="px-4 py-2">
+            <%= link_to user_path(researcher), data: { turbo_frame: "user_modal" }, class: "flex items-center text-sm"  do %>
+              <!-- Avatar with inset shadow -->
+              <%= avatar_for researcher, size: 8, div_class: "mr-3" %>
+              <div>
+                <p class="font-semibold"><%= researcher.full_name %></p>
+                <p class="text-xs text-gray-600">
+                  <%= researcher.email %>
+                </p>
+              </div>
+            <% end %>
+
+          </td>
+
+          <td class="px-4 py-2 grid justify-items-end">
+            <div class="space-x-4 text-sm flex align-center">
+              <%= link_to "Envite", proposal_members_path(@proposal, user_id: researcher.id), data: { turbo_frame: "_top"}, class: "bg-blue-500 hover:bg-blue-400 text-white font-bold pt-2 pb-1 px-4 border-b-4 border-blue-700 hover:border-blue-500" %>
+            </div>
+          </td>
+        </tr>
+
+      <% end %>
+
+    </tbody>
+  </table>
+
+  <%= paginate researchers %>
+<% end %>

@@ -1,0 +1,52 @@
+<%= render HeaderSectionComponent.new "Proposals" %>
+
+<div class="w-full overflow-hidden rounded-lg shadow-sm">
+  <div class="w-full overflow-x-auto">
+    <table class="w-full whitespace-no-wrap">
+      <thead>
+        <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50">
+          <th class="px-4 py-3">Title</th>
+          <th class="px-4 py-3">Status</th>
+          <th class="px-4 py-3">Proposal</th>
+          <th class="px-4 py-3">Date</th>
+          <th class="px-4 py-3">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y">
+        <% if @proposals.present? %>
+          <% @proposals.each do |proposal| %>
+            <tr class="text-gray-700">
+              <td class="px-4 py-3 text-sm">
+                <%= link_to proposal.title, proposal_path(proposal.id), class: "text-blue-700 font-medium hover:text-blue-800" %>
+              </td>
+              <td class="px-4 py-3 text-xs">
+                <%= status_for proposal %>
+              </td>
+              <td>
+                <%= link_to proposal.attachement_url, target: "_blank", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-full inline-flex items-center" do %>
+                  <svg class="fill-current w-3 h-3 mr-2 text-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+                  <span class="text-sm">Download</span>
+                <% end %>
+              </td>
+              <td class="px-4 py-3 text-sm">
+                <%= proposal.created_at.to_date %>
+              </td>
+              <td class="px-4 py-3">
+                <div class="flex items-center space-x-4 text-sm">
+                  <%= button_to icon('fas', 'trash 2x'), admin_proposal_path(proposal.id), method: :destroy, class: "py-2 text-sm text-red-600 rounded-lg focus:outline-none focus:shadow-outline-gray" %>
+                </div>
+              </td>
+            </tr>
+
+          <% end %>
+        <% else %>
+          <tr class="text-gray-700">
+            <td class="px-4 py-3 text-center" colspan="5">No proposal found</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= paginate @proposals %>
+</div>
