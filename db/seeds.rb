@@ -117,4 +117,19 @@ end
 create_research_center
 puts 'Created research center with its associated coordinator account'
 
+def create_research_calls
+  5.times do
+    rc = Call.new(
+      title: Faker::Lorem.sentence,
+      published: true,
+      deadline: Faker::Date.forward(days: 30)
+    )
+    rc.content = ActionText::Content.new(body: Faker::Lorem.paragraph)
+    rc.save
+  end
+end
+
+create_research_calls
+puts '5 research calls created'
+
 puts '========== SEEDING DONE =========='
