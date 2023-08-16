@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :dashboards, only: %i[index]
   resources :profiles
   resources :documents
-  resources :subscribers, only: %i[index create update]
 
   namespace :admin do
     root 'dashboards#index', as: 'root'
@@ -20,6 +19,7 @@ Rails.application.routes.draw do
     resources :research_centers
     resources :themes
     resources :research_types
+    resources :subscribers, only: %i[index create update]
     resources :global_settings, only: %i[index update]
   end
 
