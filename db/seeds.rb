@@ -7,12 +7,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'seeds_helper'
+
 puts '========== SEEDING ... =========='
 
 User.destroy_all
 GlobalSetting.destroy_all
 ResearchCenter.destroy_all
 Call.destroy_all
+ResearchType.destroy_all
 
 def seed(file)
   load Rails.root.join('db', 'seeds', "#{file}.rb")

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 def create_research_center
-  random_gender = GENDERS.sample
+  random_gender = SeedsHelper.random_gender
   @first_name = if random_gender == :Male
                   Faker::Name.male_first_name
                 else
