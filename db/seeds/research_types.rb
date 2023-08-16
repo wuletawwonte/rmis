@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
-def create_research_types
+research_types = YAML.load_file(Rails.root.join('db', 'seeds', 'research_types.yml'))
+
+def create_research_types(research_types)
   3.times do
     ResearchType.create(
-      name: Faker::Lorem.sentence,
+      name: research_types.sample,
       call_based: [true, false].sample,
       max_budget: Faker::Number.between(from: 1000, to: 100_000),
       gender: Faker::Number.between(from: 0, to: 2),
@@ -15,5 +17,5 @@ def create_research_types
   end
 end
 
-create_research_types
+create_research_types(research_types)
 puts 'Created 3 research types'
