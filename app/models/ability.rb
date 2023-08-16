@@ -19,18 +19,7 @@ class Ability
   def admin_permissions(user)
     return unless user.admin?
 
-    can :manage, User
-    can :manage, Theme
-    can :manage, ResearchType
-    can :manage, ResearchCenter
-    can :manage, Faculty
-    can :manage, EducationLevel
-    can :manage, Document
-    can :manage, Department
-    can :manage, Call
-    can :manage, AcademicRank
-    can :manage, GlobalSetting
-    can :access, :admin_sidebar
+    can :manage, :all
   end
 
   def coordinator_permissions(user)

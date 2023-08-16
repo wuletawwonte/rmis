@@ -27,11 +27,9 @@ module Admin
 
       respond_to do |format|
         if @research_type.save
-          format.html { redirect_to research_type_url(@research_type), notice: 'Research type was successfully created.' }
-          format.json { render :show, status: :created, location: @research_type }
+          format.html { redirect_to admin_research_type_url(@research_type), notice: 'Research type was successfully created.' }
         else
           format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @research_type.errors, status: :unprocessable_entity }
         end
       end
     end

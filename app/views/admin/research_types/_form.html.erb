@@ -1,4 +1,4 @@
-<%= simple_form_for research_type, class: "contents" do |form| %>
+<%= simple_form_for [:admin, research_type], class: "contents" do |form| %>
   <% if research_type.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(research_type.errors.count, "error") %> prohibited this research_type from being saved:</h2>
@@ -24,6 +24,6 @@
   <%= form.input :possible_extension, hint: "Possible extension depending on the project nature in years" %>
 
   <%= form.button :submit, "Create Research Type" %>
-  <%= link_to 'Back to research types', research_types_path, class: "inline-flex justify-center py-2 px-4 cursor-pointer border border-transparent shadow-sm text-sm font-medium p-2.5 text-black bg-gray-200" %>
+  <%= link_to 'Back to research types', admin_research_types_path, class: "inline-flex justify-center py-2 px-4 cursor-pointer border border-transparent shadow-sm text-sm font-medium p-2.5 text-black bg-gray-200" %>
 
 <% end %>
