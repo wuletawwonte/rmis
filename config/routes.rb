@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :profiles
     resources :documents
     resources :research_centers
-    resources :themes, only: %i[index destroy]
+    resources :themes
     resources :research_types
     resources :proposals, only: %i[index destroy]
     resources :subscribers, only: %i[index create update]
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :calls
   resources :research_types
   devise_for :users
-  resources :themes
+  resources :themes, only: %i[index show]
   resources :research_centers
 
   resources :proposals, only: %i[index show new create destroy] do
