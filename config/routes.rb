@@ -3,7 +3,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  get 'dashboards/index'
+  resources :dashboards, only: %i[index]
   resources :profiles
   resources :documents
   get 'subscribers/index'
