@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 
-# A pool to choose gender from.
-GENDERS = %i[Male Female].freeze
-
 def create_admin
   User.create(
     first_name: 'Wuletaw',
     middle_name: 'Wonte',
     last_name: 'Mitsa',
-    email: user_email('wuletaw', 'wonte'),
+    email: SeedsHelper.user_email('wuletaw', 'wonte'),
     password: '123456',
     role: 'admin'
   )

@@ -18,7 +18,7 @@ def create_research_center
     first_name: @first_name,
     middle_name: @middle_name,
     last_name: @last_name,
-    email: user_email(@first_name, @middle_name),
+    email: SeedsHelper.user_email(@first_name, @middle_name),
     password: '123456',
     sex: random_gender,
     role: 'research_coordinator'
