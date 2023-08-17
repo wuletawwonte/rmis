@@ -3,7 +3,7 @@
 <%= render SidebarComponent.new("AMU-RDB", admin_root_url) do |menu| %>
 
   <%= menu.with_menu "Dashboard", admin_root_path, "fas fa-home", active: current_page?(admin_root_path) %>
-  <%= menu.with_menu "Users", admin_users_path, "users", auth_check: can?(:users_list, User), active: current_page?(admin_users_path) %>
+  <%= menu.with_menu "Users", admin_users_path, "users", auth_check: can?(:users_list, User), active: request.fullpath.start_with?(admin_users_path) %>
   <%= menu.with_menu "Proposals", admin_proposals_path, "file", auth_check: can?(:read, Proposal), active: request.fullpath.start_with?(admin_proposals_path) %>
   <%= menu.with_menu "Research Centers", admin_research_centers_path, "bank", auth_check: can?(:read, ResearchCenter), active: request.fullpath.start_with?(admin_research_centers_path) %>
   <%= menu.with_menu "Research Types", admin_research_types_path, "filter", auth_check: can?(:read, ResearchType), active: request.fullpath.start_with?(admin_research_types_path) %>

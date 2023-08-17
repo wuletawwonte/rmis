@@ -20,7 +20,7 @@
       <% @users.each do |user| %>
         <tr class="text-gray-700">
           <td class="px-4 py-3">
-            <a href="<%= user_path(user) %>" class="flex items-center text-sm gap-2">
+            <a href="<%= admin_user_path(user) %>" class="flex items-center text-sm gap-2">
               <!-- Avatar with inset shadow -->
 
               <%= avatar_for user, size: 9 %>
@@ -43,7 +43,7 @@
             <%= user.created_at.strftime('%b %-d, %Y') %>
           </td>
           <td>
-            <%= link_to "show", user_path(user) %>
+            <%= link_to "show", admin_user_path(user) %>
           </td>
         </tr>
       <% end %>

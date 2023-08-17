@@ -1,30 +1,25 @@
 # frozen_string_literal: true
 
-def create_research_center
-  random_gender = SeedsHelper.random_gender
-  @first_name = if random_gender == :Male
-                  Faker::Name.male_first_name
-                else
-                  Faker::Name.female_first_name
-                end
+def create_research_centers
+  all_research_centers = YAML.load_file(Rails.root.join('db', 'seeds', 'research_centers.yml'))
+  all_research_centers.sample(3).each do |item|
+    person = SeedsHelper.random_person
 
-  @middle_name = Faker::Name.middle_name
-  @last_name = Faker::Name.last_name
-
-  research_center = ResearchCenter.create(
-    name: 'Centre for Livestock and Fishery Research Center'
-  )
-  research_center.build_user(
-    first_name: @first_name,
-    middle_name: @middle_name,
-    last_name: @last_name,
-    email: SeedsHelper.user_email(@first_name, @middle_name),
-    password: '123456',
-    sex: random_gender,
-    role: 'research_coordinator'
-  )
-  research_center.save
+    research_center = ResearchCenter.create(
+      name: item
+    )
+    research_center.build_user(
+      first_name: person.first_name,
+      middle_name: person.middle_name,
+      last_name: person.last_name,
+      email: person.email,
+      password: '123456',
+      sex: person.gender,
+      role: 'research_coordinator'
+    )
+    research_center.save
+  end
 end
 
-create_research_center
-puts 'Created research center with its associated coordinator account'
+create_research_centers
+puts 'Created 3 research centers with associated coordinator accounts for each'
