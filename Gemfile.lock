@@ -99,7 +99,7 @@ GEM
       image_processing (~> 1.1)
       marcel (~> 1.0.0)
       ssrf_filter (~> 1.0)
-    chartkick (5.0.1)
+    chartkick (5.0.3)
     concurrent-ruby (1.2.2)
     connection_pool (2.3.0)
     countries (4.2.3)
