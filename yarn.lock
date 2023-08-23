@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@rails/actiontext@^7.0.4":
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/@rails/actiontext/-/actiontext-7.0.4.tgz#742a74155b8c8ebf65e696ab6a6d2a3212511092"
-  integrity sha512-vyXZ4cNkudpfSfFWuyo1SSKBQXTK2H02xjd5vLHIBqJOKaqcZ7aFWe6n8NoQrTpAt+ULYtjkH0xMhJ5holswsQ==
+"@rails/actiontext@^7.0.7":
+  version "7.0.7"
+  resolved "https://registry.yarnpkg.com/@rails/actiontext/-/actiontext-7.0.7.tgz#d80ba902aa48c0fe55728d7f3e8f7f0cab926cc6"
+  integrity sha512-2huBCSCdROtu3ouu/anTBEs+hvXKQYZ+gGpE3/DCx9Dg/xWRAI3doEHfF7A8uJhokQZrc0ZDOS8zhwwuh1dNzg==
   dependencies:
     "@rails/activestorage" ">= 7.0.0-alpha1"
 
