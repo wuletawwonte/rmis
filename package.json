@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@rails/actiontext": "^7.0.7",
+    "@rails/actiontext": "^7.0.8",
     "@tailwindcss/custom-forms": "^0.2.1",
     "tailwindcss-multi-theme": "^1.0.4",
     "trix": "^2.0.5"
