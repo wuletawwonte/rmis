@@ -1,6 +1,6 @@
 # RMIS - Research Management Information System
 
-> A web based system being developed for Arba Minch University that automates the research business process from `Call for paper` stage to `Publication`.
+> This is an ongoing project to develop an open-source system using Ruby on Rails. Its main objective is to automate the research business process, starting from the `Call for Paper` stage and concluding with the `Publication` stage. The system is primarily designed for use at Arba Minch University, streamlining and simplifying the entire research workflow.
 
 ## Built With
 - Ruby(3.2.0)
