@@ -56,3 +56,5 @@ gem 'dry-initializer', '~> 3.1', '>= 3.1.1'
 gem 'view_component'
 
 gem 'font-awesome-sass', '~> 6.4.2'
+
+gem "administrate", "~> 0.19.0"
