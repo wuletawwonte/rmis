@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :subscribers, only: %i[index create update]
     resources :global_settings, only: %i[index update]
 
+    mount Sidekiq::Web => '/sidekiq'
+
     root to: 'users#index'
   end
 
@@ -30,7 +32,7 @@ Rails.application.routes.draw do
   resources :themes, only: %i[index show]
   resources :research_centers
 
-  resources :proposals, only: %i[index show new create destroy] do
+  resources :proposals do
     get '/members', to: 'members#create', as: 'members'
     get '/members/:id', to: 'members#accept_envitation', as: 'accept_envitation'
     delete '/members/:id', to: 'members#decline_envitation', as: 'decline_envitation'
@@ -51,13 +53,11 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     unauthenticated :user do
-      root 'calls#list'
+      root 'calls#index'
     end
 
     authenticated :user do
       root 'users#index', as: :authenticated_root
     end
   end
-
-  mount Sidekiq::Web => '/sidekiq'
 end

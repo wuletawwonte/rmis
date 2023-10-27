@@ -3,22 +3,17 @@
 class CallsController < ApplicationController
   load_and_authorize_resource
   before_action :set_call, only: %i[show edit update destroy]
-  skip_before_action :authenticate_user!, only: %i[list public_show]
-  layout 'login', only: %i[list public_show]
+  skip_before_action :authenticate_user!, only: %i[index public_show]
+  layout 'login', only: %i[index public_show]
 
   # Get /calls to show on the homepage
-  def list
+  def index
     @calls = Call.order(deadline: :desc).page params[:page]
   end
 
   # Get /public/show/:id to show a single call for unauthenticated users
   def public_show
     @call = Call.includes(:user).find(params[:id])
-  end
-
-  # GET /calls or /calls.json
-  def index
-    @calls = Call.order(created_at: :desc).page params[:page]
   end
 
   # GET /calls/1 or /calls/1.json

@@ -4,8 +4,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :list, Call
-    can :public_show, Call
+    can :read, Call
     can :list, Document
     can :manage, Subscriber
 
