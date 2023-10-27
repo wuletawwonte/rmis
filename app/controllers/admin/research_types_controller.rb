@@ -1,73 +1,46 @@
-# frozen_string_literal: true
-
 module Admin
-  class ResearchTypesController < ApplicationController
-    load_and_authorize_resource
-    before_action :set_research_type, only: %i[show edit update destroy]
+  class ResearchTypesController < Admin::ApplicationController
+    # Overwrite any of the RESTful controller actions to implement custom behavior
+    # For example, you may want to send an email after a foo is updated.
+    #
+    # def update
+    #   super
+    #   send_foo_updated_email(requested_resource)
+    # end
 
-    # GET /research_types or /research_types.json
-    def index
-      @research_types = ResearchType.all.order(:created_at).page params[:page]
-    end
+    # Override this method to specify custom lookup behavior.
+    # This will be used to set the resource for the `show`, `edit`, and `update`
+    # actions.
+    #
+    # def find_resource(param)
+    #   Foo.find_by!(slug: param)
+    # end
 
-    # GET /research_types/1 or /research_types/1.json
-    def show; end
+    # The result of this lookup will be available as `requested_resource`
 
-    # GET /research_types/new
-    def new
-      @research_type = ResearchType.new
-    end
+    # Override this if you have certain roles that require a subset
+    # this will be used to set the records shown on the `index` action.
+    #
+    # def scoped_resource
+    #   if current_user.super_admin?
+    #     resource_class
+    #   else
+    #     resource_class.with_less_stuff
+    #   end
+    # end
 
-    # GET /research_types/1/edit
-    def edit; end
+    # Override `resource_params` if you want to transform the submitted
+    # data before it's persisted. For example, the following would turn all
+    # empty values into nil values. It uses other APIs such as `resource_class`
+    # and `dashboard`:
+    #
+    # def resource_params
+    #   params.require(resource_class.model_name.param_key).
+    #     permit(dashboard.permitted_attributes(action_name)).
+    #     transform_values { |value| value == "" ? nil : value }
+    # end
 
-    # POST /research_types or /research_types.json
-    def create
-      @research_type = ResearchType.new(research_type_params)
-
-      respond_to do |format|
-        if @research_type.save
-          format.html { redirect_to admin_research_type_url(@research_type), notice: 'Research type was successfully created.' }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-        end
-      end
-    end
-
-    # PATCH/PUT /research_types/1 or /research_types/1.json
-    def update
-      respond_to do |format|
-        if @research_type.update(research_type_params)
-          format.html { redirect_to research_type_url(@research_type), notice: 'Research type was successfully updated.' }
-          format.json { render :show, status: :ok, location: @research_type }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @research_type.errors, status: :unprocessable_entity }
-        end
-      end
-    end
-
-    # DELETE /research_types/1 or /research_types/1.json
-    def destroy
-      @research_type.destroy
-
-      respond_to do |format|
-        format.html { redirect_to research_types_url, notice: 'Research type was successfully destroyed.' }
-        format.json { head :no_content }
-      end
-    end
-
-    private
-
-    # Use callbacks to share common setup or constraints between actions.
-    def set_research_type
-      @research_type = ResearchType.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def research_type_params
-      params.require(:research_type).permit(:name, :call_based, :max_budget, :gender, :fund_soure, :min_researcher,
-                                            :max_duration, :possible_extension)
-    end
+    # See https://administrate-demo.herokuapp.com/customizing_controller_actions
+    # for more information
   end
 end

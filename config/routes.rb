@@ -3,12 +3,10 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :dashboards, only: %i[index]
   resources :profiles
   resources :documents
 
   namespace :admin do
-    root 'dashboards#index', as: 'root'
     resources :users
     resources :academic_ranks
     resources :education_levels

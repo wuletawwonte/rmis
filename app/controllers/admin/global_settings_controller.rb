@@ -1,35 +1,46 @@
-# frozen_string_literal: true
-
 module Admin
-  class GlobalSettingsController < ApplicationController
-    load_and_authorize_resource
-    before_action :set_global_setting, only: %i[index update]
+  class GlobalSettingsController < Admin::ApplicationController
+    # Overwrite any of the RESTful controller actions to implement custom behavior
+    # For example, you may want to send an email after a foo is updated.
+    #
+    # def update
+    #   super
+    #   send_foo_updated_email(requested_resource)
+    # end
 
-    # GET /global_settings or /global_settings.json
-    def index; end
+    # Override this method to specify custom lookup behavior.
+    # This will be used to set the resource for the `show`, `edit`, and `update`
+    # actions.
+    #
+    # def find_resource(param)
+    #   Foo.find_by!(slug: param)
+    # end
 
-    # PATCH/PUT /global_settings/1 or /global_settings/1.json
-    def update
-      respond_to do |format|
-        if @global_setting.update(global_setting_params)
-          format.html { redirect_to global_settings_path, notice: 'Global setting successfully updated.' }
-        else
-          format.html { render :index, status: :unprocessable_entity }
-        end
-      end
-    end
+    # The result of this lookup will be available as `requested_resource`
 
-    private
+    # Override this if you have certain roles that require a subset
+    # this will be used to set the records shown on the `index` action.
+    #
+    # def scoped_resource
+    #   if current_user.super_admin?
+    #     resource_class
+    #   else
+    #     resource_class.with_less_stuff
+    #   end
+    # end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_global_setting
-      @global_setting = GlobalSetting.first
-    end
+    # Override `resource_params` if you want to transform the submitted
+    # data before it's persisted. For example, the following would turn all
+    # empty values into nil values. It uses other APIs such as `resource_class`
+    # and `dashboard`:
+    #
+    # def resource_params
+    #   params.require(resource_class.model_name.param_key).
+    #     permit(dashboard.permitted_attributes(action_name)).
+    #     transform_values { |value| value == "" ? nil : value }
+    # end
 
-    # Only allow a list of trusted parameters through.
-    def global_setting_params
-      params.require(:global_setting).permit(:university_name, :university_email, :university_phone, :university_city, :university_country, :allowed_pi_per_year, :allowed_co_per_year, :date_format,
-                                             :default_password, :minimum_password_length, :university_website, :university_facebook, :university_twitter, :university_telegram)
-    end
+    # See https://administrate-demo.herokuapp.com/customizing_controller_actions
+    # for more information
   end
 end

@@ -1,74 +1,46 @@
-# frozen_string_literal: true
-
 module Admin
-  class DepartmentsController < ApplicationController
-    load_and_authorize_resource
-    before_action :set_department, only: %i[show edit update destroy]
+  class DepartmentsController < Admin::ApplicationController
+    # Overwrite any of the RESTful controller actions to implement custom behavior
+    # For example, you may want to send an email after a foo is updated.
+    #
+    # def update
+    #   super
+    #   send_foo_updated_email(requested_resource)
+    # end
 
-    # GET /departments or /departments.json
-    def index
-      @departments = Department.all.page params[:page]
-    end
+    # Override this method to specify custom lookup behavior.
+    # This will be used to set the resource for the `show`, `edit`, and `update`
+    # actions.
+    #
+    # def find_resource(param)
+    #   Foo.find_by!(slug: param)
+    # end
 
-    # GET /departments/1 or /departments/1.json
-    def show; end
+    # The result of this lookup will be available as `requested_resource`
 
-    # GET /departments/new
-    def new
-      @department = Department.new
-    end
+    # Override this if you have certain roles that require a subset
+    # this will be used to set the records shown on the `index` action.
+    #
+    # def scoped_resource
+    #   if current_user.super_admin?
+    #     resource_class
+    #   else
+    #     resource_class.with_less_stuff
+    #   end
+    # end
 
-    # GET /departments/1/edit
-    def edit; end
+    # Override `resource_params` if you want to transform the submitted
+    # data before it's persisted. For example, the following would turn all
+    # empty values into nil values. It uses other APIs such as `resource_class`
+    # and `dashboard`:
+    #
+    # def resource_params
+    #   params.require(resource_class.model_name.param_key).
+    #     permit(dashboard.permitted_attributes(action_name)).
+    #     transform_values { |value| value == "" ? nil : value }
+    # end
 
-    # POST /departments or /departments.json
-    def create
-      @department = Department.new(department_params)
-
-      respond_to do |format|
-        if @department.save
-          format.html { redirect_to department_url(@department), notice: 'Department was successfully created.' }
-          format.json { render :show, status: :created, location: @department }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @department.errors, status: :unprocessable_entity }
-        end
-      end
-    end
-
-    # PATCH/PUT /departments/1 or /departments/1.json
-    def update
-      respond_to do |format|
-        if @department.update(department_params)
-          format.html { redirect_to department_url(@department), notice: 'Department was successfully updated.' }
-          format.json { render :show, status: :ok, location: @department }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @department.errors, status: :unprocessable_entity }
-        end
-      end
-    end
-
-    # DELETE /departments/1 or /departments/1.json
-    def destroy
-      @department.destroy
-
-      respond_to do |format|
-        format.html { redirect_to departments_url, notice: 'Department was successfully destroyed.' }
-        format.json { head :no_content }
-      end
-    end
-
-    private
-
-    # Use callbacks to share common setup or constraints between actions.
-    def set_department
-      @department = Department.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def department_params
-      params.require(:department).permit(:name)
-    end
+    # See https://administrate-demo.herokuapp.com/customizing_controller_actions
+    # for more information
   end
 end
