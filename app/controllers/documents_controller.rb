@@ -11,11 +11,6 @@ class DocumentsController < ApplicationController
     @documents = Document.order(created_at: :desc).page params[:page]
   end
 
-  # GET /documents for unauthenticated users
-  def list
-    @documents = Document.order(created_at: :desc).page params[:page]
-  end
-
   # GET /documents/1 or /documents/1.json
   def show; end
 

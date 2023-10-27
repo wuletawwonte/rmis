@@ -6,7 +6,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.0'
 
 gem 'bootsnap', require: false
-gem 'carrierwave'
 gem 'devise'
 gem 'faker'
 gem 'importmap-rails'
@@ -56,3 +55,7 @@ gem 'dry-initializer', '~> 3.1', '>= 3.1.1'
 gem 'view_component'
 
 gem 'font-awesome-sass', '~> 6.4.2'
+
+# Administrate related gems
+gem 'administrate', '~> 0.19.0'
+gem 'administrate-field-active_storage', '~> 0.4.2'

@@ -52,6 +52,7 @@ class User < ApplicationRecord
 
   validates :first_name, :middle_name, :email, presence: true
 
+  scope :non_admins, -> { where.not(role: 'admin').order('created_at desc') }
   scope :researchers_only, -> { where(role: 'researcher') }
   scope :members_of, ->(proposal) { researchers_only.joins(:members).where(members: { proposal_id: proposal.id }) }
   scope :not_members_of, ->(proposal) { researchers_only.where.not(id: Member.member_ids_of(proposal)) }

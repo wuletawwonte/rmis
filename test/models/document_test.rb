@@ -5,7 +5,6 @@
 # Table name: documents
 #
 #  id          :bigint           not null, primary key
-#  attachement :string
 #  description :text
 #  title       :string
 #  created_at  :datetime         not null

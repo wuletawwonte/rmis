@@ -5,7 +5,6 @@
 # Table name: documents
 #
 #  id          :bigint           not null, primary key
-#  attachement :string
 #  description :text
 #  title       :string
 #  created_at  :datetime         not null
@@ -21,8 +20,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Document < ApplicationRecord
-  mount_uploader :attachement, DocumentUploader
   belongs_to :user
+  has_one_attached :attachment
 
-  validates :title, :attachement, presence: true
+  validates :title, presence: true
 end

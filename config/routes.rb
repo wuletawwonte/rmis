@@ -3,12 +3,9 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :dashboards, only: %i[index]
-  resources :profiles
-  resources :documents
+  root 'public/calls#index'
 
   namespace :admin do
-    root 'dashboards#index', as: 'root'
     resources :users
     resources :academic_ranks
     resources :education_levels
@@ -22,15 +19,28 @@ Rails.application.routes.draw do
     resources :proposals, only: %i[index destroy]
     resources :subscribers, only: %i[index create update]
     resources :global_settings, only: %i[index update]
+
+    mount Sidekiq::Web => '/sidekiq'
+
+    root 'users#index'
   end
 
+  namespace :public do
+    resources :calls, only: %i[index show]
+    resources :documents, only: %i[index show]
+
+    root 'calls#index'
+  end
+
+  resources :profiles
+  resources :documents
   resources :calls
   resources :research_types
   devise_for :users
   resources :themes, only: %i[index show]
   resources :research_centers
 
-  resources :proposals, only: %i[index show new create destroy] do
+  resources :proposals do
     get '/members', to: 'members#create', as: 'members'
     get '/members/:id', to: 'members#accept_envitation', as: 'accept_envitation'
     delete '/members/:id', to: 'members#decline_envitation', as: 'decline_envitation'
@@ -44,20 +54,9 @@ Rails.application.routes.draw do
   match 'subscribers/verifyemail/:subscription_hash' => 'subscribers#verify_email', as: 'verify_email', via: :all
   get 'subscribers/email_verified', to: 'subscribers#email_verified', as: 'email_verified'
 
-  resources :calls do
-    get '/page/:page', action: :index, on: :collection
-    get '/public/show/:id', action: :public_show, as: :show_public, on: :collection
-  end
-
   devise_scope :user do
-    unauthenticated :user do
-      root 'calls#list'
-    end
-
     authenticated :user do
-      root 'dashboards#index', as: :authenticated_root
+      root 'users#index', as: :authenticated_root
     end
   end
-
-  mount Sidekiq::Web => '/sidekiq'
 end
