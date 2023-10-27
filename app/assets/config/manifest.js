@@ -6,3 +6,4 @@
 //= link ./init-alpine.js
 //= link ./alpine.min.js
 //= link ./focus-trap.js
+//= link administrate-field-active_storage/application.css

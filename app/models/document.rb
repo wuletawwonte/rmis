@@ -21,7 +21,7 @@
 #
 class Document < ApplicationRecord
   belongs_to :user
-  has_one_attached :attachement
+  has_one_attached :attachment
 
   validates :title, presence: true
 end

@@ -56,6 +56,6 @@ gem 'view_component'
 
 gem 'font-awesome-sass', '~> 6.4.2'
 
-# Administrate related gems 
+# Administrate related gems
 gem 'administrate', '~> 0.19.0'
-gem "administrate-field-active_storage", "~> 0.4.2"
+gem 'administrate-field-active_storage', '~> 0.4.2'

@@ -35,7 +35,6 @@
 #
 class Proposal < ApplicationRecord
   after_create :add_pi, :add_code
-  mount_uploader :attachement, AttachementUploader
   belongs_to :user
   belongs_to :call, optional: true
   belongs_to :research_type
