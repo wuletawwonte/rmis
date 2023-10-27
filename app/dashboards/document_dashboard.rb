@@ -11,7 +11,7 @@ class DocumentDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    attachement: Field::String,
+    attachement: Field::File,
     description: Field::Text,
     title: Field::String,
     user: Field::BelongsTo,
