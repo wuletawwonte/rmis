@@ -21,6 +21,7 @@ class UserDashboard < Administrate::BaseDashboard
     last_name: Field::String,
     members: Field::HasMany,
     middle_name: Field::String,
+    full_name: Field::String,
     profile: Field::BelongsTo,
     proposals: Field::HasMany,
     remember_created_at: Field::DateTime,
@@ -40,10 +41,8 @@ class UserDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-    id
-    avatar_attachment
-    avatar_blob
-    calls
+    full_name
+    role
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
