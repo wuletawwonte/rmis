@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     resources :proposals, only: %i[index destroy]
     resources :subscribers, only: %i[index create update]
     resources :global_settings, only: %i[index update]
+
+    root to: 'users#index'
   end
 
   resources :calls
