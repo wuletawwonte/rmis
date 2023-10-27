@@ -57,4 +57,4 @@ gem 'view_component'
 
 gem 'font-awesome-sass', '~> 6.4.2'
 
-gem "administrate", "~> 0.19.0"
+gem 'administrate', '~> 0.19.0'

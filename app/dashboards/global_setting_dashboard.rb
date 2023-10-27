@@ -1,4 +1,6 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+
+require 'administrate/base_dashboard'
 
 class GlobalSettingDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -24,7 +26,7 @@ class GlobalSettingDashboard < Administrate::BaseDashboard
     university_twitter: Field::String,
     university_website: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

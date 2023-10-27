@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     end
 
     authenticated :user do
-      root 'dashboards#index', as: :authenticated_root
+      root 'users#index', as: :authenticated_root
     end
   end
 

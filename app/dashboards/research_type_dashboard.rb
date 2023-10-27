@@ -1,4 +1,6 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+
+require 'administrate/base_dashboard'
 
 class ResearchTypeDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -19,7 +21,7 @@ class ResearchTypeDashboard < Administrate::BaseDashboard
     possible_extension: Field::Number,
     proposals: Field::HasMany,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

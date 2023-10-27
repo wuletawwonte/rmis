@@ -1,4 +1,6 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+
+require 'administrate/base_dashboard'
 
 class ProfileDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -16,7 +18,7 @@ class ProfileDashboard < Administrate::BaseDashboard
     phone_number: Field::String,
     prefix: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
