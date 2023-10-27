@@ -5,6 +5,7 @@ class Ability
 
   def initialize(user)
     can :read, Call
+    can :public_show, Call
     can :list, Document
     can :manage, Subscriber
 
