@@ -5,8 +5,7 @@ class Ability
 
   def initialize(user)
     can :read, Call
-    can :public_show, Call
-    can :list, Document
+    can :read, Document
     can :manage, Subscriber
 
     return unless user.present?
