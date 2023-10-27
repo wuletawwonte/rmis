@@ -11,7 +11,7 @@ class DocumentDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    attachment: AttachmentField,
+    attachment: Field::ActiveStorage,
     description: Field::Text,
     title: Field::String,
     user: Field::BelongsTo,
@@ -26,9 +26,8 @@ class DocumentDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    attachment
-    description
     title
+    description
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
