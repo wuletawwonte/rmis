@@ -1,12 +1,12 @@
 <div class="pt-4 pb-4 text-gray-500">
-    <%= link_to title, title_url, class: "mx-6 text-xl font-bold text-purple-800"%>
+    <%= link_to title, title_url, class: "mx-6 text-xl font-bold text-purple-800" %>
     <ul class="mt-6">
         <% menus.each do |menu| %>
             <%= menu %>
         <% end %>
 
         <div class="px-6 my-6">
-            <%= action_button if action_button %>
+            <%= action_button %>
         </div>
     </ul>
 </div>

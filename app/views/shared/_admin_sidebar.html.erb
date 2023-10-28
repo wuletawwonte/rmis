@@ -17,5 +17,5 @@
   <%= menu.with_menu "Faculties", admin_faculties_path, "building", auth_check: can?(:read, Faculty), active: request.fullpath.start_with?(admin_faculties_path) %>
   <%= menu.with_menu "Global Settings", admin_global_settings_path, "gear", auth_check: can?(:read, GlobalSetting), active: current_page?(admin_global_settings_path) %>
   <%= menu.with_menu "My Profile", user_profile_path, "user", active: current_page?(user_profile_path) %>
-  
+
 <% end %>

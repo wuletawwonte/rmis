@@ -8,7 +8,7 @@
       </p>
     </div>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "mt-8 space-y-6", data: { turbo: :false } ) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "mt-8 space-y-6", data: {turbo: false}) do |f| %>
 
       <% if flash[:alert] %>
         <div class="flex p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
@@ -20,16 +20,15 @@
         </div>
       <% end %>
 
-
       <div class="rounded-md shadow-sm mb-3 -space-y-px">
         <div>
           <%= f.label :email, class: "sr-only" %>
-          <%= f.email_field :email, required: :true, autocomplete: "email", placeholder: "Email address", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm" %>
+          <%= f.email_field :email, required: true, autocomplete: "email", placeholder: "Email address", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm" %>
         </div>
 
         <div>
           <%= f.label :password, class: "sr-only" %>
-          <%= f.password_field :password, required: :true, autocomplete: "current-password", placeholder: "Password", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm" %>
+          <%= f.password_field :password, required: true, autocomplete: "current-password", placeholder: "Password", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm" %>
         </div>
       </div>
 

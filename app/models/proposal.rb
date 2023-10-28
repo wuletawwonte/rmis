@@ -40,7 +40,7 @@ class Proposal < ApplicationRecord
   belongs_to :research_type
   belongs_to :theme
 
-  enum :status, { initialized: 0, submitted: 1, accepted: 2 }
+  enum :status, {initialized: 0, submitted: 1, accepted: 2}
 
   validates :attachement, :title, :budget, presence: true
 
@@ -48,14 +48,14 @@ class Proposal < ApplicationRecord
   has_many :users, through: :members
 
   scope :joined, lambda { |user|
-                   joins(:members).where('members.user_id = ?', user.id).where('members.status = ?', Member.statuses[:joined])
+                   joins(:members).where("members.user_id = ?", user.id).where("members.status = ?", Member.statuses[:joined])
                  }
 
   private
 
   def add_pi
     members.create(user:, proposal: self, role: Member.roles[:principal_investigator],
-                   status: Member.statuses[:joined])
+      status: Member.statuses[:joined])
   end
 
   def add_code

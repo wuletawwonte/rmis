@@ -13,7 +13,7 @@
 #
 #  index_faculties_on_name  (name) UNIQUE
 #
-require 'test_helper'
+require "test_helper"
 
 class FacultyTest < ActiveSupport::TestCase
   # test "the truth" do

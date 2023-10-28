@@ -8,7 +8,8 @@ class ThemesController < ApplicationController
     @themes = Theme.all.includes(:research_center).order(:created_at).page params[:page]
   end
 
-  def show; end
+  def show
+  end
 
   private
 

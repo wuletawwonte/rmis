@@ -22,7 +22,7 @@
 #  fk_rails_...  (research_center_id => research_centers.id)
 #  fk_rails_...  (user_id => users.id)
 #
-require 'test_helper'
+require "test_helper"
 
 class ThemeTest < ActiveSupport::TestCase
   # test "the truth" do

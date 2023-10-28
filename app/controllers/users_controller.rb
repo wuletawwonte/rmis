@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    render partial: 'user_modal', locals: { user: @user } if turbo_frame_request?
+    render partial: "user_modal", locals: {user: @user} if turbo_frame_request?
   end
 
   def my_profile

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'sidekiq/web'
+require "sidekiq/web"
 
 Rails.application.routes.draw do
-  root 'public/calls#index'
+  root "public/calls#index"
 
   namespace :admin do
     resources :users
@@ -20,16 +20,16 @@ Rails.application.routes.draw do
     resources :subscribers, only: %i[index create update]
     resources :global_settings, only: %i[index update]
 
-    mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => "/sidekiq"
 
-    root 'users#index'
+    root "users#index"
   end
 
   namespace :public do
     resources :calls, only: %i[index show]
     resources :documents, only: %i[index show]
 
-    root 'calls#index'
+    root "calls#index"
   end
 
   resources :profiles
@@ -41,22 +41,22 @@ Rails.application.routes.draw do
   resources :research_centers
 
   resources :proposals do
-    get '/members', to: 'members#create', as: 'members'
-    get '/members/:id', to: 'members#accept_envitation', as: 'accept_envitation'
-    delete '/members/:id', to: 'members#decline_envitation', as: 'decline_envitation'
+    get "/members", to: "members#create", as: "members"
+    get "/members/:id", to: "members#accept_envitation", as: "accept_envitation"
+    delete "/members/:id", to: "members#decline_envitation", as: "decline_envitation"
   end
 
-  get '/my_profile', to: 'users#my_profile', as: 'user_profile'
-  get '/users/:id', to: 'users#show', as: 'user'
-  get '/users', to: redirect('/users/sign_up')
-  get '/public/documents/list', to: 'documents#list', as: 'documents_list'
-  get '/search/researcher', to: 'proposals#search_researchers', as: 'search_researchers'
-  match 'subscribers/verifyemail/:subscription_hash' => 'subscribers#verify_email', as: 'verify_email', via: :all
-  get 'subscribers/email_verified', to: 'subscribers#email_verified', as: 'email_verified'
+  get "/my_profile", to: "users#my_profile", as: "user_profile"
+  get "/users/:id", to: "users#show", as: "user"
+  get "/users", to: redirect("/users/sign_up")
+  get "/public/documents/list", to: "documents#list", as: "documents_list"
+  get "/search/researcher", to: "proposals#search_researchers", as: "search_researchers"
+  match "subscribers/verifyemail/:subscription_hash" => "subscribers#verify_email", :as => "verify_email", :via => :all
+  get "subscribers/email_verified", to: "subscribers#email_verified", as: "email_verified"
 
   devise_scope :user do
     authenticated :user do
-      root 'users#index', as: :authenticated_root
+      root "users#index", as: :authenticated_root
     end
   end
 end

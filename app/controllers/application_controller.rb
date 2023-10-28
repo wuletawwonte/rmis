@@ -6,16 +6,16 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
 
   def layout_by_resource
-    if (devise_controller? && resource_name == :user && action_name == 'new') ||
-       (devise_controller? && resource_name == :user && action_name == 'create')
-      'login'
+    if (devise_controller? && resource_name == :user && action_name == "new") ||
+        (devise_controller? && resource_name == :user && action_name == "create")
+      "login"
     else
-      'application'
+      "application"
     end
   end
 
   rescue_from CanCan::AccessDenied do
-    redirect_to root_url, notice: 'Access denied!'
+    redirect_to root_url, notice: "Access denied!"
   end
 
   protected
@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
     end
     devise_parameter_sanitizer.permit(:account_update) do |u|
       u.permit(:avatar, :first_name, :middle_name, :last_name, :sex, :email, :password, :password_confirmation,
-               :current_password)
+        :current_password)
     end
   end
 end

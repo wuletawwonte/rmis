@@ -14,7 +14,7 @@
 #
 #  index_education_levels_on_name  (name) UNIQUE
 #
-require 'test_helper'
+require "test_helper"
 
 class EducationLevelTest < ActiveSupport::TestCase
   # test "the truth" do

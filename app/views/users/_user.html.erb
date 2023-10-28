@@ -20,7 +20,7 @@
       <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-500">Sex</dt>
         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-          <%= User.sexes.key(user.read_attribute_before_type_cast(:sex)) %>        
+          <%= User.sexes.key(user.read_attribute_before_type_cast(:sex)) %>
         </dd>
       </div>
 
@@ -29,11 +29,10 @@
         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= user.role %></dd>
       </div>
 
-
     </dl>
 
     <% if action_name != "show" %>
-      <%= link_to 'Edit this User', edit_user_path(user), class: "rounded-lg py-3 ml-2 px-5 bg-gray-200 inline-block font-medium" %>
+      <%= link_to "Edit this User", edit_user_path(user), class: "rounded-lg py-3 ml-2 px-5 bg-gray-200 inline-block font-medium" %>
       <hr class="mt-6">
     <% end %>
 

@@ -24,7 +24,7 @@
 #  fk_rails_...  (academic_rank_id => academic_ranks.id)
 #  fk_rails_...  (faculty_id => faculties.id)
 #
-require 'test_helper'
+require "test_helper"
 
 class ProfileTest < ActiveSupport::TestCase
   # test "the truth" do

@@ -26,8 +26,8 @@ class Member < ApplicationRecord
   belongs_to :user
   belongs_to :proposal
 
-  enum :role, { co_investigator: 0, principal_investigator: 1 }
-  enum :status, { joined: 0, envited: 1 }
+  enum :role, {co_investigator: 0, principal_investigator: 1}
+  enum :status, {joined: 0, envited: 1}
 
   scope :member_ids_of, ->(proposal) { where(proposal_id: proposal.id).pluck(:user_id) }
   scope :envitations, ->(user) { where(user_id: user.id).includes(:proposal).envited }

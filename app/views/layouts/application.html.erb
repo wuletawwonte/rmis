@@ -14,21 +14,20 @@
     <%= javascript_include_tag "init-alpine" %>
     <%= javascript_include_tag "focus-trap" %>
 
-    <%= favicon_link_tag asset_path('favicon.ico') %>
+    <%= favicon_link_tag asset_path("favicon.ico") %>
   </head>
 
   <body>
 
     <div
       class="flex min-h-screen bg-gray-100"
-      :class="{ 'overflow-hidden': isSideMenuOpen}"
-    >
+      :class="{ 'overflow-hidden': isSideMenuOpen}">
       <!-- Desktop sidebar -->
       <aside class="z-20 hidden w-64 bg-white md:block flex-shrink-0">
       <% if can? :access, :admin_sidebar %>
-        <%= render 'shared/admin_sidebar' %>
+        <%= render "shared/admin_sidebar" %>
       <% else %>
-        <%= render 'shared/sidebar' %>
+        <%= render "shared/sidebar" %>
       <% end %>
       </aside>
       <!-- Mobile sidebar -->
@@ -42,8 +41,7 @@
         x-transition:leave="transition ease-in-out duration-150"
         x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0"
-        class="fixed inset-0 z-10 flex items-end bg-opacity-50 sm:items-center sm:justify-center"
-      ></div>
+        class="fixed inset-0 z-10 flex items-end bg-opacity-50 sm:items-center sm:justify-center"></div>
       <aside
         class="fixed inset-y-0 z-20 flex-shrink-0 w-64 mt-16 overflow-y-auto bg-white md:hidden"
         x-show="isSideMenuOpen"
@@ -53,163 +51,26 @@
         x-transition:leave="transition ease-in-out duration-150"
         x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0 transform -translate-x-20"
-        @click.away="closeSideMenu"
-        @keydown.escape="closeSideMenu"
-      >
-        <%= render 'shared/sidebar' %>
-      </aside>
+        <%= render "shared/sidebar" %>>
       <div class="flex flex-col flex-1">
         <header class="z-10 py-3 bg-gray-600 shadow-md">
           <div
-            class="container flex items-center justify-between h-full px-6 mx-auto text-purple-600"
-          >
+            class="container flex items-center justify-between h-full px-6 mx-auto text-purple-600">
             <!-- Mobile hamburger -->
             <button
               class="p-1 -ml-1 mr-5 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple"
-              @click="toggleSideMenu"
-              aria-label="Menu"
-            >
-              <svg
-                class="w-6 h-6"
-                aria-hidden="true"
-                fill=""
-                viewBox="0 0 20 20">
-                <path
-                  fill-rule="evenodd"
-                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-            </button>
-            <!-- Search input -->
-            <div class="flex justify-center flex-1 lg:mr-32">
-              <div
-                class="relative w-full max-w-xl mr-6 focus-within:text-purple-500"
-              >
-                <div class="absolute inset-y-0 flex items-center pl-2">
-                  <svg
-                    class="w-4 h-4"
-                    aria-hidden="true"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <input
-                  class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-white border-0 rounded-md focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
-                  type="text"
-                  placeholder="Search for people"
-                  aria-label="Search"
-                />
-              </div>
-            </div>
-            <ul class="flex items-center flex-shrink-0 space-x-6">
-              <!-- Notifications menu -->
-              <li class="relative">
-                <button
-                  class="relative align-middle rounded-md focus:outline-none focus:shadow-outline-purple"
-                  @click="toggleNotificationsMenu"
-                  @keydown.escape="closeNotificationsMenu"
-                  aria-label="Notifications"
-                  aria-haspopup="true"
-                >
-                  <svg
-                    class="w-5 h-5"
-                    aria-hidden="true"
-                    fill="white"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"
-                    ></path>
-                  </svg>
-                  <!-- Notification badge -->
-                  <span
-                    aria-hidden="true"
-                    class="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full"
-                  ></span>
-                </button>
-                <template x-if="isNotificationsMenuOpen">
-                  <ul
-                    x-transition:leave="transition ease-in duration-150"
-                    x-transition:leave-start="opacity-100"
-                    x-transition:leave-end="opacity-0"
-                    @click.away="closeNotificationsMenu"
-                    @keydown.escape="closeNotificationsMenu"
-                    class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md"
-                    aria-label="submenu"
-                  >
-                    <li class="flex">
-                      <a
-                        class="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800"
-                        href="#"
-                      >
-                        <span>Messages</span>
-                        <span
-                          class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-600 bg-red-100 rounded-full"
-                        >
-                          13
-                        </span>
-                      </a>
-                    </li>
-                    <li class="flex">
-                      <a
-                        class="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800"
-                        href="#"
-                      >
-                        <span>Sales</span>
-                        <span
-                          class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-600 bg-red-100 rounded-full"
-                        >
-                          2
-                        </span>
-                      </a>
-                    </li>
-                    <li class="flex">
-                      <a
-                        class="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800"
-                        href="#"
-                      >
-                        <span>Alerts</span>
-                      </a>
-                    </li>
-                  </ul>
-                </template>
-              </li>
-              <!-- Profile menu -->
-              <li class="relative">
-                <button
-                  class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
-                  @click="toggleProfileMenu"
-                  @keydown.escape="closeProfileMenu"
-                  aria-label="Account"
-                  aria-haspopup="true"
-                  >
-                  <%= avatar_for current_user, size: 8, span_class: "text-xs" %>
-                </button>
+                  <%= avatar_for current_user, size: 8, span_class: "text-xs" %>>
                 <template x-if="isProfileMenuOpen">
                   <ul
                     x-transition:leave="transition ease-in duration-150"
                     x-transition:leave-start="opacity-100"
                     x-transition:leave-end="opacity-0"
-                    @click.away="closeProfileMenu"
-                    @keydown.escape="closeProfileMenu"
-                    class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md"
-                    aria-label="submenu"
-                  >
+                      <%= link_to icon("fas", "user lg", class: "w-7", text: "Profile"), destroy_user_session_path, method: :delete, class: "inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800" %>>
                     <li class="flex">
-                      <%= link_to icon('fas', 'user lg', class: 'w-7', text: 'Profile'), destroy_user_session_path, method: :delete, class: "inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800" %>
+                      <%= link_to icon("fas", "gear lg", class: "w-7", text: "Settings"), destroy_user_session_path, method: :delete, class: "inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800" %>
                     </li>
                     <li class="flex">
-                      <%= link_to icon('fas', 'gear lg', class: 'w-7', text: 'Settings'), destroy_user_session_path, method: :delete, class: "inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800" %>
-                    </li>
-                    <li class="flex">
-                      <%= button_to icon('fas', 'sign-out lg', class: 'w-7', text: 'Log out'), destroy_user_session_path, method: :delete, class: "inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800", form_class: "px-0 w-full" %>
+                      <%= button_to icon("fas", "sign-out lg", class: "w-7", text: "Log out"), destroy_user_session_path, method: :delete, class: "inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800", form_class: "px-0 w-full" %>
                     </li>
                   </ul>
                 </template>
@@ -225,14 +86,14 @@
 
             <% if notice.present? %>
               <div class="flex items-center bg-purple-500 text-white text-sm font-bold px-4 py-3 mt-6" role="alert">
-                <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
+                <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z" /></svg>
                 <p><%= notice %></p>
               </div>
             <% end %>
 
             <%= turbo_frame_tag "user_modal" %>
 
-            <%= yield %>            
+            <%= yield %>
           </div>
         </main>
       </div>

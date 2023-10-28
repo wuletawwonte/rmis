@@ -3,7 +3,6 @@
         <h2 class="text-lg font-semibold text-indigo-600">Call for Research</h2>
         <p class="mt-2 text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">A better way to do research</p>
 
-
         <%= form_with url: "subscribers/create", method: :post do |form| %>
             <div class="flex items-stretch mt-5">
                 <%= form.email_field :email, class: "bg-white rounded-lg rounded-r-none text-base leading-none text-gray-800 p-2 w-4/5 border border-transparent focus:outline-none focus:border-gray-500", placeholder: "Your Email", required: true %>
@@ -14,7 +13,6 @@
 
     </div>
 </div>
-
 
 <div class="container mb-12 mx-auto px-4 md:px-28">
     <div class="flex flex-wrap -mx-4 lg:-mx-10">
@@ -28,7 +26,7 @@
                         <%= link_to call.title, public_call_path(call.id) %>
                     </h1>
                     <p class="text-gray-600 text-xs">
-                        Deadline: <b><%= call.deadline.strftime('%b %d, %Y')%></b>
+                        Deadline: <b><%= call.deadline.strftime("%b %d, %Y") %></b>
                     </p>
                     <p class="text-gray-600 text-xs">
                         Code: <b><%= call.code %></b>
@@ -36,7 +34,7 @@
                 </header>
 
                 <footer class="flex items-center justify-between leading-none p-2 md:p-4">
-                    <%= link_to "public/calls/#{ call.id }", class: "inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300" do %>
+                    <%= link_to "public/calls/#{call.id}", class: "inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300" do %>
                         Read more
                         <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                     <% end %>
@@ -46,7 +44,7 @@
                         </span>
                     <% else %>
                         <span class="px-2 py-1 text-xs leading-tight text-gray-700 bg-gray-100 rounded-full">
-                            Inactive 
+                            Inactive
                         </span>
                     <% end %>
 

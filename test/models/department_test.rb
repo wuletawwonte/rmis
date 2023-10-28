@@ -13,7 +13,7 @@
 #
 #  index_departments_on_name  (name) UNIQUE
 #
-require 'test_helper'
+require "test_helper"
 
 class DepartmentTest < ActiveSupport::TestCase
   # test "the truth" do

@@ -4,7 +4,7 @@ module Public
   class DocumentsController < ApplicationController
     load_and_authorize_resource
     skip_before_action :authenticate_user!
-    layout 'login'
+    layout "login"
 
     # GET /documents or /documents.json
     def index

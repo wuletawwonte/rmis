@@ -12,9 +12,9 @@ class MembersController < ApplicationController
     if @member.save
       MemberMailer.with(proposal: @proposal, member: @member).envited.deliver_later
 
-      redirect_to proposal_path(@proposal), notice: 'Member envited successfully'
+      redirect_to proposal_path(@proposal), notice: "Member envited successfully"
     else
-      redirect_to proposals_path, notice: 'unable to add Member.'
+      redirect_to proposals_path, notice: "unable to add Member."
     end
   end
 
@@ -22,9 +22,9 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
 
     if @member.update(status: Member.statuses[:joined])
-      redirect_to proposals_path, notice: 'Successfully joined the research team.'
+      redirect_to proposals_path, notice: "Successfully joined the research team."
     else
-      redirect_to proposals_path, notice: 'Unable to join the research team.'
+      redirect_to proposals_path, notice: "Unable to join the research team."
     end
   end
 
@@ -32,9 +32,9 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
 
     if @member.destroy
-      redirect_to proposals_path, notice: 'Successfully declined from joining the research team.'
+      redirect_to proposals_path, notice: "Successfully declined from joining the research team."
     else
-      redirect_to proposals_path, notice: 'Unable to decline the research team envitation.'
+      redirect_to proposals_path, notice: "Unable to decline the research team envitation."
     end
   end
 

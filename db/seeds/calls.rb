@@ -9,9 +9,9 @@ def create_research_calls
       deadline: Faker::Date.forward(days: 30),
       user: @admin
     )
-    ActionText::RichText.create(record_type: 'Call', body: paragraphs.join('<br><br>'), record: rc, name: 'content')
+    ActionText::RichText.create(record_type: "Call", body: paragraphs.join("<br><br>"), record: rc, name: "content")
   end
 end
 
 create_research_calls
-puts '5 research calls created'
+puts "5 research calls created"

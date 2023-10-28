@@ -22,7 +22,7 @@
 #  fk_rails_...  (proposal_id => proposals.id)
 #  fk_rails_...  (user_id => users.id)
 #
-require 'test_helper'
+require "test_helper"
 
 class MemberTest < ActiveSupport::TestCase
   # test "the truth" do

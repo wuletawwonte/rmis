@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'administrate/base_dashboard'
+require "administrate/base_dashboard"
 
 class SubscriberDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES

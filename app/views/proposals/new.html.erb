@@ -1,19 +1,19 @@
 <h2 class="my-6 text-2xl font-semibold text-gray-700">Create Proposal</h2>
 
 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md visible">
-  <%= simple_form_for @proposal, url: { action: "create" }, data: { controller: "new-proposal", "new-proposal-types-value": "#{ @research_types.to_json }" }, method: :post, local: true, html: { multipart: true } do |f| %>
+  <%= simple_form_for @proposal, url: {action: "create"}, data: {controller: "new-proposal", "new-proposal-types-value": @research_types.to_json.to_s}, method: :post, local: true, html: {multipart: true} do |f| %>
 
     <%= render "shared/error_messages", resource: @proposal %>
 
     <%= f.error_notification %>
 
-    <%= f.input :title, input_html: { class: "proposal-input" } %>
-    <%= f.association :research_type, input_html: { data: { action: "new-proposal#makeChanges" } }, default: 0 %>
-    <%= f.association :call, wrapper_html: { data: { "new-proposal-target": "callWrapper" }, class: "hidden"}, input_html: { data: { "new-proposal-target": "callInput" }, class: "proposal-input" } %>
-    <%= f.association :theme, input_html: { class: "proposal-input" } %>
-    <%= f.input :attachement, label: "Proposal", input_html: { class: "proposal-input" } %>
-    <%= f.input :abstract, input_html: { class: "proposal-input" } %>
-    <%= f.input :budget, input_html: { data: { "new-proposal-target": "budgetInput" }, class: "proposal-input", min: "0" } %>
+    <%= f.input :title, input_html: {class: "proposal-input"} %>
+    <%= f.association :research_type, input_html: {data: {action: "new-proposal#makeChanges"}}, default: 0 %>
+    <%= f.association :call, wrapper_html: {data: {"new-proposal-target": "callWrapper"}, class: "hidden"}, input_html: {data: {"new-proposal-target": "callInput"}, class: "proposal-input"} %>
+    <%= f.association :theme, input_html: {class: "proposal-input"} %>
+    <%= f.input :attachement, label: "Proposal", input_html: {class: "proposal-input"} %>
+    <%= f.input :abstract, input_html: {class: "proposal-input"} %>
+    <%= f.input :budget, input_html: {data: {"new-proposal-target": "budgetInput"}, class: "proposal-input", min: "0"} %>
 
     <label class="block mt-4 text-sm">
       <%= f.button :submit, "Add proposal", class: "proposal-input" %>
