@@ -33,7 +33,7 @@
 #  fk_rails_...  (theme_id => themes.id)
 #  fk_rails_...  (user_id => users.id)
 #
-require 'test_helper'
+require "test_helper"
 
 class ProposalTest < ActiveSupport::TestCase
   # test "the truth" do

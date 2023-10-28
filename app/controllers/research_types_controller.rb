@@ -10,10 +10,12 @@ class ResearchTypesController < ApplicationController
   end
 
   # GET /research_types/1 or /research_types/1.json
-  def show; end
+  def show
+  end
 
   # GET /research_types/1/edit
-  def edit; end
+  def edit
+  end
 
   private
 
@@ -25,6 +27,6 @@ class ResearchTypesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def research_type_params
     params.require(:research_type).permit(:name, :call_based, :max_budget, :gender, :fund_soure, :min_researcher,
-                                          :max_duration, :possible_extension)
+      :max_duration, :possible_extension)
   end
 end

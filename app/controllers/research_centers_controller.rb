@@ -8,7 +8,8 @@ class ResearchCentersController < ApplicationController
     @research_centers = ResearchCenter.order(:created_at).page params[:page]
   end
 
-  def show; end
+  def show
+  end
 
   private
 

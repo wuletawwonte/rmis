@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require 'fileutils'
+require "fileutils"
 
 HOOKS = %w[post-merge].freeze
 
-Dir.chdir(File.expand_path('../../.git/hooks', __dir__)) do
+Dir.chdir(File.expand_path("../../.git/hooks", __dir__)) do
   HOOKS.each do |hook_name|
     if File.exist?("./#{hook_name}")
       puts "- File for #{hook_name} already exists in git hooks directory"

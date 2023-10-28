@@ -18,7 +18,7 @@ class ProposalsController < ApplicationController
     @proposal.user_id = current_user.id
 
     if @proposal.save
-      redirect_to proposals_path, notice: 'Successfully added.'
+      redirect_to proposals_path, notice: "Successfully added."
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,39 +29,39 @@ class ProposalsController < ApplicationController
     @proposal.destroy
 
     respond_to do |format|
-      format.html { redirect_to proposals_url, notice: 'Proposal was successfully destroyed.' }
+      format.html { redirect_to proposals_url, notice: "Proposal was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   def show
-    @proposal = Proposal.find(params['id'])
-    @members = Member.where(proposal_id: params['id'])
-                     .includes(:user)
-                     .page(params[:page])
-                     .per(params[:per])
-                     .max_paginates_per(4)
+    @proposal = Proposal.find(params["id"])
+    @members = Member.where(proposal_id: params["id"])
+      .includes(:user)
+      .page(params[:page])
+      .per(params[:per])
+      .max_paginates_per(4)
     @researchers = User.not_members_of(@proposal).page(params[:page]).per(params[:per]).max_paginates_per(4)
   end
 
   def search_researchers
-    @proposal = Proposal.find_by_id(params['proposal_id'])
+    @proposal = Proposal.find_by_id(params["proposal_id"])
 
     if turbo_frame_request?
-      @researchers = if params['search_key'].present?
-                       User.not_members_of(@proposal).search_by_name(params['search_key']).page(params[:page]).max_paginates_per(4)
-                     else
-                       User.not_members_of(@proposal).page(params[:page]).max_paginates_per(4)
-                     end
+      @researchers = if params["search_key"].present?
+        User.not_members_of(@proposal).search_by_name(params["search_key"]).page(params[:page]).max_paginates_per(4)
+      else
+        User.not_members_of(@proposal).page(params[:page]).max_paginates_per(4)
+      end
     end
-    render partial: 'researchers', locals: { researchers: @researchers, proposal: @proposal }
+    render partial: "researchers", locals: {researchers: @researchers, proposal: @proposal}
   end
 
   private
 
   def proposal_params
     params.require(:proposal).permit(:id, :title, :attachement, :abstract, :call_id, :theme_id, :research_type_id,
-                                     :budget)
+      :budget)
   end
 
   def search_params

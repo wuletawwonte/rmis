@@ -19,10 +19,10 @@ module SeedsHelper
       person = Person.new
       person.gender = random_gender
       person.first_name = if person.gender == :Male
-                            Faker::Name.male_first_name
-                          else
-                            Faker::Name.female_first_name
-                          end
+        Faker::Name.male_first_name
+      else
+        Faker::Name.female_first_name
+      end
 
       person.middle_name = Faker::Name.middle_name
       person.last_name = Faker::Name.last_name

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'active_support/core_ext/integer/time'
+require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -21,13 +21,13 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
-  if Rails.root.join('tmp/caching-dev.txt').exist?
+  if Rails.root.join("tmp/caching-dev.txt").exist?
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+      "Cache-Control" => "public, max-age=#{2.days.to_i}"
     }
   else
     config.action_controller.perform_caching = false
@@ -58,7 +58,7 @@ Rails.application.configure do
   # }
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
+  config.action_mailer.smtp_settings = {address: "localhost", port: 1025}
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -87,10 +87,10 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = {host: "localhost", port: 3000}
 
-  config.hosts << ENV.fetch('DEV_DOMAIN_NAME', 'rmis.dev')
+  config.hosts << ENV.fetch("DEV_DOMAIN_NAME", "rmis.dev")
 
   # By default the app is gonna respond for both http and https requests, but if force_ssl is set true it forces the server to respond only for https requests
-  config.force_ssl = ENV.fetch('DEV_ENV_HTTPS', 0) == '1'
+  config.force_ssl = ENV.fetch("DEV_ENV_HTTPS", 0) == "1"
 end

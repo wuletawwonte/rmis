@@ -4,7 +4,7 @@ class CallsController < ApplicationController
   load_and_authorize_resource
   before_action :set_call, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[index public_show]
-  layout 'login', only: %i[index public_show]
+  layout "login", only: %i[index public_show]
 
   # Get /calls to show on the homepage
   def index
@@ -17,7 +17,8 @@ class CallsController < ApplicationController
   end
 
   # GET /calls/1 or /calls/1.json
-  def show; end
+  def show
+  end
 
   # GET /calls/new
   def new
@@ -25,7 +26,8 @@ class CallsController < ApplicationController
   end
 
   # GET /calls/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /calls or /calls.json
   def create
@@ -37,10 +39,10 @@ class CallsController < ApplicationController
         # Send email to subscribers when a call is created
         Subscriber.where(active: true).each do |subscriber|
           SubscriberMailer.with(call: @call, subscriber:,
-                                url: show_public_calls_url(@call)).call_posted_email.deliver_later
+            url: show_public_calls_url(@call)).call_posted_email.deliver_later
         end
 
-        format.html { redirect_to call_url(@call), notice: 'Call was successfully created.' }
+        format.html { redirect_to call_url(@call), notice: "Call was successfully created." }
         format.json { render :show, status: :created, location: @call }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -53,7 +55,7 @@ class CallsController < ApplicationController
   def update
     respond_to do |format|
       if @call.update(call_params)
-        format.html { redirect_to call_url(@call), notice: 'Call was successfully updated.' }
+        format.html { redirect_to call_url(@call), notice: "Call was successfully updated." }
         format.json { render :show, status: :ok, location: @call }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -67,7 +69,7 @@ class CallsController < ApplicationController
     @call.destroy
 
     respond_to do |format|
-      format.html { redirect_to calls_url, notice: 'Call was successfully destroyed.' }
+      format.html { redirect_to calls_url, notice: "Call was successfully destroyed." }
       format.json { head :no_content }
     end
   end

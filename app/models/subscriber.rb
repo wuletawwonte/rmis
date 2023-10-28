@@ -18,7 +18,7 @@
 class Subscriber < ApplicationRecord
   before_create :add_subscription_hash
 
-  validates :email, uniqueness: { case_sensitive: false }
+  validates :email, uniqueness: {case_sensitive: false}
 
   private
 

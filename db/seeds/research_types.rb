@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-research_types = YAML.load_file(Rails.root.join('db', 'seeds', 'research_types.yml'))
+research_types = YAML.load_file(Rails.root.join("db", "seeds", "research_types.yml"))
 
 def create_research_types(research_types)
   research_types.sample(3).each do |item|
@@ -18,4 +18,4 @@ def create_research_types(research_types)
 end
 
 create_research_types(research_types)
-puts 'Created 3 research types'
+puts "Created 3 research types"

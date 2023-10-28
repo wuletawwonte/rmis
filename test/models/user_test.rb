@@ -33,7 +33,7 @@
 #  fk_rails_...  (profile_id => profiles.id)
 #  fk_rails_...  (research_center_id => research_centers.id)
 #
-require 'test_helper'
+require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
   # test "the truth" do

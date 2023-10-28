@@ -20,7 +20,7 @@
 #
 #  index_research_types_on_name  (name) UNIQUE
 #
-require 'test_helper'
+require "test_helper"
 
 class ResearchTypeTest < ActiveSupport::TestCase
   # test "the truth" do

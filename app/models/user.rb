@@ -38,7 +38,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   before_create :add_color
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+    :recoverable, :rememberable, :validatable
   has_many :members, dependent: :destroy
   has_many :proposals, through: :members, dependent: :destroy
   has_many :proposals, dependent: :destroy
@@ -48,16 +48,16 @@ class User < ApplicationRecord
   belongs_to :profile, optional: true
   belongs_to :research_center, optional: true, autosave: true
 
-  enum :sex, { Male: 0, Female: 1 }
+  enum :sex, {Male: 0, Female: 1}
 
   validates :first_name, :middle_name, :email, presence: true
 
-  scope :non_admins, -> { where.not(role: 'admin').order('created_at desc') }
-  scope :researchers_only, -> { where(role: 'researcher') }
-  scope :members_of, ->(proposal) { researchers_only.joins(:members).where(members: { proposal_id: proposal.id }) }
+  scope :non_admins, -> { where.not(role: "admin").order("created_at desc") }
+  scope :researchers_only, -> { where(role: "researcher") }
+  scope :members_of, ->(proposal) { researchers_only.joins(:members).where(members: {proposal_id: proposal.id}) }
   scope :not_members_of, ->(proposal) { researchers_only.where.not(id: Member.member_ids_of(proposal)) }
   scope :search_by_name, lambda { |search_key|
-                           where('first_name LIKE :search OR middle_name LIKE :search OR last_name LIKE :search', search: "%#{search_key}%")
+                           where("first_name LIKE :search OR middle_name LIKE :search OR last_name LIKE :search", search: "%#{search_key}%")
                          }
 
   def initials
@@ -69,15 +69,15 @@ class User < ApplicationRecord
   end
 
   def admin?
-    role == 'admin'
+    role == "admin"
   end
 
   def researcher?
-    role == 'researcher'
+    role == "researcher"
   end
 
   def coordinator?
-    role == 'research_coordinator'
+    role == "research_coordinator"
   end
 
   private
