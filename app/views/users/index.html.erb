@@ -5,8 +5,7 @@
     <table class="w-full whitespace-no-wrap">
       <thead>
         <tr
-          class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50"
-        >
+          class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50">
           <th class="px-4 py-3">User</th>
           <th class="px-4 py-3">Sex</th>
           <th class="px-4 py-3">Role</th>
@@ -15,8 +14,7 @@
         </tr>
       </thead>
       <tbody
-        class="bg-white divide-y"
-      >
+        class="bg-white divide-y">
       <% @users.each do |user| %>
         <tr class="text-gray-700">
           <td class="px-4 py-3">
@@ -24,7 +22,7 @@
               <!-- Avatar with inset shadow -->
 
               <%= avatar_for user, size: 9 %>
-              
+
               <div>
                 <p class="font-semibold"><%= "#{user.first_name} #{user.middle_name}" %></p>
                 <p class="text-xs text-gray-600">
@@ -40,7 +38,7 @@
             <%= user_role_for user %>
           </td>
           <td class="px-4 py-3 text-sm">
-            <%= user.created_at.strftime('%b %-d, %Y') %>
+            <%= user.created_at.strftime("%b %-d, %Y") %>
           </td>
           <td>
             <%= link_to "show", user_path(user) %>
@@ -49,7 +47,7 @@
       <% end %>
       </tbody>
     </table>
-    
+
     <%= paginate @users %>
 
   </div>

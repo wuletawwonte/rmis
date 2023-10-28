@@ -26,8 +26,6 @@ group :development, :test do
   gem "dotenv-rails"
 
   gem "annotate"
-  gem "rubocop", require: false
-  gem "rubocop-rails"
   gem "standard", "~> 1.31", require: false
   gem "erb_lint", require: false
 end

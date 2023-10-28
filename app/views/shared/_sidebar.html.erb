@@ -2,7 +2,7 @@
 
 <%= render SidebarComponent.new("AMU-RDB", root_url) do |menu| %>
 
-  <%= menu.with_menu "Dashboard", current_user.admin? ? root_path : root_path, "fas fa-home", active: current_page?(current_user.admin? ? root_path : root_path) %>
+  <%= menu.with_menu "Dashboard", root_path, "fas fa-home", active: current_page?(root_path) %>
   <%= menu.with_menu "Proposals", proposals_path, "file", auth_check: can?(:read, Proposal), active: request.fullpath.start_with?(proposals_path) %>
   <%= menu.with_menu "Research Types", research_types_path, "filter", auth_check: can?(:read, ResearchType), active: request.fullpath.start_with?(research_types_path) %>
   <%= menu.with_menu "Research Centers", research_centers_path, "bank", auth_check: can?(:read, ResearchCenter), active: request.fullpath.start_with?(research_centers_path) %>
@@ -10,6 +10,6 @@
   <%= menu.with_menu "Call for Research", calls_path, "bullhorn", auth_check: can?(:read, Call), active: request.fullpath.start_with?(calls_path) %>
   <%= menu.with_menu "Documents", documents_path, "file", auth_check: can?(:read, Document), active: request.fullpath.start_with?(documents_path) %>
   <%= menu.with_menu "My Profile", user_profile_path, "user", active: current_page?(user_profile_path) %>
-  <%= menu.with_action_button "Create proposal", new_proposal_path, left_icon: icon('fas', 'plus fa-sm'), auth_check: can?(:create, Proposal) %>
-  
+  <%= menu.with_action_button "Create proposal", new_proposal_path, left_icon: icon("fas", "plus fa-sm"), auth_check: can?(:create, Proposal) %>
+
 <% end %>

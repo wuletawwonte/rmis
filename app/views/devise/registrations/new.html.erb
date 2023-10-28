@@ -2,21 +2,21 @@
   <div class="my-5 lg:w-1/2 md:w-auto">
 
     <div class="mt-2 border-t-4 border-purple-700">
-      
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-        
+
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
+
         <div class="shadow overflow-hidden">
           <div class="px-4 bg-white lg:p-6">
 
-            <%= f.error_notification %>              
+            <%= f.error_notification %>
             <%= f.input :first_name %>
             <%= f.input :middle_name %>
-            <%= f.input :last_name %>            
-            <%= f.input :sex,as: :radio_buttons, collection: User.sexes.keys, checked: User.sexes[0] %>
+            <%= f.input :last_name %>
+            <%= f.input :sex, as: :radio_buttons, collection: User.sexes.keys, checked: User.sexes[0] %>
             <%= f.input :email, placeholder: "wuletaw.wonte@amu.edu.et", hint: "Please use AMU occupational email" %>
 
-            <%= f.input :password, required: :true, hint: "6 characters minimum" %>
-            <%= f.input :password_confirmation, required: :true %>
+            <%= f.input :password, required: true, hint: "6 characters minimum" %>
+            <%= f.input :password_confirmation, required: true %>
 
           </div>
           <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
@@ -25,7 +25,7 @@
           </div>
 
         </div>
-      <% end  %>
+      <% end %>
 
     </div>
   </div>

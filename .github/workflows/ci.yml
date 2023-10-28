@@ -56,3 +56,6 @@ jobs:
 
       - name: Standardrb check
         run: bundle exec standardrb
+
+      - name: erb-lint check
+        run: bundle exec erblint --lint-all
