@@ -3,7 +3,6 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
-
   authenticated :user, lambda { |u| u.admin? } do
     namespace :admin do
       resources :users
