@@ -3,40 +3,36 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
-  root "public/calls#index"
+  root "calls#index"
 
-  namespace :admin do
-    resources :users
-    resources :academic_ranks
-    resources :education_levels
-    resources :departments
-    resources :faculties
-    resources :profiles
-    resources :documents
-    resources :research_centers
-    resources :themes
-    resources :research_types
-    resources :proposals, only: %i[index destroy]
-    resources :subscribers, only: %i[index create update]
-    resources :global_settings, only: %i[index update]
+  authenticated :user, lambda { |u| u.admin? } do
+    namespace :admin do
+      resources :users
+      resources :academic_ranks
+      resources :education_levels
+      resources :departments
+      resources :faculties
+      resources :profiles
+      resources :documents
+      resources :research_centers
+      resources :themes
+      resources :research_types
+      resources :proposals, only: %i[index destroy]
+      resources :subscribers, only: %i[index create update]
+      resources :global_settings, only: %i[index update]
 
-    mount Sidekiq::Web => "/sidekiq"
+      mount Sidekiq::Web => "/sidekiq"
 
-    root "users#index"
+      root "users#index"
+    end
   end
 
-  namespace :public do
-    resources :calls, only: %i[index show]
-    resources :documents, only: %i[index show]
-
-    root "calls#index"
-  end
-
-  resources :profiles
-  resources :documents
-  resources :calls
-  resources :research_types
   devise_for :users
+  resources :calls, only: %i[index show]
+  resources :documents, only: %i[index]
+  resources :users
+  resources :profiles
+  resources :research_types
   resources :themes, only: %i[index show]
   resources :research_centers
 
@@ -47,16 +43,11 @@ Rails.application.routes.draw do
   end
 
   get "/my_profile", to: "users#my_profile", as: "user_profile"
-  get "/users/:id", to: "users#show", as: "user"
-  get "/users", to: redirect("/users/sign_up")
-  get "/public/documents/list", to: "documents#list", as: "documents_list"
   get "/search/researcher", to: "proposals#search_researchers", as: "search_researchers"
   match "subscribers/verifyemail/:subscription_hash" => "subscribers#verify_email", :as => "verify_email", :via => :all
   get "subscribers/email_verified", to: "subscribers#email_verified", as: "email_verified"
 
-  devise_scope :user do
-    authenticated :user do
-      root "users#index", as: :authenticated_root
-    end
+  authenticated :user do
+    root "users#index", as: :user_root
   end
 end

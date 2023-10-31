@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  load_and_authorize_resource
   before_action :authenticate_user!
   before_action :update_allowed_parameters, if: :devise_controller?
   layout :layout_by_resource
@@ -8,7 +9,7 @@ class ApplicationController < ActionController::Base
   def layout_by_resource
     if (devise_controller? && resource_name == :user && action_name == "new") ||
         (devise_controller? && resource_name == :user && action_name == "create")
-      "login"
+      "public"
     else
       "application"
     end
@@ -28,7 +29,7 @@ class ApplicationController < ActionController::Base
     if current_user.admin?
       admin_root_path
     else
-      root_path
+      user_root_path
     end
   end
 
