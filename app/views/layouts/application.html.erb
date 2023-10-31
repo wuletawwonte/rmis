@@ -24,7 +24,6 @@
           $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
     :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}">
 
-
     <!-- ===== Page Wrapper Start ===== -->
     <div class="flex h-screen overflow-hidden">
       <!-- ===== Sidebar Start ===== -->
@@ -40,7 +39,6 @@
         <!-- ===== Main Content Start ===== -->
         <main>
           <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-
 
               <% if notice.present? %>
                 <div class="flex items-center bg-purple-500 text-white text-sm font-bold px-4 py-3 mt-6" role="alert">

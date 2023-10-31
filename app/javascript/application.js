@@ -6,7 +6,9 @@ import '@rails/actiontext';
 import 'chartkick';
 import 'Chart.bundle';
 import Highcharts from 'highcharts';
+import Alpine from 'alpine';
 
+window.Alpine = Alpine
 window.Highcharts = Highcharts;
 
 const subscribersCheckboxs = document.querySelectorAll('.subscriber-checkbox');
