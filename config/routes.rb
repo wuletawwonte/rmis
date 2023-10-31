@@ -50,6 +50,6 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root "proposals#index", as: :user_root
+    root "dashboard#index", as: :user_root
   end
 end
