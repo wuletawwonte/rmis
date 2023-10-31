@@ -6,10 +6,12 @@ import '@rails/actiontext';
 import 'chartkick';
 import 'Chart.bundle';
 import Highcharts from 'highcharts';
-import Alpine from 'alpine';
+import Alpine from 'alpinejs';
 
-window.Alpine = Alpine
+window.Alpine = Alpine;
 window.Highcharts = Highcharts;
+
+Alpine.start()
 
 const subscribersCheckboxs = document.querySelectorAll('.subscriber-checkbox');
 
