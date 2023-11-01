@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@alpinejs/persist": "^3.13.2",
     "@rails/actiontext": "^7.1.1",
     "@tailwindcss/custom-forms": "^0.2.1",
     "alpinejs": "^3.13.2",
