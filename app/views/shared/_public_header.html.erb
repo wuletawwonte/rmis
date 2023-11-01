@@ -1,11 +1,11 @@
-<div class="relative bg-gray-800">
-  <div class="mx-auto w-full px-6 sm:px-20 shadow-lg">
+<div class="relative bg-gray">
+  <div class="mx-auto w-full px-6 sm:px-20 shadow-lg bg-graydark">
     <div class="flex items-center justify-between py-5 md:justify-start md:space-x-10">
       <div class="flex justify-start lg:w-0 lg:flex-1">
         <%= link_to "RMIS", root_path, class: "self-center text-xl font-semibold whitespace-nowrap text-white" %>
       </div>
       <div class="-my-2 -mr-2 md:hidden">
-        <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500" aria-expanded="false">
+        <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-bodydark1 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500" aria-expanded="false">
           <span class="sr-only">Open menu</span>
           <!-- Heroicon name: outline/bars-3 -->
           <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -15,9 +15,9 @@
       </div>
       <nav class="hidden space-x-10 md:flex">
 
-        <a href="#" class="text-base font-medium text-gray-400 hover:text-white">About</a>
-        <%= link_to "Documents", documents_path, class: "text-base font-medium text-gray-400 hover:text-white" %>
-        <a href="#" class="text-base font-medium text-gray-400 hover:text-white">Help</a>
+        <a href="#" class="text-base font-medium text-bodydark1 hover:text-white">About</a>
+        <%= link_to "Documents", documents_path, class: "text-base font-medium text-bodydark1 hover:text-white" %>
+        <a href="#" class="text-base font-medium text-bodydark1 hover:text-white">Help</a>
 
       </nav>
       <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0 space-x-10">
@@ -25,10 +25,10 @@
           <% if current_user.admin? %>
             <%= link_to "Admin", admin_root_path, method: :delete, class: "whitespace-nowrap text-base font-medium text-gray-500 hover:text-white" %>
           <% end %>
-          <%= button_to "Signout", destroy_user_session_path, method: :delete, class: "whitespace-nowrap text-base font-medium text-gray-500 hover:text-white" %>
+          <%= button_to "Signout", destroy_user_session_path, method: :delete, class: "whitespace-nowrap text-base font-medium text-bodydark1 hover:text-white" %>
         <% else %>
-          <%= link_to "Sign in", new_user_session_path, class: "whitespace-nowrap text-base font-medium text-gray-400 hover:text-white" %>
-          <%= link_to "Sign up", new_user_registration_path, class: "ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-purple-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-purple-700" %>
+          <%= link_to "Sign in", new_user_session_path, class: "whitespace-nowrap text-base font-medium text-bodydark1 hover:text-white" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-primary px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-purple-700" %>
         <% end %>
       </div>
     </div>
@@ -42,7 +42,7 @@
             <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
           </div>
           <div class="-mr-2">
-            <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+            <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-bodydark1 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
               <span class="sr-only">Close menu</span>
               <!-- Heroicon name: outline/x-mark -->
               <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
