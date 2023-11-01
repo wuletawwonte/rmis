@@ -4,3 +4,9 @@
 @tailwind utilities;
 
 @import './actiontext.css';
+
+@layer base {
+  body {
+    @apply relative z-1 bg-whiten font-satoshi text-base font-normal text-body;
+  }
+}
