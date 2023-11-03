@@ -57,3 +57,5 @@ gem "view_component"
 # Administrate related gems
 gem "administrate", "~> 0.19.0"
 gem "administrate-field-active_storage", "~> 0.4.2"
+
+gem "inline_svg", "~> 1.9"
