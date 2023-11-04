@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       resources :research_types
       resources :proposals, only: %i[index destroy]
       resources :subscribers, only: %i[index create update]
-      resources :global_settings, only: %i[index update]
+      resources :global_settings, only: %i[index show update]
 
       mount Sidekiq::Web => "/sidekiq"
 
