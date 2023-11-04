@@ -16,6 +16,7 @@ GlobalSetting.destroy_all
 ResearchCenter.destroy_all
 Call.destroy_all
 ResearchType.destroy_all
+AcademicRank.destroy_all
 
 def seed(file)
   load Rails.root.join("db", "seeds", "#{file}.rb")
@@ -27,5 +28,6 @@ seed("research_centers")
 seed("research_types")
 seed("global_settings")
 seed("researchers")
+seed("academic_ranks")
 
 puts "========== SEEDING DONE =========="
