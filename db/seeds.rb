@@ -29,5 +29,6 @@ seed("research_types")
 seed("global_settings")
 seed("researchers")
 seed("academic_ranks")
+seed("departments")
 
 puts "========== SEEDING DONE =========="
