@@ -10,7 +10,6 @@ Rails.application.routes.draw do
       resources :education_levels
       resources :departments
       resources :faculties
-      resources :profiles
       resources :documents
       resources :research_centers
       resources :themes
