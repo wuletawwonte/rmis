@@ -17,6 +17,7 @@ ResearchCenter.destroy_all
 Call.destroy_all
 ResearchType.destroy_all
 AcademicRank.destroy_all
+Department.destroy_all
 
 def seed(file)
   load Rails.root.join("db", "seeds", "#{file}.rb")
