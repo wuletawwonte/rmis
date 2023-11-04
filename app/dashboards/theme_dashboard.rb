@@ -28,7 +28,6 @@ class ThemeDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     title
-    description
     research_center
   ].freeze
 
