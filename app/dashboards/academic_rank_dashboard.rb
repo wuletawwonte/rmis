@@ -12,7 +12,6 @@ class AcademicRankDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
-    order_key: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -25,7 +24,6 @@ class AcademicRankDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     name
-    order_key
     created_at
   ].freeze
 
@@ -34,7 +32,6 @@ class AcademicRankDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     name
-    order_key
     created_at
     updated_at
   ].freeze
@@ -44,7 +41,6 @@ class AcademicRankDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     name
-    order_key
   ].freeze
 
   # COLLECTION_FILTERS

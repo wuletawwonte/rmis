@@ -27,8 +27,8 @@ class ThemeDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
+    title
     description
-    proposals
     research_center
   ].freeze
 

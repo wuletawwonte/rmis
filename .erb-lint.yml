@@ -5,6 +5,7 @@ exclude:
 - "app/views/*_mailer/*"
 - "app/views/kaminari/*"
 - "vendor/bundle/**/*"
+- "app/views/shared/*"
 
 linters:
   ErbSafety:

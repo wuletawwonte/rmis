@@ -4,3 +4,11 @@
 @tailwind utilities;
 
 @import './actiontext.css';
+@import './lineicons.css';
+
+/* Add default base properties for the body tag */
+@layer base {
+  body {
+    @apply relative z-1 bg-whiten font-satoshi text-base font-normal text-body;
+  }
+}

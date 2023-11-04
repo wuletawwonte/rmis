@@ -1,15 +1,184 @@
+<aside
+  :class="sidebarToggle ? 'translate-x-0' : '-translate-x-full'"
+  class="absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0"
+  @click.outside="sidebarToggle = false"
+>
+  <!-- SIDEBAR HEADER -->
+  <div class="flex items-center justify-center gap-2 px-6 py-5.5 lg:py-6.5">
+    <%= link_to "AMU-RMIS", root_path, class: "text-white text-2xl dark:text-purple-800" %>
 
+    <button
+      class="block lg:hidden"
+      @click.stop="sidebarToggle = !sidebarToggle"
+    >
+      <svg
+        class="fill-current"
+        width="20"
+        height="18"
+        viewBox="0 0 20 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M19 8.175H2.98748L9.36248 1.6875C9.69998 1.35 9.69998 0.825 9.36248 0.4875C9.02498 0.15 8.49998 0.15 8.16248 0.4875L0.399976 8.3625C0.0624756 8.7 0.0624756 9.225 0.399976 9.5625L8.16248 17.4375C8.31248 17.5875 8.53748 17.7 8.76248 17.7C8.98748 17.7 9.17498 17.625 9.36248 17.475C9.69998 17.1375 9.69998 16.6125 9.36248 16.275L3.02498 9.8625H19C19.45 9.8625 19.825 9.4875 19.825 9.0375C19.825 8.55 19.45 8.175 19 8.175Z"
+          fill=""
+        />
+      </svg>
+    </button>
+  </div>
+  <!-- SIDEBAR HEADER -->
 
-<%= render SidebarComponent.new("AMU-RDB", root_url) do |menu| %>
+  <div
+    class="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear"
+  >
+    <!-- Sidebar Menu -->
+    <nav
+      class="mt-2 py-4 px-4 lg:mt-9 lg:px-6"
+      x-data="{selected: $persist('Dashboard')}"
+    >
+      <!-- Menu Group -->
+      <div>
+        <h3 class="mb-4 ml-4 text-sm font-medium text-bodydark2">MENU</h3>
 
-  <%= menu.with_menu "Dashboard", root_path, "fas fa-home", active: current_page?(root_path) %>
-  <%= menu.with_menu "Proposals", proposals_path, "file", auth_check: can?(:read, Proposal), active: request.fullpath.start_with?(proposals_path) %>
-  <%= menu.with_menu "Research Types", research_types_path, "filter", auth_check: can?(:read, ResearchType), active: request.fullpath.start_with?(research_types_path) %>
-  <%= menu.with_menu "Research Centers", research_centers_path, "bank", auth_check: can?(:read, ResearchCenter), active: request.fullpath.start_with?(research_centers_path) %>
-  <%= menu.with_menu "Thematic Areas", themes_path, "building", auth_check: can?(:read, Theme), active: request.fullpath.start_with?(themes_path) %>
-  <%= menu.with_menu "Call for Research", calls_path, "bullhorn", auth_check: can?(:read, Call), active: request.fullpath.start_with?(calls_path) %>
-  <%= menu.with_menu "Documents", documents_path, "file", auth_check: can?(:read, Document), active: request.fullpath.start_with?(documents_path) %>
-  <%= menu.with_menu "My Profile", user_profile_path, "user", active: current_page?(user_profile_path) %>
-  <%= menu.with_action_button "Create proposal", new_proposal_path, left_icon: icon("fas", "plus fa-sm"), auth_check: can?(:create, Proposal) %>
+        <ul class="mb-6 flex flex-col gap-1.5">
 
-<% end %>
+          <!-- Menu Item Calendar -->
+          <li>
+            <a
+              class="selected group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+              href="/"
+              @click="selected = (selected === 'Dashboard' ? '':'Dashboard')"
+              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Dashboard') }"
+            >
+              <%= icon "grid-alt" %>
+
+              Dashboard
+            </a>
+          </li>
+          <!-- Menu Item Calendar -->
+
+          <!-- Menu Item Calendar -->
+          <li>
+            <a
+              class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+              href="calendar.html"
+              @click="selected = (selected === 'Calendar' ? '':'Calendar')"
+              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Calendar') && (page === 'calendar') }"
+            >
+              <i class="fa-solid fa-calendar"></i>
+              Calendar
+            </a>
+          </li>
+          <!-- Menu Item Calendar -->
+
+          <!-- Menu Item Profile -->
+          <li>
+            <a
+              class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+              href="profile.html"
+              @click="selected = (selected === 'Profile' ? '':'Profile')"
+              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Profile') && (page === 'profile') }"
+              :class="page === 'profile' && 'bg-graydark'"
+            >
+              <i class="fa-solid fa-user"></i>
+
+              Profile
+            </a>
+          </li>
+          <!-- Menu Item Profile -->
+
+          <!-- Menu Item Forms -->
+          <li>
+            <a
+              class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+              href="#"
+              @click.prevent="selected = (selected === 'Forms' ? '':'Forms')"
+              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Forms') || (page === 'formElements' || page === 'formLayout') }"
+            >
+              <i class="fa-brands fa-wpforms"></i>
+
+              Forms
+              <svg
+                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                :class="{ 'rotate-180': (selected === 'Forms') }"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
+                  fill=""
+                />
+              </svg>
+            </a>
+
+            <!-- Dropdown Menu Start -->
+            <div
+              class="overflow-hidden"
+              :class="(selected === 'Forms') ? 'block' :'hidden'"
+            >
+              <ul class="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
+                <li>
+                  <a
+                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
+                    href="form-elements.html"
+                    :class="page === 'formElements' && '!text-white'"
+                    >Form Elements</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
+                    href="form-layout.html"
+                    :class="page === 'formLayout' && '!text-white'"
+                    >Form Layout</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- Dropdown Menu End -->
+          </li>
+          <!-- Menu Item Forms -->
+
+          <!-- Menu Item Tables -->
+          <li>
+            <a
+              class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+              href="tables.html"
+              @click="selected = (selected === 'Tables' ? '':'Tables')"
+              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Tables') && (page === 'Tables') }"
+            >
+              <i class="fa-solid fa-table-list"></i>
+
+              Tables
+            </a>
+          </li>
+          <!-- Menu Item Tables -->
+
+          <!-- Menu Item Settings -->
+          <li>
+            <a
+              class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+              href="settings.html"
+              @click="selected = (selected === 'Settings' ? '':'Settings')"
+              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Settings') && (page === 'settings') }"
+              :class="page === 'settings' && 'bg-graydark'"
+            >
+              <i class="fa-solid fa-gear"></i>
+
+              Settings
+            </a>
+          </li>
+          <!-- Menu Item Settings -->
+        </ul>
+      </div>
+
+    </nav>
+    <!-- Sidebar Menu -->
+
+  </div>
+</aside>

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SidebarMenuComponent < ApplicationViewComponent
+class SidebarMenuItemComponent < ApplicationViewComponent
   param :title
   param :route_path
   param :icon_name

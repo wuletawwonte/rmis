@@ -3,7 +3,4 @@
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
 //= link_tree ../builds
-//= link ./init-alpine.js
-//= link ./alpine.min.js
-//= link ./focus-trap.js
 //= link administrate-field-active_storage/application.css

@@ -7,6 +7,7 @@ class Ability
     can :read, Call
     can :read, Document
     can :manage, Subscriber
+    can :manage, User
 
     return unless user.present?
 
