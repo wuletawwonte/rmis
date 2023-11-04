@@ -309,14 +309,14 @@
           <ul class="flex flex-col gap-5 border-b border-stroke px-6 py-7.5 dark:border-strokedark">
             <li>
               <%= link_to user_profile_path, class: "flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base" do %>
-                <i class="fa-solid fa-user fa-lg"></i>
+                <%= icon "user" %>
                 My Profile
               <% end %>
             </li>
           </ul>
 
           <%= button_to destroy_user_session_path, method: :delete, class: "flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base" do %>
-            <i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
+            <%= icon "exit" %>
             Log Out
           <% end %>
         </div>
