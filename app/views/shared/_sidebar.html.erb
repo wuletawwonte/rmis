@@ -30,7 +30,7 @@
 
         <ul class="mb-6 flex flex-col gap-1.5">
 
-          <%= render SidebarMenuItemComponent.new "Dashboard", user_root_path, 'grid-alt', active: current_page?(user_root_path) %>
+          <%= render SidebarMenuItemComponent.new "Dashboard", to: user_root_path, icon_name: 'grid-alt', active: current_page?(user_root_path) %>
 
           <!-- Menu Item Calendar -->
           <li>
@@ -46,20 +46,24 @@
           </li>
           <!-- Menu Item Calendar -->
 
-          <%= render SidebarMenuItemComponent.new "Profile", user_profile_path, 'user', active: request.fullpath.start_with?(user_profile_path) %>
+          <%= render SidebarMenuItemComponent.new "Profile", to: user_profile_path, icon_name: 'user', active: request.fullpath.start_with?(user_profile_path) %>
+
+          <%= render SidebarMenuItemComponent.new "Proposals", icon_name: 'pencil-alt' do |menu| %>
+            <%= menu.with_submenu "List", to: proposals_path  %>
+            <%= menu.with_submenu "Members", to: proposals_path  %>
+          <% end %>
 
           <!-- Menu Item Forms -->
           <li>
             <a
               class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
               href="#"
-              @click.prevent="selected = (selected === 'Forms' ? '':'Forms')"
               :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Forms') || (page === 'formElements' || page === 'formLayout') }"
+              @click.prevent="selected = (selected === 'Forms' ? '':'Forms')"
             >
               <i class="fa-brands fa-wpforms"></i>
 
               Forms
-              <%= icon "chevron-up", width: "20", height: "20", class: "absolute right-4 top-1/2 -translate-y-1/2 fill-current" %>
               <svg
                 class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 :class="{ 'rotate-180': (selected === 'Forms') }"
@@ -87,7 +91,7 @@
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                    href="form-elements.html"
+                    href="for.html"
                     :class="page === 'formElements' && '!text-white'"
                     >Form Elements</a
                   >
@@ -121,21 +125,6 @@
           </li>
           <!-- Menu Item Tables -->
 
-          <!-- Menu Item Settings -->
-          <li>
-            <a
-              class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-              href="settings.html"
-              @click="selected = (selected === 'Settings' ? '':'Settings')"
-              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Settings') && (page === 'settings') }"
-              :class="page === 'settings' && 'bg-graydark'"
-            >
-              <i class="fa-solid fa-gear"></i>
-
-              Settings
-            </a>
-          </li>
-          <!-- Menu Item Settings -->
         </ul>
       </div>
 
