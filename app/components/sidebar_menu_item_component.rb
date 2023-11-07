@@ -12,4 +12,8 @@ class SidebarMenuItemComponent < ApplicationViewComponent
   def render?
     auth_check
   end
+
+  def target_path
+    submenus.present? ? "#" : route_path
+  end
 end

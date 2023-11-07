@@ -1,6 +1,6 @@
 
 <li>
-    <%= link_to route_path, class: "group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 #{"bg-graydark dark:bg-meta-4" if active == true}" do %>
+    <%= link_to target_path, class: "group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 #{"bg-graydark dark:bg-meta-4" if active == true}" do %>
         <% if icon_name.present? %>
             <%= helpers.icon icon_name %>
         <% end %>
