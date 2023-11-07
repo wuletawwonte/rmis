@@ -2,14 +2,14 @@
 
 class SidebarMenuItemComponent < ApplicationViewComponent
   param :title
-  param :route_path
-  param :icon_name
+  param :route_path, optional: true
+  param :icon_name, optional: true
   option :active, default: proc { false }
-  option :auth_check, optional: true # If present, the button will be visible only if the user has the required permissions
+  option :auth_check, default: proc { true } # If present, the button will be visible only if the user has the required permissions
+
+  renders_many :submenus
 
   def render?
-    return true if auth_check.nil?
-
     auth_check
   end
 end
