@@ -46,7 +46,7 @@
           </li>
           <!-- Menu Item Calendar -->
 
-          <%= render SidebarMenuItemComponent.new "Profile", to: user_profile_path, icon_name: 'user', active: request.fullpath.start_with?(user_profile_path) %>
+          <%= render SidebarMenuItemComponent.new "Profile", to: user_profile_path, icon_name: 'user' %>
 
           <%= render SidebarMenuItemComponent.new "Proposals", icon_name: 'pencil-alt' do |menu| %>
             <%= menu.with_submenu "List", to: proposals_path  %>

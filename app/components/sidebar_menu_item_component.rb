@@ -7,7 +7,7 @@ class SidebarMenuItemComponent < ApplicationViewComponent
   option :active, default: proc { false }
   option :auth_check, default: proc { true } # If present, the button will be visible only if the user has the required permissions
 
-  renders_many :submenus, SidebarMenuItemComponent
+  renders_many :submenus, SidebarSubmenuItemComponent
 
   def render?
     auth_check
@@ -20,12 +20,16 @@ class SidebarMenuItemComponent < ApplicationViewComponent
   def active_conditionals
     return "" if submenus.blank?
 
-    result = ["|| ("]
     conditionals = []
     submenus.each do |submenu|
       conditionals.push("page === '#{submenu.title.underscore.camelize(:lower)}'")
     end
-    result.push(conditionals.join(" || "), ") }")
-    result.join
+    ["|| (", conditionals.join(" || "), ")"].join
+  end
+
+  def prevent_default_action
+    # This is not safe but used here only temporarly. I suggest adding
+    # support for stimulus controller with each view component
+    "@click.prevent=\"selected = (selected === '#{title}' ? '' : '#{title}')\""
   end
 end

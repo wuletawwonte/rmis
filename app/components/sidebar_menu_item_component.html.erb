@@ -2,9 +2,10 @@
 <li>
     <a
         href="<%= target_path %>"
-        class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 <%= "bg-graydark dark:bg-meta-4" if active == true %>"
-        :class="{ 'bg-graydark dark:bg-meta-4': (selected === '<%= title %>') <%= active_conditionals %>"
-        <%= "@click.prevent='selected = (selected === #{"'" + title + "'"} ? '':#{title})" if submenus.present? %>>
+        class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+        :class="{ 'bg-graydark dark:bg-meta-4': (selected === '<%= title %>') <%= active_conditionals %> }"
+        <%= prevent_default_action.html_safe if submenus.present? %>>
+
         <% if icon_name.present? %>
             <%= helpers.icon icon_name %>
         <% end %>
