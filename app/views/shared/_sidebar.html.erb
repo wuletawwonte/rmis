@@ -31,6 +31,7 @@
         <ul class="mb-6 flex flex-col gap-1.5">
 
           <%= render SidebarMenuItemComponent.new "Dashboard", to: user_root_path, icon_name: 'grid-alt', active: current_page?(user_root_path) %>
+          <%= render SidebarMenuItemComponent.new "Calendar", to: "#", icon_name: 'calendar', active: current_page?("#") %>
 
           <!-- Menu Item Calendar -->
           <li>
@@ -49,7 +50,7 @@
           <%= render SidebarMenuItemComponent.new "Profile", to: user_profile_path, icon_name: 'user' %>
 
           <%= render SidebarMenuItemComponent.new "Proposals", icon_name: 'pencil-alt' do |menu| %>
-            <%= menu.with_submenu "List", to: proposals_path  %>
+            <%= menu.with_submenu "Workspace", to: proposals_path  %>
             <%= menu.with_submenu "Members", to: proposals_path  %>
           <% end %>
 
