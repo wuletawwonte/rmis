@@ -22,7 +22,7 @@ class SidebarMenuItemComponent < ApplicationViewComponent
 
     conditionals = []
     submenus.each do |submenu|
-      conditionals.push("page === '#{submenu.title.underscore.camelize(:lower)}'")
+      conditionals.push("page === '#{submenu.title}'")
     end
     ["|| (", conditionals.join(" || "), ")"].join
   end
