@@ -14,3 +14,4 @@ pin "Chart.bundle", to: "Chart.bundle.js"
 pin "highcharts" # @10.3.2
 pin "@alpinejs/persist", to: "@alpinejs--persist.js" # @3.13.2
 pin "alpinejs" # @3.13.2
+pin_all_from "app/components", under: "components"

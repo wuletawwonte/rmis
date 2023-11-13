@@ -1,5 +1,5 @@
 <%= render HeaderSectionComponent.new(title: "My proposals") do |header| %>
-  <%= header.with_action "Create proposal", new_proposal_path, left_icon: icon("fas", "plus fa-sm"), auth_check: can?(:create, Proposal) %>
+  <%= header.with_action "Create proposal", new_proposal_path, left_icon: icon("fas"), auth_check: can?(:create, Proposal) %>
 <% end %>
 
 <div class="w-full overflow-hidden rounded-lg shadow-sm">
