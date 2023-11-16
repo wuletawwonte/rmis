@@ -10,7 +10,7 @@
           <% if crumb.link? %>
             <%= link_to crumb.name, crumb.path, class: "font-medium" %>
           <% else %>
-            <span class="font-medium"><%= crumb.name %></span>
+            <span class="font-medium text-primary"><%= crumb.name %></span>
           <% end %>
           <%= "/" unless i == helpers.breadcrumbs.length - 1 %>
         </li>
