@@ -3,6 +3,8 @@
 class ProposalsController < ApplicationController
   load_and_authorize_resource
 
+  before_action :set_breadcrumbs
+
   def index
     @proposals = Proposal.joined(current_user).page params[:page]
     @envitations = Member.envitations(current_user)
@@ -66,5 +68,10 @@ class ProposalsController < ApplicationController
 
   def search_params
     params.permit(:search_key, :proposal_id)
+  end
+
+  def set_breadcrumbs
+    add_breadcrumb "Dashboard", root_path
+    add_breadcrumb "Proposals", proposals_path
   end
 end
