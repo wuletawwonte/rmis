@@ -3,7 +3,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :update_allowed_parameters, if: :devise_controller?
-  before_action :set_breadcrumbs
   layout :layout_by_resource
 
   helper_method :breadcrumbs
@@ -51,11 +50,5 @@ class ApplicationController < ActionController::Base
       u.permit(:avatar, :first_name, :middle_name, :last_name, :sex, :email, :password, :password_confirmation,
         :current_password)
     end
-  end
-
-  private
-
-  def set_breadcrumbs
-    add_breadcrumb "Dashboard", root_path
   end
 end
