@@ -59,3 +59,5 @@ gem "administrate", "~> 0.19.0"
 gem "administrate-field-active_storage", "~> 0.4.2"
 
 gem "inline_svg", "~> 1.9"
+
+gem "flipper", "~> 1.0"
