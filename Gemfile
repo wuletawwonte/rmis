@@ -26,8 +26,8 @@ group :development, :test do
   gem "dotenv-rails"
 
   gem "annotate"
-  gem "standard", "~> 1.32", require: false
   gem "erb_lint", require: false
+  gem "standard", "~> 1.32", require: false
 end
 
 group :development do

@@ -5,7 +5,9 @@ class SidebarMenuItemComponent < ApplicationViewComponent
   option :to, optional: true
   option :icon_name, optional: true
   option :active, default: proc { false }
-  option :auth_check, default: proc { true } # If present, the button will be visible only if the user has the required permissions
+  option :auth_check, default: proc {
+                                 true
+                               } # If present, the button will be visible only if the user has the required permissions
 
   renders_many :submenus, SidebarSubmenuItemComponent
 
