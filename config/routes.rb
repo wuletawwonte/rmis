@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :themes
       resources :research_types
       resources :calls
+      resources :system_modules, only: %i[index update]
       resources :proposals, only: %i[index destroy]
       resources :subscribers, only: %i[index create update]
       resources :global_settings, only: %i[index show update]
