@@ -1,8 +1,20 @@
-<div class="pb-2 w-full flex justify-between items-center">
-  <h2 class="my-6 text-2xl font-semibold text-gray-700"><%= title || controller_name.humanize %></h2>
-  <ul class="flex space-x-2 items-center">
-    <% actions.each do |item| %>
-      <li><%= item %></li>
-    <% end %>
-  </ul>
+<div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between justify-between">
+  <h2 class="text-title-md2 font-bold text-black dark:text-white">
+    <%= title || controller_name.humanize %>
+  </h2>
+
+  <nav>
+    <ol class="flex items-center gap-2">
+      <% helpers.breadcrumbs.each_with_index do |crumb, i| %>
+        <li>
+          <% if crumb.link? %>
+            <%= link_to crumb.name, crumb.path, class: "font-medium" %>
+          <% else %>
+            <span class="font-medium text-primary"><%= crumb.name %></span>
+          <% end %>
+          <%= "/" unless i == helpers.breadcrumbs.length - 1 %>
+        </li>
+      <% end %>
+    </ol>
+  </nav>
 </div>

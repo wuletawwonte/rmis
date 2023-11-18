@@ -288,5 +288,9 @@ module.exports = {
       },
     },
   },
+  safelist: [
+    "hover:bg-graydark",
+    "bg-graydark"
+  ],
   plugins: [],
 }

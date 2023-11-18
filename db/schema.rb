@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_04_085911) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_18_174355) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -108,6 +108,22 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_04_085911) do
     t.index ["name"], name: "index_faculties_on_name", unique: true
   end
 
+  create_table "flipper_features", force: :cascade do |t|
+    t.string "key", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_flipper_features_on_key", unique: true
+  end
+
+  create_table "flipper_gates", force: :cascade do |t|
+    t.string "feature_key", null: false
+    t.string "key", null: false
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feature_key", "key", "value"], name: "index_flipper_gates_on_feature_key_and_key_and_value", unique: true
+  end
+
   create_table "global_settings", force: :cascade do |t|
     t.string "university_name"
     t.string "university_city"
@@ -198,6 +214,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_04_085911) do
     t.datetime "updated_at", null: false
     t.string "subscription_hash"
     t.index ["email"], name: "index_subscribers_on_email", unique: true
+  end
+
+  create_table "system_modules", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "enabled", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "key"
+    t.index ["key"], name: "index_system_modules_on_key", unique: true
   end
 
   create_table "themes", force: :cascade do |t|

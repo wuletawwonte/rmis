@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   before_action :update_allowed_parameters, if: :devise_controller?
   layout :layout_by_resource
 
+  helper_method :breadcrumbs
+
   def layout_by_resource
     if (devise_controller? && resource_name == :user && action_name == "new") ||
         (devise_controller? && resource_name == :user && action_name == "create")
@@ -16,6 +18,14 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do
     redirect_to root_url, notice: "Access denied!"
+  end
+
+  def breadcrumbs
+    @breadcrumbs ||= []
+  end
+
+  def add_breadcrumb(name, path = nil)
+    breadcrumbs << Breadcrumb.new(name, path)
   end
 
   protected

@@ -26,8 +26,8 @@ group :development, :test do
   gem "dotenv-rails"
 
   gem "annotate"
-  gem "standard", "~> 1.32", require: false
   gem "erb_lint", require: false
+  gem "standard", "~> 1.32", require: false
 end
 
 group :development do
@@ -59,3 +59,6 @@ gem "administrate", "~> 0.19.0"
 gem "administrate-field-active_storage", "~> 0.4.2"
 
 gem "inline_svg", "~> 1.9"
+
+gem "flipper"
+gem "flipper-active_record"
