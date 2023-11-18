@@ -1,0 +1,2 @@
+class SystemModule < ApplicationRecord
+end
