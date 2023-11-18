@@ -34,6 +34,7 @@
           <%= render SidebarMenuItemComponent.new "Calendar", to: "#", icon_name: 'calendar', active: current_page?("#") %>
           <%= render SidebarMenuItemComponent.new "Proposals", to: proposals_path, icon_name: 'pencil-alt' %>
           <%= render SidebarMenuItemComponent.new "Profile", to: user_profile_path, icon_name: 'user' %>
+          <%= render SidebarMenuItemComponent.new "Documents", to: documents_path, icon_name: 'files' %>
         </ul>
       </div>
 
