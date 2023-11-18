@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class CallsController < ApplicationController
-  skip_before_action :authenticate_user!
-  layout "public"
-
   # Get /calls to show on the homepage
   def index
     @calls = Call.order(deadline: :desc).page params[:page]
