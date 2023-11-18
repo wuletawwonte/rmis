@@ -4,8 +4,8 @@
 #
 #  id          :bigint           not null, primary key
 #  description :text
+#  enabled     :boolean          default(FALSE)
 #  name        :string
-#  status      :boolean          default(FALSE)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
