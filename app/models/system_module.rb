@@ -18,6 +18,6 @@ class SystemModule < ApplicationRecord
   validates :key, presence: true, uniqueness: true
 
   def self.enabled?(module_key)
-    find_by(key: module_key)&.enabled?
+    !!find_by(key: module_key)&.enabled?
   end
 end
