@@ -1,4 +1,5 @@
 namespace :system_module do
+  desc "Populate System Modules table"
   task :populate => :environment do
     system_modules = YAML.load_file("#{Rails.root}/config/modules.yml")
 
