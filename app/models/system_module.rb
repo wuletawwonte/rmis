@@ -15,4 +15,5 @@
 #  index_system_modules_on_key  (key) UNIQUE
 #
 class SystemModule < ApplicationRecord
+  validates :key, presence: true, uniqueness: true
 end
