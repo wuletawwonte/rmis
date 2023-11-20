@@ -85,7 +85,7 @@ GEM
       kaminari (>= 1.0)
       sassc-rails (~> 2.1)
       selectize-rails (~> 0.6)
-    administrate-field-active_storage (0.4.2)
+    administrate-field-active_storage (1.0.0)
       administrate (>= 0.2.2)
       rails (>= 7.0)
     annotate (3.2.0)
@@ -205,7 +205,7 @@ GEM
     kaminari-core (1.2.2)
     language_server-protocol (3.17.0.3)
     lint_roller (1.1.0)
-    loofah (2.21.4)
+    loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -221,7 +221,7 @@ GEM
     minitest (5.20.0)
     msgpack (1.7.2)
     mutex_m (0.2.0)
-    net-imap (0.4.4)
+    net-imap (0.4.5)
       date
       net-protocol
     net-pop (0.1.2)
@@ -230,8 +230,8 @@ GEM
       timeout
     net-smtp (0.4.0)
       net-protocol
-    nio4r (2.5.9)
-    nokogiri (1.15.4-x86_64-linux)
+    nio4r (2.6.0)
+    nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.23.0)
@@ -343,7 +343,7 @@ GEM
       railties (>= 4.0)
       simple_form (>= 5.0)
     smart_properties (1.17.0)
-    sprockets (4.2.0)
+    sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
     sprockets-rails (3.4.2)
@@ -407,7 +407,7 @@ PLATFORMS
 
 DEPENDENCIES
   administrate (~> 0.19.0)
-  administrate-field-active_storage (~> 0.4.2)
+  administrate-field-active_storage (~> 1.0.0)
   annotate
   bootsnap
   brakeman
