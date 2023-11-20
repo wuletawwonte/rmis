@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@alpinejs/persist@^3.13.2":
-  version "3.13.2"
-  resolved "https://registry.yarnpkg.com/@alpinejs/persist/-/persist-3.13.2.tgz#a40bd2c3241d59fd57f3fbe60bd98fe978b76d21"
-  integrity sha512-GWTqFBugNiGq/9E0XCkGnWBUcETrPG8Op2I+aBmiBfjkFCP6P/NLCHEbrEcaqWkok2Wp//0TLz3R2YBsFP0B1Q==
+"@alpinejs/persist@^3.13.3":
+  version "3.13.3"
+  resolved "https://registry.yarnpkg.com/@alpinejs/persist/-/persist-3.13.3.tgz#886d1d081dbd9df2c0b7b9c3806dbfd0b7564ee0"
+  integrity sha512-gXTH8ynVFmmQJf50/bukRvHRnp5fIDYBBfo1ZJMLSzSC6OefM/CAablwlDCV6gx+8ELeis+v5yFvX0MjBEQ7Uw==
 
 "@rails/actiontext@^7.1.2":
   version "7.1.2"
