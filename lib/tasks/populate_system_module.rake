@@ -1,7 +1,7 @@
 namespace :system_module do
   desc "Populate System Modules table"
   task :populate => :environment do
-    system_modules = YAML.load_file("#{Rails.root}/config/modules.yml")
+    system_modules = YAML.load_file("#{Rails.root}/config/settings.yml")["system_modules"]
 
     system_modules.each do |system_module|
       SystemModule.find_or_create_by(key: system_module["key"]) do |sm|

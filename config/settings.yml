@@ -1,0 +1,8 @@
+system_modules:
+  - name: 'Document management'
+    key: 'document_management'
+    description: 'Manage documents'
+
+  - name: 'Call management'
+    key: 'call_management'
+    description: 'Manage research calls'
