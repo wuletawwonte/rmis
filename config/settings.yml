@@ -1,3 +1,7 @@
+global_settings:
+  name: 'RMIS'
+  description: 'Research Management Information System'
+  version: '0.0.1'  
 system_modules:
   - name: 'Document management'
     key: 'document_management'
