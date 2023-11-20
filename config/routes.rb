@@ -15,10 +15,10 @@ Rails.application.routes.draw do
       resources :themes
       resources :research_types
       resources :calls
-      resources :system_modules
+      resources :system_modules, only: %i[index show edit]
       resources :proposals, only: %i[index destroy]
-      resources :subscribers, only: %i[index create update]
-      resources :global_settings, only: %i[index show update]
+      resources :subscribers, only: %i[index create edit]
+      resources :global_settings, only: %i[index show edit]
 
       mount Sidekiq::Web => "/sidekiq"
 
@@ -45,11 +45,13 @@ Rails.application.routes.draw do
   match "subscribers/verifyemail/:subscription_hash" => "subscribers#verify_email", :as => "verify_email", :via => :all
   get "subscribers/email_verified", to: "subscribers#email_verified", as: "email_verified"
 
-  unauthenticated :user do
-    root "calls#index"
-  end
+  devise_scope :user do
+    unauthenticated :user do
+      root to: "devise/sessions#new"
+    end
 
-  authenticated :user do
-    root "dashboard#index", as: :user_root
+    authenticated :user do
+      root "dashboard#index", as: :user_root
+    end
   end
 end

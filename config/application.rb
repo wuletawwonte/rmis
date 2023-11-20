@@ -30,5 +30,14 @@ module Rmis
 
     # Sweep importmap cache for components
     config.importmap.cache_sweepers << Rails.root.join("app/components")
+
+    # Populate system_modules table with data from YAML file
+    config.after_initialize do
+      unless ARGV.include?("db:schema:load")
+        # The code to run the Rake task that loads data from the YAML file and populate the database.
+        Rails.application.load_tasks
+        Rake::Task["system_module:populate"].invoke
+      end
+    end
   end
 end
