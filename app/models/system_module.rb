@@ -15,7 +15,6 @@
 #  index_system_modules_on_key  (key) UNIQUE
 #
 class SystemModule < ApplicationRecord
-
   after_update :clear_cache
 
   validates :key, presence: true, uniqueness: true
