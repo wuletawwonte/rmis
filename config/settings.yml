@@ -1,7 +1,7 @@
 global_settings:
-  name: 'RMIS'
-  description: 'Research Management Information System'
-  version: '0.0.1'  
+  educational_institution: 'Arba Minch University'
+  educational_institution_short: 'AMU'
+  educational_institution_url: 'http://www.amu.edu.et'
 system_modules:
   - name: 'Document management'
     key: 'document_management'

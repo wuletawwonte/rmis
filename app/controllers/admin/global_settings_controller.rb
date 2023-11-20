@@ -10,6 +10,10 @@ module Admin
     #   send_foo_updated_email(requested_resource)
     # end
 
+    def index
+      redirect_to edit_admin_global_setting_path(GlobalSetting.first)
+    end
+
     # Override this method to specify custom lookup behavior.
     # This will be used to set the resource for the `show`, `edit`, and `update`
     # actions.
