@@ -3,7 +3,7 @@
     "@alpinejs/persist": "^3.13.2",
     "@rails/actiontext": "^7.1.2",
     "@tailwindcss/custom-forms": "^0.2.1",
-    "alpinejs": "^3.13.2",
+    "alpinejs": "^3.13.3",
     "tailwindcss-multi-theme": "^1.0.4",
     "trix": "^2.0.7"
   }
