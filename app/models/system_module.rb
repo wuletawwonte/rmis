@@ -18,6 +18,8 @@ class SystemModule < ApplicationRecord
   validates :key, presence: true, uniqueness: true
 
   def self.enabled?(module_key)
-    !!find_by(key: module_key)&.enabled?
+    Rails.cache.fetch("system_module_#{module_key}", expires_in: 1.hour) do
+      !!find_by(key: module_key)&.enabled?
+    end
   end
 end
