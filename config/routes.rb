@@ -47,12 +47,11 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     unauthenticated :user do
-      root to:"devise/sessions#new"
+      root to: "devise/sessions#new"
     end
 
     authenticated :user do
       root "dashboard#index", as: :user_root
-    end  
+    end
   end
-
 end
