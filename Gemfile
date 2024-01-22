@@ -55,7 +55,7 @@ gem "dry-initializer", "~> 3.1", ">= 3.1.1"
 gem "view_component"
 
 # Administrate related gems
-gem "administrate", "~> 0.19.0"
+gem "administrate", "~> 0.20.0"
 gem "administrate-field-active_storage", "~> 1.0.1"
 
 gem "inline_svg", "~> 1.9"
