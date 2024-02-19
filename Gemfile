@@ -42,7 +42,7 @@ end
 
 gem "cancancan"
 gem "chartkick"
-gem "country_select", "~> 8.0"
+gem "country_select", "~> 9.0"
 gem "groupdate"
 gem "image_processing", ">= 1.2"
 gem "kaminari"

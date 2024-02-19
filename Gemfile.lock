@@ -124,10 +124,10 @@ GEM
     chartkick (5.0.5)
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
-    countries (5.7.0)
+    countries (6.0.0)
       unaccent (~> 0.3)
-    country_select (8.0.3)
-      countries (~> 5.0)
+    country_select (9.0.0)
+      countries (> 5.0, < 7.0)
     crass (1.0.6)
     date (3.3.4)
     debug (1.9.1)
@@ -414,7 +414,7 @@ DEPENDENCIES
   cancancan
   capybara
   chartkick
-  country_select (~> 8.0)
+  country_select (~> 9.0)
   debug
   devise
   dotenv-rails
