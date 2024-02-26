@@ -27,7 +27,7 @@ group :development, :test do
 
   gem "annotate"
   gem "erb_lint", require: false
-  gem "standard", "~> 1.33", require: false
+  gem "standard", "~> 1.34", require: false
 end
 
 group :development do
