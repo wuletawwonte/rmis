@@ -1,0 +1,12 @@
+global_settings:
+  educational_institution: 'Arba Minch University'
+  educational_institution_short: 'AMU'
+  educational_institution_url: 'http://www.amu.edu.et'
+system_modules:
+  - name: 'Document management'
+    key: 'document_management'
+    description: 'Manage documents'
+
+  - name: 'Call management'
+    key: 'call_management'
+    description: 'Manage research calls'

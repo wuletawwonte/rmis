@@ -10,7 +10,6 @@ class GlobalSettingDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    id: Field::Number,
     allowed_co_per_year: Field::Number,
     allowed_pi_per_year: Field::Number,
     date_format: Field::String,
@@ -24,9 +23,7 @@ class GlobalSettingDashboard < Administrate::BaseDashboard
     university_phone: Field::String,
     university_telegram: Field::String,
     university_twitter: Field::String,
-    university_website: Field::String,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime
+    university_website: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -35,7 +32,6 @@ class GlobalSettingDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-    id
     allowed_co_per_year
     allowed_pi_per_year
     date_format
@@ -44,7 +40,6 @@ class GlobalSettingDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    id
     allowed_co_per_year
     allowed_pi_per_year
     date_format
@@ -59,8 +54,6 @@ class GlobalSettingDashboard < Administrate::BaseDashboard
     university_telegram
     university_twitter
     university_website
-    created_at
-    updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -98,7 +91,7 @@ class GlobalSettingDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how global settings are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(global_setting)
-  #   "GlobalSetting ##{global_setting.id}"
-  # end
+  def display_resource(global_setting)
+    "Global Setting"
+  end
 end

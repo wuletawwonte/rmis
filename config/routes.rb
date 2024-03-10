@@ -15,10 +15,10 @@ Rails.application.routes.draw do
       resources :themes
       resources :research_types
       resources :calls
-      resources :system_modules, only: %i[index show edit]
       resources :proposals, only: %i[index destroy]
-      resources :subscribers, only: %i[index create edit]
-      resources :global_settings, only: %i[index show edit]
+      resources :subscribers, except: %i[destroy]
+      resources :system_modules, except: %i[new destroy]
+      resources :global_settings, only: %i[index edit update]
 
       mount Sidekiq::Web => "/sidekiq"
 
